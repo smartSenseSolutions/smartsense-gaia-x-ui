@@ -1,0 +1,48 @@
+// ---------------------------------------------------------------------------------------------
+// ===============================  Class for Margin and Padding  ==============================
+// ---------------------------------------------------------------------------------------------
+.M-0 {
+  margin: 0;
+}
+
+.P-0 {
+  padding: 0;
+}
+
+.PLR-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.PLR-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.PTB-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+$directions: (top, left, right, bottom);
+$spaceList: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100);
+
+@each $space in $spaceList {
+
+  @each $direction in $directions {
+    .M#{to_upper_case(str_slice($direction,0,1))}-#{$space} {
+      margin-#{$direction} : #{$space}px !important;
+    }
+
+    .P#{to_upper_case(str_slice($direction,0,1))}-#{$space} {
+      padding-#{$direction} : #{$space}px !important;
+    }
+  }
+}
+
+@each $space in $spaceList {
+  .MTB-#{$space} {
+    margin-top: #{$space}px !important;
+    margin-bottom: #{$space}px !important;
+  }
+}
