@@ -10,10 +10,12 @@ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   font-size: 10px;
+}
 
-  @include respond('large-desktop') {
-    font-size: 11px;
-  }
+*{
+box-sizing: border-box;
+padding: 0;
+margin: 0;
 }
 
 .text-center {
@@ -35,3 +37,9 @@ html {
 a {
   text-decoration: none;
 }
+
+ul,li{
+list-style: none;
+}
+
+
