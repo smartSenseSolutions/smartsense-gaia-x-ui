@@ -1,0 +1,57 @@
+<section class="row PLR-0">
+  <div class="col-md-5 PLR-0">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
+    </div>
+  </div>
+
+  <div class="col-md-7 PLR-0">
+    <div class="userDetails">
+
+      <ul class="userDetails__login">
+        <li class="userDetails__login-heading">
+          <h2>Welcome</h2>
+          <span>Enter your credential to access your account</span>
+        </li>
+
+        <li class="userDetails__login-form">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label for="username">Username</label>
+              <input matInput id="username" placeholder="Enter Username" required>
+              <!-- @To do -->
+              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <Label for="password">Password</Label>
+              <input matInput id="password" type="password" placeholder="Enter Password">
+              <button mat-button  matSuffix class="show-pass">show</button>
+              <!-- @To do -->
+              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <button mat-raised-button>
+            Login
+            <mat-icon svgIcon="arrow-right" ></mat-icon>
+          </button>
+        </li>
+
+        <li>
+          <p>Forgot your password? <a>Reset Here</a></p>
+        </li>
+
+        <li class="bottom-text">
+          <p>Don't have an account? <a>Sign Up</a></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SvgService } from './shared/services/svg.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(SvgService : SvgService ) {
+    SvgService.Init();
+  }
 }

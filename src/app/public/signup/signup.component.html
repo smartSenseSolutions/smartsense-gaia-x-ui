@@ -1,0 +1,112 @@
+<section class="row PLR-0">
+  <div class="col-md-5 PLR-0">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
+    </div>
+  </div>
+
+  <div class="col-md-7 PLR-0">
+    <div class="userDetails">
+      <ul class="userDetails__signup">
+        <li class="userDetails__signup-heading">
+          <h2>Welcome</h2>
+          <span>Enter your credential to access your account</span>
+        </li>
+
+        <li class="userDetails__signup-form">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+              <label>Email Address</label>
+              <input matInput placeholder="Enter email address" required>
+              <!-- @To do
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <!-- <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Phone number</mat-label>
+                <input matInput type="password" placeholder="Enter Password" value="helo">
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-hint>Include area code</mat-hint>
+              </mat-form-field>
+          </div> -->
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+              <Label for="password">Password</Label>
+              <input matInput id="password" type="password" placeholder="Enter Password">
+              <button mat-button matSuffix class="show-pass">show</button>
+              <!-- @To do
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              <mat-hint align="start">
+                <ul>
+                  <li class="MB-10">
+                    <div class="row  PLR-0">
+                      <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
+                      <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                      Contain UPPER & Lower-case
+                    </div>
+                    <div class="row  PLR-0">
+                      <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
+                      <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                      At least 6 characters long
+                    </div>
+
+                  </li>
+                  <li>
+                    <div class="row  PLR-0">
+                      <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
+                      <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                      Special Character
+                    </div>
+                    <div class="row  PLR-0">
+                      <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
+                      <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                      Contain a Number
+                    </div>
+                  </li>
+                </ul>
+
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+              <Label for="confirm-password">Confirm Password</Label>
+              <input matInput id="confirm-password" type="password" placeholder="Enter Password">
+              <button mat-button matSuffix class="show-pass">show</button>
+              <!-- @To do
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+
+          <button mat-raised-button>
+            Proceed
+            <mat-icon matIconPrefix svgIcon="arrow-right"></mat-icon>
+          </button>
+        </li>
+
+        <li>
+          <p>By creating an account, you agree to our </p>
+          <p>
+            <a> Terms of Service </a> and <a> Privacy Policy</a>.
+          </p>
+
+        </li>
+
+        <li class="bottom-text">
+          <p>
+            Already have an account?
+            <a> Sign In</a>
+          </p>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

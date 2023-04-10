@@ -7,7 +7,7 @@
 
   h1 {
     text-align: left;
-    font: normal normal bold 4.4rem/5.4rem Inter;
+    font: normal normal bold 4.4rem/5.4rem $font-family;
     white-space: nowrap;
     letter-spacing: 0px;
   }
@@ -52,16 +52,16 @@
     }
     p {
       text-align: center;
-      font: normal normal normal 1.6rem/2rem Inter;
+      font: normal normal normal 1.6rem/2rem $font-family;
       letter-spacing: 0px;
-      color: #121E2A;
+      color: $primary-dark;
 
       a {
         text-align: center;
         text-decoration: underline;
-        font: normal normal 500 1.6rem/2rem Inter;
+        font: normal normal 500 1.6rem/2rem $font-family;
         letter-spacing: 0px;
-        color: #121E2A;
+        color: $primary-dark;
         text-underline-offset: 2px;
       }
     }
@@ -69,13 +69,13 @@
 
   &__heading {
     h2 {
-      font: normal normal bold 3.4rem/4.1rem Inter;
-      color: #121E2A;
+      font: normal normal bold 3.4rem/4.1rem $font-family;
+      color: $primary-dark;
       margin-bottom: 0.8rem;
     }
 
     span {
-      font: normal normal 500 15px/19px Inter;
+      font: normal normal 500 15px/19px $font-family;
       opacity: 0.6;
     }
   }
@@ -87,9 +87,9 @@
     input {
       display: block;
       width: 100%;
-      font: normal normal 600 1.3rem/1.6rem Inter;
+      font: normal normal 600 1.3rem/1.6rem $font-family;
       letter-spacing: 0px;
-      color: #121E2A;
+      color: $primary-dark;
       margin-bottom: 0.5rem;
     }
 
@@ -98,7 +98,7 @@
       border-radius: 12px;
       background-color: #F1F3F4;
       border: 1px solid transparent;
-      outline-color: #121E2A;
+      outline-color: $primary-dark;
       outline-width: 1px;
       outline-offset: -5px;
     }
