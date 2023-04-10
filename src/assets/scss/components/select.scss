@@ -1,0 +1,29 @@
+mat-select {
+  .mat-mdc-select-arrow-wrapper {
+    .mat-mdc-select-arrow {
+      // border-left: 15px solid transparent !important;
+      // border-right: none !important;
+      // border-top: 15px solid transparent !important;
+      // border-image-source: url('../') !important;
+      // border-image-repeat: stretch !important;
+
+      svg {
+        transform: scale(0);
+      }
+
+      &::after {
+        line-height: 24px;
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        width: 10px;
+        height: 10px;
+        border-bottom: 2px solid;
+        border-right: 2px solid;
+      color: black;
+        transform: rotate(45deg);
+
+      }
+    }
+  }
+}

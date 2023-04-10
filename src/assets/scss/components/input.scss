@@ -31,6 +31,7 @@
           position: absolute !important;
           top: -14px !important;
           left: -14px !important;
+          text-transform: capitalize;
           display: block;
           width: 100%;
           font: normal normal 600 1.3rem/1.6rem $font-family;
@@ -39,6 +40,24 @@
           margin-bottom: 0.5rem;
           top: unset !important;
           transform: translateY(-220%) !important;
+
+          .mat-icon {
+            vertical-align: middle;
+          }
+        }
+
+        input {
+          text-align: left;
+          font: normal normal 500 1.5rem/2.4rem $font-family !important;
+          letter-spacing: 0px;
+          color: rgba($primary-dark , 1);
+        }
+
+        ::placeholder {
+          text-align: left;
+          font: normal normal 500 1.5rem/2.4rem $font-family !important;
+          letter-spacing: 0px;
+          color: rgba($primary-dark , 0.4);
         }
       }
 
@@ -63,20 +82,18 @@
       color: $primary-dark;
 
       .mat-mdc-form-field-hint {
-        li{
+        li {
           display: flex;
           align-items: center;
           width: 100%;
           justify-content: flex-start;
-          gap:15px;
+          gap: 15px;
         }
 
       }
     }
   }
 }
-
-
 
 .mat-mdc-raised-button {
   width: 100%;
