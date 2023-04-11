@@ -1,4 +1,16 @@
+@import "../abstracts/abstracts.scss";
+
 mat-select {
+  .mat-mdc-select-value {
+    .mat-mdc-select-placeholder {
+      text-align: left;
+      font: normal normal 500 1.5rem/2.4rem $font-family !important;
+      letter-spacing: 0px;
+      color: rgba($primary-dark , 0.4);
+    }
+  }
+
+
   .mat-mdc-select-arrow-wrapper {
     .mat-mdc-select-arrow {
       // border-left: 15px solid transparent !important;
@@ -6,7 +18,8 @@ mat-select {
       // border-top: 15px solid transparent !important;
       // border-image-source: url('../') !important;
       // border-image-repeat: stretch !important;
-
+      height: 24px;
+      width: 24px;
       svg {
         transform: scale(0);
       }
@@ -14,13 +27,13 @@ mat-select {
       &::after {
         line-height: 24px;
         content: "";
-        display: block;
+        display: inline-block;
         box-sizing: border-box;
         width: 10px;
         height: 10px;
         border-bottom: 2px solid;
         border-right: 2px solid;
-      color: black;
+        color: black;
         transform: rotate(45deg);
 
       }

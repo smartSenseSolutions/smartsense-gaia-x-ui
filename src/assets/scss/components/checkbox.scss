@@ -1,0 +1,24 @@
+@import "../abstracts/abstracts.scss";
+
+.mat-mdc-checkbox {
+  .mdc-form-field {
+    .mdc-checkbox {
+      &__background {
+        border-radius: 6px;
+      }
+
+      &__native-control {
+        &:enabled {
+          &:checked {
+            &~.mdc-checkbox {
+              &__background {
+                background-color: $primary-blue !important;
+                border-color: transparent !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
