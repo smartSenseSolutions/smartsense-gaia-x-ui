@@ -13,6 +13,11 @@
   <div class="col-md-7 PLR-0 float-right">
     <div class="userDetails">
       <ul class="userDetails__signup-2">
+        <li>
+          <button class="back-btn" mat-button>
+            <a>Go Back</a>
+          </button>
+        </li>
         <li class="userDetails__signup-2-heading">
           <h2>Let's get started</h2>
           <span>Start your journey with us.</span>
@@ -20,12 +25,12 @@
 
         <li class="userDetails__signup-2-form">
           <div>
-            <mat-form-field appearance="fill" floatLabel="always"   >
+            <mat-form-field appearance="fill" floatLabel="always">
               <label for="legalName">Legal Name
                 <mat-icon svgIcon="information" matTooltip="Please enter taxID, EORI or leiCode"
                   matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
               </label>
-              <input  matInput id="legalName" placeholder="Please enter taxID, EORI or leiCode" required>
+              <input matInput id="legalName" placeholder="Please enter taxID, EORI or leiCode" required>
               <!-- @To do -->
               <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
             </mat-form-field>
@@ -46,8 +51,8 @@
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <Label for="legalRegistrationType">Legal Registration Type
-                <mat-icon svgIcon="information" matTooltip="Select registration type"
-                  matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
+                <mat-icon svgIcon="information" matTooltip="Select registration type" matTooltipClass="custom-tooltip"
+                  matTooltipPosition="right"></mat-icon>
               </Label>
               <mat-select [(ngModel)]="selectedValue" name="food" placeholder="Select registration type">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
@@ -77,7 +82,7 @@
               <!-- @To do -->
               <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
             </mat-form-field>
-            <mat-checkbox  class="example-margin">is legal address same</mat-checkbox>
+            <mat-checkbox class="example-margin">is legal address same</mat-checkbox>
           </div>
 
           <div>
