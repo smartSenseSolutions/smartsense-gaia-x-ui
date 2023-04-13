@@ -23,7 +23,7 @@
   &__navigation {
     .mdc-button {
       margin-bottom: 10px;
-      height: auto;
+      height: auto !important;
       width: 100%;
       border-radius: 25px;
       padding: 1.6rem 2.2rem 1.7rem;

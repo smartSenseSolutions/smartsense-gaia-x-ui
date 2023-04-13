@@ -5,6 +5,7 @@ import {
   NavigationEnd,
   Router
 } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { truncateFromMiddle } from '../../functions/index';
 import { Breadcrumb } from './breadcrumb.interface';
 
@@ -16,6 +17,9 @@ export class BreadcrumbService {
 
     private breadcrumbs = new Array<Breadcrumb>();
 
+    private viewDocumentSubject: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(true);
+
     constructor(private router: Router) {
         this.router.events.subscribe((routeEvent) => {
             this.onRouteEvent(routeEvent);
@@ -26,7 +30,6 @@ export class BreadcrumbService {
         if (!(routeEvent instanceof NavigationEnd)) {
             return;
         }
-
         let route = this.router.routerState.root.snapshot;
         let url = '';
 
@@ -108,4 +111,13 @@ export class BreadcrumbService {
             })
             .join('/');
     }
+
+
+    get showBreadCrumbObservable() {
+      return this.viewDocumentSubject.asObservable();
+  }
+
+  setShowBreadCrumbObservable(value : any) {
+      this.viewDocumentSubject.next(value);
+  }
 }

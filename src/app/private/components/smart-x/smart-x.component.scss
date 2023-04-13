@@ -1,0 +1,61 @@
+@import "../../../../assets/scss/abstracts/abstracts.scss";
+
+.sidebar {
+  position: relative;
+  background: rgba(#F1F3F4, 0.5);
+  height: 100vh;
+  width: 100%;
+  padding: 10rem 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__logo {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    width: 14.7rem !important;
+    height: 4rem !important;
+  }
+
+  &__userProfile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+
+      li {
+        img {
+          width: 4.4rem;
+          height: 4.4rem;
+          border: 1px solid $white-color;
+          border-radius: 65px;
+          object-fit: scale-down;
+        }
+
+        h5 {
+          text-align: left;
+          font: normal normal 500 16px/20px $font-family;
+          letter-spacing: 0px;
+          color: $primary-dark;
+        }
+
+        span {
+          text-align: left;
+          font: normal normal 500 1.2rem/1.5rem $font-family;
+          letter-spacing: 0px;
+          color: rgba($primary-dark , 0.6);
+        }
+      }
+    }
+  }
+}
+
+.panel{
+  padding: 3.5rem 1.5rem 2rem;
+}

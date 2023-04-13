@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-export class Breadcrumb {
+export interface Breadcrumb {
     displayName: string;
     terminal: boolean;
     url: string;

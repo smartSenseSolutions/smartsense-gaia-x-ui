@@ -1,51 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import {
+  Routes
+} from '@angular/router';
+import { LoginComponent } from 'src/app/public/components';
 
 interface navLink {
   iconName: string;
   label: string;
 }
+const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent,
+  },
 
+];
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-  selected: number = 0;
-  menu: navLink[] = [
-    {
-      iconName: 'home',
-      label: 'Dashboard',
-    },
-    {
-      iconName: 'wallet',
-      label: 'Wallet',
-    },
-    {
-      iconName: 'achievement',
-      label: 'Issue Credentials',
-    },
-    {
-      iconName: 'search',
-      label: 'Search',
-    },
-    {
-      iconName: 'service-catalog',
-      label: 'Service Catalog',
-    },
-    {
-      iconName: 'profile',
-      label: 'Profile',
-    },
-  ];
-  constructor() {}
+export class DashboardComponent {}
 
-  update(index: number) {
-    this.selected = index;
-  }
-}
+
+

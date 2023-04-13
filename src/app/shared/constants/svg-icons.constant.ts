@@ -10,5 +10,6 @@ export const SvgConstants : string[] = [
 'achievement',
 'search',
 'service-catalog',
-'profile'
+'profile',
+'chevron-right'
 ]

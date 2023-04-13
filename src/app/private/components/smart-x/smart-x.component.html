@@ -1,0 +1,62 @@
+<section class="row PLR-0">
+  <div class="col-md-3 PLR-0">
+    <ul class="sidebar">
+      <li class="sidebar__logo">
+        <div>
+          <mat-icon svgIcon="dark-logo"></mat-icon>
+        </div>
+      </li>
+      <li class="sidebar__navigation">
+        <button disableRipple="true" mat-button *ngFor="let nav of menu; index as j"
+          [class]="{ active : j === selected}" (click)="update(j)">
+          <mat-icon svgIcon="{{ nav.iconName }}"></mat-icon>
+          {{ nav.label }}
+        </button>
+      </li>
+      <li class="sidebar__userProfile">
+        <ul>
+          <li>
+            <img src="../../../../assets/images/user.jpeg" alt="">
+          </li>
+          <li>
+            <h5>William Stanley</h5>
+            <span>william.stanley@gmail.com</span>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </li>
+
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>notifications_off</mat-icon>
+              <span>Disable alerts</span>
+            </button>
+          </mat-menu>
+        </ul>
+
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9 PB-15">
+    <ul class="panel">
+      <li>
+       <app-breadcrumb/>
+      </li>
+      <li>
+        <router-outlet></router-outlet>
+      </li>
+    </ul>
+  </div>
+</section>
