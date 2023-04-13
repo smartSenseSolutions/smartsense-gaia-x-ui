@@ -3,5 +3,12 @@ export const SvgConstants : string[] = [
 'done',
 'logo',
 'bg-helper',
-'information'
+'information',
+'dark-logo',
+'home',
+'wallet',
+'achievement',
+'search',
+'service-catalog',
+'profile'
 ]

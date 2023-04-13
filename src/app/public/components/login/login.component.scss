@@ -1,35 +1,35 @@
-@import "../../../assets/scss/abstracts/abstracts.scss";
+@import "../../../../assets/scss/abstracts/abstracts.scss";
 
-.bg-main {
-  height: 100vh;
-  background-color: #1F5BE3;
-  position: relative;
-  padding: 14.3rem 0 0 7rem;
-  color: #FFFFFF;
+// .bg-main {
+//   height: 100vh;
+//   background-color: #1F5BE3;
+//   position: relative;
+//   padding: 14.3rem 0 0 7rem;
+//   color: #FFFFFF;
 
-  h1 {
-    text-align: left;
-    font: normal normal bold 4.4rem/5.4rem $font-family;
-    white-space: nowrap;
-    letter-spacing: 0px;
-  }
+//   h1 {
+//     text-align: left;
+//     font: normal normal bold 4.4rem/5.4rem $font-family;
+//     white-space: nowrap;
+//     letter-spacing: 0px;
+//   }
 
-  &__logo {
-    position: absolute;
-    top: 4.1rem;
-    left: 7rem;
-    width: 14.7rem;
-    height: 4rem;
-  }
+//   &__logo {
+//     position: absolute;
+//     top: 4.1rem;
+//     left: 7rem;
+//     width: 14.7rem;
+//     height: 4rem;
+//   }
 
-  &__helper {
-    position: absolute;
-    top: 30rem;
-    left: 7rem;
-    width: 36.2rem;
-    height: 36.1rem;
-  }
-}
+//   &__helper {
+//     position: absolute;
+//     top: 30rem;
+//     left: 7rem;
+//     width: 36.2rem;
+//     height: 36.1rem;
+//   }
+// }
 
 .userDetails {
   &__login {

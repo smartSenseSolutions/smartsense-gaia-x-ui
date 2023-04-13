@@ -1,0 +1,69 @@
+@import "../../../../assets/scss/abstracts/abstracts.scss";
+
+.sidebar {
+  position: relative;
+  background: rgba(#F1F3F4, 0.5);
+  height: 100vh;
+  width: 100%;
+  padding: 10rem 2rem 0;
+
+  &__logo {
+    fill: black !important;
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    width: 14.7rem !important;
+    height: 4rem !important;
+
+    .mat-icon {
+      width: 100%;
+      height: 100%;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 6rem;
+        left: 0;
+        width: 26rem;
+        height: 0.2rem;
+        background: transparent linear-gradient(90deg, #F1F3F4 0%, #1F2B36 8%, #F1F3F4 100%) 0% 0% no-repeat padding-box;
+        opacity: 0.1;
+      }
+    }
+
+  }
+
+  &__navigation {
+    .mdc-button {
+      margin-bottom: 10px;
+      height: auto;
+      width: 100%;
+      border-radius: 25px;
+      padding: 1.6rem 2.2rem 1.7rem;
+      justify-content: start !important;
+      align-items: center;
+
+      &__label {
+        top: -1px;
+      }
+
+      .mat-icon {
+        height: 1.6rem;
+        width: 1.6rem;
+      }
+
+      font: normal normal 500 1.4rem/1.7rem $font-family;
+      letter-spacing: 0px;
+      color: #000;
+
+      &.active {
+        background-color: blue !important;
+        color: #FFFFFF;
+      }
+
+      &:hover {
+        background-color: rgba($primary-dark , 0.07);
+      }
+    }
+  }
+}

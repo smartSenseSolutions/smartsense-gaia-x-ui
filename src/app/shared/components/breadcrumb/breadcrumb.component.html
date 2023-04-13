@@ -1,0 +1,11 @@
+<div class="breadcrumb" *ngIf="isShowBreadCrumb">
+    <ul>
+        <li *ngFor="let route of breadcrumbs;let i = index">
+            <a *ngIf="i < (breadcrumbs.length - 1)" [routerLink]="[route.url]">{{ route.displayName }}</a>
+            <span *ngIf="i === (breadcrumbs.length-1)">
+                {{ route.displayName }}
+            </span>
+            <mat-icon *ngIf="i < (breadcrumbs.length - 1)" svgIcon="chevron"></mat-icon>
+        </li>
+    </ul>
+</div>
