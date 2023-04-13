@@ -5,10 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { RouteConstants } from 'src/app/shared/constants';
+import { RouteConstants } from 'src/app/shared/constants/route.constants';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup-step-one',
   standalone: true,
   imports: [
     CommonModule,
@@ -17,13 +17,14 @@ import { RouteConstants } from 'src/app/shared/constants';
     MatIconModule,
     MatInputModule,
   ],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './signup-step-one.component.html',
+  styleUrls: ['./signup-step-one.component.scss'],
 })
-export class LoginComponent {
+export class SignupStepOneComponent {
+
   constructor(private router: Router) {}
 
-  onSignUpClick = () => {
-    this.router.navigate([`${RouteConstants.SignUp}/${RouteConstants.Step1}`]);
+  onProceedClick = () => {
+    this.router.navigate([`${RouteConstants.SignUp}/${RouteConstants.Step2}`]);
   };
 }

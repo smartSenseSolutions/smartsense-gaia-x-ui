@@ -15,7 +15,7 @@ interface Food {
 }
 
 @Component({
-  selector: 'app-signup2',
+  selector: 'app-signup-step-two',
   standalone: true,
   imports: [
     CommonModule,
@@ -29,10 +29,11 @@ interface Food {
     MatCheckboxModule,
   ],
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './signup2.component.html',
-  styleUrls: ['./signup2.component.scss'],
+
+  templateUrl: './signup-step-two.component.html',
+  styleUrls: ['./signup-step-two.component.scss'],
 })
-export class Signup2Component {
+export class SignupStepTwoComponent {
   selectedValue: string = 'Init';
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },

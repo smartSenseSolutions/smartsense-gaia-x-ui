@@ -37,7 +37,7 @@
               <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
             </mat-form-field>
           </div>
-          <button mat-raised-button>
+          <button mat-raised-button >
             Login
             <mat-icon svgIcon="arrow-right"></mat-icon>
           </button>
@@ -48,7 +48,7 @@
         </li>
 
         <li class="bottom-text">
-          <p>Don't have an account? <a>Sign Up</a></p>
+          <p>Don't have an account? <a (click)="onSignUpClick()">Sign Up</a></p>
         </li>
       </ul>
     </div>

@@ -3,33 +3,41 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './private/components';
 import {
   LoginComponent,
-  Signup2Component,
-  SignupComponent,
+  SignupStepTwoComponent,
+  SignupStepOneComponent,
 } from './public/components';
+import { RouteConstants } from './shared/constants';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: RouteConstants.Login,
     component: LoginComponent,
   },
   {
-    path: 'signup',
-    pathMatch: "prefix",
+    path: RouteConstants.SignUp,
     children: [
       {
-        path: '',
-        component: SignupComponent,
+        path: RouteConstants.Step1,
+        component: SignupStepOneComponent,
       },
       {
-        path: 'step-2',
-        component: Signup2Component,
-      }
+        path: RouteConstants.Step2,
+        component: SignupStepTwoComponent,
+      },
+      {
+        path: '**',
+        redirectTo: RouteConstants.Step1,
+      },
     ],
   },
   {
-    path:"home",
-    component : DashboardComponent
-  }
+    path: 'home',
+    component: DashboardComponent,
+  },
+  {
+    path: '**',
+    redirectTo: RouteConstants.Login,
+  },
 ];
 
 @NgModule({
