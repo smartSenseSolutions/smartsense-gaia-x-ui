@@ -70,7 +70,6 @@ export class SmartXComponent {
 
   update(index: number) {
     this.selected = index;
-    console.log(RouteConstants.Home + this.menu[index].routeLink);
     this.route.navigateByUrl( RouteConstants.Home+'/'+ this.menu[index].routeLink);
   }
 }
