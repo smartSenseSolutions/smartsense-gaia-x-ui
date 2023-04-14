@@ -9,7 +9,8 @@
     </a>
 
   </div>
-  <div class="serviceCatalog__content">
+  <app-card-box  [productList] = productList></app-card-box>
+  <!-- <div class="serviceCatalog__content">
     <article class="card" *ngFor="let product of productList">
       <div class="card__image">
         <img src="{{ product.image }}" alt="">
@@ -44,6 +45,6 @@
 
     </article>
 
-  </div>
+  </div> -->
 
 </section>

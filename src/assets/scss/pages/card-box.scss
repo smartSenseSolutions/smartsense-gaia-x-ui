@@ -1,4 +1,5 @@
-@import "../abstracts/abstracts.scss";
+.cardBox{
+  @import "../abstracts/abstracts.scss";
 
 .card {
   background: #F7F7F7;
@@ -75,4 +76,6 @@
 
     }
   }
+}
+
 }

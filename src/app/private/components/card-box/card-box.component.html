@@ -1,0 +1,34 @@
+<div class="cardBox">
+  <article class="card" *ngFor="let product of productList">
+    <div class="card__image">
+      <img src="{{ product.image }}" alt="">
+    </div>
+    <div class="card__data">
+      <h4 *ngIf="product?.title">{{ product.title }}</h4>
+      <p>
+        <span>Article Number:</span>
+        {{ product.articleNumber }}
+      </p>
+      <p>
+        <span>Group:</span>
+        {{ product.group }}
+      </p>
+      <p>
+        <span>GTIN/EAN:</span>
+        {{ product.gtinNumber }}
+      </p>
+      <div class="card__btn">
+        <a>
+          <button mat-raised-button>Buy Catalog</button>
+
+        </a>
+        <a >
+          <button mat-mini-fab>
+            <mat-icon>mode_edit</mat-icon>
+          </button>
+        </a>
+
+      </div>
+    </div>
+  </article>
+</div>
