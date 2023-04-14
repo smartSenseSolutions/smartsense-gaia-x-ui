@@ -56,6 +56,12 @@
   }
 }
 
-.panel{
+.panel {
   padding: 3.5rem 1.5rem 2rem;
+  overflow: auto;
+  &__component {
+    height: calc(100vh - 9.7rem);
+    border: 0.1rem solid #121E2A26;
+    border-radius: 8px;
+  }
 }

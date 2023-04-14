@@ -16,7 +16,7 @@
             <h2>Welcome</h2>
             <span>Enter your credential to access your account</span>
           </li>
-  
+
           <li class="userDetails__signup-form">
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
@@ -54,7 +54,7 @@
                         <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
                         At least 6 characters long
                       </div>
-  
+
                     </li>
                     <li>
                       <div class="row  PLR-0">
@@ -69,11 +69,11 @@
                       </div>
                     </li>
                   </ul>
-  
+
                 </mat-hint>
               </mat-form-field>
             </div>
-  
+
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <Label for="confirm-password">Confirm Password</Label>
@@ -83,21 +83,21 @@
                   <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
             </div>
-  
-            <button mat-raised-button (click)="onProceedClick()">
+
+            <button class="large-btn primary-btn" mat-raised-button (click)="onProceedClick()">
               Proceed
               <mat-icon matIconPrefix svgIcon="arrow-right"></mat-icon>
             </button>
           </li>
-  
+
           <li>
             <p>By creating an account, you agree to our </p>
             <p>
               <a> Terms of Service </a> and <a> Privacy Policy</a>.
             </p>
-  
+
           </li>
-  
+
           <li class="bottom-text">
             <p>
               Already have an account?
@@ -108,4 +108,3 @@
       </div>
     </div>
   </section>
-  
