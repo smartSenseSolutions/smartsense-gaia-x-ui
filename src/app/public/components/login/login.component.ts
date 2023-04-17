@@ -65,7 +65,7 @@ export class LoginComponent extends FormBaseComponent {
   };
 
   onSignUpClick = () => {
-    this.router.navigate([`${RouteConstants.SignUp}}`]);
+    this.router.navigate([`${RouteConstants.SignUp}`]);
   };
 
   // Helper methods

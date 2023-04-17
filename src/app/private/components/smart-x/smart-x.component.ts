@@ -46,25 +46,15 @@ export class SmartXComponent {
 
     },
     {
-      iconName: 'achievement',
-      label: 'Issue Credentials',
-      routeLink : RouteConstants.IssueCredentials
-    },
-    {
       iconName: 'search',
-      label: 'Search',
+      label: 'Browse Catalogue',
       routeLink : RouteConstants.Search
     },
     {
       iconName: 'service-catalog',
-      label: 'Service Catalog',
+      label: 'My Service Offerings',
       routeLink : RouteConstants.ServiceCatalog
-    },
-    {
-      iconName: 'profile',
-      label: 'Profile',
-      routeLink : RouteConstants.Profile
-    },
+    }
   ];
 
   constructor(private route: Router, private sharedService : SharedService) {}
