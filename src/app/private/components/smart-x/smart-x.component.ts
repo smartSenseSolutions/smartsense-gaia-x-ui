@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 import { RouteConstants } from 'src/app/shared/constants';
 import { BreadcrumbComponent } from '../../../shared/components/index';
+import { SharedService } from 'src/app/shared/services';
 
 interface navLink {
   iconName: string;
@@ -66,11 +67,16 @@ export class SmartXComponent {
     },
   ];
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, private sharedService : SharedService) {}
 
   update(index: number) {
     this.selected = index;
-    this.route.navigateByUrl( RouteConstants.Home+'/'+ this.menu[index].routeLink);
+    this.route.navigateByUrl( RouteConstants.SmartX+'/'+ this.menu[index].routeLink);
+  }
+
+  onLogoutClick = () => {
+    this.sharedService.clearSession();
+    this.route.navigate([RouteConstants.Login])
   }
 }
 

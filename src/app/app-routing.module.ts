@@ -13,6 +13,7 @@ import {
   SignupStepTwoComponent,
 } from './public/components';
 import { RouteConstants } from './shared/constants';
+import { SignupContainerComponent } from './public/components/signup/signup-container/signup-container.component';
 
 const routes: Routes = [
   {
@@ -21,23 +22,10 @@ const routes: Routes = [
   },
   {
     path: RouteConstants.SignUp,
-    children: [
-      {
-        path: RouteConstants.Step1,
-        component: SignupStepOneComponent,
-      },
-      {
-        path: RouteConstants.Step2,
-        component: SignupStepTwoComponent,
-      },
-      {
-        path: '**',
-        redirectTo: RouteConstants.Step1,
-      },
-    ],
+    component: SignupContainerComponent,
   },
   {
-    path: RouteConstants.Home,
+    path: RouteConstants.SmartX,
     component: SmartXComponent,
     data: {
       breadcrumb:'Smart-X'

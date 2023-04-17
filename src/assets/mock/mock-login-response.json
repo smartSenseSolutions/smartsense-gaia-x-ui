@@ -1,0 +1,11 @@
+{
+    "status": 200,
+    "payload": {
+        "token": "eyJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJTbWFydC1YIiwic3ViIjoiYWRtaW5Ac21hcnRzZW5zZXNvbHV0aW9ucy5jb20iLCJyb2xlIjoxLCJuYmYiOjE2ODE2MzIyODQsImlzcyI6IlNtYXJ0LVgiLCJlbnRlcnByaXNlSWQiOi0xLCJpYXQiOjE2ODE2MzIyODQsImVtYWlsIjoiYWRtaW5Ac21hcnRzZW5zZXNvbHV0aW9ucy5jb20ifQ.moSztM58tnuymaTCqNJ8sFDmvOCtkhaoBjFvwVsvA_YaZazNwjZwXFvOb_oQrSq3WvaM-faMk0-uUCP8-tfpYw",
+        "session": {
+            "enterpriseId": -1,
+            "email": "admin@smartsensesolutions.com",
+            "role": 1
+        }
+    }
+}

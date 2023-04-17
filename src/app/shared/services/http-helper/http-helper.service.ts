@@ -1,13 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap, catchError, finalize, throwError } from 'rxjs';
-import { HttpMethodEnum } from '../../enums';
-import { HttpOptions } from '../../models';
-import { SharedService } from '../shared/shared.service';
-import { Response } from '../../models';
+import { Observable, catchError, finalize, tap, throwError } from 'rxjs';
 import { AppMessageConstants } from '../../constants';
+import { HttpMethodEnum } from '../../enums';
 import { isEmptyValue } from '../../functions';
-
+import { APIResponse, HttpOptions } from '../../models';
+import { SharedService } from '../shared/shared.service';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +39,7 @@ export class HttpHelperService {
     showSnackBar: boolean,
     showLoader: boolean,
     searchParams: Record<string, unknown>
-  ): Observable<Response<T1>> {
+  ): Observable<T1> {
     return this.apiCall<T1>(
       methodType,
       url,
@@ -49,7 +47,7 @@ export class HttpHelperService {
       httpOptions,
       searchParams
     ).pipe(
-      tap((response: Response<T1>) => {
+      tap((response: T1) => {
         this.setSnackBarMessage(response, showSnackBar);
         return response || {};
       }),
@@ -74,11 +72,11 @@ export class HttpHelperService {
     params = {},
     httpOptions: HttpOptions,
     searchParams = {}
-  ): Observable<Response<T1>> {
+  ): Observable<T1> {
     url = `${this._baseUrl}` + url;
     switch (methodType) {
       case HttpMethodEnum.GET:
-        return this.http.get<Response<T1>>(
+        return this.http.get<T1>(
           this.prepareEndpoint(url, params, searchParams),
           httpOptions
         );
@@ -87,17 +85,17 @@ export class HttpHelperService {
         if (searchParams) {
           httpOptions.params = searchParams;
         }
-        return this.http.post<Response<T1>>(url, params, httpOptions);
+        return this.http.post<T1>(url, params, httpOptions);
       case HttpMethodEnum.PUT:
       case HttpMethodEnum.PUT_MULTIPART:
-        return this.http.put<Response<T1>>(url, params, httpOptions);
+        return this.http.put<T1>(url, params, httpOptions);
       case HttpMethodEnum.DELETE:
-        return this.http.delete<Response<T1>>(
+        return this.http.delete<T1>(
           this.prepareEndpoint(url, params),
           httpOptions
         );
       default:
-        return this.http.get<Response<T1>>(
+        return this.http.get<T1>(
           this.prepareEndpoint(url, params, searchParams),
           httpOptions
         );
@@ -112,7 +110,7 @@ export class HttpHelperService {
   private handleError() {
     return (error: HttpErrorResponse): Observable<never> => {
       if (error.status === 401) {
-        this.sharedService.setSnackBar(AppMessageConstants.SESSION_MSG)
+        this.sharedService.setSnackBar(AppMessageConstants.SESSION_MSG);
       }
       // TODO: send the error to remote logging infrastructure
       return throwError(error);
@@ -150,8 +148,8 @@ export class HttpHelperService {
    * purpose : Set snake bar
    * created : Sep 24 2018 11:30 AM
    */
-  private setSnackBarMessage<T>(res: Response<T>, show?: boolean) {
-    const msg = res['message'];
+  private setSnackBarMessage<T>(response: T, show?: boolean) {
+    const msg = (response as APIResponse<T>)['message'];
     if (show && msg) {
       this.sharedService.setSnackBar(msg);
     }

@@ -1,36 +1,38 @@
 <section>
-    <div class="col-md-5 PLR-0 position-fixed height-100">
-      <div class="bg-main">
-        <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
-        <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
-        <h1>Where greatness </h1>
-        <h1>happens.</h1>
-        <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
-        <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
-      </div>
+  <div class="col-md-5 PLR-0 position-fixed height-100">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
     </div>
+  </div>
 
-    <div class="col-md-7 PLR-0 float-right">
-      <div class="userDetails">
-        <ul class="userDetails__signup-2">
-          <li>
-            <button class="back-btn" mat-button>
-              <a>Go Back</a>
-            </button>
-          </li>
-          <li class="userDetails__signup-2-heading">
-            <h2>Let's get started</h2>
-            <span>Start your journey with us.</span>
-          </li>
+  <div class="col-md-7 PLR-0 float-right">
+    <div class="userDetails">
+      <ul class="userDetails__signup-2">
+        <li>
+          <button class="back-btn" mat-button>
+            <a (click)="onBackClick()">Go Back</a>
+          </button>
+        </li>
+        <li class="userDetails__signup-2-heading">
+          <h2>Let's get started</h2>
+          <span>Start your journey with us.</span>
+        </li>
 
-          <li class="userDetails__signup-2-form">
+        <li class="userDetails__signup-2-form">
+          <form [formGroup]="signupForm" (ngSubmit)="onSignupStepTwoFormSubmit(signupForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <label for="legalName">Legal Name
                   <mat-icon svgIcon="information" matTooltip="Please enter taxID, EORI or leiCode"
                     matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
                 </label>
-                <input matInput id="legalName" placeholder="Please enter taxID, EORI or leiCode" required>
+                <input formControlName="legalName" matInput id="legalName"
+                  placeholder="Please enter taxID, EORI or leiCode" required>
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -42,7 +44,8 @@
                   <mat-icon svgIcon="information" matTooltip="Upto 6 characters to create the domain name"
                     matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
                 </Label>
-                <input matInput id="Short Name" type="text" placeholder="Upto 6 characters to create the domain name">
+                <input formControlName="subDomainName" matInput id="Short Name" type="text"
+                  placeholder="Upto 6 characters to create the domain name">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -54,9 +57,9 @@
                   <mat-icon svgIcon="information" matTooltip="Select registration type" matTooltipClass="custom-tooltip"
                     matTooltipPosition="right"></mat-icon>
                 </Label>
-                <mat-select [(ngModel)]="selectedValue" name="food" placeholder="Select registration type">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
+                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type">
+                  <mat-option *ngFor="let type of registrationTypes" [value]="type">
+                    {{type}}
                   </mat-option>
                 </mat-select>
                 <!-- @To do -->
@@ -69,7 +72,8 @@
                 <Label for="registrationNumber">Registration Number
 
                 </Label>
-                <input matInput id="registrationNumber" type="text" placeholder="Enter Registration Number">
+                <input formControlName="legalRegistrationNumber" matInput id="registrationNumber" type="text"
+                  placeholder="Enter Registration Number">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -77,36 +81,36 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="address">Address</Label>
-                <textarea matInput id="address" type="text" placeholder="Enter address"></textarea>
+                <Label for="headquarterAddress">Headquarters Address</Label>
+                <textarea formControlName="headquarterAddress" matInput id="headquarterAddress" type="text"
+                  placeholder="Enter address"></textarea>
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
-              <mat-checkbox class="example-margin">is legal address same</mat-checkbox>
+              <mat-checkbox class="example-margin" (change)="onSameAddressCheckboxChange($event)">is legal address same</mat-checkbox>
             </div>
 
-            <div>
+            <div *ngIf="!formControls['legalAddress'].disabled">
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label for="legalAddress">Legal Address</Label>
-                <textarea matInput id="legalAddress" type="text" placeholder="Enter Legal Address"></textarea>
+                <textarea formControlName="legalAddress" matInput id="legalAddress" type="text"
+                  placeholder="Enter Legal Address"></textarea>
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
             </div>
 
-
-
             <div>
-              <button class="large-btn" mat-raised-button>
+              <button class="large-btn" mat-raised-button type="submit">
                 Register
                 <mat-icon svgIcon="arrow-right"></mat-icon>
               </button>
             </div>
 
+          </form>
+        </li>
 
-          </li>
-
-        </ul>
-      </div>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>

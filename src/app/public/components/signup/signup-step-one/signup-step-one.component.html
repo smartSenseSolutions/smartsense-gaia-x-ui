@@ -1,57 +1,52 @@
 <section>
-    <div class="col-md-5 PLR-0 position-fixed height-100">
-      <div class="bg-main">
-        <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
-        <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
-        <h1>Where greatness </h1>
-        <h1>happens.</h1>
-        <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
-        <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
-      </div>
+  <div class="col-md-5 PLR-0 position-fixed height-100">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
     </div>
-    <div class="col-md-7 PLR-0 float-right">
-      <div class="userDetails">
-        <ul class="userDetails__signup">
-          <li class="userDetails__signup-heading">
-            <h2>Welcome</h2>
-            <span>Enter your credential to access your account</span>
-          </li>
+  </div>
+  <div class="col-md-7 PLR-0 float-right">
+    <div class="userDetails">
+      <ul class="userDetails__signup">
+        <li class="userDetails__signup-heading">
+          <h2>Welcome</h2>
+          <span>Enter your credential to access your account</span>
+        </li>
 
-          <li class="userDetails__signup-form">
+        <li class="userDetails__signup-form">
+          <form [formGroup]="signupForm" (ngSubmit)="onSignupStepOneFormSubmit(signupForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <label>Email Address</label>
-                <input matInput placeholder="Enter email address" required>
-                <!-- @To do
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <input  formControlName="email" matInput placeholder="Enter email address" required>
+                <mat-error *ngIf="isRequiredField(formControls['email'])">
+                  {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="isValidLength(formControls['email'])">
+                  {{ validationMsg.INVALID_EMAIL }}</mat-error>
               </mat-form-field>
             </div>
-            <!-- <div>
-                <mat-form-field appearance="fill" floatLabel="always">
-                  <mat-label>Phone number</mat-label>
-                  <input matInput type="password" placeholder="Enter Password" value="helo">
-                  <mat-icon matSuffix>phone</mat-icon>
-                  <mat-hint>Include area code</mat-hint>
-                </mat-form-field>
-            </div> -->
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <Label for="password">Password</Label>
-                <input matInput id="password" type="password" placeholder="Enter Password">
+                <input  formControlName="password" matInput id="password" type="password" placeholder="Enter Password">
                 <button mat-button matSuffix class="show-pass">show</button>
-                <!-- @To do
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-                <mat-hint align="start">
+                <mat-error *ngIf="isRequiredField(formControls['password'])">
+                  {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+                <!-- <mat-hint align="start">
                   <ul>
                     <li class="MB-10">
                       <div class="row  PLR-0">
                         <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
-                        <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                        <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon>
                         Contain UPPER & Lower-case
                       </div>
                       <div class="row  PLR-0">
                         <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
-                        <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                        <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon>
                         At least 6 characters long
                       </div>
 
@@ -59,52 +54,52 @@
                     <li>
                       <div class="row  PLR-0">
                         <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
-                        <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                        <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon>
                         Special Character
                       </div>
                       <div class="row  PLR-0">
                         <mat-icon svgIcon="done" class="verify-pass verify-pass__not-satisfied"></mat-icon>
-                        <!-- <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon> -->
+                        <mat-icon *ngIf="" svgIcon="done" class="verify-pass verify-pass__saisfied" ></mat-icon>
                         Contain a Number
                       </div>
                     </li>
                   </ul>
-
-                </mat-hint>
+                </mat-hint> -->
               </mat-form-field>
             </div>
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <Label for="confirm-password">Confirm Password</Label>
-                <input matInput id="confirm-password" type="password" placeholder="Enter Password">
+                <input formControlName="confirmPassword" matInput id="confirm-password" type="password" placeholder="Enter Password">
                 <button mat-button matSuffix class="show-pass">show</button>
-                <!-- @To do
-                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <mat-error *ngIf="isRequiredField(formControls['password'])">
+                  {{ validationMsg.CONFIRM_PASSWORD_IS_REQUIRED }}</mat-error>
               </mat-form-field>
             </div>
 
-            <button class="large-btn primary-btn" mat-raised-button (click)="onProceedClick()">
+            <button class="large-btn primary-btn" mat-raised-button type="submit">
               Proceed
               <mat-icon matIconPrefix svgIcon="arrow-right"></mat-icon>
             </button>
-          </li>
+          </form>
+        </li>
 
-          <li>
-            <p>By creating an account, you agree to our </p>
-            <p>
-              <a> Terms of Service </a> and <a> Privacy Policy</a>.
-            </p>
+        <li>
+          <p>By creating an account, you agree to our </p>
+          <p>
+            <a> Terms of Service </a> and <a> Privacy Policy</a>.
+          </p>
 
-          </li>
+        </li>
 
-          <li class="bottom-text">
-            <p>
-              Already have an account?
-              <a> Sign In</a>
-            </p>
-          </li>
-        </ul>
-      </div>
+        <li class="bottom-text">
+          <p>
+            Already have an account?
+            <a (click)="onSignInClick()"> Sign In</a>
+          </p>
+        </li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>

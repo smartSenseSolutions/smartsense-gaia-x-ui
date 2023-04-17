@@ -18,29 +18,34 @@
           <span>Enter your credential to access your account</span>
         </li>
 
-        <li class="userDetails__login-form">
-          <div>
-            <mat-form-field appearance="fill" floatLabel="always">
-              <label for="username">Username</label>
-              <input matInput id="username" placeholder="Enter Username" required>
-              <!-- @To do -->
-              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-            </mat-form-field>
-          </div>
 
-          <div>
-            <mat-form-field appearance="fill" floatLabel="always">
-              <Label for="password">Password</Label>
-              <input matInput id="password" type="password" placeholder="Enter Password">
-              <button mat-button matSuffix class="show-pass">show</button>
-              <!-- @To do -->
-              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-            </mat-form-field>
-          </div>
-            <button class="large-btn primary-btn" mat-raised-button>
+        <li class="userDetails__login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm)">
+            <div>
+              <mat-form-field  appearance="fill" floatLabel="always">
+                <label for="email">Username</label>
+                <input formControlName="email" matInput id="email" placeholder="Enter email" required>
+                <mat-error *ngIf="isRequiredField(formControls['email'])">
+                  {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="isValidLength(formControls['email'])">
+                  {{ validationMsg.INVALID_EMAIL }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field  appearance="fill" floatLabel="always">
+                <Label for="password">Password</Label>
+                <input formControlName="password" matInput id="password" type="password" placeholder="Enter Password" required>
+                <button mat-button matSuffix class="show-pass">show</button>
+                <mat-error *ngIf="isRequiredField(formControls['password'])">
+                  {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+              </mat-form-field>
+            </div>
+            <button class="large-btn primary-btn" mat-raised-button type="submit">
               Login
               <mat-icon svgIcon="arrow-right"></mat-icon>
             </button>
+          </form>
         </li>
 
         <li>

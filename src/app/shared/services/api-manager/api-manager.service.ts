@@ -1,11 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpHelperService } from '../http-helper/http-helper.service';
-import { SharedService } from '../shared/shared.service';
 import { HttpMethodEnum } from '../../enums';
 import { HttpOptions, blobHttpOptions } from '../../models';
-import { Response } from '../../models';
+import { HttpHelperService } from '../http-helper/http-helper.service';
+import { SharedService } from '../shared/shared.service';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +37,7 @@ export class ApiManagerService extends HttpHelperService {
     showLoader: boolean,
     searchParams = {},
     filesObj?: ({ reqKey: string } & File)[]
-  ): Observable<Response<T1>> {
+  ): Observable<T1> {
     if (showLoader) {
       this.sharedService.setLoader(true);
     }

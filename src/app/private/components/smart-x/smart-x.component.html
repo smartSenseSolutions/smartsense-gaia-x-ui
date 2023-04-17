@@ -31,18 +31,18 @@
           </li>
 
           <mat-menu #userMenu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="onLogoutClick()">
               <mat-icon>dialpad</mat-icon>
-              <span>Redial</span>
+              <span>Logout</span>
             </button>
-            <button mat-menu-item disabled>
+            <!-- <button mat-menu-item disabled>
               <mat-icon>voicemail</mat-icon>
               <span>Check voice mail</span>
             </button>
             <button mat-menu-item>
               <mat-icon>notifications_off</mat-icon>
               <span>Disable alerts</span>
-            </button>
+            </button> -->
           </mat-menu>
         </ul>
 

@@ -96,6 +96,7 @@ export class SharedService {
    */
   setToken(value: string) {
     this._token = value;
+    this.localStorageService.setItem(AppStorageConstants.USER_TOKEN, value);
   }
 
   clearSession(): void {

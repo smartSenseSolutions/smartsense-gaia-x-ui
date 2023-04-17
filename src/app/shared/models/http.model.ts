@@ -4,7 +4,7 @@ import { HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
  * Http Response Common Model
  * @interface
  */
-export interface Response<T> {
+export interface APIResponse<T> {
     /** Status Code */
     status: number;
     /** Message */
