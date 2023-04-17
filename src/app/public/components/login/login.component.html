@@ -35,14 +35,15 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label for="password">Password</Label>
-                <input formControlName="password" matInput id="password" type="password" placeholder="Enter Password"
-                  required>
-                <button mat-button matSuffix class="show-pass">show</button>
+                <input formControlName="password" matInput id="password" [type]="passStatus ? 'text' :'password'"
+                  placeholder="Enter Password" required>
+                <button type="button" matSuffix class="show-pass" (click)="passStatus = !passStatus">{{ passStatus ?
+                  "Hide" : "Show" }}</button>
                 <mat-error *ngIf="isRequiredField(formControls['password'])">
                   {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
               </mat-form-field>
             </div>
-            <button class="large-btn primary-btn" mat-raised-button type="submit">
+            <button type="submit" class="large-btn primary-btn" mat-raised-button>
               Login
               <mat-icon svgIcon="arrow-right"></mat-icon>
             </button>
@@ -54,7 +55,11 @@
         </li>
 
         <li class="bottom-text">
-          <p>Don't have an account? <a (click)="onSignUpClick()">Sign Up</a></p>
+          <p>Don't have an account?
+            <a  (click)="onSignUpClick()">
+              Sign Up
+            </a>
+          </p>
         </li>
       </ul>
     </div>
