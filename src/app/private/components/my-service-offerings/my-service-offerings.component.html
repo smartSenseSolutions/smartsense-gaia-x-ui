@@ -1,0 +1,51 @@
+<section class="serviceCatalog">
+    <div class="serviceCatalog__header">
+      <h3>Service Catalog</h3>
+      <a>
+        <button mat-raised-button class="primary-btn">
+          <mat-icon svgIcon="add"></mat-icon>
+          Add New
+        </button>
+      </a>
+  
+    </div>
+    <app-card-box  [productList] = productList></app-card-box>
+    <!-- <div class="serviceCatalog__content">
+      <article class="card" *ngFor="let product of productList">
+        <div class="card__image">
+          <img src="{{ product.image }}" alt="">
+        </div>
+        <div class="card__data">
+          <h4 *ngIf="product?.title">{{ product.title }}</h4>
+          <p>
+            <span>Article Number:</span>
+            {{ product.articleNumber }}
+          </p>
+          <p>
+            <span>Group:</span>
+            {{ product.group }}
+          </p>
+          <p>
+            <span>GTIN/EAN:</span>
+            {{ product.gtinNumber }}
+          </p>
+          <div class="card__btn">
+            <a>
+              <button mat-raised-button>Buy Catalog</button>
+  
+            </a>
+            <a >
+              <button mat-mini-fab>
+                <mat-icon>mode_edit</mat-icon>
+              </button>
+            </a>
+  
+          </div>
+        </div>
+  
+      </article>
+  
+    </div> -->
+  
+  </section>
+  

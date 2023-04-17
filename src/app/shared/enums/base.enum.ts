@@ -51,3 +51,14 @@ export enum DeviceType {
   TABLET = 'Tablet',
   DESKTOP = 'Desktop',
 }
+
+export enum RouteType {
+  Public = 1,
+  Private = 2,
+}
+
+
+export enum UserType {
+  Admin = 1,
+  Enterprise = 2,
+}

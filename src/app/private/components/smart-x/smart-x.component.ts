@@ -48,12 +48,12 @@ export class SmartXComponent {
     {
       iconName: 'search',
       label: 'Browse Catalogue',
-      routeLink : RouteConstants.Search
+      routeLink : RouteConstants.BrowseCatalogue
     },
     {
       iconName: 'service-catalog',
       label: 'My Service Offerings',
-      routeLink : RouteConstants.ServiceCatalog
+      routeLink : RouteConstants.MyServiceOfferings
     }
   ];
 

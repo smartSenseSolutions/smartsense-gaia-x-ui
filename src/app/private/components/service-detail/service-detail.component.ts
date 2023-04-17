@@ -4,12 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-view-details',
+  selector: 'app-service-detail',
   standalone: true,
-  imports: [CommonModule , MatIconModule , MatButtonModule],
-  templateUrl: './view-details.component.html',
-  styleUrls: ['./view-details.component.scss']
+  imports: [CommonModule, MatIconModule, MatButtonModule],
+  templateUrl: './service-detail.component.html',
+  styleUrls: ['./service-detail.component.scss'],
 })
-export class ViewDetailsComponent {
-
-}
+export class ServiceDetailComponent {}

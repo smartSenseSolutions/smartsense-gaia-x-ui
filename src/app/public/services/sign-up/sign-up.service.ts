@@ -16,7 +16,7 @@ export class SignUpService {
     private httpClient: HttpClient
   ) {}
 
-  login = (
+  signup = (
     signupRequest: SignupRequestModel
   ): Observable<SignupResponseModel> => {
     return this.apiManager.httpHelperMethod<SignupResponseModel>(

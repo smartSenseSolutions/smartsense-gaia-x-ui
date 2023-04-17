@@ -16,14 +16,14 @@ export class LoginService {
   ) {}
 
   login = (loginRequest: LoginRequestModel): Observable<LoginResponseModel> => {
-    // return this.apiManager.httpHelperMethod<LoginResponseModel>(
-    //   API_CONSTANTS.LOGIN.METHOD,
-    //   API_CONSTANTS.LOGIN.URL,
-    //   loginRequest,
-    //   this.apiManager.httpOptions,
-    //   true,
-    //   true
-    // );
-    return this.httpClient.get<LoginResponseModel>('../assets/mock/mock-login-response.json')
+    return this.apiManager.httpHelperMethod<LoginResponseModel>(
+      API_CONSTANTS.LOGIN.METHOD,
+      API_CONSTANTS.LOGIN.URL,
+      loginRequest,
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
+    // return this.httpClient.get<LoginResponseModel>('../assets/mock/mock-login-response.json')
   };
 }

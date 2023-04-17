@@ -1,6 +1,6 @@
 import { HttpMethodEnum } from "../enums";
 
-export const BASE_URL = 'http://gaiax.proofsense.in:30016';
+export const BASE_URL = 'https://gaiaxapi.proofsense.in';
 
 export const API_CONSTANTS = {
     LOGIN :{

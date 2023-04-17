@@ -50,9 +50,9 @@ export class SignupStepOneComponent
   isContainNumber: boolean = false;
 
   signupForm = new FormGroup({
-    email: new FormControl('email', [Validators.required]),
-    password: new FormControl('Smart', [Validators.required]),
-    confirmPassword: new FormControl('Smart', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required]),
   });
 
   constructor(protected override fb: FormBuilder, private router: Router) {
@@ -62,11 +62,11 @@ export class SignupStepOneComponent
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       email: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.email : 'email',
+        this.stepOneFormData ? this.stepOneFormData.email : '',
         [Validators.required]
       ),
       password: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : 'Smart',
+        this.stepOneFormData ? this.stepOneFormData.password : '',
         [
           Validators.required,
           Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
@@ -76,7 +76,7 @@ export class SignupStepOneComponent
         ]
       ),
       confirmPassword: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : 'Smart',
+        this.stepOneFormData ? this.stepOneFormData.password : '',
         [Validators.required]
       ),
     });

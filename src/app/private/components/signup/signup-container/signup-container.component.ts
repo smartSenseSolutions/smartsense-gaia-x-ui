@@ -38,14 +38,16 @@ export class SignupContainerComponent {
   };
 
   onStepTwoComplete = (stepTwoData: SignStepTwoModel) => {
+    debugger
     this.stepTwoData = stepTwoData;
     const signupRequest: SignupRequestModel = {
       ...this.stepOneData!,
       ...this.stepTwoData!,
     };
-    this.signupService.login(signupRequest).subscribe((response) => {
-      this.router.navigate([`${RouteConstants.Login}`]);
-    });
+    console.log(signupRequest);
+    // this.signupService.signup(signupRequest).subscribe((response) => {
+    //   this.router.navigate([`${RouteConstants.Login}`]);
+    // });
   };
 
   onBackClick = () => {

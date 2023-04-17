@@ -8,9 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Observable, map, startWith } from 'rxjs';
 import { ProductData } from '../../models';
-import { CardBoxComponent } from '../card-box/card-box.component';
+import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
+
 @Component({
-  selector: 'app-search',
+  selector: 'app-browse-catalogue',
   standalone: true,
   imports: [
     CommonModule,
@@ -20,13 +21,12 @@ import { CardBoxComponent } from '../card-box/card-box.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
-
+    MatInputModule,
   ],
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  templateUrl: './browse-catalogue.component.html',
+  styleUrls: ['./browse-catalogue.component.scss'],
 })
-export class SearchComponent {
+export class BrowseCatalogueComponent {
   productList: ProductData[] = [
     {
       image: '../../../../assets/images/service-catalog-1.png',

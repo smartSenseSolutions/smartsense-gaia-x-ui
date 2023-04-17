@@ -17,6 +17,7 @@ import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import { SharedService } from 'src/app/shared/services';
 import { LoginRequestModel } from '../../models/login/login-request.model';
 import { LoginService } from '../../services';
+import { UserType } from 'src/app/shared/enums';
 
 @Component({
   selector: 'app-login',
@@ -36,12 +37,16 @@ import { LoginService } from '../../services';
 export class LoginComponent extends FormBaseComponent {
   // Constant variables
   readonly validationMsg = new ValidationConstant();
-  passStatus: boolean = false;
+ 
+  // Status variables
+  canShowPassword: boolean = false;
 
   loginForm = new FormGroup({
-    type: new FormControl(1),
-    email: new FormControl('mukundsonaiya@gmail.com', [Validators.required]),
-    password: new FormControl('Smart@123', [Validators.required]),
+    type: new FormControl(2),
+    email: new FormControl('hella@smartsensesolutions.com', [
+      Validators.required,
+    ]),
+    password: new FormControl('E@dmin', [Validators.required]),
   });
 
   constructor(
@@ -57,10 +62,16 @@ export class LoginComponent extends FormBaseComponent {
     if (this.onSubmit(loginForm)) {
       const loginRequest: LoginRequestModel = loginForm.value;
       this.loginService.login(loginRequest).subscribe((response) => {
+        this.sharedService.setUser(response.payload.session);
         this.sharedService.setToken(response.payload.token);
-        this.router.navigate([
-          `${RouteConstants.SmartX}/${RouteConstants.ServiceCatalog}`,
-        ]);
+        const user = this.sharedService.getUser();
+        if (user.role == UserType.Enterprise) {
+          this.router.navigate([RouteConstants.SignUp]);
+        } else {
+          this.router.navigate([
+            `${RouteConstants.SmartX}/${RouteConstants.DashBoard}`,
+          ]);
+        }
       });
     }
   };

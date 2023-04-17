@@ -52,9 +52,13 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   @Output() onStepTwoComplete = new EventEmitter<SignStepTwoModel>();
   @Output() onBackEventClick = new EventEmitter<void>();
 
-  registrationTypes: string[] = [
-    'Private Limited Company',
-    'Public Limited Company',
+  // Data variables
+  registrationTypes = [
+    { label: 'Tax ID', value: 'taxID' },
+    { label: 'VAT ID', value: 'vatID' },
+    { label: 'EUID', value: 'EUID' },
+    { label: 'EORI', value: 'EORI' },
+    { label: 'LEI Code', value: 'leiCode' },
   ];
 
   // Constant variables
@@ -114,6 +118,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
     if (event.checked) {
       legalAddressCtrl.disable();
     } else {
+      legalAddressCtrl.setValue('');
       legalAddressCtrl.enable();
     }
   };
@@ -125,7 +130,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
         legalAddressCtrl.setValue(
           this.signupForm.controls['headquarterAddress'].getRawValue()
         );
-      }
+      } 
       this.onStepTwoComplete.emit(signupForm.getRawValue());
     }
   };
@@ -138,4 +143,11 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   get formControls() {
     return this.signupForm.controls;
   }
+
+  getRegistrationNumberLabel = (registrationType: string) => {
+    return registrationType
+      ? this.registrationTypes.find((type) => (type.value = registrationType))
+          ?.label
+      : '';
+  };
 }

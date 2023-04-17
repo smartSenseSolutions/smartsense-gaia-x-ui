@@ -57,9 +57,10 @@
                   <mat-icon svgIcon="information" matTooltip="Select registration type" matTooltipClass="custom-tooltip"
                     matTooltipPosition="right"></mat-icon>
                 </Label>
-                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type">
-                  <mat-option *ngFor="let type of registrationTypes" [value]="type">
-                    {{type}}
+                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
+                  #registrationType>
+                  <mat-option *ngFor="let type of registrationTypes" [value]="type.value">
+                    {{type.label}}
                   </mat-option>
                 </mat-select>
                 <!-- @To do -->
@@ -67,13 +68,13 @@
               </mat-form-field>
             </div>
 
-            <div>
+            <div *ngIf="getRegistrationNumberLabel(registrationType.value)">
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="registrationNumber">Registration Number
+                <Label for="registrationNumber">{{getRegistrationNumberLabel(registrationType.value)}} Number
 
                 </Label>
                 <input formControlName="legalRegistrationNumber" matInput id="registrationNumber" type="text"
-                  placeholder="Enter Registration Number">
+                  [placeholder]="'Enter ' + getRegistrationNumberLabel(registrationType.value) + ' Number'">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -87,7 +88,8 @@
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
-              <mat-checkbox class="example-margin" (change)="onSameAddressCheckboxChange($event)">is legal address same</mat-checkbox>
+              <mat-checkbox class="example-margin" (change)="onSameAddressCheckboxChange($event)">is legal address
+                same</mat-checkbox>
             </div>
 
             <div *ngIf="!formControls['legalAddress'].disabled">

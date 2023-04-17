@@ -1,83 +1,79 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './private/components';
-import { IssueCredentialsComponent } from './private/components/issue-credentials/issue-credentials.component';
-import { ProfileComponent } from './private/components/profile/profile.component';
-import { SearchComponent } from './private/components/search/search.component';
-import { ServiceCatalogComponent } from './private/components/service-catalog/service-catalog.component';
-import { SmartXComponent } from './private/components/smart-x/smart-x.component';
-import { WalletComponent } from './private/components/wallet/wallet.component';
 import {
-  LoginComponent,
-  SignupStepOneComponent,
-  SignupStepTwoComponent,
-} from './public/components';
+  DashboardComponent,
+  BrowseCatalogueComponent,
+  MyServiceOfferingsComponent,
+  SignupContainerComponent,
+  SmartXComponent,
+  WalletComponent,
+} from './private/components';
+import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
-import { SignupContainerComponent } from './public/components/signup/signup-container/signup-container.component';
+import { RouteType, UserType } from './shared/enums';
+import { AuthGuard } from './shared/guards';
 
 const routes: Routes = [
   {
     path: RouteConstants.Login,
     component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: {
+      routeType: RouteType.Public,
+    },
   },
   {
     path: RouteConstants.SignUp,
     component: SignupContainerComponent,
+    canActivate: [AuthGuard],
+    data: {
+      routeType: RouteType.Private,
+      allowedUserTypes: [UserType.Admin],
+    },
   },
   {
     path: RouteConstants.SmartX,
     component: SmartXComponent,
+    canActivate: [AuthGuard],
     data: {
-      breadcrumb:'Smart-X'
+      routeType: RouteType.Private,
+      allowedUserTypes: [UserType.Enterprise],
+      breadcrumb: 'Smart-X',
     },
     children: [
       {
         path: '',
         redirectTo: RouteConstants.DashBoard,
-        pathMatch:'full'
+        pathMatch: 'full',
       },
       {
-        path:  RouteConstants.DashBoard,
+        path: RouteConstants.DashBoard,
         component: DashboardComponent,
         data: {
-          breadcrumb:'Dashboard'
-        }
+          breadcrumb: 'Dashboard',
+        },
       },
       {
-        path:  RouteConstants.Wallet,
+        path: RouteConstants.Wallet,
         component: WalletComponent,
         data: {
-          breadcrumb:'Wallet'
-        }
+          breadcrumb: 'Wallet',
+        },
       },
       {
-        path:  RouteConstants.IssueCredentials,
-        component: IssueCredentialsComponent,
+        path: RouteConstants.BrowseCatalogue,
+        component: BrowseCatalogueComponent,
         data: {
-          breadcrumb:'Issue Credentials'
-        }
+          breadcrumb: 'Browser Catalogue',
+        },
       },
       {
-        path:  RouteConstants.Search,
-        component: SearchComponent,
+        path: RouteConstants.MyServiceOfferings,
+        component: MyServiceOfferingsComponent,
         data: {
-          breadcrumb:'Search'
-        }
-      },
-      {
-        path:  RouteConstants.ServiceCatalog,
-        component: ServiceCatalogComponent,
-        data: {
-          breadcrumb:'Service Catalog'
-        }
-      },
-      {
-        path:  RouteConstants.Profile,
-        component: ProfileComponent,
-        data: {
-          breadcrumb:'Profile'
-        }
-      },
+          breadcrumb: 'My Service Offerings',
+        },
+      }
     ],
   },
   {
