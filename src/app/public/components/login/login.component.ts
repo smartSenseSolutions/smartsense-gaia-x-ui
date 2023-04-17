@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -6,6 +7,14 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+=======
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+>>>>>>> 617adc17c4a78b8d5d9e1a615e3636faee88dcdf
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +32,7 @@ import { LoginService } from '../../services';
   standalone: true,
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
