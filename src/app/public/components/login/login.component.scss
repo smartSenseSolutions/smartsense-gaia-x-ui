@@ -52,6 +52,10 @@
 
         p {
           text-align: center;
+
+          a{
+            cursor: pointer;
+          }
         }
       }
 
@@ -99,11 +103,12 @@
       }
 
       .show-pass {
-        position: absolute;
-        right: 1rem;
-        bottom: 9px;
         font: normal normal 500 1.5rem/2.4rem $font-family;
+        background-color: transparent;
+        letter-spacing: 0px;
         color: $primary-dark;
+        border: none;
+        outline: none;
       }
     }
   }

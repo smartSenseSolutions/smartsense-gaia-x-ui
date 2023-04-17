@@ -77,7 +77,11 @@
 
       .show-pass {
         font: normal normal 500 1.5rem/2.4rem $font-family;
+        background-color: transparent;
+        letter-spacing: 0px;
         color: $primary-dark;
+        border: none;
+        outline: none;
 
       }
 
@@ -109,7 +113,7 @@
 
       &.bottom-text {
         position: relative;
-        top:3rem;
+        top: 3rem;
         width: 42rem;
         margin-bottom: 0 !important;
 

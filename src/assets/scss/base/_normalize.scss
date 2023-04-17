@@ -37,8 +37,13 @@ html {
   cursor: pointer;
 }
 
+button {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul,
@@ -66,6 +71,8 @@ h3 {
 
 .large-btn {
   &.mat-mdc-raised-button {
+    padding: 2rem 0;
+    border-radius: 12px;
     width: 100%;
     text-align: center;
     font: normal normal 500 1.5rem/1.9rem $font-family;
@@ -76,6 +83,7 @@ h3 {
       height: 1.5rem;
       font-size: 1.5rem;
     }
+
   }
 }
 

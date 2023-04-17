@@ -13,9 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { SignStepOneModel } from 'src/app/public/models';
-import { LoginRequestModel } from 'src/app/public/models/login/login-request.model';
 import { FormBaseComponent } from 'src/app/shared/components';
-import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
+import { ValidationConstant } from 'src/app/shared/constants';
+import RegexConstant from 'src/app/shared/constants/regex.constants';
 
 @Component({
   selector: 'app-signup-step-one',
@@ -40,6 +40,14 @@ export class SignupStepOneComponent
 
   // Constant variables
   readonly validationMsg = new ValidationConstant();
+  // For Toggle purpose of show/hide
+  passStatus: boolean = false;
+  confirmPassStatus: boolean = false;
+
+  isContainUpperCaseLowerCase: boolean = false;
+  isLengthSix: boolean = false;
+  isContainSpecialCharacter: boolean = false;
+  isContainNumber: boolean = false;
 
   signupForm = new FormGroup({
     email: new FormControl('email', [Validators.required]),
@@ -59,7 +67,13 @@ export class SignupStepOneComponent
       ),
       password: new FormControl(
         this.stepOneFormData ? this.stepOneFormData.password : 'Smart',
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
+          Validators.pattern(RegexConstant.MIN_LENGTH_SIX),
+          Validators.pattern(RegexConstant.SPECIAL_CHARACTER),
+          Validators.pattern(RegexConstant.CONTAIN_NUMBER),
+        ]
       ),
       confirmPassword: new FormControl(
         this.stepOneFormData ? this.stepOneFormData.password : 'Smart',
@@ -69,17 +83,29 @@ export class SignupStepOneComponent
   }
 
   onSignupStepOneFormSubmit = (signupForm: FormGroup) => {
+    console.log(signupForm.controls['password'].errors);
     if (this.onSubmit(signupForm)) {
       this.onStepOneComplete.emit(signupForm.value);
     }
   };
 
   onSignInClick = () => {
-    this.router.navigate([`${RouteConstants.Login}`]);
+    this.router.navigate([`RouteConstants.Login`]);
   };
 
   // Helper methods
   get formControls() {
     return this.signupForm.controls;
+  }
+
+  passwordChange() {
+    let controlValue = this.signupForm.controls['password'].value;
+    controlValue = controlValue === null ? '' : controlValue;
+    this.isContainUpperCaseLowerCase =
+      RegexConstant.UPPERCASE_LOWERCASE.test(controlValue);
+    this.isContainSpecialCharacter =
+      RegexConstant.SPECIAL_CHARACTER.test(controlValue);
+    this.isContainNumber = RegexConstant.CONTAIN_NUMBER.test(controlValue);
+    this.isLengthSix = RegexConstant.MIN_LENGTH_SIX.test(controlValue);
   }
 }

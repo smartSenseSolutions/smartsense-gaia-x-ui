@@ -36,6 +36,7 @@ import { LoginService } from '../../services';
 export class LoginComponent extends FormBaseComponent {
   // Constant variables
   readonly validationMsg = new ValidationConstant();
+  passStatus: boolean = false;
 
   loginForm = new FormGroup({
     type: new FormControl(1),
@@ -65,7 +66,7 @@ export class LoginComponent extends FormBaseComponent {
   };
 
   onSignUpClick = () => {
-    this.router.navigate([`${RouteConstants.SignUp}`]);
+    this.router.navigate([RouteConstants.SignUp]);
   };
 
   // Helper methods
