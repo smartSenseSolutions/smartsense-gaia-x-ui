@@ -1,6 +1,11 @@
-.userDetails__login {
+.mat-mdc-checkbox {
+  position: relative;
+  bottom: 4.2rem;
+}
+
+.userDetails__signup-2 {
   mat-icon[svgicon='arrow-right'] {
-    left: 67px;
+    left: 9rem;
   }
 
   &-form {

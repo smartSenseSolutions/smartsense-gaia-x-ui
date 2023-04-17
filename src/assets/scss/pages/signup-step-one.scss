@@ -1,6 +1,7 @@
-.userDetails__login {
+.userDetails__signup
+ {
   mat-icon[svgicon='arrow-right'] {
-    left: 67px;
+    left: 9rem;
   }
 
   &-form {
@@ -10,4 +11,5 @@
       }
     }
   }
+
 }

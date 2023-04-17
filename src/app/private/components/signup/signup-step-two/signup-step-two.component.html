@@ -27,12 +27,9 @@
           <form [formGroup]="signupForm" (ngSubmit)="onSignupStepTwoFormSubmit(signupForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <label for="legalName">Legal Name
-                  <mat-icon svgIcon="information" matTooltip="Please enter taxID, EORI or leiCode"
-                    matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
-                </label>
+                <label class="required-label" for="legalName">Legal Name</label>
                 <input formControlName="legalName" matInput id="legalName"
-                  placeholder="Please enter taxID, EORI or leiCode" required>
+                  placeholder="Please enter company's legal name" required>
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -40,12 +37,9 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="Short Name">Short Name
-                  <mat-icon svgIcon="information" matTooltip="Upto 6 characters to create the domain name"
-                    matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
-                </Label>
+                <Label class="required-label" for="Short Name">Short Name</Label>
                 <input formControlName="subDomainName" matInput id="Short Name" type="text"
-                  placeholder="Upto 6 characters to create the domain name">
+                  placeholder="Please enter the company's short name">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -82,9 +76,9 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="headquarterAddress">Headquarters Address</Label>
-                <textarea formControlName="headquarterAddress" matInput id="headquarterAddress" type="text"
-                  placeholder="Enter address"></textarea>
+                <Label for="addressCountryCode">Address Country Code</Label>
+                <input formControlName="addressCountryCode" matInput id="addressCountryCode" type="text"
+                  placeholder="Enter country code" />
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -92,11 +86,93 @@
                 same</mat-checkbox>
             </div>
 
-            <div *ngIf="!formControls['legalAddress'].disabled">
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="addressCode">Address Code</Label>
+                <input formControlName="addressCode" matInput id="addressCode" type="text"
+                  placeholder="Enter country code" />
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="streetAddress">Street Address</Label>
+                <input formControlName="streetAddress" matInput id="streetAddress" type="text"
+                  placeholder="Enter Street Address"/>
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="postalCode">Postal Code</Label>
+                <input formControlName="postalCode" matInput id="postalCode" type="text"
+                  placeholder="Enter postal code" />
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="locality">locality</Label>
+                <input formControlName="locality" matInput id="locality" type="text"
+                  placeholder="Enter locality" />
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+              <mat-checkbox class="example-margin" (change)="onSameAddressCheckboxChange($event)">is legal address
+                same</mat-checkbox>
+            </div>
+
+            <div *ngIf="!formControls['legalAddressCountryCode'].disabled">
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label for="legalAddress">Legal Address</Label>
-                <textarea formControlName="legalAddress" matInput id="legalAddress" type="text"
-                  placeholder="Enter Legal Address"></textarea>
+                <input formControlName="legalAddress" matInput id="legalAddress" type="text"
+                  placeholder="Enter Legal Address">
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="!formControls['legalAddressCode'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalAddressCode">Legal Address Code</Label>
+                <input formControlName="legalAddressCode" matInput id="legalAddressCode" type="text"
+                  placeholder="Enter Legal Address Code">
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="!formControls['legalStreetAddress'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalStreetAddress">Legal Street Address</Label>
+                <input formControlName="legalStreetAddress" matInput id="legalStreetAddress" type="text"
+                  placeholder="Enter Legal Street Address">
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="!formControls['legalPostalCode'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalPostalCode">Legal Postal Code</Label>
+                <input formControlName="legalPostalCode" matInput id="legalPostalCode" type="text"
+                  placeholder="Enter Legal Postal Code">
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="!formControls['legalLocality'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalLocality">Legal Locality</Label>
+                <input formControlName="legalLocality" matInput id="legalLocality" type="text"
+                  placeholder="Enter Legal Locality">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
