@@ -52,12 +52,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   @Output() onStepTwoComplete = new EventEmitter<SignStepTwoModel>();
   @Output() onBackEventClick = new EventEmitter<void>();
 
-  registrationTypes: string[] = [
-    'taxID',
-    'vatID',
-    'EUIID',
-    'EORI or leiCode',
-  ];
+  registrationTypes: string[] = ['taxID', 'vatID', 'EUIID', 'EORI or leiCode'];
 
   // Constant variables
   readonly validationMsg = new ValidationConstant();
@@ -67,8 +62,16 @@ export class SignupStepTwoComponent extends FormBaseComponent {
     subDomainName: new FormControl('', [Validators.required]),
     legalRegistrationType: new FormControl('', [Validators.required]),
     legalRegistrationNumber: new FormControl('', [Validators.required]),
-    headquarterAddress: new FormControl('', [Validators.required]),
-    legalAddress: new FormControl('', [Validators.required]),
+    addressCountryCode: new FormControl('', [Validators.required]),
+    addressCode: new FormControl('', [Validators.required]),
+    streetAddress: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required]),
+    locality: new FormControl('', [Validators.required]),
+    legalAddressCountryCode: new FormControl('', [Validators.required]),
+    legalAddressCode: new FormControl('', [Validators.required]),
+    legalStreetAddress: new FormControl('', [Validators.required]),
+    legalPostalCode: new FormControl('', [Validators.required]),
+    legalLocality: new FormControl('', [Validators.required]),
     termsAndConditions: new FormControl(false, [Validators.required]),
   });
 
@@ -96,14 +99,59 @@ export class SignupStepTwoComponent extends FormBaseComponent {
           : '',
         [Validators.required]
       ),
-      headquarterAddress: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.headquarterAddress : '',
+
+      addressCountryCode: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.addressCountryCode : '',
         [Validators.required]
       ),
-      legalAddress: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalAddress : '',
+
+      addressCode: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.addressCode : '',
         [Validators.required]
       ),
+
+      streetAddress: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.streetAddress : '',
+        [Validators.required]
+      ),
+
+      postalCode: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.postalCode : '',
+        [Validators.required]
+      ),
+
+      locality: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.locality : '',
+        [Validators.required]
+      ),
+
+      legalAddressCountryCode: new FormControl(
+        this.stepTwoFormData
+          ? this.stepTwoFormData.legalAddressCountryCode
+          : '',
+        [Validators.required]
+      ),
+
+      legalAddressCode: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.legalAddressCode : '',
+        [Validators.required]
+      ),
+
+      legalStreetAddress: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.legalStreetAddress : '',
+        [Validators.required]
+      ),
+
+      legalPostalCode: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.legalPostalCode : '',
+        [Validators.required]
+      ),
+
+      legalLocality: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.legalLocality : '',
+        [Validators.required]
+      ),
+
       termsAndConditions: new FormControl(
         this.stepTwoFormData ? this.stepTwoFormData.termsAndConditions : false,
         [Validators.required]
@@ -112,22 +160,67 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   }
 
   onSameAddressCheckboxChange = (event: MatCheckboxChange) => {
-    const legalAddressCtrl = this.signupForm.controls['legalAddress'];
+    const legalAddressCountryCode = this.signupForm.controls['legalAddressCountryCode'];
+    const legalAddressCode = this.signupForm.controls['legalAddressCode'];
+    const legalStreetAddress = this.signupForm.controls['legalStreetAddress'];
+    const legalPostalCode = this.signupForm.controls['legalPostalCode'];
+    const legalLocality = this.signupForm.controls['legalLocality'];
+
     if (event.checked) {
-      legalAddressCtrl.disable();
+      legalAddressCountryCode.disable();
+      legalAddressCode.disable();
+      legalStreetAddress.disable();
+      legalPostalCode.disable();
+      legalLocality.disable();
+
     } else {
-      legalAddressCtrl.enable();
+      legalAddressCountryCode.enable();
+      legalAddressCode.enable();
+      legalStreetAddress.enable();
+      legalPostalCode.enable();
+      legalLocality.enable();
+
     }
   };
 
   onSignupStepTwoFormSubmit = (signupForm: FormGroup) => {
     if (this.onSubmit(signupForm)) {
-      const legalAddressCtrl = this.signupForm.controls['legalAddress'];
-      if (!legalAddressCtrl.value) {
-        legalAddressCtrl.setValue(
-          this.signupForm.controls['headquarterAddress'].getRawValue()
+      const legalAddressCountryCode =
+        this.signupForm.controls['legalAddressCountryCode'];
+      if (!legalAddressCountryCode.value) {
+        legalAddressCountryCode.setValue(
+          this.signupForm.controls['addressCountryCode'].getRawValue()
         );
       }
+
+      const legalAddressCode = this.signupForm.controls['legalAddressCode'];
+      if (!legalAddressCode.value) {
+        legalAddressCode.setValue(
+          this.signupForm.controls['addressCountryCode'].getRawValue()
+        );
+      }
+
+      const legalStreetAddress = this.signupForm.controls['legalStreetAddress'];
+      if (!legalStreetAddress.value) {
+        legalStreetAddress.setValue(
+          this.signupForm.controls['addressCountryCode'].getRawValue()
+        );
+      }
+
+      const legalPostalCode = this.signupForm.controls['legalPostalCode'];
+      if (!legalPostalCode.value) {
+        legalPostalCode.setValue(
+          this.signupForm.controls['addressCountryCode'].getRawValue()
+        );
+      }
+
+      const legalLocality = this.signupForm.controls['legalLocality'];
+      if (!legalLocality.value) {
+        legalLocality.setValue(
+          this.signupForm.controls['addressCountryCode'].getRawValue()
+        );
+      }
+
       this.onStepTwoComplete.emit(signupForm.getRawValue());
     }
   };
@@ -139,5 +232,15 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   // Helper methods
   get formControls() {
     return this.signupForm.controls;
+  }
+
+  get RegistrationType() {
+    const registrationType =
+      this.signupForm.controls['legalRegistrationType'].value;
+    return registrationType !== '' ? registrationType : 'Registration';
+  }
+
+  disableLegalAddress() {
+
   }
 }

@@ -1,5 +1,18 @@
 @import "../abstracts/abstracts.scss";
 
+.customSelect {
+  background: $white-color;
+  box-shadow: 0rem 0.1rem 0.6rem #00000029;
+  border-radius: 1.2rem;
+
+
+  .mat-option {
+    font: normal normal medium 1.5rem/2.4rem $font-family;
+    letter-spacing: 0px;
+    color: $primary-dark;
+  }
+}
+
 mat-select {
   .mat-mdc-select-value {
     .mat-mdc-select-placeholder {
@@ -20,6 +33,7 @@ mat-select {
       // border-image-repeat: stretch !important;
       height: 24px;
       width: 24px;
+
       svg {
         transform: scale(0);
       }
