@@ -22,7 +22,7 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <label>Email Address</label>
-                <input  formControlName="email" matInput placeholder="Enter email address" required>
+                <input formControlName="email" matInput placeholder="Enter email address" required>
                 <mat-error *ngIf="isRequiredField(formControls['email'])">
                   {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
                 <mat-error *ngIf="isValidLength(formControls['email'])">
@@ -32,30 +32,39 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <Label for="password">Password</Label>
-                <input  formControlName="password" matInput id="password" [type]="passStatus ? 'text' : 'password'" placeholder="Enter Password" (input)="passwordChange()">
-                <button type="button" matSuffix class="show-pass" (click)="passStatus = !passStatus">{{ passStatus ? "Hide" : "Show" }}</button>
+                <input formControlName="password" matInput id="password" [type]="passStatus ? 'text' : 'password'"
+                  placeholder="Enter Password" (input)="passwordChange()">
+                <button type="button" matSuffix class="show-pass" (click)="passStatus = !passStatus">{{ passStatus ?
+                  "Hide" : "Show" }}</button>
                 <mat-error *ngIf="isRequiredField(formControls['password'])">
                   {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
                 <mat-hint align="start">
                   <ul>
                     <li class="MB-10">
                       <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isContainUpperCaseLowerCase" [class.verify-pass__satisfied]="isContainUpperCaseLowerCase"></mat-icon>
+                        <mat-icon svgIcon="done" class="verify-pass"
+                          [class.verify-pass__not-satisfied]="!isContainUpperCaseLowerCase"
+                          [class.verify-pass__satisfied]="isContainUpperCaseLowerCase"></mat-icon>
                         Contain UPPER & Lower-case
                       </div>
                       <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isLengthSix" [class.verify-pass__satisfied]="isLengthSix"></mat-icon>
+                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isLengthSix"
+                          [class.verify-pass__satisfied]="isLengthSix"></mat-icon>
                         At least 6 characters long
                       </div>
 
                     </li>
                     <li>
                       <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="true" [class.verify-pass__satisfied]="true"></mat-icon>
+                        <mat-icon svgIcon="done" class="verify-pass"
+                          [class.verify-pass__not-satisfied]="!isContainSpecialCharacter"
+                          [class.verify-pass__satisfied]="!isContainSpecialCharacter"></mat-icon>
                         Special Character
                       </div>
                       <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="false" [class.verify-pass__satisfied]="true"></mat-icon>
+                        <mat-icon svgIcon="done" class="verify-pass"
+                          [class.verify-pass__not-satisfied]="!isContainNumber"
+                          [class.verify-pass__satisfied]="isContainNumber"></mat-icon>
                         Contain a Number
                       </div>
                     </li>
@@ -67,10 +76,14 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
                 <Label for="confirm-password">Confirm Password</Label>
-                <input formControlName="confirmPassword" matInput id="confirm-password"  [type]=" confirmPassStatus ? 'text': 'password'" placeholder="Enter Password">
-                <button type="button" matSuffix class="show-pass" (click)="confirmPassStatus = !confirmPassStatus" >{{ confirmPassStatus ? "Hide" : "Show" }}</button>
-                <mat-error *ngIf="isRequiredField(formControls['password'])">
+                <input formControlName="confirmPassword" matInput id="confirm-password"
+                  [type]=" confirmPassStatus ? 'text': 'password'" placeholder="Enter Password">
+                <button type="button" matSuffix class="show-pass" (click)="confirmPassStatus = !confirmPassStatus">{{
+                  confirmPassStatus ? "Hide" : "Show" }}</button>
+                <mat-error *ngIf="isRequiredField(formControls['confirmPassword'])">
                   {{ validationMsg.CONFIRM_PASSWORD_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="formControls['confirmPassword'].hasError('PasswordAreDifferent')">
+                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME  }}</mat-error>
               </mat-form-field>
             </div>
 
@@ -97,5 +110,5 @@
         </li>
       </ul>
     </div>
-</div>
+  </div>
 </section>

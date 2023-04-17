@@ -5,7 +5,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -44,11 +44,16 @@ export class SignupStepOneComponent
   passStatus: boolean = false;
   confirmPassStatus: boolean = false;
 
+  //Boolean Vairble for password validation
   isContainUpperCaseLowerCase: boolean = false;
   isLengthSix: boolean = false;
   isContainSpecialCharacter: boolean = false;
   isContainNumber: boolean = false;
 
+  //boolean Variable to Check Password and Confirm Password are same
+  arePassWordSame: boolean = false;
+
+  //SignupForm
   signupForm = new FormGroup({
     email: new FormControl('email', [Validators.required]),
     password: new FormControl('Smart', [Validators.required]),
@@ -57,6 +62,7 @@ export class SignupStepOneComponent
 
   constructor(protected override fb: FormBuilder, private router: Router) {
     super(fb);
+
   }
 
   ngOnInit(): void {
@@ -80,10 +86,11 @@ export class SignupStepOneComponent
         [Validators.required]
       ),
     });
+
   }
 
   onSignupStepOneFormSubmit = (signupForm: FormGroup) => {
-    console.log(signupForm.controls['password'].errors);
+    console.log(signupForm.controls['confirmPassword'].errors);
     if (this.onSubmit(signupForm)) {
       this.onStepOneComplete.emit(signupForm.value);
     }
@@ -107,5 +114,8 @@ export class SignupStepOneComponent
       RegexConstant.SPECIAL_CHARACTER.test(controlValue);
     this.isContainNumber = RegexConstant.CONTAIN_NUMBER.test(controlValue);
     this.isLengthSix = RegexConstant.MIN_LENGTH_SIX.test(controlValue);
+
   }
 }
+
+
