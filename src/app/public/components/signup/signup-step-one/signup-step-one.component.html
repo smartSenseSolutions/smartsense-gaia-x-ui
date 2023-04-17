@@ -21,7 +21,7 @@
           <form [formGroup]="signupForm" (ngSubmit)="onSignupStepOneFormSubmit(signupForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
-                <label>Email Address</label>
+                <label class="required-label">Email Address</label>
                 <input formControlName="email" matInput placeholder="Enter email address" required>
                 <mat-error *ngIf="isRequiredField(formControls['email'])">
                   {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
@@ -31,7 +31,7 @@
             </div>
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
-                <Label for="password">Password</Label>
+                <Label class="required-label" for="password">Password</Label>
                 <input formControlName="password" matInput id="password" [type]="passStatus ? 'text' : 'password'"
                   placeholder="Enter Password" (input)="passwordChange()">
                 <button type="button" matSuffix class="show-pass" (click)="passStatus = !passStatus">{{ passStatus ?
@@ -58,7 +58,7 @@
                       <div class="row  PLR-0">
                         <mat-icon svgIcon="done" class="verify-pass"
                           [class.verify-pass__not-satisfied]="!isContainSpecialCharacter"
-                          [class.verify-pass__satisfied]="!isContainSpecialCharacter"></mat-icon>
+                          [class.verify-pass__satisfied]="isContainSpecialCharacter"></mat-icon>
                         Special Character
                       </div>
                       <div class="row  PLR-0">
@@ -75,7 +75,7 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
-                <Label for="confirm-password">Confirm Password</Label>
+                <Label class="required-label" for="confirm-password">Confirm Password</Label>
                 <input formControlName="confirmPassword" matInput id="confirm-password"
                   [type]=" confirmPassStatus ? 'text': 'password'" placeholder="Enter Password">
                 <button type="button" matSuffix class="show-pass" (click)="confirmPassStatus = !confirmPassStatus">{{

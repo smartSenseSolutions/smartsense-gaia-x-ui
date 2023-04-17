@@ -27,9 +27,7 @@
           <form [formGroup]="signupForm" (ngSubmit)="onSignupStepTwoFormSubmit(signupForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <label for="legalName">Legal Name
-                  <mat-icon svgIcon="information" matTooltip="Please enter taxID, EORI or leiCode"
-                    matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
+                <label class="required-label" for="legalName">Legal Name
                 </label>
                 <input formControlName="legalName" matInput id="legalName"
                   placeholder="Please enter taxID, EORI or leiCode" required>
@@ -40,9 +38,7 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="Short Name">Short Name
-                  <mat-icon svgIcon="information" matTooltip="Upto 6 characters to create the domain name"
-                    matTooltipClass="custom-tooltip" matTooltipPosition="right"></mat-icon>
+                <Label class="required-label" for="Short Name">Short Name
                 </Label>
                 <input formControlName="subDomainName" matInput id="Short Name" type="text"
                   placeholder="Upto 6 characters to create the domain name">
@@ -53,9 +49,7 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="legalRegistrationType">Legal Registration Type
-                  <mat-icon svgIcon="information" matTooltip="Select registration type" matTooltipClass="custom-tooltip"
-                    matTooltipPosition="right"></mat-icon>
+                <Label class="required-label" for="legalRegistrationType">Legal Registration Type
                 </Label>
                 <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type">
                   <mat-option *ngFor="let type of registrationTypes" [value]="type">
@@ -69,7 +63,7 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="registrationNumber">Registration Number
+                <Label class="required-label" for="registrationNumber">Registration Number
 
                 </Label>
                 <input formControlName="legalRegistrationNumber" matInput id="registrationNumber" type="text"

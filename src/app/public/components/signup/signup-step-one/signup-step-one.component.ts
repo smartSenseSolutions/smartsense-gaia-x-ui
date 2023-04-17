@@ -90,7 +90,6 @@ export class SignupStepOneComponent
   }
 
   onSignupStepOneFormSubmit = (signupForm: FormGroup) => {
-    console.log(signupForm.controls['confirmPassword'].errors);
     if (this.onSubmit(signupForm)) {
       this.onStepOneComplete.emit(signupForm.value);
     }
