@@ -24,7 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SignStepOneModel, SignStepTwoModel } from 'src/app/public/models';
+import { SignStepTwoModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { ValidationConstant } from 'src/app/shared/constants';
 @Component({
@@ -53,8 +53,10 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   @Output() onBackEventClick = new EventEmitter<void>();
 
   registrationTypes: string[] = [
-    'Private Limited Company',
-    'Public Limited Company',
+    'taxID',
+    'vatID',
+    'EUIID',
+    'EORI or leiCode',
   ];
 
   // Constant variables

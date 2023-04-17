@@ -27,8 +27,7 @@
           <form [formGroup]="signupForm" (ngSubmit)="onSignupStepTwoFormSubmit(signupForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <label class="required-label" for="legalName">Legal Name
-                </label>
+                <label class="required-label" for="legalName">Legal Name</label>
                 <input formControlName="legalName" matInput id="legalName"
                   placeholder="Please enter taxID, EORI or leiCode" required>
                 <!-- @To do -->
@@ -38,8 +37,7 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label class="required-label" for="Short Name">Short Name
-                </Label>
+                <Label class="required-label" for="Short Name">Short Name</Label>
                 <input formControlName="subDomainName" matInput id="Short Name" type="text"
                   placeholder="Upto 6 characters to create the domain name">
                 <!-- @To do -->
@@ -49,8 +47,7 @@
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label class="required-label" for="legalRegistrationType">Legal Registration Type
-                </Label>
+                <Label class="required-label" for="legalRegistrationType">Legal Registration Type</Label>
                 <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type">
                   <mat-option *ngFor="let type of registrationTypes" [value]="type">
                     {{type}}

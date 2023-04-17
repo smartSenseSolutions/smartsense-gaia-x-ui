@@ -72,7 +72,7 @@ export class SignupStepOneComponent
         [Validators.required]
       ),
       password: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : 'Smart',
+        this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
         [
           Validators.required,
           Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
