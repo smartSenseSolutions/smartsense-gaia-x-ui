@@ -25,6 +25,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Public,
+      loginType : UserType.Enterprise
+    },
+  },
+  {
+    path: RouteConstants.AdminLogin,
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: {
+      routeType: RouteType.Public,
+      loginType : UserType.Admin
     },
   },
   {

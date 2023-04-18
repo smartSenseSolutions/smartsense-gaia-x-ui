@@ -7,11 +7,10 @@
         </div>
       </li>
       <li class="sidebar__navigation">
-        <button disableRipple="true" mat-button *ngFor="let nav of menu; index as j"
-          [class]="{ active : j === selected}" (click)="update(j)">
-          <mat-icon svgIcon="{{ nav.iconName }}"></mat-icon>
-          {{ nav.label }}
-        </button>
+        <a *ngFor="let item of MENU_ITEMS;" [routerLink]="[item.routeLink]" [routerLinkActive]="['active']">
+          <mat-icon svgIcon="{{ item.iconName }}"></mat-icon>
+          {{ item.label }}
+        </a>
       </li>
       <li class="sidebar__userProfile">
         <ul>
@@ -19,8 +18,8 @@
             <img src="../../../../assets/images/user.jpeg" alt="">
           </li>
           <li>
-            <h5>William Stanley</h5>
-            <span>william.stanley@gmail.com</span>
+            <h5>{{username}}</h5>
+            <span>{{user?.email}}</span>
           </li>
         </ul>
         <ul>
@@ -44,7 +43,7 @@
   <div class="col-md-9 PB-15">
     <ul class="panel">
       <li>
-       <app-breadcrumb/>
+        <app-breadcrumb />
       </li>
       <li class="panel__component">
         <router-outlet></router-outlet>

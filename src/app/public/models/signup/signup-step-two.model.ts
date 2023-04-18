@@ -6,12 +6,12 @@ export interface SignStepTwoModel {
   addressCountryCode: string;
   addressCode : string;
   streetAddress : string;
-  postalCode : number;
+  postalCode : string;
   locality : string;
   legalAddressCountryCode: string;
   legalAddressCode : string;
   legalStreetAddress : string;
-  legalPostalCode : number;
+  legalPostalCode : string;
   legalLocality : string;
   termsAndConditions: boolean;
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import { UserType } from 'src/app/shared/enums';
@@ -34,28 +34,42 @@ import { LoginService } from '../../services';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent extends FormBaseComponent {
+export class LoginComponent extends FormBaseComponent implements OnInit {
   // Constant variables
   readonly validationMsg = new ValidationConstant();
+  readonly UserType = UserType;
 
   // Status variables
   canShowPassword: boolean = false;
+  loginType: UserType | undefined;
 
   loginForm = new FormGroup({
-    type: new FormControl(2),
-    email: new FormControl('hella@smartsensesolutions.com', [
+    type: new FormControl(),
+    email: new FormControl('', [
       Validators.required,
     ]),
-    password: new FormControl('E@dmin', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
   });
 
   constructor(
     protected override fb: FormBuilder,
+    private route:ActivatedRoute, 
     private router: Router,
     private loginService: LoginService,
     private sharedService: SharedService
   ) {
     super(fb);
+  }
+
+  ngOnInit(): void {
+    this.loginType = this.route.snapshot.data['loginType']
+    this.loginForm = new FormGroup({
+      type: new FormControl(this.loginType),
+      email: new FormControl('', [
+        Validators.required,
+      ]),
+      password: new FormControl('', [Validators.required]),
+    });
   }
 
   onLoginFormSubmit = (loginForm: FormGroup) => {
@@ -65,7 +79,7 @@ export class LoginComponent extends FormBaseComponent {
         this.sharedService.setUser(response.payload.session);
         this.sharedService.setToken(response.payload.token);
         const user = this.sharedService.getUser();
-        if (user.role == UserType.Enterprise) {
+        if (user.role == UserType.Admin) {
           this.router.navigate([RouteConstants.SignUp]);
         } else {
           this.router.navigate([

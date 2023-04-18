@@ -42,6 +42,9 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   @Output() onStepTwoComplete = new EventEmitter<SignStepTwoModel>();
   @Output() onBackEventClick = new EventEmitter<void>();
 
+  // Constant variables
+  readonly validationMsg = new ValidationConstant();
+
   // Data variables
   registrationTypes = [
     { label: 'Tax ID', value: 'taxID' },
@@ -51,10 +54,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
     { label: 'LEI Code', value: 'leiCode' },
   ];
 
-  // Constant variables
-  readonly validationMsg = new ValidationConstant();
   signupForm: any;
-  agreeToTerms: boolean = false;
   // signupForm = new FormGroup({
   //   legalName: new FormControl('', [Validators.required]),
   //   subDomainName: new FormControl('', [Validators.required]),
@@ -72,6 +72,8 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   //   legalLocality: new FormControl('', [Validators.required]),
   //   termsAndConditions: new FormControl(false, [Validators.required]),
   // });
+
+  agreeToTerms: boolean = false;
 
   constructor(protected override fb: FormBuilder) {
     super(fb);

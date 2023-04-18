@@ -38,7 +38,6 @@ export class SignupContainerComponent {
   };
 
   onStepTwoComplete = (stepTwoData: SignStepTwoModel) => {
-    debugger
     this.stepTwoData = stepTwoData;
     const signupRequest: SignupRequestModel = {
       ...this.stepOneData!,

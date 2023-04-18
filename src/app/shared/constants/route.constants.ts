@@ -1,5 +1,6 @@
 export const RouteConstants = {
   Login: 'login',
+  AdminLogin: 'admin-login',
   SignUp: 'sign-up',
   SmartX: 'smart-x',
   DashBoard: 'dashboard',
