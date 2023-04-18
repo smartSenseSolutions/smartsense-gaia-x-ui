@@ -39,7 +39,6 @@ export class AuthGuard implements CanActivate {
         return false;
       }
     } else {
-      debugger;
       const user = this.sharedService.getUser();
       if (
         user &&
