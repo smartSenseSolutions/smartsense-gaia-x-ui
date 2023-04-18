@@ -39,10 +39,12 @@ export class AuthGuard implements CanActivate {
         return false;
       }
     } else {
+      debugger;
       const user = this.sharedService.getUser();
       if (
-        (user && state.url === `/${RouteConstants.Login}`) ||
-        state.url === `/${RouteConstants.AdminLogin}`
+        user &&
+        (state.url === `/${RouteConstants.Login}` ||
+          state.url === `/${RouteConstants.AdminLogin}`)
       ) {
         if (user.role == UserType.Admin) {
           this.router.navigate([RouteConstants.SignUp]);
