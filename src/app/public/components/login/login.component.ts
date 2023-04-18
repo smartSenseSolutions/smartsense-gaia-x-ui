@@ -14,10 +14,10 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
+import { UserType } from 'src/app/shared/enums';
 import { SharedService } from 'src/app/shared/services';
 import { LoginRequestModel } from '../../models/login/login-request.model';
 import { LoginService } from '../../services';
-import { UserType } from 'src/app/shared/enums';
 
 @Component({
   selector: 'app-login',
