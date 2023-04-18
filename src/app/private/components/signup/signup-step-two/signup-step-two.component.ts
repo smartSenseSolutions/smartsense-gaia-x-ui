@@ -42,6 +42,9 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   @Output() onStepTwoComplete = new EventEmitter<SignStepTwoModel>();
   @Output() onBackEventClick = new EventEmitter<void>();
 
+  // Constant variables
+  readonly validationMsg = new ValidationConstant();
+
   // Data variables
   registrationTypes = [
     { label: 'Tax ID', value: 'taxID' },
@@ -51,26 +54,23 @@ export class SignupStepTwoComponent extends FormBaseComponent {
     { label: 'LEI Code', value: 'leiCode' },
   ];
 
-  // Constant variables
-  readonly validationMsg = new ValidationConstant();
-  signupForm   : any;
-  // signupForm = new FormGroup({
-  //   legalName: new FormControl('', [Validators.required]),
-  //   subDomainName: new FormControl('', [Validators.required]),
-  //   legalRegistrationType: new FormControl('', [Validators.required]),
-  //   legalRegistrationNumber: new FormControl('', [Validators.required]),
-  //   addressCountryCode: new FormControl('', [Validators.required]),
-  //   addressCode: new FormControl('', [Validators.required]),
-  //   streetAddress: new FormControl('', [Validators.required]),
-  //   postalCode: new FormControl('', [Validators.required]),
-  //   locality: new FormControl('', [Validators.required]),
-  //   legalAddressCountryCode: new FormControl('', [Validators.required]),
-  //   legalAddressCode: new FormControl('', [Validators.required]),
-  //   legalStreetAddress: new FormControl('', [Validators.required]),
-  //   legalPostalCode: new FormControl('', [Validators.required]),
-  //   legalLocality: new FormControl('', [Validators.required]),
-  //   termsAndConditions: new FormControl(false, [Validators.required]),
-  // });
+  signupForm = new FormGroup({
+    legalName: new FormControl('', [Validators.required]),
+    subDomainName: new FormControl('', [Validators.required]),
+    legalRegistrationType: new FormControl('', [Validators.required]),
+    legalRegistrationNumber: new FormControl('', [Validators.required]),
+    addressCountryCode: new FormControl('', [Validators.required]),
+    addressCode: new FormControl('', [Validators.required]),
+    streetAddress: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required]),
+    locality: new FormControl('', [Validators.required]),
+    legalAddressCountryCode: new FormControl('', [Validators.required]),
+    legalAddressCode: new FormControl('', [Validators.required]),
+    legalStreetAddress: new FormControl('', [Validators.required]),
+    legalPostalCode: new FormControl('', [Validators.required]),
+    legalLocality: new FormControl('', [Validators.required]),
+    termsAndConditions: new FormControl(false, [Validators.required]),
+  });
 
   constructor(protected override fb: FormBuilder) {
     super(fb);
