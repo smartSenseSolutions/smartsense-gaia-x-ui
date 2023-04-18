@@ -1,22 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import {
-  Router,
-  RouterModule
-} from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { RouteConstants } from 'src/app/shared/constants';
 import { BreadcrumbComponent } from '../../../shared/components/index';
 import { SharedService } from 'src/app/shared/services';
-
-interface navLink {
-  iconName: string;
-  label: string;
-  routeLink : string
-}
-
+import { MENU_ITEMS } from './smart-x.constants';
+import { UserModel } from 'src/app/shared/models';
 @Component({
   selector: 'app-smart-x',
   templateUrl: './smart-x.component.html',
@@ -31,50 +23,21 @@ interface navLink {
     BreadcrumbComponent,
   ],
 })
-export class SmartXComponent {
-  selected: number = 0;
-  menu: navLink[] = [
-    {
-      iconName: 'home',
-      label: 'Dashboard',
-      routeLink : RouteConstants.DashBoard
-    },
-    {
-      iconName: 'wallet',
-      label: 'Wallet',
-      routeLink : RouteConstants.Wallet
+export class SmartXComponent implements OnInit {
+  readonly MENU_ITEMS = MENU_ITEMS;
 
-    },
-    {
-      iconName: 'search',
-      label: 'Browse Catalogue',
-      routeLink : RouteConstants.BrowseCatalogue
-    },
-    {
-      iconName: 'service-catalog',
-      label: 'My Service Offerings',
-      routeLink : RouteConstants.MyServiceOfferings
-    }
-  ];
+  user?: UserModel;
+  username?: string
 
-  constructor(private route: Router, private sharedService : SharedService) {}
+  constructor(private route: Router, private sharedService: SharedService) {}
 
-  update(index: number) {
-    this.selected = index;
-    this.route.navigateByUrl( RouteConstants.SmartX+'/'+ this.menu[index].routeLink);
+  ngOnInit(): void {
+      this.user = this.sharedService.getUser();
+      this.username = this.user.email.split('@')[0].toUpperCase();
   }
 
   onLogoutClick = () => {
     this.sharedService.clearSession();
-    this.route.navigate([RouteConstants.Login])
-  }
+    this.route.navigate([RouteConstants.Login]);
+  };
 }
-
-
-
-
-
-
-
-
-

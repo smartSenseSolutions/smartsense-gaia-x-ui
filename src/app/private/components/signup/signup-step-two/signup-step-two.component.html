@@ -64,10 +64,10 @@
 
             <div *ngIf="getRegistrationNumberLabel(registrationType.value)">
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="registrationNumber">{{getRegistrationNumberLabel(registrationType.value)}} Number
+                <Label for="legalRegistrationNumber">{{getRegistrationNumberLabel(registrationType.value)}} Number
 
                 </Label>
-                <input formControlName="legalRegistrationNumber" matInput id="registrationNumber" type="text"
+                <input formControlName="legalRegistrationNumber" matInput id="legalRegistrationNumber" type="text"
                   [placeholder]="'Enter ' + getRegistrationNumberLabel(registrationType.value) + ' Number'">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
@@ -130,8 +130,8 @@
 
             <div *ngIf="!formControls['legalAddressCountryCode'].disabled">
               <mat-form-field appearance="fill" floatLabel="always">
-                <Label for="legalAddress">Legal Address</Label>
-                <input formControlName="legalAddress" matInput id="legalAddress" type="text"
+                <Label for="legalAddressCountryCode">Legal Address</Label>
+                <input formControlName="legalAddressCountryCode" matInput id="legalAddress" type="text"
                   placeholder="Enter Legal Address">
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->

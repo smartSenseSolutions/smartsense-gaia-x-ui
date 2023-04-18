@@ -100,6 +100,8 @@ export class SharedService {
   }
 
   clearSession(): void {
+    this.setUser(null);
+    this.setToken('');
     this.localStorageService.clear();
   }
 }
