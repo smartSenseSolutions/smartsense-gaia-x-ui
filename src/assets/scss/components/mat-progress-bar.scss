@@ -9,13 +9,13 @@
   .mdc-linear-progress {
     &__buffer {
       &-bar {
-        background-color: black !important;
+        background-color: $white-color !important;
       }
     }
 
     &__bar {
       &-inner {
-        border-color: red !important;
+        border-color: rgb(163, 163, 163) !important;
       }
     }
   }

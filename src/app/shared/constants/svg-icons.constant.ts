@@ -13,5 +13,13 @@ export const SvgConstants : string[] = [
 'profile',
 'chevron-right',
 'add',
-'search-grey'
+'search-grey',
+'close',
+'merkle-proof',
+'blockchain-hash',
+'certificate-validity',
+'issue-signature',
+'notRevoked',
+'verifyCertificate-1',
+'valid-certtificate'
 ]

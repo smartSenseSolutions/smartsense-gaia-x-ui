@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22">
+    <defs>
+    
+    </defs>
+    <g id="Group_3556" transform="translate(-686 -386)">
+        <g id="Rectangle_2281" fill="#fff" stroke="#7a8d9b" stroke-width="2px" transform="translate(686 386)">
+            <rect width="20" height="22" stroke="none" rx="2"/>
+            <rect width="18" height="20" x="1" y="1" fill="none" rx="1"/>
+        </g>
+        <g id="hourglass" transform="translate(689.717 391)">
+            <path id="Path_7810" fill="#7a8d9b" stroke="#798c99" stroke-width="0.3px" d="M9.906 10.829h-1v-1.2a4.1 4.1 0 0 0-2.148-3.61A4.1 4.1 0 0 0 8.9 2.406V1.2h1a.6.6 0 1 0 0-1.2H1.885a.6.6 0 0 0 0 1.2h1v1.2a4.1 4.1 0 0 0 2.148 3.61 4.1 4.1 0 0 0-2.148 3.61v1.2h-1a.6.6 0 1 0 0 1.2h8.021a.6.6 0 1 0 0-1.2zM1.885.8a.2.2 0 0 1 0-.4h8.021a.2.2 0 0 1 0 .4H1.885zm1.4 1.6V1.2H8.5v1.2a3.7 3.7 0 0 1-2.244 3.415h-.721a3.7 3.7 0 0 1-2.246-3.409zm0 7.219a3.7 3.7 0 0 1 2.25-3.403h.721A3.7 3.7 0 0 1 8.5 9.625v1.2a.2.2 0 0 0-.4 0h-.4a.2.2 0 0 0-.4 0h-.4a.2.2 0 0 0-.4 0h-.4a.2.2 0 0 0-.4 0h-.4a.2.2 0 0 0-.4 0h-.4a.2.2 0 0 0-.4 0h-.4a.2.2 0 0 0-.4 0zm6.617 2.005H1.885a.2.2 0 1 1 0-.4h8.021a.2.2 0 1 1 0 .4z"/>
+            <g id="Group_3579">
+                <circle id="Ellipse_355" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(3.69 10.227)"/>
+                <circle id="Ellipse_356" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.492 10.227)"/>
+                <circle id="Ellipse_357" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.294 10.227)"/>
+                <circle id="Ellipse_358" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.096 10.227)"/>
+                <circle id="Ellipse_359" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.898 10.227)"/>
+                <circle id="Ellipse_360" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(7.7 10.227)"/>
+                <circle id="Ellipse_361" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.091 9.826)"/>
+                <circle id="Ellipse_362" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.893 9.826)"/>
+                <circle id="Ellipse_363" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 6.417)"/>
+                <circle id="Ellipse_364" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.492 4.211)"/>
+                <circle id="Ellipse_365" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.294 4.211)"/>
+                <circle id="Ellipse_366" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.096 4.211)"/>
+                <circle id="Ellipse_367" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.898 4.211)"/>
+                <circle id="Ellipse_368" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.497 3.811)"/>
+                <circle id="Ellipse_369" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.898 3.409)"/>
+                <circle id="Ellipse_370" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.893 3.811)"/>
+                <circle id="Ellipse_371" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 3.811)"/>
+                <circle id="Ellipse_372" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.492 3.409)"/>
+                <circle id="Ellipse_373" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(4.893 4.612)"/>
+                <circle id="Ellipse_374" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.294 5.014)"/>
+                <circle id="Ellipse_375" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.096 5.014)"/>
+                <circle id="Ellipse_376" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 4.612)"/>
+                <circle id="Ellipse_377" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.497 4.612)"/>
+                <circle id="Ellipse_378" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 7.019)"/>
+                <circle id="Ellipse_379" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 7.62)"/>
+                <circle id="Ellipse_380" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 8.222)"/>
+                <circle id="Ellipse_381" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 8.824)"/>
+                <circle id="Ellipse_382" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(5.695 9.425)"/>
+                <circle id="Ellipse_383" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(6.497 9.826)"/>
+                <circle id="Ellipse_384" cx=".201" cy=".201" r=".201" class="not-revoked-3" transform="translate(7.299 9.826)"/>
+            </g>
+        </g>
+    </g>
+</svg>

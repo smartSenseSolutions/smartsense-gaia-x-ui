@@ -1,0 +1,188 @@
+<div class="certification-verify-dialog-container">
+  <div class="certificate-verify">
+    <div class="certificate-verify__top">
+      <div class="certificate-verify__top--header">
+        <h2>Register</h2>
+      </div>
+
+      <div class="certificate-verify__top--close-icon">
+        <a (click)="onCloseDialog()">
+          <mat-icon svgIcon="close"></mat-icon>
+        </a>
+      </div>
+    </div>
+
+    <div class="certificate-verify__body">
+      <div class="certificate-verify__body--progress-bar">
+        <!-- Certificate processing section -->
+        <div class="animated fadeOut fast delay-11s" *ngIf="isProcessingLoader">
+          <span>
+            <img src="../../../../assets/images/loader-blue.gif" alt="" />
+          </span>
+          <label>Processing</label>
+        </div>
+
+        <!-- Certificate verified section -->
+        <div class="animated fadeIn fast" *ngIf="!isProcessingLoader">
+          <div *ngIf="isVerifiedCertificate" class="certificate-verify__body--progress-bar--verified">
+            <div class="certificate-verify__body--progress-bar--verified--icon">
+              <mat-icon svgIcon="done"></mat-icon>
+            </div>
+            <div class="certificate-verify__body--progress-bar--verified--label">
+              <label>Verified</label>
+              <span>You're successfully on-boarded!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificate unverified section -->
+        <div class="animated fadeIn fast" *ngIf="isProcessingLoader">
+          <div *ngIf="!isVerifiedCertificate" class="certificate-verify__body--progress-bar--unVerified">
+            <div class="certificate-verify__body--progress-bar--unVerified--icon">
+              <mat-icon svgIcon="close"></mat-icon>
+            </div>
+            <div class="certificate-verify__body--progress-bar--unVerified--label">
+              <label>Unverified</label>
+              <span>Credentials are invalid</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certificate-verify__body--section">
+        <div class="certificate-verify__body--section--results fill-section">
+          <ul>
+            <li class="animated fadeIn fast delay-1s" [ngClass]="{
+                              active: verified.creatingDomain,
+                              inActive: !verified.creatingDomain,
+                              'in-progress': false
+                          }">
+              <label>
+                <img class="animated fadeOut fast" src="../../../../assets/images/steps_loading.gif" width="19"
+                  alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+                <mat-icon svgIcon="close"></mat-icon>
+              </label>
+              <span>Creating your domain</span>
+
+            </li>
+
+            <li class="animated fadeIn fast delay-3s" [ngClass]="{
+                              active: verified.creatingKeys,
+                              inActive: !verified.creatingKeys,
+                              'in-progress': false
+                          }">
+              <label>
+                <img class="animated fadeOut fast delay-4s" src="../../../../assets/images/steps_loading.gif" width="19"
+                  alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+                <mat-icon svgIcon="close"></mat-icon>
+              </label>
+              <span>Creating keys</span>
+            </li>
+
+            <li class="animated fadeIn fast delay-5s" [ngClass]="{
+                              active: verified.settingUpDomainName,
+                              inActive: !verified.settingUpDomainName,
+                              'in-progress': false
+                          }">
+              <label>
+                <img class="animated fadeOut fast delay-6s" src="../../../../assets/images/steps_loading.gif" width="19"
+                  alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+                <mat-icon svgIcon="close"></mat-icon>
+              </label>
+              <span>Setting up your domain name</span>
+            </li>
+
+            <li class="animated fadeIn fast delay-7s" [ngClass]="{
+                              active: verified.creatingUniqueIdentity,
+                              inActive: !verified.creatingUniqueIdentity,
+                              'in-progress': false
+                          }">
+              <label>
+                <img class="animated fadeOut fast delay-8s" src="../../../../assets/images/steps_loading.gif" width="19"
+                  alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+                <mat-icon svgIcon="close"></mat-icon>
+              </label>
+              <span>Creating unique identity</span>
+            </li>
+
+            <li class="animated fadeIn fast delay-9s" *ngIf="isVerifiedCertificate" [ngClass]="{
+                active: true,
+                'valid-certificate': true
+            }">
+              <label>
+                <img class="animated fadeOut fast delay-10s" src="../../../../assets/images/steps_loading.gif"
+                  width="19" alt="" />
+                <mat-icon svgIcon="verifyCertificate-1"></mat-icon>
+              </label>
+              <span>On-boarding you on Gaia-X</span>
+            </li>
+
+            <li class="animated fadeIn fast delay-9s" *ngIf="!isVerifiedCertificate" [ngClass]="{
+                                'invalid-certificate': true,
+                                'in-progress': false
+                            }">
+              <label>
+                <img class="animated fadeOut fast delay-10s" src="../../../../assets/images/steps_loading.gif"
+                  width="19" alt="" />
+                <mat-icon svgIcon="valid-certtificate"></mat-icon>
+              </label>
+              <span>On-boarding you on Gaia-X is cancel</span>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="certificate-verify__body--section--results gray-section">
+          <ul>
+            <li class="animated fadeOut fast delay-1s" [ngClass]="{ active: false, 'in-progress': false }">
+              <label>
+                <mat-icon svgIcon="notRevoked"></mat-icon>
+              </label>
+              <span>Creating your domain</span>
+            </li>
+
+            <li class="animated fadeOut fast delay-3s" [ngClass]="{
+              active: false ,
+              'in-progress': false
+          }">
+              <label>
+                <mat-icon svgIcon="merkle-proof"></mat-icon>
+              </label>
+              <span>
+                Creating keys
+              </span>
+            </li>
+
+            <li class="animated fadeOut fast delay-5s" [ngClass]="{
+              active: false,
+              'in-progress': false
+          }">
+              <label>
+                <mat-icon svgIcon="blockchain-hash"></mat-icon>
+              </label>
+              <span>Setting up your domain name</span>
+            </li>
+
+            <li class="animated fadeOut fast delay-7s" [ngClass]="{ active: false, 'in-progress': false }">
+              <label>
+                <mat-icon svgIcon="certificate-validity"></mat-icon>
+              </label>
+              <span>Creating your unique identity</span>
+            </li>
+
+            <li class="animated fadeOut fast delay-9s" [ngClass]="{ active: false, 'in-progress': false }">
+              <label>
+                <mat-icon svgIcon="valid-certtificate"></mat-icon>
+              </label>
+              <span>On-boarding you on Gaia-X </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

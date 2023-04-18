@@ -4,3 +4,93 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+
+@mixin respond($breakPoint) {
+
+  @if $breakPoint == large-desktop {
+
+    @media (min-width: 1800px) { // 112.5 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == big-desktop {
+
+    @media (max-width: 1800px) { // 112.5 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == mid-desktop {
+
+    @media (max-width: 1540px) { // 112.5 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == tab-land {
+
+    @media (min-width: 780px) and (max-width: 1024px) { // 75 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == macbook {
+
+    @media (min-width: 1367px) and (max-width: 1500px) {
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == regular-desktop {
+
+    @media (max-width: 1260px) { // 75 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == small-desktop {
+
+    @media (min-width: 1200px) and (max-width: 1366px) {
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == tab-port {
+
+    @media (min-width: 600px) and (max-width: 1024px) { // 56.25 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == tab{
+
+    @media (max-width:767px){
+      @content;
+    }
+  }
+
+  @if $breakPoint == phone {
+
+    @media (max-width: 600px) { // 37.5 em
+      @content;
+    }
+  }
+}
+
+
+/*height and width square*/
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}

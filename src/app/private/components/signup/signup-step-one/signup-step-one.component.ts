@@ -68,11 +68,11 @@ export class SignupStepOneComponent
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       email: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.email : '',
+        this.stepOneFormData ? this.stepOneFormData.email : 'mukund@gmail.com',
         [Validators.required]
       ),
       password: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : '',
+        this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
         [
           Validators.required,
           Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
@@ -82,7 +82,7 @@ export class SignupStepOneComponent
         ]
       ),
       confirmPassword: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : '',
+        this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
         [Validators.required]
       ),
     });

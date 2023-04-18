@@ -53,7 +53,8 @@ export class SignupStepTwoComponent extends FormBaseComponent {
 
   // Constant variables
   readonly validationMsg = new ValidationConstant();
-  signupForm   : any;
+  signupForm: any;
+  agreeToTerms: boolean = false;
   // signupForm = new FormGroup({
   //   legalName: new FormControl('', [Validators.required]),
   //   subDomainName: new FormControl('', [Validators.required]),
@@ -235,5 +236,9 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       ? this.registrationTypes.find((type) => (type.value = registrationType))
           ?.label
       : '';
+  };
+
+  agreeToTermsAndServices = () => {
+    this.agreeToTerms = true;
   };
 }

@@ -1,6 +1,8 @@
-.mat-mdc-checkbox {
-  position: relative;
-  bottom: 4.2rem;
+.legalAddressCheckBox {
+  &.mat-mdc-checkbox {
+    position: relative;
+    bottom: 4.2rem;
+  }
 }
 
 .userDetails__signup-2 {

@@ -1,0 +1,479 @@
+@import '../../../../assets/scss/abstracts/abstracts.scss';
+
+.certification-verify-dialog-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+
+    .certificate-verify {
+        height: 100%;
+
+        &__top {
+            background-color: #f4f6f9;
+            padding: 20px 30px 20px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            @include respond('phone') {
+                padding: 20px;
+            }
+
+            &--header {
+                h2 {
+                    font-family: $font-family;
+                    font-size: 21px;
+                    font-weight: bold;
+                    line-height: 1.15;
+                    color: $black-color;
+
+                    @include respond('phone') {
+                        font-size: 19px;
+                    }
+                }
+
+                h5 {
+                    font-family: $font-family;
+                    font-size: 14px;
+                    font-weight: normal;
+                    line-height: 1.75;
+                    color: $black-color;
+                    margin-top: 5px;
+                }
+            }
+
+            &--close-icon {
+                position: relative;
+                top: 5px;
+
+                a {
+                    .mat-icon {
+                        width: 20px;
+                        color: $black-color;
+                    }
+                }
+            }
+        }
+
+        &__ownership {
+            margin: 30px 28px 0px;
+
+            h5 {
+                color: $primary-color;
+                font-family: $font-family;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 15px;
+
+                mat-icon {
+                    vertical-align: middle;
+                    width: 12px;
+                }
+            }
+
+            .form-control {
+                position: relative;
+
+                &--email {
+                    mat-icon {
+                        position: absolute;
+                        right: 7.5rem;
+                        top: -0.5rem;
+                    }
+                }
+
+                .mat-form-field {
+                    width: 100% !important;
+
+                    input {
+                        padding-right: 10rem;
+                    }
+                }
+
+                button {
+                    border-radius: 6px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+
+            &--verified,
+            &--not-verified {
+                p {
+                    font-family: $font-family;
+                    font-style: normal;
+                    word-break: break-word;
+                    font-weight: 600;
+                    font-size: 12px;
+                    line-height: 20px;
+                }
+            }
+
+            &--verified {
+                span {
+                    color: $green-color-2;
+                }
+            }
+
+            &--not-verified {
+                span {
+                    color: $red-color-2;
+                }
+            }
+        }
+
+        &__body {
+            padding: 8px 10px 0 10px;
+
+            &--progress-bar {
+                margin: 0 28px;
+                border-bottom: 1px solid #ccc;
+                padding: 5px 0 15px 10px;
+                text-align: center;
+
+                @include respond('phone') {
+                    margin: 0 15px;
+                }
+
+                span {
+                    img {
+                        width: 50px;
+                        vertical-align: middle;
+                        margin-right: 22px;
+
+                        @include respond('phone') {
+                            width: 50px;
+                        }
+                    }
+                }
+
+                label {
+                    font-size: 21px;
+                    // font-style: italic;
+                    color: #9a9a9a;
+                    position: relative;
+                    top: 6px;
+                    // left: -11px;
+                }
+
+                &--verified {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    &--icon {
+                        margin-right: 10px;
+
+                        .mat-icon {
+                            background-color: $primary-color;
+                            color: $white-color;
+                            border-radius: 100px;
+                            padding: 15px;
+
+                            @include square(50px);
+                        }
+                    }
+
+                    &--label {
+                        margin-left: 10px;
+
+                        label {
+                            font-size: 22px;
+                            font-weight: 600;
+                            line-height: 1;
+                            text-align: left;
+                            color: $primary-color;
+                            display: block;
+                            padding-bottom: 7px;
+                            text-transform: capitalize;
+                        }
+
+                        span {
+                            font-size: 14px;
+                            font-weight: 600;
+                            line-height: 2;
+                            text-align: left;
+                            color: #9a9a9a;
+                        }
+                    }
+                }
+
+                &--unVerified {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    &--icon {
+                        margin-right: 10px;
+
+                        .mat-icon {
+                            background-color: $black-color-4;
+                            color: $white-color;
+                            border-radius: 100px;
+                            padding: 15px;
+
+                            @include square(50px);
+                        }
+                    }
+
+                    &--label {
+                        margin-left: 10px;
+
+                        label {
+                            font-size: 22px;
+                            font-weight: 600;
+                            line-height: 1;
+                            text-align: left;
+                            color: $black-color-4;
+                            display: block;
+                            padding-bottom: 5px;
+                            text-transform: capitalize;
+                        }
+
+                        span {
+                            font-size: 14px;
+                            font-weight: 600;
+                            line-height: 2;
+                            text-align: left;
+                            color: #9a9a9a;
+                        }
+                    }
+                }
+            }
+
+            &--section {
+                position: relative;
+
+                &--results {
+                    ul {
+                        padding: 30px 20px 0 28px;
+                        position: relative;
+
+                        @include respond('phone') {
+                            padding: 30px 12px 0 12px;
+                        }
+
+                        li {
+                            position: relative;
+
+                            @include respond('phone') {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: flex-start;
+                            }
+
+                            label {
+                                background-color: $black-color-4;
+                                display: inline-block;
+                                vertical-align: sub;
+                                padding: 10px 10px 8px 10px;
+                                margin: 0 14px 30px 0;
+                                border-radius: 100px;
+                                position: relative;
+
+                                img {
+                                    position: absolute;
+                                    background: #3f67fc;
+                                }
+
+                                .mat-icon {
+                                    width: 18px;
+                                    height: 18px;
+                                    color: $white-color;
+
+                                    &:first-child {
+                                        // display: none;
+                                    }
+                                }
+                            }
+
+                            span {
+                                width: 325px;
+                                display: inline-block;
+                                font-family: $font-family;
+                                font-size: 17px;
+                                font-weight: 600;
+                                line-height: 1.27;
+                                text-align: left;
+                                color: #999999;
+                                vertical-align: middle;
+
+                                @include respond('phone') {
+                                    width: unset;
+                                    font-size: 15px;
+                                    position: relative;
+                                    top: 9px;
+                                }
+                            }
+
+                            &::before {
+                                content: '';
+                                background: #b9c6d0;
+                                position: absolute;
+                                height: 56%;
+                                width: 4px;
+                                top: -31px;
+                                left: 18px;
+                                border-radius: 0.7rem;
+                            }
+
+                            &:first-child {
+                                &::before {
+                                    display: none;
+                                }
+
+                                label {
+                                    margin: 20 14px 0px 0;
+                                }
+                            }
+
+                            &.active {
+                                label {
+                                    background-color: $primary-color;
+
+                                    .mat-icon {
+                                        &:first-child {
+                                            display: inline-block;
+                                        }
+                                    }
+
+                                    .mat-icon + .mat-icon {
+                                        display: none;
+                                    }
+
+                                    .mat-icon {
+                                        color: $white-color;
+                                    }
+                                }
+
+                                span {
+                                    color: $black-color;
+                                }
+
+                                &::before {
+                                    background: $primary-color;
+                                    animation: increase 1.5s linear 1s;
+                                    animation-fill-mode: forwards;
+                                }
+                            }
+
+                            &.inActive {
+                                label {
+                                    .mat-icon {
+                                        &:nth-child(2) {
+                                            display: none;
+                                        }
+                                    }
+
+                                    img {
+                                        background: $black-color-4;
+                                    }
+                                }
+                            }
+
+                            &.in-progress {
+                                &::before {
+                                    background: $primary-color;
+                                }
+                            }
+
+                            &.valid-certificate {
+                                span {
+                                    font-weight: bold;
+                                    position: relative;
+                                    top: -13px;
+
+                                    @include respond('phone') {
+                                        top: 7px;
+                                    }
+                                }
+
+                                label {
+                                    background-color: $white-color;
+                                    padding: 0;
+                                    position: relative;
+
+                                    img {
+                                        background: $primary-color;
+
+                                        @include square(40px);
+                                        padding: 12px 12px;
+                                        border-radius: 100px;
+                                    }
+
+                                    .mat-icon {
+                                        @include square(40px);
+                                    }
+                                }
+                            }
+
+                            &.invalid-certificate {
+                                span {
+                                    color: $black-color-4;
+                                }
+
+                                label {
+                                    background-color: $black-color-4;
+
+                                    .mat-icon {
+                                        color: $white-color;
+                                    }
+
+                                    img {
+                                        background: $black-color-4;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .fill-section {
+                    position: relative;
+                    z-index: 9;
+                }
+
+                .gray-section {
+                    position: absolute;
+                    top: 0;
+
+                    ul {
+                        li {
+                            label {
+                                background-color: #f4f6f9;
+
+                                .mat-icon {
+                                    color: #7a8d9b;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes animateIn {
+    0% {
+        opacity: 0;
+        transform: scale(1) translateX(0px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes increase {
+    0% {
+        height: 0;
+        background: $primary-color;
+    }
+
+    100% {
+        height: 56%;
+        background: $primary-color;
+    }
+}

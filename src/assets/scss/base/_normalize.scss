@@ -90,7 +90,7 @@ h3 {
 }
 
 .primary-btn {
-  background-color: $primary-blue !important;
+  background-color: $primary-color !important;
   color: $white-color !important;
 }
 
@@ -114,8 +114,8 @@ app-card-box {
 }
 
 
-.required-label{
-  &::after{
+.required-label {
+  &::after {
     content: "*";
     color: red;
     height: 1rem;

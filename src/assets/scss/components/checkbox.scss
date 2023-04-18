@@ -12,7 +12,7 @@
           &:checked {
             &~.mdc-checkbox {
               &__background {
-                background-color: $primary-blue !important;
+                background-color: $primary-color !important;
                 border-color: transparent !important;
               }
             }
