@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProgressHudComponent } from './shared/components/progress-hud/progress-hud.component';
 import { SvgService } from './shared/services';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SvgService } from './shared/services';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    ProgressHudComponent,
   ],
   providers: [SvgService],
   bootstrap: [AppComponent],

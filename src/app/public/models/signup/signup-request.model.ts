@@ -1,19 +1,5 @@
-export interface SignupRequestModel {
-  email: string;
-  password: string;
-  legalName: string;
-  subDomainName: string;
-  legalRegistrationNumber: string;
-  legalRegistrationType: string;
-  addressCountryCode: string;
-  addressCode : string;
-  streetAddress : string;
-  postalCode : number;
-  locality : string;
-  legalAddressCountryCode: string;
-  legalAddressCode : string;
-  legalStreetAddress : string;
-  legalPostalCode : number;
-  legalLocality : string;
-  termsAndConditions: boolean;
+import { SignStepOneModel } from "./signup-step-one.model";
+import { SignStepTwoModel } from "./signup-step-two.model";
+
+export interface SignupRequestModel extends SignStepOneModel, SignStepTwoModel{
 }

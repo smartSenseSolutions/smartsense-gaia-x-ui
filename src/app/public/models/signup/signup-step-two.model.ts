@@ -14,5 +14,4 @@ export interface SignStepTwoModel {
   legalPostalCode : number;
   legalLocality : string;
   termsAndConditions: boolean;
-
 }
