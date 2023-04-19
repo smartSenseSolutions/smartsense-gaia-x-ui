@@ -6,7 +6,7 @@ import {
   MyServiceOfferingsComponent,
   SignupContainerComponent,
   SmartXComponent,
-  WalletComponent,
+  WalletComponent
 } from './private/components';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: RouteConstants.SignUp,
     component: SignupContainerComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Private,
       allowedUserTypes: [UserType.Admin],
