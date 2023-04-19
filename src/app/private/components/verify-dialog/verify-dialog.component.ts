@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { FAILURE_STATUSES, SignupStatus } from './verify-dialog.constants';
-import { SignUpService } from 'src/app/public/services';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { SignupRequestModel } from 'src/app/public/models';
+import { SignUpService } from 'src/app/public/services';
+import { FAILURE_STATUSES, SignupStatus } from './verify-dialog.constants';
 
 @Component({
   selector: 'app-verify-dialog',
@@ -20,7 +20,6 @@ export class VerifyDialogComponent implements OnInit {
   // Status variables
   currentSignupStatus =  SignupStatus.Pending;
   isSignupInProgress = true;
-
   constructor(
     private signupService: SignUpService,
     public dialogRef: MatDialogRef<VerifyDialogComponent>,

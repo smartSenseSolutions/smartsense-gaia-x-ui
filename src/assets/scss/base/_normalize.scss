@@ -13,6 +13,19 @@ html {
   -webkit-text-size-adjust: 100%;
   /* 2 */
   font-size: 10px;
+
+  @include respond('regular-desktop') {
+    font-size: 7.5px;
+  }
+
+  @include respond('medium-desktop') {
+    font-size: 8px;
+  }
+
+  @include respond('small-desktop') {
+    font-size: 8px;
+  }
+
 }
 
 * {

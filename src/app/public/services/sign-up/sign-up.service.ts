@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiManagerService, SharedService } from 'src/app/shared/services';
+import { API_CONSTANTS } from 'src/app/shared/constants';
+import { ApiManagerService } from 'src/app/shared/services';
 import { SignupRequestModel } from '../../models/signup/signup-request.model';
 import { SignupResponseModel } from '../../models/signup/signup-response.model';
-import { API_CONSTANTS } from 'src/app/shared/constants';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +32,8 @@ export class SignUpService {
   };
 
   getStatus = (): Observable<SignupResponseModel> => {
+    let signupRequest: any ={};
+
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
       API_CONSTANTS.SIGN_UP.METHOD,
       API_CONSTANTS.SIGN_UP.URL,
@@ -46,6 +48,7 @@ export class SignUpService {
   };
 
   retrySignup = (): Observable<SignupResponseModel> => {
+    let signupRequest: any ={};
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
       API_CONSTANTS.SIGN_UP.METHOD,
       API_CONSTANTS.SIGN_UP.URL,
