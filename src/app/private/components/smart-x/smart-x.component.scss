@@ -23,6 +23,21 @@
     justify-content: space-between;
     align-items: center;
 
+
+    &__placeholder {
+      padding: 1.5rem;
+      border-radius: 100%;
+      background-color: black;
+
+      span {
+        color: white !important;
+        font: normal normal medium 1.5rem/2.4rem $font-family;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+      }
+
+    }
+
     ul {
       display: flex;
       justify-content: flex-start;
@@ -53,11 +68,13 @@
         }
       }
     }
+
   }
 }
 
 .panel {
   padding: 3.5rem 1.5rem 2rem;
+
   &__component {
     height: calc(100vh - 9.7rem);
     border: 0.1rem solid #121E2A26;

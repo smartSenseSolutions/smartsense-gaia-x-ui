@@ -5,10 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterModule } from '@angular/router';
 import { RouteConstants } from 'src/app/shared/constants';
-import { BreadcrumbComponent } from '../../../shared/components/index';
-import { SharedService } from 'src/app/shared/services';
-import { MENU_ITEMS } from './smart-x.constants';
 import { UserModel } from 'src/app/shared/models';
+import { SharedService } from 'src/app/shared/services';
+import { BreadcrumbComponent } from '../../../shared/components/index';
+import { MENU_ITEMS } from './smart-x.constants';
 @Component({
   selector: 'app-smart-x',
   templateUrl: './smart-x.component.html',
@@ -40,4 +40,25 @@ export class SmartXComponent implements OnInit {
     this.sharedService.clearSession();
     this.route.navigate([RouteConstants.Login]);
   };
+
+
+
+ get organizationNameChar(): string {
+  let organizationName = this.username;
+    if (organizationName) {
+        organizationName = organizationName.trim();
+        const ind = organizationName.indexOf(' ');
+        if (ind > -1) {
+            return (
+                organizationName.charAt(0) + organizationName.charAt(ind + 1)
+            ).toUpperCase();
+        } else {
+            return (
+                organizationName.charAt(0) + organizationName.charAt(1)
+            ).toUpperCase();
+        }
+    } else {
+        return '';
+    }
+};
 }
