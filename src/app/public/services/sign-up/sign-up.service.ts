@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class SignUpService {
-  
   constructor(
     private apiManager: ApiManagerService,
     private httpClient: HttpClient
@@ -19,6 +18,34 @@ export class SignUpService {
   signup = (
     signupRequest: SignupRequestModel
   ): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.SIGN_UP.METHOD,
+      API_CONSTANTS.SIGN_UP.URL,
+      signupRequest,
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
+    // return this.httpClient.get<SignupResponseModel>(
+    //   '../assets/mock/mock-login-response.json'
+    // );
+  };
+
+  getStatus = (): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.SIGN_UP.METHOD,
+      API_CONSTANTS.SIGN_UP.URL,
+      signupRequest,
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
+    // return this.httpClient.get<SignupResponseModel>(
+    //   '../assets/mock/mock-login-response.json'
+    // );
+  };
+
+  retrySignup = (): Observable<SignupResponseModel> => {
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
       API_CONSTANTS.SIGN_UP.METHOD,
       API_CONSTANTS.SIGN_UP.URL,

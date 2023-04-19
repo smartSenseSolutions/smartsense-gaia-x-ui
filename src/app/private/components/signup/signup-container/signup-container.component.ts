@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
-import { SignupStep } from './signup-container.constants';
-import { SignupStepOneComponent } from '../signup-step-one/signup-step-one.component';
-import { SignupStepTwoComponent } from '../signup-step-two/signup-step-two.component';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import {
   SignStepOneModel,
   SignStepTwoModel,
   SignupRequestModel,
 } from 'src/app/public/models';
-import { Router } from '@angular/router';
-import { SignUpService } from 'src/app/public/services';
 import { RouteConstants } from 'src/app/shared/constants';
+import { VerifyDialogComponent } from '../../verify-dialog/verify-dialog.component';
+import { SignupStepOneComponent } from '../signup-step-one/signup-step-one.component';
+import { SignupStepTwoComponent } from '../signup-step-two/signup-step-two.component';
+import { SignupStep } from './signup-container.constants';
 
 @Component({
   selector: 'app-signup-container',
@@ -20,7 +21,6 @@ import { RouteConstants } from 'src/app/shared/constants';
   styleUrls: ['./signup-container.component.scss'],
 })
 export class SignupContainerComponent {
-
   // Constant variables
   readonly SignupStep = SignupStep;
 
@@ -30,7 +30,7 @@ export class SignupContainerComponent {
   // Status variables
   activeStep: SignupStep = SignupStep.ONE;
 
-  constructor(private router: Router, private signupService: SignUpService) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   onStepOneComplete = (stepOneData: SignStepOneModel) => {
     this.activeStep = SignupStep.TWO;
@@ -41,15 +41,24 @@ export class SignupContainerComponent {
     this.stepTwoData = stepTwoData;
     const signupRequest: SignupRequestModel = {
       ...this.stepOneData!,
-      ...this.stepTwoData!,
+      ...this.stepTwoData,
+      headquarterAddress: this.stepTwoData.addressCode,
+      legalAddress: this.stepTwoData.legalAddressCode,
     };
-    console.log(signupRequest);
-    // this.signupService.signup(signupRequest).subscribe((response) => {
-    //   this.router.navigate([`${RouteConstants.Login}`]);
-    // });
+    const dialogRef = this.dialog.open(VerifyDialogComponent, {
+      width: '550px',
+      data: {
+        signupRequest,
+      },
+    });
+    dialogRef.afterClosed().subscribe((success) => {
+      if (success) {
+        this.router.navigate([`${RouteConstants.Login}`]);
+      }
+    });
   };
 
   onBackClick = () => {
     this.activeStep = SignupStep.ONE;
-  }
+  };
 }
