@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   SignStepOneModel,
@@ -16,7 +16,7 @@ import { SignupStep } from './signup-container.constants';
 @Component({
   selector: 'app-signup-container',
   standalone: true,
-  imports: [CommonModule, SignupStepOneComponent, SignupStepTwoComponent],
+  imports: [CommonModule, SignupStepOneComponent, SignupStepTwoComponent , MatDialogModule],
   templateUrl: './signup-container.component.html',
   styleUrls: ['./signup-container.component.scss'],
 })

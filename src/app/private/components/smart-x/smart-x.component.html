@@ -8,7 +8,7 @@
       </li>
       <li class="sidebar__navigation">
         <a *ngFor="let item of MENU_ITEMS;" [routerLink]="[item.routeLink]" [routerLinkActive]="['active']">
-          <button mat-raised-button>
+          <button mat-button>
             <mat-icon svgIcon="{{ item.iconName }}"></mat-icon>
             {{ item.label }}
           </button>
