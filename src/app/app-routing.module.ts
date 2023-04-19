@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: RouteConstants.Login,
     component: LoginComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Public,
       loginType : UserType.Enterprise

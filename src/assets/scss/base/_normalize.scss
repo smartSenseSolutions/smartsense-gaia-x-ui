@@ -132,7 +132,6 @@ app-card-box {
   }
 }
 
-
 .required-label {
   &::after {
     content: "*";
@@ -140,4 +139,10 @@ app-card-box {
     height: 1rem;
     width: 1rem;
   }
+}
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  font-weight: 500;
 }

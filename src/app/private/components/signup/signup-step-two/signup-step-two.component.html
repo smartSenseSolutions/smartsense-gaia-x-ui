@@ -14,7 +14,7 @@
     <div class="userDetails">
       <ul class="userDetails__signup-2">
         <li>
-          <button class="back-btn" type="button">
+          <button class="back-btn underline" type="button">
             <a (click)="onBackClick()">Go Back</a>
           </button>
         </li>
@@ -48,7 +48,7 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label class="required-label" for="legalRegistrationType">Legal Registration Type</Label>
-                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
+                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type" panelClass="customSelect"
                   #registrationType>
                   <mat-option *ngFor="let type of REGISTRATION_TYPES" [value]="type.value">
                     {{type.label}}
@@ -85,7 +85,7 @@
                 <Label for="addressCode">Headquarters Country Subdivision Code</Label>
                 <!-- <input formControlName="addressCode" matInput id="addressCode" type="text"
                 placeholder="Enter country code" /> -->
-                <mat-select formControlName="addressCode" name="addressCode"
+                <mat-select panelClass="customSelect" formControlName="addressCode" name="addressCode"
                   placeholder="Select headquarters country subdivision code" #addressCode>
                   <mat-option *ngFor="let type of COUNTRY_SUBDIVISION_CODES" [value]="type.value">
                     {{type.label}}
@@ -139,7 +139,7 @@
                 <Label for="legalAddressCode">Legal Country Subdivision Code</Label>
                 <!-- <input formControlName="legalAddressCode" matInput id="legalAddressCode" type="text"
                   placeholder="Enter Legal Address Code"> -->
-                <mat-select formControlName="legalAddressCode" name="legalAddressCode"
+                <mat-select panelClass="customSelect" formControlName="legalAddressCode" name="legalAddressCode"
                   placeholder="Select legal country subdivision code" #legalAddressCode>
                   <mat-option *ngFor="let type of COUNTRY_SUBDIVISION_CODES" [value]="type.value">
                     {{type.label}}
@@ -179,7 +179,7 @@
 
             <div>
               <mat-checkbox formControlName="termsAndConditions">
-                I agree to Gaia-X <a>Terms of Service</a> and <a>Privacy Policy</a>.
+                I agree to Gaia-X <a class="underline">Terms of Service</a> and <a class="underline">Privacy Policy</a>.
               </mat-checkbox>
               <button class="large-btn primary-btn" mat-raised-button type="submit">
                 Register
