@@ -27,9 +27,10 @@
     &--title {
       @include font(1.8rem, 2.1rem, bold);
       @include text-overflow(calc(100% - 4rem), 2);
-
+      min-height: 4.2rem;
       letter-spacing: 0px;
       color: $primary-color;
+      margin-bottom: 2rem;
     }
 
     &--disc {
@@ -37,22 +38,20 @@
       @include text-overflow(calc(100% - 4rem), 3);
       letter-spacing: 0px;
       color: rgba($primary-dark , 0.8);
-      position: absolute;
-      top: 8.2rem;
+      margin-bottom: 1.5rem;
+      min-height: 5.7rem;
     }
 
     &--company {
-      position: absolute;
-      top:15.4rem;
       @include font(1.6rem, 2rem);
-
+      min-height: 2rem;
+      margin-bottom: 2rem;
       span {
         color: rgba($primary-dark , 0.8);
         @include text-overflow(100% , 1);
       }
 
       b {
-        display: inline-block;
         margin-left: 0.7rem;
         font-weight: 600;
         color: $primary-dark;
@@ -60,8 +59,6 @@
     }
 
     &--btn {
-      position: absolute;
-      bottom: 2rem;
       display: flex;
       justify-content: flex-start;
       gap: 1.2rem;

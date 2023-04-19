@@ -85,7 +85,7 @@ li {
 }
 
 h3 {
-  font: bold 2.8rem/3.4rem;
+  @include font(2.8rem , 3.4rem , bold);
   letter-spacing: 0px;
   color: #030303;
 }
