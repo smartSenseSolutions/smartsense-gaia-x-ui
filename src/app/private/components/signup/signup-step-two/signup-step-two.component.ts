@@ -50,17 +50,17 @@ export class SignupStepTwoComponent extends FormBaseComponent {
 
 
   signupForm = new FormGroup({
-    legalName: new FormControl('', [Validators.required]),
-    subDomainName: new FormControl('', [Validators.required]),
-    legalRegistrationType: new FormControl('', [Validators.required]),
-    legalRegistrationNumber: new FormControl('', [Validators.required]),
+    legalName: new FormControl('Mercedes', [Validators.required]),
+    subDomainName: new FormControl('Mercedes', [Validators.required]),
+    legalRegistrationType: new FormControl(REGISTRATION_TYPES[0].value, [Validators.required]),
+    legalRegistrationNumber: new FormControl('123456789', [Validators.required]),
     // addressCountryCode: new FormControl('', [Validators.required]),
-    addressCode: new FormControl('', [Validators.required]),
+    addressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [Validators.required]),
     // streetAddress: new FormControl('', [Validators.required]),
     // postalCode: new FormControl('', [Validators.required]),
     // locality: new FormControl('', [Validators.required]),
     // legalAddressCountryCode: new FormControl('', [Validators.required]),
-    legalAddressCode: new FormControl('', [Validators.required]),
+    legalAddressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [Validators.required]),
     // legalStreetAddress: new FormControl('', [Validators.required]),
     // legalPostalCode: new FormControl('', [Validators.required]),
     // legalLocality: new FormControl('', [Validators.required]),
@@ -74,21 +74,21 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       legalName: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalName : '',
+        this.stepTwoFormData ? this.stepTwoFormData.legalName : 'Mercedes',
         [Validators.required]
       ),
       subDomainName: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.subDomainName : '',
+        this.stepTwoFormData ? this.stepTwoFormData.subDomainName : 'Mercedes',
         [Validators.required]
       ),
       legalRegistrationType: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalRegistrationType : '',
+        this.stepTwoFormData ? this.stepTwoFormData.legalRegistrationType : REGISTRATION_TYPES[0].value,
         [Validators.required]
       ),
       legalRegistrationNumber: new FormControl(
         this.stepTwoFormData
           ? this.stepTwoFormData.legalRegistrationNumber
-          : '',
+          : '123456789',
         [Validators.required]
       ),
 
@@ -98,7 +98,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       // ),
 
       addressCode: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.addressCode : '',
+        this.stepTwoFormData ? this.stepTwoFormData.addressCode : COUNTRY_SUBDIVISION_CODES[0].value,
         [Validators.required]
       ),
 
@@ -125,7 +125,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       // ),
 
       legalAddressCode: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalAddressCode : '',
+        this.stepTwoFormData ? this.stepTwoFormData.legalAddressCode : COUNTRY_SUBDIVISION_CODES[0].value,
         [Validators.required]
       ),
 
@@ -145,7 +145,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       // ),
 
       termsAndConditions: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.termsAndConditions : false,
+        this.stepTwoFormData ? this.stepTwoFormData.termsAndConditions : true,
         [Validators.required]
       ),
     });

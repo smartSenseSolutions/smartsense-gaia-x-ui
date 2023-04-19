@@ -1,61 +1,92 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiManagerService, SharedService } from 'src/app/shared/services';
+import { API_CONSTANTS } from 'src/app/shared/constants';
+import { ApiManagerService } from 'src/app/shared/services';
 import { SignupRequestModel } from '../../models/signup/signup-request.model';
 import { SignupResponseModel } from '../../models/signup/signup-response.model';
-import { API_CONSTANTS } from 'src/app/shared/constants';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignUpService {
-  constructor(
-    private apiManager: ApiManagerService,
-    private httpClient: HttpClient
-  ) {}
+  constructor(private apiManager: ApiManagerService) {}
 
   signup = (
     signupRequest: SignupRequestModel
   ): Observable<SignupResponseModel> => {
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.SIGN_UP.METHOD,
-      API_CONSTANTS.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
       signupRequest,
       this.apiManager.httpOptions,
       true,
       true
     );
-    // return this.httpClient.get<SignupResponseModel>(
-    //   '../assets/mock/mock-login-response.json'
-    // );
   };
 
-  getStatus = (): Observable<SignupResponseModel> => {
+  getEnterprise = (enterpriseId: number): Observable<SignupResponseModel> => {
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.SIGN_UP.METHOD,
-      API_CONSTANTS.SIGN_UP.URL,
-      signupRequest,
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      {},
       this.apiManager.httpOptions,
       true,
       true
     );
-    // return this.httpClient.get<SignupResponseModel>(
-    //   '../assets/mock/mock-login-response.json'
-    // );
   };
 
-  retrySignup = (): Observable<SignupResponseModel> => {
+  resumeSubdomain = (): Observable<SignupResponseModel> => {
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.SIGN_UP.METHOD,
-      API_CONSTANTS.SIGN_UP.URL,
-      signupRequest,
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      {},
       this.apiManager.httpOptions,
       true,
       true
     );
-    // return this.httpClient.get<SignupResponseModel>(
-    //   '../assets/mock/mock-login-response.json'
-    // );
+  };
+
+  resumeCertificate = (): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      {},
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
+  };
+
+  resumeIngress = (): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      {},
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
+  };
+
+  resumeDID = (): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      {},
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
+  };
+
+  resumeParticipant = (): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      {},
+      this.apiManager.httpOptions,
+      true,
+      true
+    );
   };
 }

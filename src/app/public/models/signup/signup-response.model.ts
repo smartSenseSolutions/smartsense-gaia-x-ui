@@ -1,12 +1,4 @@
+import { EnterpriseModel } from 'src/app/private/models/enterprise.model';
 import { APIResponse } from 'src/app/shared/models';
 
-export interface SignupResponsePayloadModel {
-  token: string;
-  session: {
-    enterpriseId: number;
-    email: string;
-    role: number;
-  };
-}
-
-export type SignupResponseModel = APIResponse<SignupResponsePayloadModel>;
+export type SignupResponseModel = APIResponse<EnterpriseModel>;

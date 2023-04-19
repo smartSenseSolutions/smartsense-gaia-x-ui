@@ -15,7 +15,7 @@
     <div class="certificate-verify__body">
       <div class="certificate-verify__body--progress-bar">
         <!-- Certificate processing section -->
-        <div class="animated fadeOut fast delay-11s" *ngIf="isProcessingLoader">
+        <div class="animated fadeOut fast delay-11s" *ngIf="isSignupInProgress">
           <span>
             <img src="../../../../assets/images/loader-blue.gif" alt="" />
           </span>
@@ -23,13 +23,14 @@
         </div>
 
         <!-- Certificate verified section -->
-        <div class="animated fadeIn fast" *ngIf="!isProcessingLoader">
-          <div *ngIf="isVerifiedCertificate" class="certificate-verify__body--progress-bar--verified">
+        <div class="animated fadeIn fast" *ngIf="!isSignupInProgress">
+          <div *ngIf="currentSignupStatus === SignupStatus.ParticipantJsonCreated"
+            class="certificate-verify__body--progress-bar--verified">
             <div class="certificate-verify__body--progress-bar--verified--icon">
               <mat-icon svgIcon="done"></mat-icon>
             </div>
             <div class="certificate-verify__body--progress-bar--verified--label">
-              <label>Verified</label>
+              <label>Registration Successful!</label>
               <span>You're successfully on-boarded!</span>
             </div>
           </div>
@@ -41,7 +42,7 @@
         <div class="certificate-verify__body--section--results fill-section">
           <ul>
             <li class="animated fadeIn fast delay-1s" [ngClass]="{
-                              active: verified.creatingDomain,
+                              active: currentSignupStatus > SignupStatus.DomainCreationFailed
                           }">
               <label>
                 <img class="animated fadeOut fast" src="../../../../assets/images/steps_loading.gif" width="19"
@@ -53,7 +54,7 @@
             </li>
 
             <li class="animated fadeIn fast delay-3s" [ngClass]="{
-                              active: verified.creatingKeys,
+                              active: currentSignupStatus > SignupStatus.CertificateCreationFailed,
                           }">
               <label>
                 <img class="animated fadeOut fast delay-4s" src="../../../../assets/images/steps_loading.gif" width="19"
@@ -64,7 +65,7 @@
             </li>
 
             <li class="animated fadeIn fast delay-5s" [ngClass]="{
-                              active: verified.settingUpDomainName,
+                              active: currentSignupStatus > SignupStatus.IngressCreationFailed,
                           }">
               <label>
                 <img class="animated fadeOut fast delay-6s" src="../../../../assets/images/steps_loading.gif" width="19"
@@ -75,7 +76,7 @@
             </li>
 
             <li class="animated fadeIn fast delay-7s" [ngClass]="{
-                              active: verified.creatingUniqueIdentity,
+                              active:currentSignupStatus > SignupStatus.DIDJsonCreationFailed,
                           }">
               <label>
                 <img class="animated fadeOut fast delay-8s" src="../../../../assets/images/steps_loading.gif" width="19"
@@ -85,9 +86,8 @@
               <span>Creating unique identity</span>
             </li>
 
-            <li class="animated fadeIn fast delay-9s" *ngIf="isVerifiedCertificate" [ngClass]="{
-                active: true,
-                'valid-certificate': true
+            <li class="animated fadeIn fast delay-9s" [ngClass]="{
+                active: currentSignupStatus === SignupStatus.ParticipantJsonCreated,
             }">
               <label>
                 <img class="animated fadeOut fast delay-10s" src="../../../../assets/images/steps_loading.gif"
