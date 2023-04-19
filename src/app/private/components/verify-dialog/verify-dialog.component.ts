@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { verified } from '../../models';
+import { FAILURE_STATUSES, SignupStatus } from './verify-dialog.constants';
+import { SignUpService } from 'src/app/public/services';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { SignupRequestModel } from 'src/app/public/models';
 
 @Component({
   selector: 'app-verify-dialog',
@@ -11,25 +14,44 @@ import { verified } from '../../models';
   styleUrls: ['./verify-dialog.component.scss'],
 })
 export class VerifyDialogComponent implements OnInit {
-  isProcessingLoader = true;
-  isVerifiedCertificate = true;
-  verified: verified = {
-    creatingDomain: true,
-    creatingKeys: true,
-    settingUpDomainName: true,
-    creatingUniqueIdentity: true,
-    isSignerVerified: true,
-  };
+  // Constant variables
+  readonly SignupStatus = SignupStatus;
+
+  // Status variables
+  currentSignupStatus =  SignupStatus.Pending;
+  isSignupInProgress = true;
+
+  constructor(
+    private signupService: SignUpService,
+    public dialogRef: MatDialogRef<VerifyDialogComponent>,
+    @Inject(MAT_DIALOG_DATA)
+    private data: { signupRequest: SignupRequestModel }
+  ) {}
 
   ngOnInit() {
-    this.initialization();
+    this.signup();
   }
 
-  initialization() {
-    setTimeout(() => {
-      this.isProcessingLoader = false;
-    }, 11000);
+  signup() {
+    this.signupService.signup(this.data.signupRequest).subscribe((response) => {
+      this.checkStatus();
+    });
   }
+
+  checkStatus = () => {
+    const interval = setInterval(() => {
+      this.signupService.getStatus().subscribe((response) => {
+        this.currentSignupStatus = response.status;
+        if (FAILURE_STATUSES.includes(response.status)) {
+          this.signupService.retrySignup().subscribe();
+        }
+        if (this.currentSignupStatus === SignupStatus.ParticipantJsonCreated) {
+          this.isSignupInProgress = false;
+          clearInterval(interval);
+        }
+      });
+    }, 1000);
+  };
 
   onCloseDialog() {}
 }
