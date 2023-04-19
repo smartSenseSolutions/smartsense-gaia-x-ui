@@ -13,4 +13,5 @@ import { ProductData } from '../../../private/models';
 })
 export class CardBoxComponent {
   @Input () productList :  ProductData[] = [];
+  @Input () showCompany :boolean = true;
 }

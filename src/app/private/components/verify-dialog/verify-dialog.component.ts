@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { SignupRequestModel } from 'src/app/public/models';
-import { EnterpriseModel } from '../../models/enterprise.model';
 import { SignUpService } from 'src/app/public/services';
-import { FAILURE_STATUSES, SignupStatus } from './verify-dialog.constants';
+import { EnterpriseModel } from '../../models/enterprise.model';
+import { SignupStatus } from './verify-dialog.constants';
 
 @Component({
   selector: 'app-verify-dialog',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule , MatDialogModule],
   templateUrl: './verify-dialog.component.html',
   styleUrls: ['./verify-dialog.component.scss'],
 })

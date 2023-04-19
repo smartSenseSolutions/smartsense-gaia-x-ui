@@ -4,30 +4,23 @@
       <img src="{{ product.image }}" alt="">
     </div>
     <div class="card__data">
-      <h4 *ngIf="product?.title">{{ product.title }}</h4>
-      <p>
-        <span>Article Number:</span>
-        {{ product.articleNumber }}
+      <h4 class="card__data--title" *ngIf="product?.title">{{ product.title }}</h4>
+      <p class="card__data--disc">
+        {{ product.discription }}
       </p>
-      <p>
-        <span>Group:</span>
-        {{ product.group }}
-      </p>
-      <p>
-        <span>GTIN/EAN:</span>
-        {{ product.gtinNumber }}
-      </p>
-      <div class="card__btn">
+      <div *ngIf="showCompany" class="card__data--company">
+        <span>Company:<b>{{product.company}} </b></span>
+
+      </div>
+      <div class="card__data--btn">
         <a>
           <button mat-raised-button>View Details</button>
-
         </a>
-        <a >
+        <a *ngIf="!showCompany">
           <button mat-mini-fab>
             <mat-icon>mode_edit</mat-icon>
           </button>
         </a>
-
       </div>
     </div>
   </article>

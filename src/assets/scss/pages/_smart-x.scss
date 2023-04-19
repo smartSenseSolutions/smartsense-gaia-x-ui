@@ -22,7 +22,7 @@
 
   &__navigation {
 
-    a{
+    a {
       &.active {
         .mdc-button {
           background-color: blue !important;
@@ -38,6 +38,7 @@
     }
 
     .mdc-button {
+      @include font(1.4rem, 1.7rem, 500);
       margin-bottom: 10px;
       height: auto !important;
       width: 100%;
@@ -45,7 +46,6 @@
       padding: 1.6rem 2.2rem 1.7rem;
       justify-content: start !important;
       align-items: center;
-      font: normal normal 500 1.4rem/1.7rem $font-family;
       letter-spacing: 0px;
       color: #000;
       transition: background, color, background-color 0.4s;

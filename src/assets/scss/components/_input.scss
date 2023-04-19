@@ -41,12 +41,12 @@
         min-height: auto !important;
 
         label {
+          @include font(1.3rem, 1.6rem, 600);
           position: absolute !important;
           left: -1.4rem !important;
           text-transform: capitalize;
           display: block;
           width: 100%;
-          font: normal normal 600 1.3rem/1.6rem $font-family;
           letter-spacing: 0px;
           color: $primary-dark;
           margin-bottom: 0.5rem;
@@ -61,13 +61,17 @@
         .mdc-text-field__input {
           height: 1.9rem;
           text-align: left;
-          font: normal normal 500 1.5rem/2.4rem $font-family !important;
+          font-weight: 500 !important;
+          font-size: 1.5rem !important;
+          line-height: 0.4rem !important;
           letter-spacing: 0px;
           color: rgba($primary-dark , 1);
 
           &::placeholder {
             text-align: left !important;
-            font: normal normal 500 1.5rem/2.4rem $font-family !important;
+            font-weight: 500 !important;
+            font-size: 1.5rem !important;
+            line-height: 0.4rem !important;
             letter-spacing: 0px !important;
             color: rgba($primary-dark , 0.4) !important;
           }
@@ -87,11 +91,10 @@
 
   .mat-mdc-form-field-subscript-wrapper {
     .mat-mdc-form-field-hint-wrapper {
+      @include font(1.3rem, 1.6rem, 500);
       padding: 0 !important;
       position: static;
       // margin-bottom: 1rem;
-
-      font: normal normal 500 13px/16px $font-family;
       letter-spacing: 0px;
       color: $primary-dark;
 
@@ -101,7 +104,7 @@
           align-items: center;
           width: 100%;
           justify-content: flex-start;
-          gap: 15px;
+          gap: 1.5rem;
         }
 
       }

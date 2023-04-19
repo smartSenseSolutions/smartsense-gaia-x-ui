@@ -1,7 +1,6 @@
 export interface ProductData {
-  image : string,
-  title ?: string,
-  articleNumber : string,
-  group : string,
-  gtinNumber : number
+  image: string;
+  title: string;
+  discription: string;
+  company?: string;
 }

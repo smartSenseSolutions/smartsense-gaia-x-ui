@@ -6,8 +6,8 @@
   color: #FFFFFF;
 
   h1 {
+    @include font(4.4rem, 5.4rem, bold);
     text-align: left;
-    font: normal normal bold 4.4rem/5.4rem $font-family;
     white-space: nowrap;
     letter-spacing: 0px;
   }

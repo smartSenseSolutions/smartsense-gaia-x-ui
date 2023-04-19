@@ -10,16 +10,6 @@
   overflow:hidden auto;
   padding-right: 2rem;
   width: 100%;
-
-  h4 {
-    @include text-overflow(31rem);
-  }
-
-  p {
-    @include text-overflow(31rem);
-  }
-
-
 }
 
 

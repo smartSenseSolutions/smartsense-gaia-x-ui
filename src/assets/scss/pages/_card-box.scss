@@ -1,81 +1,81 @@
-.cardBox{
+.cardBox {
   @import "../abstracts/abstracts.scss";
 
-.card {
-  background: #F7F7F7;
-  border-radius: 12px;
+  .card {
+    background: #F7F7F7;
+    border-radius: 12px;
 
-  .mat-button {
-    display: inline-block;
-  }
-
-  &__image {
-    img {
-      width: 100%;
-    }
-  }
-
-  &__data {
-    padding: 2rem;
-    text-align: left;
-
-    h4 {
-      font: normal normal bold 1.8rem/2.1rem $font-family;
-      letter-spacing: 0px;
-      color: $primary-color;
-      margin-bottom: 2rem;
+    .mat-button {
+      display: inline-block;
     }
 
-    p {
-      font: normal normal 600 1.6rem/2rem $font-family;
-      letter-spacing: 0px;
-      color: $primary-dark;
-      margin-bottom: 1.5rem;
+    &__image {
+      img {
+        width: 100%;
+      }
+    }
 
-      span {
-        font: normal normal normal 1.6rem/2rem $font-family;
+    &__data {
+      padding: 2rem;
+      text-align: left;
+
+      h4 {
+        @include font(1.8rem, 2.1rem, bold);
         letter-spacing: 0px;
-        color: rgba($primary-dark, 0.8);
-      }
-    }
-
-
-  }
-
-  &__btn {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.2rem;
-    align-items: center;
-
-    button {
-      &.mdc-button {
-        &--raised {
-          background: $primary-dark !important;
-          border-radius: 25px;
-          color: $white-color;
-        }
+        color: $primary-color;
+        margin-bottom: 2rem;
       }
 
-      .mdc-button {
-        &__label {
-          text-align: left;
-          font: normal normal 500 1.4rem/1.7rem $font-family;
+      p {
+        @include font(1.6rem, 2rem, 600);
+        letter-spacing: 0px;
+        color: $primary-dark;
+        margin-bottom: 1.5rem;
+
+        span {
+          @include font(1.6rem , 2rem);
           letter-spacing: 0px;
-          color: $white-color;
+          color: rgba($primary-dark, 0.8);
         }
       }
 
-      &.mdc-fab {
-        &--mini {
-          box-shadow: none;
-          background-color: rgba(#121E2A, 0.1);
-          color: black;
-        }
-      }
 
     }
+
+    &__btn {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.2rem;
+      align-items: center;
+
+      button {
+        &.mdc-button {
+          &--raised {
+            background: $primary-dark !important;
+            border-radius: 25px;
+            color: $white-color;
+          }
+        }
+
+        .mdc-button {
+          &__label {
+            @include font(1.4rem, 1.7rem, 500);
+            text-align: left;
+            letter-spacing: 0px;
+            color: $white-color;
+          }
+        }
+
+        &.mdc-fab {
+          &--mini {
+            box-shadow: none;
+            background-color: rgba(#121E2A, 0.1);
+            color: black;
+          }
+        }
+
+      }
+    }
   }
-}
 
 }

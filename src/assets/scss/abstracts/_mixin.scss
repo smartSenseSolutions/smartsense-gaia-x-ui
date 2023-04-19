@@ -1,8 +1,9 @@
-@mixin text-overflow($width) {
-  text-overflow: ellipsis;
-  width: $width;
+@mixin text-overflow($width , $line : 1) {
+  display: -webkit-box;
+  max-width: $width;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 // @mixin respond($breakPoint) {
@@ -115,17 +116,19 @@
     }
   }
 
-  @if $breakPoint == large-desktop {
+  @if $breakPoint ==large-desktop {
 
-    @media (min-width: 1900px) { // 112.5 em
+    @media (min-width: 1900px) {
+      // 112.5 em
 
       @content;
     }
   }
 
-  @if $breakPoint == big-desktop {
+  @if $breakPoint ==big-desktop {
 
-    @media (max-width: 1900px) { // 112.5 em
+    @media (max-width: 1900px) {
+      // 112.5 em
 
       @content;
     }
@@ -137,4 +140,14 @@
 @mixin square($size) {
   height: $size;
   width: $size;
+}
+
+@mixin font($font-size , $line-height , $font-weight : "") {
+  font-size: $font-size;
+  line-height: $line-height;
+
+  @if $font-weight !="" {
+    font-weight: $font-weight;
+
+  }
 }

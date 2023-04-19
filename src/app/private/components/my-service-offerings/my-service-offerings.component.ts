@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ProductData } from '../../models';
 import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
+import { ProductData } from '../../models';
 
 @Component({
   selector: 'app-my-service-offerings',
@@ -16,31 +16,27 @@ export class MyServiceOfferingsComponent {
   productList: ProductData[] = [
     {
       image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Title',
-      articleNumber: 'knaji91',
-      group: 'BE POSITIVE',
-      gtinNumber: 888898,
+      title : 'Ball Bearing',
+      discription : 'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
+      company : 'Hella KGaA Hueck & Co.'
     },
     {
       image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Title',
-      articleNumber: 'knaji91',
-      group: 'BE POSITIVE',
-      gtinNumber: 888898,
+      title : 'Ball Bearing',
+      discription : 'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
+      company : 'Hella KGaA Hueck & Co.'
     },
     {
       image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Title',
-      articleNumber: 'knaji91',
-      group: 'BE POSITIVE',
-      gtinNumber: 888898,
+      title : 'Ball Bearing',
+      discription : 'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
+      company : 'Hella KGaA Hueck & Co.'
     },
     {
       image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Title',
-      articleNumber: 'knaji91',
-      group: 'BE POSITIVE',
-      gtinNumber: 888898,
+      title : 'Ball Bearing',
+      discription : 'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
+      company : 'Hella KGaA Hueck & Co.'
     },
   ];
 }

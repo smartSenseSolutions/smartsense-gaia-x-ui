@@ -7,7 +7,7 @@
 
 
   .mat-option {
-    font: normal normal medium 1.5rem/2.4rem $font-family;
+    @include font(1.5rem, 2.4rem, 500);
     letter-spacing: 0px;
     color: $primary-dark;
   }
@@ -17,7 +17,9 @@ mat-select {
   .mat-mdc-select-value {
     .mat-mdc-select-placeholder {
       text-align: left;
-      font: normal normal 500 1.5rem/2.4rem $font-family !important;
+      font-weight: 500 !important;
+      font-size: 1.5rem !important;
+      line-height: 0.4rem !important;
       letter-spacing: 0px;
       color: rgba($primary-dark , 0.4);
     }
