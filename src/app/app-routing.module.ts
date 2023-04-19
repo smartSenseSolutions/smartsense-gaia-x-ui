@@ -8,17 +8,12 @@ import {
   SmartXComponent,
   WalletComponent,
 } from './private/components';
-import { VerifyDialogComponent } from './private/components/verify-dialog/verify-dialog.component';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
 import { AuthGuard } from './shared/guards';
 
 const routes: Routes = [
-  {
-    path : '',
-    component:VerifyDialogComponent,
-  },
   {
     path: RouteConstants.Login,
     component: LoginComponent,
