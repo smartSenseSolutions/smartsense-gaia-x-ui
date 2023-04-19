@@ -21,6 +21,22 @@
   }
 
   &__navigation {
+
+    a{
+      &.active {
+        .mdc-button {
+          background-color: blue !important;
+          color: #FFFFFF;
+
+          .mat-icon {
+            svg path {
+              fill: white;
+            }
+          }
+        }
+      }
+    }
+
     .mdc-button {
       margin-bottom: 10px;
       height: auto !important;
@@ -49,20 +65,10 @@
         }
       }
 
-      &.active {
-        background-color: blue !important;
-        color: #FFFFFF;
-
-        .mat-icon {
-          svg path {
-            fill: white;
-          }
-        }
-      }
-
       &:hover {
         background-color: rgba($primary-dark , 0.07);
       }
     }
+
   }
 }

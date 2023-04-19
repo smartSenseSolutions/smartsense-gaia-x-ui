@@ -8,14 +8,18 @@
       </li>
       <li class="sidebar__navigation">
         <a *ngFor="let item of MENU_ITEMS;" [routerLink]="[item.routeLink]" [routerLinkActive]="['active']">
-          <mat-icon svgIcon="{{ item.iconName }}"></mat-icon>
-          {{ item.label }}
+          <button mat-raised-button>
+            <mat-icon svgIcon="{{ item.iconName }}"></mat-icon>
+            {{ item.label }}
+          </button>
         </a>
       </li>
       <li class="sidebar__userProfile">
         <ul>
           <li>
-            <img src="../../../../assets/images/user.jpeg" alt="">
+            <div class="sidebar__userProfile__placeholder">
+              <span>{{organizationNameChar}}</span>
+            </div>
           </li>
           <li>
             <h5>{{username}}</h5>
