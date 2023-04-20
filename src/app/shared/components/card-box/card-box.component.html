@@ -1,19 +1,22 @@
 <div class="cardBox">
   <article class="card" *ngFor="let service of serviceList">
     <div class="card__image">
-      <img src="{{ image }}" alt="">
+      <img src="{{ image }}" alt="" />
     </div>
     <div class="card__data">
-      <h4 class="card__data--title" *ngIf="service?.name">{{ service.name }}</h4>
+      <h4 class="card__data--title" *ngIf="service?.name">
+        {{ service.name }}
+      </h4>
       <p class="card__data--disc">
         {{ service.description }}
       </p>
       <div *ngIf="showCompany" class="card__data--company">
-        <span>Company:<b>{{service.enterpriseName}} </b></span>
-
+        <span
+          >Company:<b>{{ service.enterpriseName }} </b></span
+        >
       </div>
       <div class="card__data--btn">
-        <a>
+        <a (click)="onViewDetailsClick(service)">
           <button mat-raised-button>View Details</button>
         </a>
         <a *ngIf="!showCompany">

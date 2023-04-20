@@ -5,7 +5,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -62,7 +62,6 @@ export class SignupStepOneComponent
 
   constructor(protected override fb: FormBuilder, private router: Router) {
     super(fb);
-
   }
 
   ngOnInit(): void {
@@ -86,7 +85,6 @@ export class SignupStepOneComponent
         [Validators.required]
       ),
     });
-
   }
 
   onSignupStepOneFormSubmit = (signupForm: FormGroup) => {
@@ -113,8 +111,5 @@ export class SignupStepOneComponent
       RegexConstant.SPECIAL_CHARACTER.test(controlValue);
     this.isContainNumber = RegexConstant.CONTAIN_NUMBER.test(controlValue);
     this.isLengthSix = RegexConstant.MIN_LENGTH_SIX.test(controlValue);
-
   }
 }
-
-

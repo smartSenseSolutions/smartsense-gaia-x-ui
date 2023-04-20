@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ServiceOfferResponsePayloadModel } from '../../../private/models';
@@ -9,10 +9,17 @@ import { ServiceOfferResponsePayloadModel } from '../../../private/models';
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './card-box.component.html',
-  styleUrls: ['./card-box.component.scss']
+  styleUrls: ['./card-box.component.scss'],
 })
 export class CardBoxComponent {
-  @Input () serviceList :  ServiceOfferResponsePayloadModel[] = [];
-  @Input () showCompany :boolean = true;
-  image:string = '../../../../assets/images/service-catalog-1.png'
+  @Input() serviceList: ServiceOfferResponsePayloadModel[] = [];
+  @Input() showCompany: boolean = true;
+  @Output() onViewDetailClickEvent =
+    new EventEmitter<ServiceOfferResponsePayloadModel>();
+
+  image: string = '../../../../assets/images/service-catalog-1.png';
+
+  onViewDetailsClick = (service: ServiceOfferResponsePayloadModel) => {
+    this.onViewDetailClickEvent.emit(service);
+  };
 }

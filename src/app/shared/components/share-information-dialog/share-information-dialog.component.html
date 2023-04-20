@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <div class="dialog-container__head">
+    <h3>Share your information</h3>
+    <a (click)="onCloseDialog(false)" matTooltip="close">
+      <mat-icon svgIcon="close"></mat-icon>
+    </a>
+  </div>
+
+  <div class="dialog-container__body">
+    <div class="confirm-info">
+      <img src="./assets/images/shareInfo.png" alt="shareInformation" />
+      <p>
+        You need to share your credentials in order to access the service
+        details.<br />
+        If you agree, please confirm & proceed.
+      </p>
+      <button class="dark-btn">Yes, I Confirm</button>
+    </div>
+
+    <div *ngIf="false">
+      <img src="./assets/images/loading.gif" alt="" />
+      <p class="medium-text">Generating & Verifying your VP</p>
+    </div>
+
+    <div *ngIf="false">
+      <img src="./assets/images/quality.png" alt="" />
+      <p class="medium-text">Your VP is successfully verified.</p>
+    </div>
+  </div>
+</div>
