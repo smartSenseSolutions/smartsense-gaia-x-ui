@@ -8,6 +8,7 @@ export interface ServiceOfferResponsePayloadModel {
   subDomainName: string;
   subjectDid: string;
   name: string;
+  label: string;
   producedBy: string;
   copyrightOwnedBy: string;
   description: number;

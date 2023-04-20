@@ -4,8 +4,8 @@
       <img src="{{ image }}" alt="" />
     </div>
     <div class="card__data">
-      <h4 class="card__data--title" *ngIf="service?.name">
-        {{ service.name }}
+      <h4 class="card__data--title" *ngIf="service?.label">
+        {{ service.label }}
       </h4>
       <p class="card__data--disc">
         {{ service.description }}
