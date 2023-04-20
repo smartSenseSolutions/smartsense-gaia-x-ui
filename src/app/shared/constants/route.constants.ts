@@ -7,4 +7,5 @@ export const RouteConstants = {
   Wallet: 'wallet',
   BrowseCatalogue: 'browse-catalogue',
   MyServiceOfferings: 'my-service-offerings',
+  catalogDetails: 'catalog-details',
 };

@@ -116,16 +116,16 @@
   }
 
   @if $breakPoint == large-desktop {
-
-    @media (min-width: 1900px) { // 112.5 em
+    @media (min-width: 1900px) {
+      // 112.5 em
 
       @content;
     }
   }
 
   @if $breakPoint == big-desktop {
-
-    @media (max-width: 1900px) { // 112.5 em
+    @media (max-width: 1900px) {
+      // 112.5 em
 
       @content;
     }
@@ -137,4 +137,14 @@
 @mixin square($size) {
   height: $size;
   width: $size;
+}
+
+//
+// Border Radius mixin
+//
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
 }

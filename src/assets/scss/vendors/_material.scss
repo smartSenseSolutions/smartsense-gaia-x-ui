@@ -1,0 +1,36 @@
+mat-accordion {
+  mat-expansion-panel {
+    &.mat-expanded {
+      background-color: unset;
+      .mat-expansion-panel-header {
+        border-radius: 0;
+        border-bottom: 1px solid rgba($primary-dark, 0.2);
+      }
+    }
+
+    .mat-expansion-indicator {
+      &:after {
+        color: $primary-dark;
+        padding: 0.4rem;
+      }
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+}
+
+::ng-deep .mat-tooltip {
+  /* your own custom styles here */
+  @include border-radius(0.9rem);
+  background-color: rgba($primary-dark, 0.1) !important;
+  color: $primary-dark !important;
+  font-size: 1.4rem !important;
+}
+
+::ng-deep .mat-tooltip {
+  /* your own custom styles here */
+  /* e.g. */
+  color: yellow !important;
+}
