@@ -32,17 +32,5 @@ export class CardBoxComponent {
     }
   };
 
-  redirectToDetailView(service: ServiceOfferResponsePayloadModel) {
-    if (this.showCompany) {
-      this.route.navigate(
-        [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
-        { state: { service } }
-      );
-    } else {
-      this.route.navigate(
-        [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
-        { queryParams: { id: service.id } }
-      );
-    }
-  }
+  
 }

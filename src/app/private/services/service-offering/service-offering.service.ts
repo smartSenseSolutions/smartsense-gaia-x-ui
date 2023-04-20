@@ -47,7 +47,7 @@ export class ServiceOfferingService {
 
   getServiceOffersDetailWithOfferId = (
     request: VPResponsePayloadModel,
-    id: string
+    id: number
   ): Observable<ServiceOfferDetailMetaResponse> => {
     return this.apiManager.httpHelperMethod<ServiceOfferDetailMetaResponse>(
       API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS_DETAIL_WITH_OFFER_ID.METHOD,

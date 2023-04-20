@@ -14,6 +14,7 @@ import { ServiceOfferingService } from '../../services';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ShareInformationDialogComponent } from 'src/app/shared/components';
+import { RouteConstants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-browse-catalogue',
@@ -41,7 +42,7 @@ export class BrowseCatalogueComponent {
   filteredProducts!: Observable<string[]>;
 
   constructor(
-    private router: Router,
+    private route: Router,
     private dialog: MatDialog,
     private serviceOfferingService: ServiceOfferingService
   ) {}
@@ -66,14 +67,22 @@ export class BrowseCatalogueComponent {
 
   onShowFilter = () => {};
 
-  onShareInfo = (onShareInfo: ServiceOfferResponsePayloadModel) => {
+  onShareInfo = (data: ServiceOfferResponsePayloadModel) => {
     const dialogRef = this.dialog.open(ShareInformationDialogComponent, {
       width: '60rem',
-      data: {},
+      data,
     });
     dialogRef.afterClosed().subscribe((success) => {
       if (success) {
+        this.redirectToDetailView(success);
       }
     });
   };
+
+  redirectToDetailView(service: ServiceOfferResponsePayloadModel) {
+    this.route.navigate(
+      [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
+      { state: { service } }
+    );
+  }
 }

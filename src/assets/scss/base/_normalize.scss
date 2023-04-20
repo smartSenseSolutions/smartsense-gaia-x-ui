@@ -17,7 +17,7 @@ html {
   }
 
   @include respond("regular-desktop") {
-    font-size: 8.5px;
+    font-size: 10.5px;
   }
 
   @include respond("small-desktop") {
