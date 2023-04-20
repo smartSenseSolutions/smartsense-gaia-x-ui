@@ -11,6 +11,9 @@ import { Observable } from 'rxjs';
 import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
 import { ServiceOfferResponsePayloadModel } from '../../models';
 import { ServiceOfferingService } from '../../services';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ShareInformationDialogComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-browse-catalogue',
@@ -25,6 +28,7 @@ import { ServiceOfferingService } from '../../services';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   templateUrl: './browse-catalogue.component.html',
   styleUrls: ['./browse-catalogue.component.scss'],
@@ -36,7 +40,11 @@ export class BrowseCatalogueComponent {
   products: string[] = ['Be Positive', 'Audi', 'ISRO', 'Google'];
   filteredProducts!: Observable<string[]>;
 
-  constructor(private serviceOfferingService: ServiceOfferingService) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private serviceOfferingService: ServiceOfferingService
+  ) {}
 
   ngOnInit() {
     this.getServiceOffering();
@@ -57,4 +65,15 @@ export class BrowseCatalogueComponent {
   // }
 
   onShowFilter = () => {};
+
+  onShareInfo = (onShareInfo: ServiceOfferResponsePayloadModel) => {
+    const dialogRef = this.dialog.open(ShareInformationDialogComponent, {
+      width: '60rem',
+      data: {},
+    });
+    dialogRef.afterClosed().subscribe((success) => {
+      if (success) {
+      }
+    });
+  };
 }
