@@ -63,9 +63,7 @@ export class SignupContainerComponent {
         },
       });
       dialogRef.afterClosed().subscribe((success) => {
-        if (success) {
-          this.router.navigate([`${RouteConstants.Login}`]);
-        }
+        location.reload();
       });
     });
   };
