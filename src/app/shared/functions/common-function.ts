@@ -49,3 +49,14 @@ export function appLog<T>(message: T, ...optionalParams: unknown[]): void {
       console.log(message, ...optionalParams); /* eslint-enable */
   }
 }
+
+export function parseAPI(
+    template: string,
+    templateParams: { [key: string]: string | number | boolean }
+) {
+    let url = template;
+    for (const key of Object.keys(templateParams)) {
+        url = url.replace(`{${key}}`, `${templateParams[key]}`);
+    }
+    return url;
+}
