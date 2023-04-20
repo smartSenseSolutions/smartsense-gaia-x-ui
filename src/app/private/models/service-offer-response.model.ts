@@ -17,8 +17,17 @@ export interface ServiceOfferResponsePayloadModel {
   terms: string;
   termsHash: string;
   offerLink: string;
+  meta: Meta;
+}
+export interface Meta {
+  [key: string]: {
+    [key: string]: string;
+  };
 }
 
 export type ServiceOfferResponse = APIResponse<
   ServiceOfferResponsePayloadModel[]
 >;
+
+export type ServiceOfferDetailResponse =
+  APIResponse<ServiceOfferResponsePayloadModel>;

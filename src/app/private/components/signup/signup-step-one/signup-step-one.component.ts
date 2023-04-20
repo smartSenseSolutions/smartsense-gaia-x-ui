@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { SignStepOneModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
-import { ValidationConstant } from 'src/app/shared/constants';
+import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import RegexConstant from 'src/app/shared/constants/regex.constants';
 
 @Component({
@@ -94,7 +94,7 @@ export class SignupStepOneComponent
   };
 
   onSignInClick = () => {
-    this.router.navigate([`RouteConstants.Login`]);
+    this.router.navigate([RouteConstants.Login]);
   };
 
   // Helper methods

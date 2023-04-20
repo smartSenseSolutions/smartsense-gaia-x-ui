@@ -20,7 +20,7 @@
 
       &--header {
         h2 {
-          font: bold 2.1rem;
+          @include font(2.1rem , bold);
           line-height: 1.15;
           color: $black-color;
 
@@ -269,11 +269,15 @@
                 position: relative;
 
                 img {
+                  // visibility: hidden;
                   position: absolute;
                   background: #3f67fc;
+                  display: none;
+
                 }
 
                 .mat-icon {
+
                   width: 18px;
                   height: 18px;
                   color: $white-color;
@@ -303,16 +307,16 @@
                 }
               }
 
-              &::after {
-                content: '';
-                background: #b9c6d0;
-                position: absolute;
-                height: 4rem;
-                width: 0.4rem;
-                top: 4.7rem;
-                left: 2.2rem;
-                border-radius: 0.7rem;
-              }
+              // &::after {
+              //   content: '';
+              //   background: #b9c6d0;
+              //   position: absolute;
+              //   height: 4rem;
+              //   width: 0.4rem;
+              //   top: 4.7rem;
+              //   left: 2.2rem;
+              //   border-radius: 0.7rem;
+              // }
 
               &:last-child {
                 &::after {
@@ -331,28 +335,6 @@
               }
 
               &.active {
-
-
-                span {
-                  color: $black-color;
-                }
-
-                &::after {
-                  // background: $primary-color;
-                  animation: increase 1.5s linear 1s;
-                  animation-fill-mode: forwards;
-                  //   content: '';
-                  // background: #b9c6d0;
-                  // position: absolute;
-                  // height: 4rem;
-                  // width: 0.4rem;
-                  // top: 4.7rem;
-                  // left: 2.2rem;
-                  // border-radius: 0.7rem;
-                }
-              }
-
-              &.bgBlue {
                 label {
                   background-color: $primary-color;
 
@@ -369,6 +351,24 @@
                   .mat-icon {
                     color: $white-color;
                   }
+                }
+
+                span {
+                  color: $black-color;
+                }
+
+                &::after {
+                  // background: $primary-color;
+                  // animation: increase 1.5s linear 1s;
+                  // animation-fill-mode: forwards;
+                  //   content: '';
+                  // background: #b9c6d0;
+                  // position: absolute;
+                  // height: 4rem;
+                  // width: 0.4rem;
+                  // top: 4.7rem;
+                  // left: 2.2rem;
+                  // border-radius: 0.7rem;
                 }
               }
 
@@ -455,7 +455,7 @@
           ul {
             li {
               label {
-                background-color: #f4f6f9;
+                // background-color: #f4f6f9;
 
                 .mat-icon {
                   color: #7a8d9b;
@@ -489,5 +489,47 @@
   100% {
     height: 56%;
     background: $primary-color;
+  }
+}
+
+
+
+.completed {
+  label {
+    background-color: $primary-color !important;
+
+    img {
+      display: none !important;
+    }
+
+    .mat-icon {
+      &:first-child {
+        display: inline-block;
+      }
+    }
+
+    .mat-icon+.mat-icon {
+      display: none;
+    }
+
+    .mat-icon {
+      color: $white-color;
+    }
+  }
+
+  span {
+    color: $black-color !important;
+  }
+}
+
+.inProgress {
+  label {
+    background-color: $primary-color !important;
+    color: $primary-color !important;
+
+
+    img {
+      display: block !important;
+    }
   }
 }
