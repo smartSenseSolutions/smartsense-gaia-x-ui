@@ -13,27 +13,27 @@ export const API_CONSTANTS = {
       URL: `${BASE_URL}/register`,
     },
     GET_ENTERPRISE: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/{id}`,
     },
     RESUME_SUBDOMAIN: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/subdomain/{enterpriseId}`,
     },
     RESUME_CERTIFICATE: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/certificate/{enterpriseId}`,
     },
     RESUME_INGRESS: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/ingress/{enterpriseId}`,
     },
     RESUME_DID: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/did/{enterpriseId}`,
     },
     RESUME_PARTICIPANT: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/participant/{enterpriseId}`,
     },
   },

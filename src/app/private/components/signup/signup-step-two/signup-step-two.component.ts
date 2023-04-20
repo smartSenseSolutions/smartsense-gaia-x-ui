@@ -50,10 +50,10 @@ export class SignupStepTwoComponent extends FormBaseComponent {
 
 
   signupForm = new FormGroup({
-    legalName: new FormControl('Mercedes', [Validators.required]),
-    subDomainName: new FormControl('Mercedes', [Validators.required]),
+    legalName: new FormControl('', [Validators.required]),
+    subDomainName: new FormControl('', [Validators.required]),
     legalRegistrationType: new FormControl(REGISTRATION_TYPES[0].value, [Validators.required]),
-    legalRegistrationNumber: new FormControl('123456789', [Validators.required]),
+    legalRegistrationNumber: new FormControl('', [Validators.required]),
     // addressCountryCode: new FormControl('', [Validators.required]),
     addressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [Validators.required]),
     // streetAddress: new FormControl('', [Validators.required]),
@@ -74,11 +74,11 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       legalName: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalName : 'Mercedes',
+        this.stepTwoFormData ? this.stepTwoFormData.legalName : '',
         [Validators.required]
       ),
       subDomainName: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.subDomainName : 'Mercedes',
+        this.stepTwoFormData ? this.stepTwoFormData.subDomainName : '',
         [Validators.required]
       ),
       legalRegistrationType: new FormControl(
@@ -88,7 +88,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       legalRegistrationNumber: new FormControl(
         this.stepTwoFormData
           ? this.stepTwoFormData.legalRegistrationNumber
-          : '123456789',
+          : '',
         [Validators.required]
       ),
 

@@ -6,7 +6,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { SignupRequestModel } from 'src/app/public/models';
+import { SignupRequestModel, SignupResponseModel } from 'src/app/public/models';
 import { SignUpService } from 'src/app/public/services';
 import { EnterpriseModel } from '../../models/enterprise.model';
 import { FAILURE_STATUSES, SignupStatus } from './verify-dialog.constants';
@@ -34,22 +34,20 @@ export class VerifyDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<VerifyDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     private data: {
-      enterprise: EnterpriseModel;
-      signupRequest: SignupRequestModel;
+      signupResponse: SignupResponseModel;
     }
   ) {}
 
   ngOnInit() {
-    this.enterprise = this.data.enterprise;
+    this.enterprise = this.data.signupResponse.payload;
     this.checkStatus();
   }
 
   checkStatus = () => {
-    this.interval = window.setInterval(() => {
-      this.signupService
-        .getEnterprise(this.enterprise!.id)
-        .subscribe((response) => {
-          this.currentSignupStatus = response.status;
+    setTimeout(() => {
+      this.signupService.getEnterprise(this.enterprise!.id).subscribe({
+        next: (response) => {
+          this.currentSignupStatus = response.payload.status;
           if (FAILURE_STATUSES.includes(this.currentSignupStatus)) {
             clearInterval(this.interval);
             let retryAPI;
@@ -78,16 +76,24 @@ export class VerifyDialogComponent implements OnInit {
                 );
                 break;
             }
-            retryAPI?.subscribe((response) => {
-              this.checkStatus();
+            retryAPI?.subscribe({
+              next: (response) => this.checkStatus(),
+              error: (error) => this.checkStatus(),
+              complete: () => {},
             });
+          } else if (
+            this.currentSignupStatus === SignupStatus.ParticipantJsonCreated
+          ) {
+            clearInterval(this.interval);
+            this.isSignupInProgress = false;
+          } else {
+            this.checkStatus();
           }
-          if (this.currentSignupStatus === SignupStatus.ParticipantJsonCreated){
-            clearInterval(this.interval)
-            this.isSignupInProgress = false
-          }
-        });
-    }, 1000);
+        },
+        error: (error) => this.checkStatus(),
+        complete: () => {},
+      });
+    }, 5000);
   };
 
   onCloseDialog() {
