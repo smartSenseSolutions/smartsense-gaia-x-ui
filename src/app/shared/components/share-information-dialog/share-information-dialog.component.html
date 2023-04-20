@@ -7,24 +7,25 @@
   </div>
 
   <div class="dialog-container__body">
-    <div class="confirm-info">
+    <div *ngIf="activeState === DataShareEnum.START" class="confirm-info">
       <img src="./assets/images/shareInfo.png" alt="shareInformation" />
       <p>
         You need to share your credentials in order to access the service
         details.<br />
         If you agree, please confirm & proceed.
       </p>
-      <button class="dark-btn">Yes, I Confirm</button>
+      <button (click)="generateVP()" class="dark-btn">Yes, I Confirm</button>
     </div>
 
-    <div *ngIf="false">
+    <div *ngIf="activeState === DataShareEnum.VP_GENERATE || activeState === DataShareEnum.VERIFYING">
       <img src="./assets/images/loading.gif" alt="" />
       <p class="medium-text">Generating & Verifying your VP</p>
     </div>
 
-    <div *ngIf="false">
+    <div *ngIf="activeState === DataShareEnum.SUCCESS">
       <img src="./assets/images/quality.png" alt="" />
-      <p class="medium-text">Your VP is successfully verified.</p>
+      <p>Your VP is successfully verified.</p>
+      <button class="dark-btn" (click)="onCloseDialog(true)">View Detail</button>
     </div>
   </div>
 </div>

@@ -4,8 +4,7 @@
     text-align: center;
 
     div {
-      height: 20.2rem;
-      padding-top: 5rem;
+      padding: 5rem 0;
       img {
         @include square(4rem);
       }
