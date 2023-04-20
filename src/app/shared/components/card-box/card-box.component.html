@@ -1,15 +1,15 @@
 <div class="cardBox">
-  <article class="card" *ngFor="let product of productList">
+  <article class="card" *ngFor="let service of serviceList">
     <div class="card__image">
-      <img src="{{ product.image }}" alt="">
+      <img src="{{ image }}" alt="">
     </div>
     <div class="card__data">
-      <h4 class="card__data--title" *ngIf="product?.title">{{ product.title }}</h4>
+      <h4 class="card__data--title" *ngIf="service?.name">{{ service.name }}</h4>
       <p class="card__data--disc">
-        {{ product.discription }}
+        {{ service.description }}
       </p>
       <div *ngIf="showCompany" class="card__data--company">
-        <span>Company:<b>{{product.company}} </b></span>
+        <span>Company:<b>{{service.enterpriseName}} </b></span>
 
       </div>
       <div class="card__data--btn">
