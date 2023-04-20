@@ -56,6 +56,5 @@ export class BrowseCatalogueComponent {
   //   return value.toLowerCase().replace(/\s/g, '');
   // }
 
-  // onShowFilter = () => {
-  // };
+  onShowFilter = () => {};
 }
