@@ -72,7 +72,7 @@ export class ApiManagerService extends HttpHelperService {
   get authorizationHttpOptions(): { headers: HttpHeaders } {
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.sharedService.getToken()}`,
+        Authorization: this.sharedService.getToken(),
       }),
     };
   }

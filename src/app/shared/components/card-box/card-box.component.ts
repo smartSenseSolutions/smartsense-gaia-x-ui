@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ProductData } from '../../../private/models';
+import { ServiceOfferResponsePayloadModel } from '../../../private/models';
 
 @Component({
   selector: 'app-card-box',
@@ -12,6 +12,7 @@ import { ProductData } from '../../../private/models';
   styleUrls: ['./card-box.component.scss']
 })
 export class CardBoxComponent {
-  @Input () productList :  ProductData[] = [];
+  @Input () serviceList :  ServiceOfferResponsePayloadModel[] = [];
   @Input () showCompany :boolean = true;
+  image:string = '../../../../assets/images/service-catalog-1.png'
 }
