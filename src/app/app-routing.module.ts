@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
   BrowseCatalogueComponent,
+  CatalogDetailsComponent,
   DashboardComponent,
   MyServiceOfferingsComponent,
   SignupContainerComponent,
   SmartXComponent,
-  WalletComponent
+  WalletComponent,
 } from './private/components';
 import { AddNewServiceComponent } from './private/components/add-new-service/add-new-service.component';
 import { LoginComponent } from './public/components';
@@ -21,16 +22,16 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Public,
-      loginType : UserType.Enterprise
+      loginType: UserType.Enterprise,
     },
   },
   {
     path: RouteConstants.AdminLogin,
     component: LoginComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Public,
-      loginType : UserType.Admin
+      loginType: UserType.Admin,
     },
   },
   {
@@ -84,16 +85,33 @@ const routes: Routes = [
         data: {
           breadcrumb: 'My Service Offerings',
         },
-        children : [
+        children: [
           {
-            path : RouteConstants.AddNewService,
-            component : AddNewServiceComponent,
-            data : {
-              breadcrumb : 'Add New Service'
-            }
-          }
-        ]
-      }
+            path: RouteConstants.AddNewService,
+            component: AddNewServiceComponent,
+            data: {
+              breadcrumb: 'Add New Service',
+            },
+          },
+        ],
+      },
+      // children: [
+      //   {
+      //     path: RouteConstants.catalogDetails,
+      //     component: CatalogDetailsComponent,
+      //     data: {
+      //       breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+      //     },
+      //   },
+      // ],
+      // },
+      {
+        path: RouteConstants.catalogDetails,
+        component: CatalogDetailsComponent,
+        data: {
+          breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+        },
+      },
     ],
   },
   {

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProgressHudComponent } from './shared/components/progress-hud/progress-hud.component';
 import { SvgService } from './shared/services';
+import { CatalogDetailsComponent } from './private/components';
 
 @NgModule({
   declarations: [AppComponent],

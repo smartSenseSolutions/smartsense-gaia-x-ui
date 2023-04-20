@@ -1,0 +1,154 @@
+<div class="catalog-details-container">
+  <div class="catalog-details-container__head">
+    <div>
+      <a matTooltip="Back">
+        <mat-icon svgIcon="backArrow"></mat-icon>
+      </a>
+      <h3>Catalog-details</h3>
+    </div>
+    <div>
+      <a matTooltip="Click to Download full report" class="download-btn">
+        <mat-icon svgIcon="download"></mat-icon>
+      </a>
+    </div>
+  </div>
+  <div class="catalog-details-container__body">
+    <div>
+      <img src="./assets/images/catalogPlaceholder.png" alt="" />
+    </div>
+    <div>
+      <h5>Carbon Footprint of Camshift Pulse Generator</h5>
+      <span class="company-name">Hella KGaA Hueck & Co.</span>
+      <p>
+        Product Carbon Footprint (PCF) calculated on the basis of biomass
+        balance and contains PCF in raw material procurement, production,
+        packaging and transportation
+      </p>
+
+      <div class="catalog-details-container__accordian">
+        <mat-accordion [multi]="false">
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header
+              [collapsedHeight]="'5rem'"
+              [expandedHeight]="'5rem'"
+            >
+              <mat-panel-title>Product Info</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="expansion-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>Article #</label>
+                  <span>6PU 018 465-A1W</span>
+                </div>
+
+                <div class="col-md-4">
+                  <label>Group</label><span>927351836927</span>
+                </div>
+
+                <div class="col-md-4">
+                  <label>GTIN/EAN</label><span>HHB-7663</span>
+                </div>
+
+                <div class="col-md-4">
+                  <label>Model</label><span>Electric Generator</span>
+                </div>
+
+                <div class="col-md-4">
+                  <label>KBA Number</label><span>019-0928761181</span>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header
+              [collapsedHeight]="'5rem'"
+              [expandedHeight]="'5rem'"
+            >
+              <mat-panel-title>Product Carbon Footrpint</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="expansion-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>Cradle to Gate</label>
+                  <span>2.72 kg CO2e/kg</span>
+                </div>
+                <div class="col-md-4">
+                  <label>Emission Factors</label>
+                  <span>Category II and III</span>
+                </div>
+                <div class="col-md-4">
+                  <label>Electricity Consumed in manufacturing</label>
+                  <span>1200 kWh</span>
+                </div>
+                <div class="col-md-4">
+                  <label>Transport Emission</label>
+                  <span>0.32 kg CO2e/kg</span>
+                </div>
+                <div class="col-md-4">
+                  <label>KBA Number</label>
+                  <span>019-0928761181</span>
+                </div>
+                <div class="col-md-4">
+                  <label>Cradle-to-Grave</label>
+                  <span>12.50kg CO2e/kg</span>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header
+              [collapsedHeight]="'5rem'"
+              [expandedHeight]="'5rem'"
+            >
+              <mat-panel-title>Supporting Documents</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="expansion-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>Procurement Report</label>
+                  <span>
+                    <a
+                      href=""
+                      matTooltip="https://www.hella.com/technology/page/1"
+                      >https://www.hella.com/tech...
+                    </a>
+                  </span>
+                </div>
+                <div class="col-md-4">
+                  <label>Vendor Sustainability Agreement</label>
+                  <span>
+                    <a
+                      href=""
+                      matTooltip="https://www.hella.com/technology/page/1"
+                      >https://www.hella.com/tech...
+                    </a>
+                  </span>
+                </div>
+                <div class="col-md-4">
+                  <label>Electricity Consumed in manufacturing</label>
+                  <span>
+                    <a
+                      href=""
+                      matTooltip="https://www.hella.com/technology/page/1"
+                    >
+                      https://www.hella.com/tech...
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

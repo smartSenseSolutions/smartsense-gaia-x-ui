@@ -1,0 +1,105 @@
+@import "../../../../assets/scss/abstracts/abstracts.scss";
+
+.catalog-details-container {
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2rem 2rem 0 2rem;
+    div {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      mat-icon {
+        @include square(3.4rem);
+        margin-right: 1.5rem;
+      }
+      h3 {
+        color: $black-color-2;
+        font-size: 2.8rem;
+        margin-bottom: 4rem;
+      }
+    }
+  }
+  &__body {
+    color: $primary-dark;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 0 2rem 2rem 2rem;
+    height: calc(100vh - 20rem);
+    img {
+      @include border-radius(0.8rem);
+      height: 22rem;
+      width: 33.6rem;
+      margin-right: 5.4rem;
+    }
+    h5 {
+      font-size: 2.4rem;
+      margin-bottom: 0.8rem;
+    }
+    span {
+      &.company-name {
+        color: $primary-color;
+        display: inline-block;
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+        font-weight: 600;
+      }
+    }
+
+    p {
+      margin-bottom: 3rem;
+      font-size: 1.8rem;
+    }
+
+    mat-accordion {
+      display: block;
+      border: 0;
+      box-shadow: none;
+
+      mat-expansion-panel {
+        @include border-radius(1.2rem);
+        background-color: rgba($primary-dark, 0.05);
+        border: 0;
+        box-shadow: none;
+        margin-bottom: 1.5rem;
+
+        mat-panel-title {
+          color: $primary-dark;
+          font-size: 1.6rem;
+          font-weight: 600;
+        }
+
+        .expansion-body {
+          padding: 2rem;
+
+          div.col-md-4 {
+            margin-bottom: 3rem;
+            &:last-child,
+            &:nth-last-child(2),
+            &:nth-last-child(3) {
+              margin-bottom: unset;
+            }
+
+            label {
+              color: rgba($primary-dark, 0.8);
+              display: block;
+              font-size: 1.2rem;
+              margin-bottom: 0.04rem;
+            }
+
+            span {
+              color: $primary-dark;
+              display: block;
+              font-size: 1.6rem;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
