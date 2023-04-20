@@ -1,0 +1,47 @@
+.addService {
+  padding: 2rem;
+  &__header {
+    button {
+      vertical-align: bottom;
+    }
+
+    h3 {
+      display: inline-block;
+      margin-left: 1.5rem;
+    }
+  }
+
+  &__content {
+    padding: 6.1rem 23rem 0 5rem;
+
+    &--inputs {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+      gap: 2rem;
+
+      div {
+        flex: 1;
+
+        textarea{
+          min-height: 9.4rem;
+        }
+      }
+    }
+
+    &--buttons {
+      width: 34rem;
+
+      li {
+        display: inline-block;
+
+        button[type="submit"] {
+          width: 22rem;
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}

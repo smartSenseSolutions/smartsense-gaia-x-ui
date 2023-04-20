@@ -30,6 +30,10 @@
                 <label class="required-label" for="legalName">Legal Name</label>
                 <input formControlName="legalName" matInput id="legalName"
                   placeholder="Please enter company's legal name" required>
+                <mat-error *ngIf="formControls['legalName'].hasError('required')">
+                  {{ validationMsg.LEGEND_NAME_IS_REQUIRED }}
+                </mat-error>
+
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -41,21 +45,45 @@
                 <input formControlName="subDomainName" matInput id="Short Name" type="text"
                   placeholder="Please enter the company's short name">
                 <!-- @To do -->
-                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <mat-error *ngIf="formControls['subDomainName'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_3 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['subDomainName'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_12 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['subDomainName'].hasError('containSpecialCharacter')">
+                  {{ validationMsg.SPECIAL_CHARACTER_NOT_ALLOWED }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['subDomainName'].hasError('required')">
+                  {{ validationMsg.SHORT_NAME_IS_REQUIRED }}
+                </mat-error>
               </mat-form-field>
             </div>
 
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label class="required-label" for="legalRegistrationType">Legal Registration Type</Label>
-                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type" panelClass="customSelect"
-                  #registrationType>
+                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
+                  panelClass="customSelect" #registrationType>
                   <mat-option *ngFor="let type of REGISTRATION_TYPES" [value]="type.value">
                     {{type.label}}
                   </mat-option>
                 </mat-select>
-                <!-- @To do -->
-                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+                <mat-error *ngIf="formControls['legalRegistrationType'].hasError('required')">
+                  {{ validationMsg.LEGEND_NAME_IS_REQUIRED }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['legalRegistrationType'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_3 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['legalRegistrationType'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_255 }}
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -66,8 +94,17 @@
                 </Label>
                 <input formControlName="legalRegistrationNumber" matInput id="legalRegistrationNumber" type="text"
                   [placeholder]="'Enter ' + getRegistrationNumberLabel(registrationType.value) + ' Number'">
-                <!-- @To do -->
-                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <mat-error *ngIf="formControls['legalRegistrationNumber'].hasError('required')">
+                  {{ validationMsg.LEGAL_REGISTRATION_NUMBER_IS_REQUIRED }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['subDomainName'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_3 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['subDomainName'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_255 }}
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -91,6 +128,10 @@
                     {{type.label}}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="formControls['addressCode'].hasError('required')">
+                  {{ validationMsg.ADDRESS_CODE_IS_REQUIRED }}
+                </mat-error>
+
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -145,6 +186,9 @@
                     {{type.label}}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="formControls['legalAddressCode'].hasError('required')">
+                  {{ validationMsg.LEGAL_ADDRESS_CODE_IS_REQUIRED }}
+                </mat-error>
                 <!-- @To do -->
                 <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
               </mat-form-field>
@@ -181,7 +225,7 @@
               <mat-checkbox disableRipple="true" formControlName="termsAndConditions">
                 I agree to Gaia-X <a class="underline">Terms of Service</a> and <a class="underline">Privacy Policy</a>.
               </mat-checkbox>
-              <button class="large-btn primary-btn" mat-raised-button type="submit">
+              <button class="large-btn " mat-raised-button type="submit" [disabled]="!isFormValid" [ngClass]="{'primary-btn' : isFormValid}">
                 Register
                 <mat-icon svgIcon="arrow-right"></mat-icon>
               </button>

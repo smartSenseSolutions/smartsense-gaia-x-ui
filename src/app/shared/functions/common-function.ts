@@ -1,3 +1,6 @@
+import { FormControl } from "@angular/forms";
+import RegexConstant from "../constants/regex.constants";
+
 export const truncateFromMiddle = (
   rawString: string,
   allowedLength: number,
@@ -48,4 +51,13 @@ export function appLog<T>(message: T, ...optionalParams: unknown[]): void {
       /* eslint-disable */
       console.log(message, ...optionalParams); /* eslint-enable */
   }
+}
+
+
+// Alpha Numeric Validator function
+export function alphaNumericValidator(control : FormControl) {
+  let controlValue = control.value;
+  controlValue = controlValue.trim();
+  const result = RegexConstant.ALPHA_NUMERIC.test(controlValue);
+  return result ? { 'containSpecialCharacter' : true } : null;
 }

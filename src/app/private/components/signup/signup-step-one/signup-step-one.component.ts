@@ -5,7 +5,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -46,7 +46,7 @@ export class SignupStepOneComponent
 
   //Boolean Vairble for password validation
   isContainUpperCaseLowerCase: boolean = false;
-  isLengthSix: boolean = false;
+  isLengthEight: boolean = false;
   isContainSpecialCharacter: boolean = false;
   isContainNumber: boolean = false;
 
@@ -62,31 +62,35 @@ export class SignupStepOneComponent
 
   constructor(protected override fb: FormBuilder, private router: Router) {
     super(fb);
-
   }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       email: new FormControl(
         this.stepOneFormData ? this.stepOneFormData.email : 'mukund@gmail.com',
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(255),
+          Validators.email
+        ]
       ),
       password: new FormControl(
         this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
         [
           Validators.required,
           Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
-          Validators.pattern(RegexConstant.MIN_LENGTH_SIX),
           Validators.pattern(RegexConstant.SPECIAL_CHARACTER),
           Validators.pattern(RegexConstant.CONTAIN_NUMBER),
+          Validators.minLength(8),
+          Validators.maxLength(16),
         ]
       ),
       confirmPassword: new FormControl(
         this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
-        [Validators.required]
+        [Validators.required, Validators.minLength(8), Validators.maxLength(16)]
       ),
     });
-
   }
 
   onSignupStepOneFormSubmit = (signupForm: FormGroup) => {
@@ -112,9 +116,6 @@ export class SignupStepOneComponent
     this.isContainSpecialCharacter =
       RegexConstant.SPECIAL_CHARACTER.test(controlValue);
     this.isContainNumber = RegexConstant.CONTAIN_NUMBER.test(controlValue);
-    this.isLengthSix = RegexConstant.MIN_LENGTH_SIX.test(controlValue);
-
+    this.isLengthEight = this.formControls['password'].hasError('minlength') ? false: true;
   }
 }
-
-
