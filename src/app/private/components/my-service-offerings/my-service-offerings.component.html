@@ -1,13 +1,12 @@
 <section class="serviceCatalog">
     <div class="serviceCatalog__header">
       <h3>Service Catalog</h3>
-      <a>
+      <a (click)="redirect()" >
         <button mat-raised-button class="primary-btn">
           <mat-icon svgIcon="add"></mat-icon>
           Add New
         </button>
       </a>
-
     </div>
     <app-card-box [showCompany]="false" [productList] = productList></app-card-box>
     <!-- <div class="serviceCatalog__content">

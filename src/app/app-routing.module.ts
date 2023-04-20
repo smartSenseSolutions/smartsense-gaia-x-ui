@@ -8,6 +8,7 @@ import {
   SmartXComponent,
   WalletComponent
 } from './private/components';
+import { AddNewServiceComponent } from './private/components/add-new-service/add-new-service.component';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
@@ -83,6 +84,15 @@ const routes: Routes = [
         data: {
           breadcrumb: 'My Service Offerings',
         },
+        children : [
+          {
+            path : RouteConstants.AddNewService,
+            component : AddNewServiceComponent,
+            data : {
+              breadcrumb : 'Add New Service'
+            }
+          }
+        ]
       }
     ],
   },

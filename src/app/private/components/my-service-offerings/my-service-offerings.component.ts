@@ -2,17 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Router, RouterModule } from '@angular/router';
+import { RouteConstants } from 'src/app/shared/constants';
 import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
 import { ProductData } from '../../models';
 
 @Component({
   selector: 'app-my-service-offerings',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, CardBoxComponent],
+  imports: [CommonModule, MatButtonModule, MatIconModule, CardBoxComponent , RouterModule ],
   templateUrl: './my-service-offerings.component.html',
   styleUrls: ['./my-service-offerings.component.scss'],
 })
 export class MyServiceOfferingsComponent {
+  addServiceUrl  = RouteConstants.AddNewService;
   productList: ProductData[] = [
     {
       image: '../../../../assets/images/service-catalog-1.png',
@@ -39,4 +42,8 @@ export class MyServiceOfferingsComponent {
       company : 'Hella KGaA Hueck & Co.'
     },
   ];
+  constructor(private route : Router) {}
+  redirect() {
+    this.route.navigateByUrl(`${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}/${RouteConstants.AddNewService}`);
+  }
 }
