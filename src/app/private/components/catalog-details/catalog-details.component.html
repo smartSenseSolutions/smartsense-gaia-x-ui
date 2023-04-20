@@ -16,25 +16,34 @@
     <div>
       <img src="./assets/images/catalogPlaceholder.png" alt="" />
     </div>
-    <div>
-      <h5>{{service.name}}</h5>
-      <span class="company-name">{{service.enterpriseName}}</span>
+    <div class="width-100">
+      <h5>{{ service.name }}</h5>
+      <span class="company-name">{{ service.enterpriseName }}</span>
       <p>
-        {{service.description}}
+        {{ service.description }}
       </p>
 
       <div class="catalog-details-container__accordian">
         <mat-accordion [multi]="false">
-          <mat-expansion-panel *ngFor="let item of service.meta | keyvalue" (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-            <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
-              <mat-panel-title>{{item.key}}</mat-panel-title>
+          <mat-expansion-panel
+            *ngFor="let item of service.meta | keyvalue"
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header
+              [collapsedHeight]="'5rem'"
+              [expandedHeight]="'5rem'"
+            >
+              <mat-panel-title>{{ item.key }}</mat-panel-title>
             </mat-expansion-panel-header>
             <div class="expansion-body">
               <div class="row">
-                <div *ngFor="let childItem of item.value | keyvalue" class="col-md-4">
-                  <label>{{childItem.key}}</label>
-                  <span>{{childItem.value}}</span>
+                <div
+                  *ngFor="let childItem of item.value | keyvalue"
+                  class="col-md-4"
+                >
+                  <label>{{ childItem.key }}</label>
+                  <span>{{ childItem.value }}</span>
                 </div>
               </div>
             </div>
