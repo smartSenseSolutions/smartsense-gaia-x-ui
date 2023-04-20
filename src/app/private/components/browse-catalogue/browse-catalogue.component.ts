@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { Observable } from 'rxjs';
 import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
 import { ServiceOfferResponsePayloadModel } from '../../models';
@@ -23,6 +24,7 @@ import { ServiceOfferingService } from '../../services';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatMenuModule,
   ],
   templateUrl: './browse-catalogue.component.html',
   styleUrls: ['./browse-catalogue.component.scss'],
@@ -50,14 +52,10 @@ export class BrowseCatalogueComponent {
     });
   }
 
-  // private _filter(value: string): string[] {
-  //   const filterValue = this._normalizeValue(value);
-  //   return this.products.filter((street) =>
-  //     this._normalizeValue(street).includes(filterValue)
-  //   );
-  // }
-
   // private _normalizeValue(value: string): string {
   //   return value.toLowerCase().replace(/\s/g, '');
   // }
+
+  // onShowFilter = () => {
+  // };
 }

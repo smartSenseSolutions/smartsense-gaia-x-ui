@@ -58,8 +58,8 @@
         font-family: $font-family;
         font-style: normal;
         font-weight: 600;
-        font-size: 12px;
-        line-height: 15px;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
 
         mat-icon {
           vertical-align: middle;
@@ -303,15 +303,21 @@
                 }
               }
 
-              &::before {
+              &::after {
                 content: '';
                 background: #b9c6d0;
                 position: absolute;
-                height: 56%;
-                width: 4px;
-                top: -31px;
-                left: 18px;
+                height: 4rem;
+                width: 0.4rem;
+                top: 4.7rem;
+                left: 2.2rem;
                 border-radius: 0.7rem;
+              }
+
+              &:last-child {
+                &::after {
+                  content: unset;
+                }
               }
 
               &:first-child {
@@ -325,6 +331,28 @@
               }
 
               &.active {
+
+
+                span {
+                  color: $black-color;
+                }
+
+                &::after {
+                  // background: $primary-color;
+                  animation: increase 1.5s linear 1s;
+                  animation-fill-mode: forwards;
+                  //   content: '';
+                  // background: #b9c6d0;
+                  // position: absolute;
+                  // height: 4rem;
+                  // width: 0.4rem;
+                  // top: 4.7rem;
+                  // left: 2.2rem;
+                  // border-radius: 0.7rem;
+                }
+              }
+
+              &.bgBlue {
                 label {
                   background-color: $primary-color;
 
@@ -341,16 +369,6 @@
                   .mat-icon {
                     color: $white-color;
                   }
-                }
-
-                span {
-                  color: $black-color;
-                }
-
-                &::before {
-                  background: $primary-color;
-                  animation: increase 1.5s linear 1s;
-                  animation-fill-mode: forwards;
                 }
               }
 

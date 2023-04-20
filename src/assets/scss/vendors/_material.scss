@@ -1,0 +1,39 @@
+@import "../abstracts/abstracts.scss";
+
+.mdc-button__label {
+  font-family: $font-family;
+}
+
+.mat-mdc-form-field {
+  &-flex {
+    button {
+      font-family: $font-family !important;
+    }
+  }
+
+  &-infix {
+
+    label,
+    input {
+      font-family: $font-family !important;
+    }
+  }
+
+  &-error-wrapper {
+    font-family: $font-family !important;
+  }
+
+  &-hint{
+    font-family:  $font-family !important;
+  }
+}
+
+.mat-mdc-select-value{
+  &-text{
+    font-family:  $font-family !important;
+  }
+
+  .mdc-option{
+    font-family:  $font-family !important;
+  }
+}

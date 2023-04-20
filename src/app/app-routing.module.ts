@@ -6,8 +6,9 @@ import {
   MyServiceOfferingsComponent,
   SignupContainerComponent,
   SmartXComponent,
-  WalletComponent,
+  WalletComponent
 } from './private/components';
+import { AddNewServiceComponent } from './private/components/add-new-service/add-new-service.component';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
@@ -17,7 +18,7 @@ const routes: Routes = [
   {
     path: RouteConstants.Login,
     component: LoginComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Public,
       loginType : UserType.Enterprise
@@ -35,7 +36,7 @@ const routes: Routes = [
   {
     path: RouteConstants.SignUp,
     component: SignupContainerComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Private,
       allowedUserTypes: [UserType.Admin],
@@ -44,7 +45,7 @@ const routes: Routes = [
   {
     path: RouteConstants.SmartX,
     component: SmartXComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Private,
       allowedUserTypes: [UserType.Enterprise],
@@ -83,6 +84,15 @@ const routes: Routes = [
         data: {
           breadcrumb: 'My Service Offerings',
         },
+        children : [
+          {
+            path : RouteConstants.AddNewService,
+            component : AddNewServiceComponent,
+            data : {
+              breadcrumb : 'Add New Service'
+            }
+          }
+        ]
       }
     ],
   },

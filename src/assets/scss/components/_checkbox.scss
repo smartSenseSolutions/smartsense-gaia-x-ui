@@ -2,6 +2,12 @@
 
 .mat-mdc-checkbox {
   .mdc-form-field {
+    label {
+      @include font(1.3rem , 1);
+      font-family: $font-family !important;
+      color : $primary-dark;
+    }
+
     .mdc-checkbox {
       &__background {
         border-radius: 6px;

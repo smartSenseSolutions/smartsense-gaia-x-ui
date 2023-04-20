@@ -61,7 +61,7 @@ export class VerifyDialogComponent implements OnInit {
       if (this.currentSignupStatus === SignupStatus.ParticipantJsonCreated) {
         clearInterval(interval);
       }
-    }, 1000);
+    }, 3000);
   };
 
   onCloseDialog() {}
