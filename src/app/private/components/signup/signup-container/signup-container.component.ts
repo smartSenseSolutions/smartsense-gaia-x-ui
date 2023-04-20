@@ -12,11 +12,17 @@ import { VerifyDialogComponent } from '../../verify-dialog/verify-dialog.compone
 import { SignupStepOneComponent } from '../signup-step-one/signup-step-one.component';
 import { SignupStepTwoComponent } from '../signup-step-two/signup-step-two.component';
 import { SignupStep } from './signup-container.constants';
+import { SignUpService } from 'src/app/public/services';
 
 @Component({
   selector: 'app-signup-container',
   standalone: true,
-  imports: [CommonModule, SignupStepOneComponent, SignupStepTwoComponent , MatDialogModule],
+  imports: [
+    CommonModule,
+    SignupStepOneComponent,
+    SignupStepTwoComponent,
+    MatDialogModule,
+  ],
   templateUrl: './signup-container.component.html',
   styleUrls: ['./signup-container.component.scss'],
 })
@@ -30,7 +36,11 @@ export class SignupContainerComponent {
   // Status variables
   activeStep: SignupStep = SignupStep.ONE;
 
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private signupService: SignUpService
+  ) {}
 
   onStepOneComplete = (stepOneData: SignStepOneModel) => {
     this.activeStep = SignupStep.TWO;
@@ -45,16 +55,18 @@ export class SignupContainerComponent {
       headquarterAddress: this.stepTwoData.addressCode,
       legalAddress: this.stepTwoData.legalAddressCode,
     };
-    const dialogRef = this.dialog.open(VerifyDialogComponent, {
-      width: '550px',
-      data: {
-        signupRequest,
-      },
-    });
-    dialogRef.afterClosed().subscribe((success) => {
-      if (success) {
-        this.router.navigate([`${RouteConstants.Login}`]);
-      }
+    this.signupService.signup(signupRequest).subscribe((response) => {
+      const dialogRef = this.dialog.open(VerifyDialogComponent, {
+        width: '550px',
+        data: {
+          signupRequest,
+        },
+      });
+      dialogRef.afterClosed().subscribe((success) => {
+        if (success) {
+          this.router.navigate([`${RouteConstants.Login}`]);
+        }
+      });
     });
   };
 
