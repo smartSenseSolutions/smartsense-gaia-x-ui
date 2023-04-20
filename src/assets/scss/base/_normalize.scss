@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  font-family: $font-family ;
+  font-family: $font-family;
   font-weight: 500;
 }
 
@@ -104,7 +104,6 @@ h3 {
       height: 1.5rem;
       font-size: 1.5rem;
     }
-
   }
 }
 
@@ -132,6 +131,20 @@ app-card-box {
   }
 }
 
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 5px;
+}
+
 .required-label {
   &::after {
     content: "*";
@@ -145,4 +158,30 @@ app-card-box {
   text-decoration: underline;
   text-underline-offset: 1px;
   font-weight: 500;
+}
+
+.download-btn {
+  @include square(4rem);
+  @include border-radius(50%);
+  background-color: rgba($primary-dark, 0.1);
+  position: relative;
+
+  &:hover {
+    background-color: $primary-color;
+
+    .mat-icon {
+      svg {
+        path {
+          fill: $white-color;
+        }
+      }
+    }
+  }
+  .mat-icon {
+    position: absolute;
+    height: 1.6rem !important;
+    width: 1.56rem !important;
+    left: 1.2rem;
+    top: 1.2rem;
+  }
 }

@@ -87,6 +87,11 @@ export class SharedService {
    * @returns logged in user's token
    */
   getToken(): string {
+    if (!this._token) {
+      this._token = this.localStorageService.getItem(
+        AppStorageConstants.USER_TOKEN
+      ) as string;
+    }
     return this._token;
   }
 

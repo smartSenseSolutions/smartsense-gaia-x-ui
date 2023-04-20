@@ -1,4 +1,4 @@
-@mixin text-overflow($width , $line : 1) {
+@mixin text-overflow($width, $line: 1) {
   display: -webkit-box;
   max-width: $width;
   -webkit-line-clamp: $line;
@@ -117,7 +117,6 @@
   }
 
   @if $breakPoint ==large-desktop {
-
     @media (min-width: 1900px) {
       // 112.5 em
 
@@ -125,8 +124,7 @@
     }
   }
 
-  @if $breakPoint ==big-desktop {
-
+  @if $breakPoint == big-desktop {
     @media (max-width: 1900px) {
       // 112.5 em
 
@@ -142,12 +140,20 @@
   width: $size;
 }
 
-@mixin font($font-size , $line-height , $font-weight : "") {
+@mixin font($font-size, $line-height, $font-weight: "") {
   font-size: $font-size;
   line-height: $line-height;
 
-  @if $font-weight !="" {
+  @if $font-weight != "" {
     font-weight: $font-weight;
-
   }
+}
+//
+// Border Radius mixin
+//
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
 }

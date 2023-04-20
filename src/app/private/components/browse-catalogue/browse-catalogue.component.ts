@@ -7,9 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
-import { ProductData } from '../../models';
+import { ServiceOfferResponsePayloadModel } from '../../models';
+import { ServiceOfferingService } from '../../services';
 
 @Component({
   selector: 'app-browse-catalogue',
@@ -29,60 +30,31 @@ import { ProductData } from '../../models';
   styleUrls: ['./browse-catalogue.component.scss'],
 })
 export class BrowseCatalogueComponent {
-  productList: ProductData[] = [
-    {
-      image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Ball Bearing',
-      discription:
-        'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
-      company: 'Hella KGaA Hueck & Co.',
-    },
-    {
-      image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Ball Bearing',
-      discription:
-        'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
-      company: 'Hella KGaA Hueck & Co.',
-    },
-    {
-      image: '../../../../assets/images/service-catalog-1.png',
-      title: 'Ball Bearing',
-      discription:
-        'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp.',
-      company: 'Hella KGaA Hueck & Co.',
-    },
-    {
-      image: '../../../../assets/images/service-catalog-1.png',
-      title:
-        'Ball Bearing Ball Bearing Ball Bearing Ball Bearing Ball Bearing all Bearing',
-      discription:
-        'This Vacuum Pump encompasses four different types of mechanism for the engines above 2000 bhp. types of mechanism for the engines above 2000 bhp.',
-      company: 'Hella KGaA Hueck & Co.  ',
-    },
-  ];
+  serviceList: ServiceOfferResponsePayloadModel[] = [];
 
   product = new FormControl('');
   products: string[] = ['Be Positive', 'Audi', 'ISRO', 'Google'];
   filteredProducts!: Observable<string[]>;
 
+  constructor(private serviceOfferingService: ServiceOfferingService) {}
+
   ngOnInit() {
-    this.filteredProducts = this.product.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value || ''))
-    );
+    this.getServiceOffering();
+    // this.filteredProducts = this.product.valueChanges.pipe(
+    //   startWith(''),
+    //   map((value) => this._filter(value || ''))
+    // );
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = this._normalizeValue(value);
-    return this.products.filter((street) =>
-      this._normalizeValue(street).includes(filterValue)
-    );
+  getServiceOffering() {
+    this.serviceOfferingService.getCatalogue({}).subscribe((data) => {
+      this.serviceList = data.payload;
+    });
   }
 
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
+  // private _normalizeValue(value: string): string {
+  //   return value.toLowerCase().replace(/\s/g, '');
+  // }
 
-  onShowFilter = () => {
-  };
+  onShowFilter = () => {};
 }

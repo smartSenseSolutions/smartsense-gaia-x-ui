@@ -39,12 +39,20 @@ export const API_CONSTANTS = {
   },
   ENTERPRISE: {
     CATALOGUE: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/catalogue`,
     },
     VCS: {
       METHOD: HttpMethodEnum.POST,
       URL: `${BASE_URL}/enterprises/vcs`,
+    },
+    SERVICE_OFFERS: {
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/enterprises/service-offers`,
+    },
+    SERVICE_OFFER_DETAIL: {
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/enterprises/service-offers`,
     },
   },
 };
