@@ -14,7 +14,7 @@
       </div>
       <div class="card__data--btn">
         <a>
-          <button mat-raised-button>View Details</button>
+          <button mat-raised-button (click)="redirectToDetailView(service)">View Details</button>
         </a>
         <a *ngIf="!showCompany">
           <button mat-mini-fab>
