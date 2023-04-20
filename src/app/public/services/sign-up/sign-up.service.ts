@@ -28,7 +28,7 @@ export class SignUpService {
 
   getEnterprise = (enterpriseId: number): Observable<SignupResponseModel> => {
     const templateParams = {
-      enterpriseId,
+      id: enterpriseId,
     };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
       API_CONSTANTS.ADMIN.GET_ENTERPRISE.METHOD,
@@ -36,7 +36,7 @@ export class SignUpService {
       {},
       this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
@@ -50,7 +50,7 @@ export class SignUpService {
       {},
       this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
@@ -64,7 +64,7 @@ export class SignUpService {
       {},
       this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
@@ -78,7 +78,7 @@ export class SignUpService {
       {},
       this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
@@ -92,7 +92,7 @@ export class SignUpService {
       {},
       this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
@@ -106,7 +106,7 @@ export class SignUpService {
       {},
       this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 }

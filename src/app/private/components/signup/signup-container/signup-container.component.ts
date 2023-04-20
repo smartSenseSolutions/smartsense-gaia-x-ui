@@ -59,7 +59,7 @@ export class SignupContainerComponent {
       const dialogRef = this.dialog.open(VerifyDialogComponent, {
         width: '550px',
         data: {
-          signupRequest,
+          signupResponse: response,
         },
       });
       dialogRef.afterClosed().subscribe((success) => {
