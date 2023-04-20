@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProgressHudComponent } from './shared/components/progress-hud/progress-hud.component';
 import { SvgService } from './shared/services';
-import { CatalogDetailsComponent } from './private/components';
+import { HttpErrorInterceptor } from './shared/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +19,14 @@ import { CatalogDetailsComponent } from './private/components';
     MatSnackBarModule,
     ProgressHudComponent,
   ],
-  providers: [SvgService],
+  providers: [
+    SvgService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

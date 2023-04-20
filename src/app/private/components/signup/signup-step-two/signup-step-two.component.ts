@@ -20,7 +20,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SignStepTwoModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { ValidationConstant } from 'src/app/shared/constants';
-import { alphaNumericValidator } from 'src/app/shared/functions';
 import {
   COUNTRY_SUBDIVISION_CODES,
   REGISTRATION_TYPES,
@@ -53,13 +52,15 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   readonly COUNTRY_SUBDIVISION_CODES = COUNTRY_SUBDIVISION_CODES;
 
   signupForm = new FormGroup({
-    legalName: new FormControl('Mercedes', [Validators.required]),
-    subDomainName: new FormControl('Mercedes', [Validators.required]),
+    legalName: new FormControl('', [Validators.required]),
+    subDomainName: new FormControl('', [Validators.required]),
     legalRegistrationType: new FormControl(REGISTRATION_TYPES[0].value, [
       Validators.required,
     ]),
-    legalRegistrationNumber: new FormControl('123456789', [
+    legalRegistrationNumber: new FormControl('', [
       Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(255),
     ]),
     // addressCountryCode: new FormControl('', [Validators.required]),
     addressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [
@@ -85,17 +86,12 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       legalName: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalName : 'Mercedes',
+        this.stepTwoFormData ? this.stepTwoFormData.legalName : '',
         [Validators.required]
       ),
       subDomainName: new FormControl(
         this.stepTwoFormData ? this.stepTwoFormData.subDomainName : 'Mercedes',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(12),
-          alphaNumericValidator,
-        ]
+        [Validators.required]
       ),
       legalRegistrationType: new FormControl(
         this.stepTwoFormData
@@ -111,11 +107,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
         this.stepTwoFormData
           ? this.stepTwoFormData.legalRegistrationNumber
           : '123456789',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(255),
-        ]
+        [Validators.required]
       ),
 
       // addressCountryCode: new FormControl(

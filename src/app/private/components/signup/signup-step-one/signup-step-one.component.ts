@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { SignStepOneModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
-import { ValidationConstant } from 'src/app/shared/constants';
+import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import RegexConstant from 'src/app/shared/constants/regex.constants';
 
 @Component({
@@ -67,7 +67,7 @@ export class SignupStepOneComponent
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       email: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.email : 'mukund@gmail.com',
+        this.stepOneFormData ? this.stepOneFormData.email : '',
         [
           Validators.required,
           Validators.minLength(3),
@@ -76,7 +76,7 @@ export class SignupStepOneComponent
         ]
       ),
       password: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
+        this.stepOneFormData ? this.stepOneFormData.password : '',
         [
           Validators.required,
           Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
@@ -87,7 +87,7 @@ export class SignupStepOneComponent
         ]
       ),
       confirmPassword: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : 'Smart@123',
+        this.stepOneFormData ? this.stepOneFormData.password : '',
         [Validators.required, Validators.minLength(8), Validators.maxLength(16)]
       ),
     });
@@ -100,7 +100,7 @@ export class SignupStepOneComponent
   };
 
   onSignInClick = () => {
-    this.router.navigate([`RouteConstants.Login`]);
+    this.router.navigate([RouteConstants.Login]);
   };
 
   // Helper methods

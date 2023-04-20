@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -16,19 +16,21 @@ import { RouteConstants } from '../../constants';
 export class CardBoxComponent {
   @Input() serviceList: ServiceOfferResponsePayloadModel[] = [];
   @Input() showCompany: boolean = true;
+  @Output() onViewDetailClickEvent =
+    new EventEmitter<ServiceOfferResponsePayloadModel>();
+
   image: string = '../../../../assets/images/service-catalog-1.png';
   constructor(private route: Router) {}
-  redirectToDetailView(service: ServiceOfferResponsePayloadModel) {
+  onViewDetailsClick = (service: ServiceOfferResponsePayloadModel) => {
     if (this.showCompany) {
-      this.route.navigate(
-        [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
-        { state: { service } }
-      );
+      this.onViewDetailClickEvent.emit(service);
     } else {
       this.route.navigate(
         [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
         { queryParams: { id: service.id } }
       );
     }
-  }
+  };
+
+  
 }

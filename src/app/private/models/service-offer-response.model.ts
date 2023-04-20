@@ -8,6 +8,7 @@ export interface ServiceOfferResponsePayloadModel {
   subDomainName: string;
   subjectDid: string;
   name: string;
+  label: string;
   producedBy: string;
   copyrightOwnedBy: string;
   description: number;
@@ -31,3 +32,5 @@ export type ServiceOfferResponse = APIResponse<
 
 export type ServiceOfferDetailResponse =
   APIResponse<ServiceOfferResponsePayloadModel>;
+
+export type ServiceOfferDetailMetaResponse = APIResponse<Meta>;

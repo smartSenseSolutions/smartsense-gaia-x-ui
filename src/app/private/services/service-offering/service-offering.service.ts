@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONSTANTS } from 'src/app/shared/constants';
+import { parseAPI } from 'src/app/shared/functions';
 import { ApiManagerService } from 'src/app/shared/services';
 import {
+  ServiceOfferDetailMetaResponse,
   ServiceOfferDetailResponse,
   ServiceOfferRequest,
   ServiceOfferResponse,
+  VPResponseModel,
+  VPResponsePayloadModel,
 } from '../../models';
 
 @Injectable({
@@ -35,6 +39,36 @@ export class ServiceOfferingService {
       API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS.METHOD,
       `${API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS.URL}/${id}`,
       request,
+      this.apiManager.authorizationHttpOptions,
+      true,
+      true
+    );
+  };
+
+  getServiceOffersDetailWithOfferId = (
+    request: VPResponsePayloadModel,
+    id: number
+  ): Observable<ServiceOfferDetailMetaResponse> => {
+    return this.apiManager.httpHelperMethod<ServiceOfferDetailMetaResponse>(
+      API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS_DETAIL_WITH_OFFER_ID.METHOD,
+      parseAPI(
+        API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS_DETAIL_WITH_OFFER_ID.URL,
+        { offer_id: id }
+      ),
+      request,
+      this.apiManager.authorizationHttpOptions,
+      true,
+      true
+    );
+  };
+
+  getParticipantVP = (name: string): Observable<VPResponseModel> => {
+    return this.apiManager.httpHelperMethod<VPResponseModel>(
+      API_CONSTANTS.ENTERPRISE.CREATE_VP.METHOD,
+      parseAPI(API_CONSTANTS.ENTERPRISE.CREATE_VP.URL, {
+        credential_name: name,
+      }),
+      {},
       this.apiManager.authorizationHttpOptions,
       true,
       true

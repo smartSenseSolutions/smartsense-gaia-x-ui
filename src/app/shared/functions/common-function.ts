@@ -10,9 +10,9 @@ export const truncateFromMiddle = (
 ): string => {
   if (rawString.length <= allowedLength) return rawString;
   return (
-      rawString.substr(0, frontChars) +
-      separator +
-      rawString.substr(rawString.length - backChars)
+    rawString.substr(0, frontChars) +
+    separator +
+    rawString.substr(rawString.length - backChars)
   );
 };
 
@@ -25,20 +25,19 @@ export function isEmptyValue<T1, T2>(
   value: string | T1 | Record<string, T2> | null | undefined
 ) {
   if (value === null || value === undefined) {
-      return true;
+    return true;
   } else if (typeof value === 'string' && value === '') {
-      return true;
+    return true;
   } else if (Array.isArray(value) && value.length === 0) {
-      return true;
+    return true;
   } else if (
-      value['constructor'] === Object &&
-      Object.entries(value).length === 0
+    value['constructor'] === Object &&
+    Object.entries(value).length === 0
   ) {
-      return true;
+    return true;
   }
   return false;
 }
-
 
 /**
  * Log Method
@@ -48,9 +47,20 @@ export function isEmptyValue<T1, T2>(
 export function appLog<T>(message: T, ...optionalParams: unknown[]): void {
   const isLocalENV = window.location.origin.includes('localhost');
   if (isLocalENV) {
-      /* eslint-disable */
-      console.log(message, ...optionalParams); /* eslint-enable */
+    /* eslint-disable */
+    console.log(message, ...optionalParams); /* eslint-enable */
   }
+}
+
+export function parseAPI(
+  template: string,
+  templateParams: { [key: string]: string | number | boolean }
+) {
+  let url = template;
+  for (const key of Object.keys(templateParams)) {
+    url = url.replace(`{${key}}`, `${templateParams[key]}`);
+  }
+  return url;
 }
 
 

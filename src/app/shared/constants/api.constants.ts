@@ -13,28 +13,28 @@ export const API_CONSTANTS = {
       URL: `${BASE_URL}/register`,
     },
     GET_ENTERPRISE: {
-      METHOD: HttpMethodEnum.POST,
-      URL: `${BASE_URL}/register`,
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/enterprises/{id}`,
     },
     RESUME_SUBDOMAIN: {
-      METHOD: HttpMethodEnum.POST,
-      URL: `${BASE_URL}/register`,
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/subdomain/{enterpriseId}`,
     },
     RESUME_CERTIFICATE: {
-      METHOD: HttpMethodEnum.POST,
-      URL: `${BASE_URL}/register`,
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/certificate/{enterpriseId}`,
     },
     RESUME_INGRESS: {
-      METHOD: HttpMethodEnum.POST,
-      URL: `${BASE_URL}/register`,
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/ingress/{enterpriseId}`,
     },
     RESUME_DID: {
-      METHOD: HttpMethodEnum.POST,
-      URL: `${BASE_URL}/register`,
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/did/{enterpriseId}`,
     },
     RESUME_PARTICIPANT: {
-      METHOD: HttpMethodEnum.POST,
-      URL: `${BASE_URL}/register`,
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/participant/{enterpriseId}`,
     },
   },
   ENTERPRISE: {
@@ -50,9 +50,13 @@ export const API_CONSTANTS = {
       METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/service-offers`,
     },
-    SERVICE_OFFER_DETAIL: {
+    SERVICE_OFFERS_DETAIL_WITH_OFFER_ID: {
+      METHOD: HttpMethodEnum.POST,
+      URL: `${BASE_URL}/enterprises/service-offers/{offer_id}/details`,
+    },
+    CREATE_VP: {
       METHOD: HttpMethodEnum.GET,
-      URL: `${BASE_URL}/enterprises/service-offers`,
+      URL: `${BASE_URL}/enterprises/vc/{credential_name}/vp`,
     },
   },
 };

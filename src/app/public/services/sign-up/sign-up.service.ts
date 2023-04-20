@@ -5,6 +5,7 @@ import { API_CONSTANTS } from 'src/app/shared/constants';
 import { ApiManagerService } from 'src/app/shared/services';
 import { SignupRequestModel } from '../../models/signup/signup-request.model';
 import { SignupResponseModel } from '../../models/signup/signup-response.model';
+import { parseAPI } from 'src/app/shared/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -19,75 +20,93 @@ export class SignUpService {
       API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
       API_CONSTANTS.ADMIN.SIGN_UP.URL,
       signupRequest,
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
       true
     );
   };
 
   getEnterprise = (enterpriseId: number): Observable<SignupResponseModel> => {
+    const templateParams = {
+      id: enterpriseId,
+    };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
-      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.GET_ENTERPRISE.METHOD,
+      parseAPI(API_CONSTANTS.ADMIN.GET_ENTERPRISE.URL, templateParams),
       {},
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
-  resumeSubdomain = (): Observable<SignupResponseModel> => {
+  resumeSubdomain = (enterpriseId: number): Observable<SignupResponseModel> => {
+    const templateParams = {
+      enterpriseId,
+    };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
-      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.RESUME_SUBDOMAIN.METHOD,
+      parseAPI(API_CONSTANTS.ADMIN.RESUME_SUBDOMAIN.URL, templateParams),
       {},
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
-  resumeCertificate = (): Observable<SignupResponseModel> => {
+  resumeCertificate = (enterpriseId: number): Observable<SignupResponseModel> => {
+    const templateParams = {
+      enterpriseId,
+    };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
-      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.RESUME_CERTIFICATE.METHOD,
+      parseAPI(API_CONSTANTS.ADMIN.RESUME_CERTIFICATE.URL, templateParams),
       {},
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
-  resumeIngress = (): Observable<SignupResponseModel> => {
+  resumeIngress = (enterpriseId: number): Observable<SignupResponseModel> => {
+    const templateParams = {
+      enterpriseId,
+    };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
-      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.RESUME_INGRESS.METHOD,
+      parseAPI(API_CONSTANTS.ADMIN.RESUME_INGRESS.URL, templateParams),
       {},
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
-  resumeDID = (): Observable<SignupResponseModel> => {
+  resumeDID = (enterpriseId: number): Observable<SignupResponseModel> => {
+    const templateParams = {
+      enterpriseId,
+    };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
-      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.RESUME_DID.METHOD,
+      parseAPI(API_CONSTANTS.ADMIN.RESUME_DID.URL, templateParams),
       {},
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 
-  resumeParticipant = (): Observable<SignupResponseModel> => {
+  resumeParticipant = (enterpriseId: number): Observable<SignupResponseModel> => {
+    const templateParams = {
+      enterpriseId,
+    };
     return this.apiManager.httpHelperMethod<SignupResponseModel>(
-      API_CONSTANTS.ADMIN.SIGN_UP.METHOD,
-      API_CONSTANTS.ADMIN.SIGN_UP.URL,
+      API_CONSTANTS.ADMIN.RESUME_PARTICIPANT.METHOD,
+      parseAPI(API_CONSTANTS.ADMIN.RESUME_PARTICIPANT.URL, templateParams),
       {},
-      this.apiManager.httpOptions,
+      this.apiManager.authorizationHttpOptions,
       true,
-      true
+      false
     );
   };
 }

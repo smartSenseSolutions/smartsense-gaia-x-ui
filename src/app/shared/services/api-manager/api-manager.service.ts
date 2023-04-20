@@ -15,10 +15,7 @@ export class ApiManagerService extends HttpHelperService {
    * @param sharedService
    * @param http
    */
-  constructor(
-    sharedService: SharedService,
-    http: HttpClient
-  ) {
+  constructor(sharedService: SharedService, http: HttpClient) {
     super(sharedService, http);
   }
 
@@ -72,7 +69,7 @@ export class ApiManagerService extends HttpHelperService {
   get authorizationHttpOptions(): { headers: HttpHeaders } {
     return {
       headers: new HttpHeaders({
-        Authorization: this.sharedService.getToken(),
+        Authorization: `${this.sharedService.getToken()}`,
       }),
     };
   }
@@ -115,7 +112,7 @@ export class ApiManagerService extends HttpHelperService {
   get authBlobHttpOptions(): blobHttpOptions {
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.sharedService.getToken()}`,
+        Authorization: `${this.sharedService.getToken()}`,
       }),
       responseType: 'blob',
     };
