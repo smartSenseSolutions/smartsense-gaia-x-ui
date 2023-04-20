@@ -7,12 +7,11 @@
   height: 100%;
   padding: 2rem;
 
-
-
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   .searchBar {
@@ -44,16 +43,30 @@
       color: rgba($primary-dark , 0.5);
     }
 
-    .mdc-icon-button{
-      height: 2.4rem !important;
-      width: 2.4rem !important;
-      padding: 0 !important;
+    // .mdc-icon-button{
+    //   height: 2.4rem !important;
+    //   width: 2.4rem !important;
+    //   padding: 0 !important;
 
-      .mat-icon{
-        height: 2.4rem !important;
-        width: 2.4rem !important;
-        font-size: 0.8rem;
-      }
-    }
+    //   .mat-icon{
+    //     height: 2.4rem !important;
+    //     width: 2.4rem !important;
+    //     font-size: 0.8rem;
+    //   }
+    // }
   }
+
+  .filter-icon {
+    display: inline-block;
+    position: relative;
+    margin-left: 2rem;
+    top: 2px;
+
+    mat-icon {
+        // color: $grey-color-1;
+        width: 2.2rem;
+        position: relative;
+        top: 1px;
+    }
+}
 }

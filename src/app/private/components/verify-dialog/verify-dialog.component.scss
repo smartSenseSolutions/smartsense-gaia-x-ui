@@ -313,8 +313,9 @@
                 left: 2.2rem;
                 border-radius: 0.7rem;
               }
-              &:last-child{
-                &::after{
+
+              &:last-child {
+                &::after {
                   content: unset;
                 }
               }
@@ -330,6 +331,28 @@
               }
 
               &.active {
+
+
+                span {
+                  color: $black-color;
+                }
+
+                &::after {
+                  // background: $primary-color;
+                  animation: increase 1.5s linear 1s;
+                  animation-fill-mode: forwards;
+                  //   content: '';
+                  // background: #b9c6d0;
+                  // position: absolute;
+                  // height: 4rem;
+                  // width: 0.4rem;
+                  // top: 4.7rem;
+                  // left: 2.2rem;
+                  // border-radius: 0.7rem;
+                }
+              }
+
+              &.bgBlue {
                 label {
                   background-color: $primary-color;
 
@@ -346,24 +369,6 @@
                   .mat-icon {
                     color: $white-color;
                   }
-                }
-
-                span {
-                  color: $black-color;
-                }
-
-                &::after {
-                  // background: $primary-color;
-                  animation: increase 1.5s linear 1s;
-                  animation-fill-mode: forwards;
-                //   content: '';
-                // background: #b9c6d0;
-                // position: absolute;
-                // height: 4rem;
-                // width: 0.4rem;
-                // top: 4.7rem;
-                // left: 2.2rem;
-                // border-radius: 0.7rem;
                 }
               }
 

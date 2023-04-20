@@ -41,12 +41,13 @@
       <div class="certificate-verify__body--section">
         <div class="certificate-verify__body--section--results fill-section">
           <ul>
-            <li class="animated  fast delay-1s" [ngClass]="{
+            <li class="animated  fast " [ngClass]="{
                               active: currentSignupStatus > SignupStatus.DomainCreationFailed,
-                              fadeIn : currentSignupStatus > SignupStatus.DomainCreationFailed
+                              fadeIn : currentSignupStatus > SignupStatus.DomainCreationFailed ,
+                              bgBlue : true
                           }">
               <label>
-                <img *ngIf="currentSignupStatus > SignupStatus.DomainCreationFailed" class="animated  fast"
+                <img class="animated  fast"
                   [ngClass]="{fadeOut : currentSignupStatus > SignupStatus.DomainCreationFailed}"
                   src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
                 <mat-icon svgIcon="done"></mat-icon>
@@ -56,11 +57,12 @@
             </li>
 
             <li class="animated  fast " [ngClass]="{
-                              active: currentSignupStatus > SignupStatus.CertificateCreationFailed,
+                              active:currentSignupStatus > SignupStatus.CertificateCreationFailed,
                               fadeIn : currentSignupStatus > SignupStatus.CertificateCreationFailed,
+                              bgBlue: currentSignupStatus > SignupStatus.DomainCreationFailed
                           }">
               <label>
-                <img *ngIf="currentSignupStatus > SignupStatus.DomainCreationFailed" class="animated  fast delay-2s"
+                <img *ngIf="currentSignupStatus > SignupStatus.DomainCreationFailed" class="animated  fast "
                   [ngClass]="{fadeOut : currentSignupStatus > SignupStatus.CertificateCreationFailed }"
                   src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
                 <mat-icon svgIcon="done"></mat-icon>
@@ -70,10 +72,11 @@
 
             <li class="animated  fast" [ngClass]="{
                               active: currentSignupStatus > SignupStatus.IngressCreationFailed,
-                              fadeIn : currentSignupStatus > SignupStatus.IngressCreationFailed
+                              fadeIn : currentSignupStatus > SignupStatus.IngressCreationFailed,
+                              bgBlue : currentSignupStatus > SignupStatus.CertificateCreationFailed
                           }">
               <label>
-                <img *ngIf="currentSignupStatus > SignupStatus.CertificateCreationFailed" class="animated  fast delay-2s"
+                <img *ngIf="currentSignupStatus > SignupStatus.CertificateCreationFailed" class="animated  fast "
                   [ngClass]="{fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}"
                   src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
                 <mat-icon svgIcon="done"></mat-icon>
@@ -82,44 +85,48 @@
             </li>
 
             <li class="animated  fast" [ngClass]="{
-                              active:currentSignupStatus > SignupStatus.DIDJsonCreationFailed,
-                              fadeIn : currentSignupStatus > SignupStatus.DIDJsonCreationFailed
+                              active: currentSignupStatus > SignupStatus.DIDJsonCreationFailed,
+                              fadeIn : currentSignupStatus > SignupStatus.DIDJsonCreationFailed,
+                              bgBlue:currentSignupStatus > SignupStatus.IngressCreationFailed,
                           }">
               <label>
-                <img *ngIf="currentSignupStatus > SignupStatus.IngressCreationFailed" class="animated  fast delay-2s"
+                <img *ngIf="currentSignupStatus > SignupStatus.IngressCreationFailed" class="animated  fast"
                   [ngClass]="{fadeOut : currentSignupStatus > SignupStatus.DIDJsonCreationFailed}"
-                  src="../../../../assets/images/steps_loading.gif"  width="19" alt="" />
+                  src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
                 <mat-icon svgIcon="done"></mat-icon>
               </label>
               <span>Creating your unique identity</span>
             </li>
 
-            <li class="animated  fast " [ngClass]="{
-                active: currentSignupStatus === SignupStatus.ParticipantJsonCreated,
-                fadeIn :  currentSignupStatus === SignupStatus.ParticipantJsonCreated
-            }">
+            <li class="animated valid-certificate  fast " [ngClass]="{
+                active: currentSignupStatus === SignupStatus.DIDJsonCreationFailed,
+                fadeIn :  currentSignupStatus === SignupStatus.ParticipantJsonCreated,
+                bgBlue :currentSignupStatus > SignupStatus.DIDJsonCreationFailed
+            }" >
               <label>
-                <img  class="animated  fast delay-2s"
+                <img *ngIf="currentSignupStatus > SignupStatus.DIDJsonCreationFailed"
+                  class="animated valid-certificate  fast"
                   [ngClass]="{fadeOut :currentSignupStatus === SignupStatus.ParticipantJsonCreated }"
                   src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
                 <mat-icon svgIcon="verifyCertificate-1"></mat-icon>
               </label>
               <span>On-boarding you on Gaia-X</span>
             </li>
-
           </ul>
         </div>
 
-        <div class="certificate-verify__body--section--results gray-section">
+        <!-- <div class="certificate-verify__body--section--results gray-section">
           <ul>
-            <li class="animated  fast " [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
               <label>
                 <mat-icon svgIcon="notRevoked"></mat-icon>
               </label>
               <span>Creating your domain</span>
             </li>
 
-            <li class="animated  fast " [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.CertificateCreationFailed}">
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.CertificateCreationFailed}">
               <label>
                 <mat-icon svgIcon="merkle-proof"></mat-icon>
               </label>
@@ -128,28 +135,31 @@
               </span>
             </li>
 
-            <li class="animated  fast " [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
               <label>
                 <mat-icon svgIcon="blockchain-hash"></mat-icon>
               </label>
               <span>Setting up your domain name</span>
             </li>
 
-            <li class="animated  fast " [ngClass]=" {fadeOut :  currentSignupStatus > SignupStatus.DIDJsonCreationFailed}">
+            <li class="animated  fast "
+              [ngClass]="{fadeOut : currentSignupStatus > SignupStatus.DIDJsonCreationFailed}">
               <label>
                 <mat-icon svgIcon="certificate-validity"></mat-icon>
               </label>
               <span>Creating your unique identity</span>
             </li>
 
-            <li class="animated  fast " [ngClass]=" {fadeOut : currentSignupStatus === SignupStatus.ParticipantJsonCreated}">
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus === SignupStatus.ParticipantJsonCreated}">
               <label>
                 <mat-icon svgIcon="valid-certtificate"></mat-icon>
               </label>
-              <span>On-boarding you on Gaia-X </span>
+              <span>On-boarding you on Gaia-X</span>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

@@ -21,5 +21,6 @@ export const SvgConstants : string[] = [
 'issue-signature',
 'notRevoked',
 'verifyCertificate-1',
-'valid-certtificate'
+'valid-certtificate',
+'filter'
 ]
