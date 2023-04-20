@@ -17,11 +17,11 @@ html {
   }
 
   @include respond("regular-desktop") {
-    font-size: 6.5px;
+    font-size: 8.5px;
   }
 
   @include respond("small-desktop") {
-    font-size: 5.5px;
+    font-size: 9.5px;
   }
 
   @include respond("medium-desktop") {
