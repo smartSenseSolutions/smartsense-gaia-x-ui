@@ -31,3 +31,5 @@ export type ServiceOfferResponse = APIResponse<
 
 export type ServiceOfferDetailResponse =
   APIResponse<ServiceOfferResponsePayloadModel>;
+
+export type ServiceOfferDetailMetaResponse = APIResponse<Meta>;

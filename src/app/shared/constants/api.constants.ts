@@ -50,9 +50,13 @@ export const API_CONSTANTS = {
       METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/service-offers`,
     },
-    SERVICE_OFFER_DETAIL: {
+    SERVICE_OFFERS_DETAIL_WITH_OFFER_ID: {
+      METHOD: HttpMethodEnum.POST,
+      URL: `${BASE_URL}/enterprises/service-offers/{offer_id}/details`,
+    },
+    CREATE_VP: {
       METHOD: HttpMethodEnum.GET,
-      URL: `${BASE_URL}/enterprises/service-offers`,
+      URL: `${BASE_URL}/enterprises/vc/{credential_name}/vp`,
     },
   },
 };
