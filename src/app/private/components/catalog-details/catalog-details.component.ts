@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -18,6 +18,7 @@ export class CatalogDetailsComponent {
   panelOpenState = false;
   service: ServiceOfferResponsePayloadModel;
   constructor(
+    private location: Location,
     private route: ActivatedRoute,
     private serviceOfferingService: ServiceOfferingService
   ) {}
@@ -42,4 +43,8 @@ export class CatalogDetailsComponent {
         this.service = data.payload;
       });
   }
+
+  onBack = () => {
+    this.location.back();
+  };
 }

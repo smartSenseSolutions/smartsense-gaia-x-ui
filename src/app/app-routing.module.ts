@@ -93,18 +93,16 @@ const routes: Routes = [
               breadcrumb: 'Add New Service',
             },
           },
+          // {
+          //   path: RouteConstants.catalogDetails,
+          //   component: CatalogDetailsComponent,
+          //   data: {
+          //     breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+          //   },
+          // },
         ],
       },
-      // children: [
-      //   {
-      //     path: RouteConstants.catalogDetails,
-      //     component: CatalogDetailsComponent,
-      //     data: {
-      //       breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
-      //     },
-      //   },
-      // ],
-      // },
+
       {
         path: RouteConstants.catalogDetails,
         component: CatalogDetailsComponent,
