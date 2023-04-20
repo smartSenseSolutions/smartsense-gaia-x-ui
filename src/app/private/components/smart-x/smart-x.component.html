@@ -1,0 +1,56 @@
+<section class="row PLR-0">
+  <div class="col-md-3 PLR-0">
+    <ul class="sidebar">
+      <li class="sidebar__logo">
+        <div>
+          <mat-icon svgIcon="dark-logo"></mat-icon>
+        </div>
+      </li>
+      <li class="sidebar__navigation">
+        <a *ngFor="let item of MENU_ITEMS;" [routerLink]="[item.routeLink]" [routerLinkActive]="['active']">
+          <button mat-button>
+            <mat-icon svgIcon="{{ item.iconName }}"></mat-icon>
+            {{ item.label }}
+          </button>
+        </a>
+      </li>
+      <li class="sidebar__userProfile">
+        <ul>
+          <li>
+            <div class="sidebar__userProfile__placeholder">
+              <span>{{organizationNameChar}}</span>
+            </div>
+          </li>
+          <li>
+            <h5>{{username}}</h5>
+            <span>{{user?.email}}</span>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </li>
+
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item (click)="onLogoutClick()">
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </ul>
+
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9 PB-15">
+    <ul class="panel">
+      <li>
+        <app-breadcrumb />
+      </li>
+      <li class="panel__component">
+        <router-outlet></router-outlet>
+      </li>
+    </ul>
+  </div>
+</section>

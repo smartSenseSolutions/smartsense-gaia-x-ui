@@ -1,0 +1,115 @@
+<section>
+  <div class="col-md-5 PLR-0 position-fixed height-100">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
+    </div>
+  </div>
+  <div class="col-md-7 PLR-0 float-right">
+    <div class="userDetails">
+      <ul class="userDetails__signup">
+        <li class="userDetails__signup-heading">
+          <h2>Let's get started</h2>
+          <span>start your journey with us.</span>
+        </li>
+
+        <li class="userDetails__signup-form">
+          <form [formGroup]="signupForm" (ngSubmit)="onSignupStepOneFormSubmit(signupForm)">
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+                <label class="required-label">Email Address</label>
+                <input formControlName="email" matInput placeholder="Enter email address" required>
+                <mat-error *ngIf="isRequiredField(formControls['email'])">
+                  {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="isValidLength(formControls['email'])">
+                  {{ validationMsg.INVALID_EMAIL }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+                <Label class="required-label" for="password">Password</Label>
+                <input formControlName="password" matInput id="password" [type]="passStatus ? 'text' : 'password'"
+                  placeholder="Enter Password" (input)="passwordChange()">
+                <button type="button" matSuffix class="show-pass" (click)="passStatus = !passStatus">{{ passStatus ?
+                  "Hide" : "Show" }}</button>
+                <mat-error *ngIf="isRequiredField(formControls['password'])">
+                  {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+                <mat-hint align="start">
+                  <ul>
+                    <li class="MB-10">
+                      <div class="row  PLR-0">
+                        <mat-icon svgIcon="done" class="verify-pass"
+                          [class.verify-pass__not-satisfied]="!isContainUpperCaseLowerCase"
+                          [class.verify-pass__satisfied]="isContainUpperCaseLowerCase"></mat-icon>
+                        Contain UPPER & Lower-case
+                      </div>
+                      <div class="row  PLR-0">
+                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isLengthSix"
+                          [class.verify-pass__satisfied]="isLengthSix"></mat-icon>
+                        At least 6 characters long
+                      </div>
+
+                    </li>
+                    <li>
+                      <div class="row  PLR-0">
+                        <mat-icon svgIcon="done" class="verify-pass"
+                          [class.verify-pass__not-satisfied]="!isContainSpecialCharacter"
+                          [class.verify-pass__satisfied]="isContainSpecialCharacter"></mat-icon>
+                        Special Character
+                      </div>
+                      <div class="row  PLR-0">
+                        <mat-icon svgIcon="done" class="verify-pass"
+                          [class.verify-pass__not-satisfied]="!isContainNumber"
+                          [class.verify-pass__satisfied]="isContainNumber"></mat-icon>
+                        Contain a Number
+                      </div>
+                    </li>
+                  </ul>
+                </mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+                <Label class="required-label" for="confirm-password">Confirm Password</Label>
+                <input formControlName="confirmPassword" matInput id="confirm-password"
+                  [type]=" confirmPassStatus ? 'text': 'password'" placeholder="Enter Password">
+                <button type="button" matSuffix class="show-pass" (click)="confirmPassStatus = !confirmPassStatus">{{
+                  confirmPassStatus ? "Hide" : "Show" }}</button>
+                <mat-error *ngIf="isRequiredField(formControls['confirmPassword'])">
+                  {{ validationMsg.CONFIRM_PASSWORD_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="formControls['confirmPassword'].hasError('PasswordAreDifferent')">
+                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME  }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <button type="submit" class="large-btn primary-btn" mat-raised-button type="submit">
+              Proceed
+              <mat-icon matIconPrefix svgIcon="arrow-right"></mat-icon>
+            </button>
+          </form>
+        </li>
+
+        <li>
+          <p>By creating an account, you agree to our </p>
+          <p>
+            <a> Terms of Service </a> and <a> Privacy Policy</a>.
+          </p>
+
+        </li>
+
+        <li class="bottom-text">
+          <p>
+            Already have an account?
+            <a (click)="onSignInClick()"> Sign In</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

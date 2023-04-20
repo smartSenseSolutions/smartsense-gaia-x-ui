@@ -1,0 +1,13 @@
+.userDetails__login {
+  mat-icon[svgicon='arrow-right'] {
+    left: 67px;
+  }
+
+  &-form {
+    div {
+      mat-form-field {
+        margin-bottom: 4.2rem !important;
+      }
+    }
+  }
+}

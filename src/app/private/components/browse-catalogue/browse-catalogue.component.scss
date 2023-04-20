@@ -1,0 +1,72 @@
+@import "../../../../assets/scss/abstracts/abstracts.scss";
+
+.searchPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  height: 100%;
+  padding: 2rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .searchBar {
+    position: absolute;
+    left: 50%;
+    width: 35rem;
+    transform: translateX(-50%);
+    padding: 1.2rem 2.5rem;
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: #EAEDED;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-width: 0;
+
+    input {
+      border: none;
+      outline: none;
+      flex-grow: 1;
+      background-color: inherit;
+    }
+
+    ::placeholder,
+    input {
+      @include font(  1.4rem ,1.7rem , 500);
+      letter-spacing: 0px;
+      color: rgba($primary-dark , 0.5);
+    }
+
+    // .mdc-icon-button{
+    //   height: 2.4rem !important;
+    //   width: 2.4rem !important;
+    //   padding: 0 !important;
+
+    //   .mat-icon{
+    //     height: 2.4rem !important;
+    //     width: 2.4rem !important;
+    //     font-size: 0.8rem;
+    //   }
+    // }
+  }
+
+  .filter-icon {
+    display: inline-block;
+    position: relative;
+    margin-left: 2rem;
+    top: 2px;
+
+    mat-icon {
+        // color: $grey-color-1;
+        width: 2.2rem;
+        position: relative;
+        top: 1px;
+    }
+}
+}

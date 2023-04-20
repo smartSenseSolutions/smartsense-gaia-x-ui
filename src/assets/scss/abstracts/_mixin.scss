@@ -1,0 +1,159 @@
+@mixin text-overflow($width, $line: 1) {
+  display: -webkit-box;
+  max-width: $width;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// @mixin respond($breakPoint) {
+
+//   @if $breakPoint == mid-desktop {
+
+//     @media (max-width: 1540px) { // 112.5 em
+
+//       @content;
+//     }
+//   }
+
+//   @if $breakPoint == macbook {
+
+//     @media (min-width: 1367px) and (max-width: 1500px) {
+
+//       @content;
+//     }
+//   }
+
+//   @if $breakPoint == regular-desktop {
+
+//     @media (max-width: 1260px) { // 75 em
+
+//       @content;
+//     }
+//   }
+
+//   @if $breakPoint == small-desktop {
+
+//     @media (min-width: 1200px) and (max-width: 1366px) {
+
+//       @content;
+//     }
+//   }
+
+//   // @if $breakPoint == tab-port {
+
+//   //   @media (min-width: 600px) and (max-width: 1024px) { // 56.25 em
+
+//   //     @content;
+//   //   }
+//   // }
+
+//   // @if $breakPoint == tab{
+
+//   //   @media (max-width:767px){
+//   //     @content;
+//   //   }
+//   // }
+
+//   // @if $breakPoint == phone {
+
+//   //   @media (max-width: 600px) { // 37.5 em
+//   //     @content;
+//   //   }
+//   // }
+// }
+
+@mixin respond($breakPoint) {
+  // @if $breakPoint ==iphone {
+  //   @media (max-width: 320px) {
+  //     // 37.5 em
+  //     @content;
+  //   }
+  // }
+
+  // @if $breakPoint ==phone {
+  //   @media (max-width: 600px) {
+  //     @content;
+  //   }
+  // }
+
+  // @if $breakPoint ==tab-port {
+  //   @media (min-width: 600px) and (max-width: 1024px) {
+  //     // 56.25 em
+  //     @content;
+  //   }
+  // }
+
+  // @if $breakPoint ==tablet {
+  //   @media (min-width: 768px) and (max-width: 1024px) {
+  //     // 56.25 em
+  //     @content;
+  //   }
+  // }
+
+  // @if $breakPoint ==tablet-pro {
+  //   @media (min-width: 768px) and (max-width: 1023px) {
+  //     // 56.25 em
+  //     @content;
+  //   }
+  // }
+
+  @if $breakPoint ==small-desktop {
+    @media (min-width: 1025px) and (max-width: 1274px) {
+      @content;
+    }
+  }
+
+  @if $breakPoint ==regular-desktop {
+    @media (min-width: 1275px) and (max-width: 1440px) {
+      @content;
+    }
+  }
+
+  @if $breakPoint ==medium-desktop {
+    @media (min-width: 1441px) and (max-width: 1600px) {
+      @content;
+    }
+  }
+
+  @if $breakPoint ==large-desktop {
+    @media (min-width: 1900px) {
+      // 112.5 em
+
+      @content;
+    }
+  }
+
+  @if $breakPoint == big-desktop {
+    @media (max-width: 1900px) {
+      // 112.5 em
+
+      @content;
+    }
+  }
+}
+
+/*height and width square*/
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin font($font-size, $line-height, $font-weight: "") {
+  font-size: $font-size;
+  line-height: $line-height;
+
+  @if $font-weight != "" {
+    font-weight: $font-weight;
+  }
+}
+//
+// Border Radius mixin
+//
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}

@@ -1,0 +1,196 @@
+<section>
+  <div class="col-md-5 PLR-0 position-fixed height-100">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
+    </div>
+  </div>
+
+  <div class="col-md-7 PLR-0 float-right">
+    <div class="userDetails">
+      <ul class="userDetails__signup-2">
+        <li>
+          <button class="back-btn underline" type="button">
+            <a (click)="onBackClick()">Go Back</a>
+          </button>
+        </li>
+        <li class="userDetails__signup-2-heading">
+          <h2>Let's get started</h2>
+          <span>Start your journey with us.</span>
+        </li>
+
+        <li class="userDetails__signup-2-form">
+          <form [formGroup]="signupForm" (ngSubmit)="onSignupStepTwoFormSubmit(signupForm)">
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <label class="required-label" for="legalName">Legal Name</label>
+                <input formControlName="legalName" matInput id="legalName"
+                  placeholder="Please enter company's legal name" required>
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label class="required-label" for="Short Name">Short Name</Label>
+                <input formControlName="subDomainName" matInput id="Short Name" type="text"
+                  placeholder="Please enter the company's short name">
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label class="required-label" for="legalRegistrationType">Legal Registration Type</Label>
+                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type" panelClass="customSelect"
+                  #registrationType>
+                  <mat-option *ngFor="let type of REGISTRATION_TYPES" [value]="type.value">
+                    {{type.label}}
+                  </mat-option>
+                </mat-select>
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="getRegistrationNumberLabel(registrationType.value)">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalRegistrationNumber">{{getRegistrationNumberLabel(registrationType.value)}} Number
+
+                </Label>
+                <input formControlName="legalRegistrationNumber" matInput id="legalRegistrationNumber" type="text"
+                  [placeholder]="'Enter ' + getRegistrationNumberLabel(registrationType.value) + ' Number'">
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <!-- <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="addressCountryCode">Address Country Code</Label>
+                <input formControlName="addressCountryCode" matInput id="addressCountryCode" type="text"
+                  placeholder="Enter country code" />
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="addressCode">Headquarters Country Subdivision Code</Label>
+                <!-- <input formControlName="addressCode" matInput id="addressCode" type="text"
+                placeholder="Enter country code" /> -->
+                <mat-select panelClass="customSelect" formControlName="addressCode" name="addressCode"
+                  placeholder="Select headquarters country subdivision code" #addressCode>
+                  <mat-option *ngFor="let type of COUNTRY_SUBDIVISION_CODES" [value]="type.value">
+                    {{type.label}}
+                  </mat-option>
+                </mat-select>
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <!-- <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="streetAddress">Street Address</Label>
+                <input formControlName="streetAddress" matInput id="streetAddress" type="text"
+                  placeholder="Enter Street Address"/>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <!-- <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="postalCode">Postal Code</Label>
+                <input formControlName="postalCode" matInput id="postalCode" type="text"
+                  placeholder="Enter postal code" />
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <!-- <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="locality">locality</Label>
+                <input formControlName="locality" matInput id="locality" type="text"
+                  placeholder="Enter locality" />
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-checkbox class="legalAddressCheckBox" (change)="onSameAddressCheckboxChange($event)">is legal address
+                same</mat-checkbox>
+            </div> -->
+
+            <!-- <div *ngIf="!formControls['legalAddressCountryCode'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalAddressCountryCode">Legal Address</Label>
+                <input formControlName="legalAddressCountryCode" matInput id="legalAddressCountryCode" type="text"
+                  placeholder="Enter Legal Address Country Code">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <div *ngIf="!formControls['legalAddressCode'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalAddressCode">Legal Country Subdivision Code</Label>
+                <!-- <input formControlName="legalAddressCode" matInput id="legalAddressCode" type="text"
+                  placeholder="Enter Legal Address Code"> -->
+                <mat-select panelClass="customSelect" formControlName="legalAddressCode" name="legalAddressCode"
+                  placeholder="Select legal country subdivision code" #legalAddressCode>
+                  <mat-option *ngFor="let type of COUNTRY_SUBDIVISION_CODES" [value]="type.value">
+                    {{type.label}}
+                  </mat-option>
+                </mat-select>
+                <!-- @To do -->
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <!-- <div *ngIf="!formControls['legalStreetAddress'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalStreetAddress">Legal Street Address</Label>
+                <input formControlName="legalStreetAddress" matInput id="legalStreetAddress" type="text"
+                  placeholder="Enter Legal Street Address">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <!-- <div *ngIf="!formControls['legalPostalCode'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalPostalCode">Legal Postal Code</Label>
+                <input formControlName="legalPostalCode" matInput id="legalPostalCode" type="text"
+                  placeholder="Enter Legal Postal Code">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <!-- <div *ngIf="!formControls['legalLocality'].disabled">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="legalLocality">Legal Locality</Label>
+                <input formControlName="legalLocality" matInput id="legalLocality" type="text"
+                  placeholder="Enter Legal Locality">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <div>
+              <mat-checkbox disableRipple="true" formControlName="termsAndConditions">
+                I agree to Gaia-X <a class="underline">Terms of Service</a> and <a class="underline">Privacy Policy</a>.
+              </mat-checkbox>
+              <button class="large-btn primary-btn" mat-raised-button type="submit">
+                Register
+                <mat-icon svgIcon="arrow-right"></mat-icon>
+              </button>
+            </div>
+
+          </form>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</section>

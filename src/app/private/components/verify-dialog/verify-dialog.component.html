@@ -1,0 +1,153 @@
+<div class="certification-verify-dialog-container">
+  <div class="certificate-verify">
+    <div class="certificate-verify__top">
+      <div class="certificate-verify__top--header">
+        <h2>Register</h2>
+      </div>
+
+      <div class="certificate-verify__top--close-icon">
+        <a (click)="onCloseDialog()">
+          <mat-icon svgIcon="close"></mat-icon>
+        </a>
+      </div>
+    </div>
+
+    <div class="certificate-verify__body">
+      <div class="certificate-verify__body--progress-bar">
+        <!-- Certificate processing section -->
+        <div class="animated fadeOut fast delay-11s" *ngIf="isSignupInProgress">
+          <span>
+            <img src="../../../../assets/images/loader-blue.gif" alt="" />
+          </span>
+          <label>Processing Registration</label>
+        </div>
+
+        <!-- Certificate verified section -->
+        <div class="animated fadeIn fast" *ngIf="!isSignupInProgress">
+          <div *ngIf="currentSignupStatus === SignupStatus.ParticipantJsonCreated"
+            class="certificate-verify__body--progress-bar--verified">
+            <div class="certificate-verify__body--progress-bar--verified--icon">
+              <mat-icon svgIcon="done"></mat-icon>
+            </div>
+            <div class="certificate-verify__body--progress-bar--verified--label">
+              <label>Registration Successful!</label>
+              <span>You're successfully on-boarded!</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="certificate-verify__body--section">
+        <div class="certificate-verify__body--section--results fill-section">
+          <ul>
+            <li class="animated  fast " [ngClass]="{
+              inProgress: currentSignupStatus < SignupStatus.DomainCreated ||currentSignupStatus === SignupStatus.DomainCreationFailed,
+              completed : currentSignupStatus === SignupStatus.DomainCreated || currentSignupStatus > SignupStatus.DomainCreationFailed }">
+              <label>
+                <img class="animated  fast" src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+              </label>
+              <span>Creating your domain</span>
+            </li>
+
+            <li class="animated  fast" [ngClass]="{
+              inProgress: (currentSignupStatus === SignupStatus.DomainCreated )  || currentSignupStatus === SignupStatus.CertificateCreationFailed,
+              completed : currentSignupStatus === SignupStatus.CertificateCreated || currentSignupStatus > SignupStatus.CertificateCreationFailed,
+                          }">
+              <label>
+                <img class="animated fast " src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+              </label>
+              <span>Creating keys</span>
+            </li>
+
+            <li class="animated  fast" [ngClass]="{
+
+              inProgress: (currentSignupStatus === SignupStatus.CertificateCreated )  || currentSignupStatus === SignupStatus.IngressCreationFailed,
+              completed : currentSignupStatus === SignupStatus.IngressCreated || currentSignupStatus > SignupStatus.IngressCreationFailed,
+
+                          }">
+              <label>
+                <img class="animated  fast " src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+              </label>
+              <span>Setting up your domain name</span>
+            </li>
+
+            <li class="animated  fast" [ngClass]="{
+
+              inProgress: (currentSignupStatus === SignupStatus.IngressCreated )  || currentSignupStatus === SignupStatus.DIDJsonCreationFailed,
+              completed : currentSignupStatus === SignupStatus.DIDJsonCreated || currentSignupStatus > SignupStatus.DIDJsonCreationFailed
+                          }">
+              <label>
+                <img class="animated  fast" src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+              </label>
+              <span>Creating your unique identity</span>
+            </li>
+
+            <li class="animated  fast " [ngClass]="{
+
+              inProgress: (currentSignupStatus === SignupStatus.DIDJsonCreated )  || currentSignupStatus === SignupStatus.ParticipantJsonCreationFailed,
+              completed : currentSignupStatus === SignupStatus.ParticipantJsonCreated ,
+            }">
+              <label>
+                <img class="animated valid-certificate  fast" src="../../../../assets/images/steps_loading.gif"
+                  width="19" alt="" />
+                <mat-icon svgIcon="done"></mat-icon>
+              </label>
+              <span>On-boarding you on Gaia-X</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <div class="certificate-verify__body--section--results gray-section">
+          <ul>
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
+              <label>
+                <mat-icon svgIcon="notRevoked"></mat-icon>
+              </label>
+              <span>Creating your domain</span>
+            </li>
+
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.CertificateCreationFailed}">
+              <label>
+                <mat-icon svgIcon="merkle-proof"></mat-icon>
+              </label>
+              <span>
+                Creating keys
+              </span>
+            </li>
+
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
+              <label>
+                <mat-icon svgIcon="blockchain-hash"></mat-icon>
+              </label>
+              <span>Setting up your domain name</span>
+            </li>
+
+            <li class="animated  fast "
+              [ngClass]="{fadeOut : currentSignupStatus > SignupStatus.DIDJsonCreationFailed}">
+              <label>
+                <mat-icon svgIcon="certificate-validity"></mat-icon>
+              </label>
+              <span>Creating your unique identity</span>
+            </li>
+
+            <li class="animated  fast "
+              [ngClass]=" {fadeOut : currentSignupStatus === SignupStatus.ParticipantJsonCreated}">
+              <label>
+                <mat-icon svgIcon="valid-certtificate"></mat-icon>
+              </label>
+              <span>On-boarding you on Gaia-X</span>
+            </li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@import "../abstracts/abstracts.scss";
+
+.mat-mdc-progress-bar {
+  position: fixed !important;
+  top:0 !important;
+  left: 0 !important;
+  z-index: 1000;
+
+  .mdc-linear-progress {
+    &__buffer {
+      &-bar {
+        background-color: $white-color !important;
+      }
+    }
+
+    &__bar {
+      &-inner {
+        border-color: rgb(163, 163, 163) !important;
+      }
+    }
+  }
+}

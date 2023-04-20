@@ -1,0 +1,12 @@
+@import "../../scss/abstracts/abstracts.scss";
+
+.custom-tooltip {
+
+  opacity: 1;
+
+  .mdc-tooltip__surface {
+    background-color: $primary-dark;
+    color: $white-color;
+    border-radius: 6px;
+  }
+}

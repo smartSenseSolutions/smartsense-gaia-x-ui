@@ -1,0 +1,4 @@
+<app-signup-step-one *ngIf="activeStep == SignupStep.ONE"
+    (onStepOneComplete)="onStepOneComplete($event)"></app-signup-step-one>
+<app-signup-step-two *ngIf="activeStep == SignupStep.TWO" (onStepTwoComplete)="onStepTwoComplete($event)"
+    (onBackEventClick)="onBackClick()"></app-signup-step-two>

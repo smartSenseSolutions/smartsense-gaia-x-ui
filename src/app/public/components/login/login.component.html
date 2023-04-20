@@ -1,0 +1,69 @@
+<section>
+  <div class="col-md-5 PLR-0 position-fixed height-100">
+    <div class="bg-main">
+      <mat-icon svgIcon="logo" class="bg-main__logo"></mat-icon>
+      <!-- <img class="bg-main__logo" src="../../../../assets/images/Logo.png" alt="Smart-X logo"> -->
+      <h1>Where greatness </h1>
+      <h1>happens.</h1>
+      <mat-icon svgIcon="bg-helper" class="bg-main__helper"></mat-icon>
+      <!-- <img class="bg-main__helper" src="../../../../assets/images/bg-helper.png" alt="background image"> -->
+    </div>
+  </div>
+  <div class="col-md-7 PLR-0 float-right">
+    <div class="userDetails">
+
+      <ul class="userDetails__login">
+        <li class="userDetails__login-heading">
+          <h2>Welcome</h2>
+          <span>Enter your <b>{{loginType === UserType.Admin ? 'admin' : 'enterprise'}}</b> credential to access your
+            account</span>
+        </li>
+
+
+        <li class="userDetails__login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm)">
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <label for="email">Username</label>
+                <input formControlName="email" matInput id="email" placeholder="Enter email" required>
+                <mat-error *ngIf="isRequiredField(formControls['email'])">
+                  {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="isValidLength(formControls['email'])">
+                  {{ validationMsg.INVALID_EMAIL }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="fill" floatLabel="always">
+                <Label for="password">Password</Label>
+                <input formControlName="password" matInput id="password" [type]="canShowPassword ? 'text' :'password'"
+                  placeholder="Enter Password" required>
+                <button type="button" matSuffix class="show-pass" (click)="canShowPassword = !canShowPassword">{{
+                  canShowPassword ?
+                  "Hide" : "Show" }}</button>
+                <mat-error *ngIf="isRequiredField(formControls['password'])">
+                  {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+              </mat-form-field>
+            </div>
+            <button type="submit" class="large-btn primary-btn" mat-raised-button>
+              Login
+              <mat-icon svgIcon="arrow-right"></mat-icon>
+            </button>
+          </form>
+        </li>
+
+        <li>
+          <p>Forgot your password? <a>Reset Here</a></p>
+        </li>
+
+        <li class="bottom-text">
+          <p>Don't have an account?
+            <a (click)="onSignUpClick()">
+              Sign Up
+            </a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

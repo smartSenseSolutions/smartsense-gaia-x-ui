@@ -1,0 +1,136 @@
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion) {
+  .animated {
+    -webkit-animation: unset !important;
+    animation: unset !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+.animated.fast {
+  -webkit-animation-duration: 800ms;
+  animation-duration: 800ms;
+}
+
+
+.animated.delay-1s {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.animated.delay-2s {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.animated.delay-3s {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+}
+
+.animated.delay-4s {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+
+.animated.delay-5s {
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+}
+
+.animated.delay-6s {
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.animated.delay-7s {
+  -webkit-animation-delay: 7s;
+  animation-delay: 7s;
+}
+
+.animated.delay-8s {
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+}
+
+.animated.delay-9s {
+  -webkit-animation-delay: 9s;
+  animation-delay: 9s;
+}
+
+.animated.delay-10s {
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+}
+
+.animated.delay-11s {
+  -webkit-animation-delay: 11s;
+  animation-delay: 11s;
+}
+
+.animated.delay-12s {
+  -webkit-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+.animated.delay-14s {
+  -webkit-animation-delay: 14s;
+  animation-delay: 14s;
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}

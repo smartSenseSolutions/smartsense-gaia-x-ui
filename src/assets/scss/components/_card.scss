@@ -1,0 +1,98 @@
+@import "../abstracts/abstracts.scss";
+
+.card {
+  background: #F7F7F7;
+  border-radius: 12px;
+  height: 47.6rem !important;
+
+  .mat-button {
+    display: inline-block;
+  }
+
+  &__image {
+    height: 22rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__data {
+    height: 25.4rem;
+    padding: 2rem;
+    text-align: left;
+    position: relative;
+
+    &--title {
+      @include font(1.8rem, 2.1rem, bold);
+      @include text-overflow(100%, 2);
+      min-height: 4.2rem;
+      letter-spacing: 0px;
+      color: $primary-color;
+      margin-bottom: 2rem;
+    }
+
+    &--disc {
+      @include font(1.6rem, 2rem);
+      @include text-overflow(100%, 3);
+      letter-spacing: 0px;
+      color: rgba($primary-dark , 0.8);
+      margin-bottom: 1.5rem;
+      min-height: 5.7rem;
+    }
+
+    &--company {
+      @include font(1.6rem, 2rem);
+      min-height: 2rem;
+      margin-bottom: 2rem;
+      span {
+        color: rgba($primary-dark , 0.8);
+        @include text-overflow(100% , 1);
+      }
+
+      b {
+        margin-left: 0.7rem;
+        font-weight: 600;
+        color: $primary-dark;
+      }
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.2rem;
+      align-items: center;
+
+      button {
+        &.mdc-button {
+          &--raised {
+            background: $primary-dark !important;
+            border-radius: 25px;
+            color: $white-color;
+          }
+        }
+
+        .mdc-button {
+          &__label {
+            @include font(1.4rem, 1.7rem, 500);
+            text-align: left;
+            letter-spacing: 0px;
+            color: $white-color;
+          }
+        }
+
+        &.mdc-fab {
+          &--mini {
+            box-shadow: none;
+            background-color: rgba(#121E2A, 0.1);
+            color: black;
+          }
+        }
+
+      }
+    }
+  }
+
+
+}

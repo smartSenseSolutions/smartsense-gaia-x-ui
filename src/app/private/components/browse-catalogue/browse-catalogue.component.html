@@ -1,0 +1,32 @@
+<section class="searchPanel">
+  <div class="searchPanel__header">
+    <h3>Search</h3>
+    <form class="searchBar">
+      <input
+        type="text"
+        placeholder="Search"
+        [formControl]="product"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete class="customSelect" #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let product of filteredProducts | async"
+          [value]="product"
+        >
+          {{ product }}
+        </mat-option>
+      </mat-autocomplete>
+      <button mat-icon-button>
+        <mat-icon svgIcon="search-grey"></mat-icon>
+      </button>
+    </form>
+    <a (mouseover)="onShowFilter()" class="filter-icon">
+      <mat-icon svgIcon="filter"></mat-icon>
+    </a>
+  </div>
+  <app-card-box
+    [showCompany]="true"
+    [serviceList]="serviceList"
+    (onViewDetailClickEvent)="onShareInfo($event)"
+  ></app-card-box>
+</section>

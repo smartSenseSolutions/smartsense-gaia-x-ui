@@ -1,0 +1,15 @@
+.userDetails__signup
+ {
+  mat-icon[svgicon='arrow-right'] {
+    left: 9rem;
+  }
+
+  &-form {
+    div {
+      mat-form-field {
+        margin-bottom: 4.2rem !important;
+      }
+    }
+  }
+
+}
