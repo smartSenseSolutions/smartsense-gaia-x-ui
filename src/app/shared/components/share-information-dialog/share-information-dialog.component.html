@@ -1,6 +1,13 @@
 <div class="dialog-container">
   <div class="dialog-container__head">
-    <h3>Share your information</h3>
+    <h3 *ngIf="activeState === DataShareEnum.START">Share your information</h3>
+    <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">
+      Verifiable Presentation
+    </h3>
+    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">
+      Verifiable Presentation
+    </h3>
+    <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Verified</h3>
     <a (click)="onCloseDialog(false)" matTooltip="close">
       <mat-icon svgIcon="close"></mat-icon>
     </a>
@@ -10,29 +17,31 @@
     <div *ngIf="activeState === DataShareEnum.START" class="confirm-info">
       <img src="./assets/images/shareInfo.png" alt="shareInformation" />
       <p>
-        You need to share your credentials in order to access the service
-        details.<br />
-        If you agree, please confirm & proceed.
+        In order to access the service, you need to share the legal
+        participant's credentials issued by Gaia-X. <br />If you agree, please
+        confirm & proceed.
       </p>
       <button (click)="generateVP()" class="dark-btn">Yes, I Confirm</button>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.VP_GENERATE">
       <img src="./assets/images/loading.gif" alt="" />
-      <p class="medium-text">Generating your VP</p>
+      <p class="medium-text">Generating your Verifiable Presentation</p>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.VERIFYING">
       <!-- <img src="./assets/images/loading.gif" alt="" /> -->
-      <p>Verify your VP</p>
+      <p>Verifiable presentation created for legal participant's credentials</p>
       <ngx-json-viewer [json]="vp" [expanded]="false"></ngx-json-viewer>
-      <button class="dark-btn" (click)="verifyVP()">Verify</button>
+      <button class="dark-btn" (click)="verifyVP()">Share VP</button>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.SUCCESS">
       <img src="./assets/images/quality.png" alt="" />
-      <p>Your VP is successfully verified.</p>
-      <button class="dark-btn" (click)="onCloseDialog(true)">View Detail</button>
+      <p>Legal participant's credential is verified successfully</p>
+      <button class="dark-btn" (click)="onCloseDialog(true)">
+        View Service
+      </button>
     </div>
   </div>
 </div>
