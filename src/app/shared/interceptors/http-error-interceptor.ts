@@ -59,7 +59,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             };
             reader.readAsText(err.error);
           } else {
-            const message = err.error.error;
+            const message = err.error.error ||  err.error.message;
             if (message) {
               this.sharedService.setSnackBar(message);
             }

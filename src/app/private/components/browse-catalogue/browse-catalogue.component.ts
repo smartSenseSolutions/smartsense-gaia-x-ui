@@ -57,7 +57,7 @@ export class BrowseCatalogueComponent {
   }
 
   getServiceOffering() {
-    this.serviceOfferingService.getCatalogue({}).subscribe((data) => {
+    this.serviceOfferingService.getCatalogue().subscribe((data) => {
       this.serviceList = data.payload;
     });
   }

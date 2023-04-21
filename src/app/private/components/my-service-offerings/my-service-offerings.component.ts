@@ -34,7 +34,7 @@ export class MyServiceOfferingsComponent implements OnInit {
   }
 
   getServiceOffering() {
-    this.serviceOfferingService.getServiceOffers({}).subscribe((data) => {
+    this.serviceOfferingService.getServiceOffers().subscribe((data) => {
       this.serviceList = data.payload;
     });
   }
