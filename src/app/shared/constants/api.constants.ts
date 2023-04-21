@@ -38,6 +38,10 @@ export const API_CONSTANTS = {
     },
   },
   ENTERPRISE: {
+    DETAIL: {
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/enterprises`,
+    },
     CATALOGUE: {
       METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/catalogue`,
