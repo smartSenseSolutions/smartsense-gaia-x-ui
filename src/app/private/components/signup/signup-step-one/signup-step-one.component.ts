@@ -16,6 +16,7 @@ import { SignStepOneModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import RegexConstant from 'src/app/shared/constants/regex.constants';
+import Validation from 'src/app/shared/functions/common-function';
 
 @Component({
   selector: 'app-signup-step-one',
@@ -65,26 +66,31 @@ export class SignupStepOneComponent
   }
 
   ngOnInit(): void {
-    this.signupForm = new FormGroup({
-      email: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.email : '',
-        [Validators.required]
-      ),
-      password: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : '',
-        [
-          Validators.required,
-          Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
-          Validators.pattern(RegexConstant.MIN_LENGTH_SIX),
-          Validators.pattern(RegexConstant.SPECIAL_CHARACTER),
-          Validators.pattern(RegexConstant.CONTAIN_NUMBER),
-        ]
-      ),
-      confirmPassword: new FormControl(
-        this.stepOneFormData ? this.stepOneFormData.password : '',
-        [Validators.required]
-      ),
-    });
+    this.signupForm = new FormGroup(
+      {
+        email: new FormControl(
+          this.stepOneFormData ? this.stepOneFormData.email : '',
+          [Validators.required]
+        ),
+        password: new FormControl(
+          this.stepOneFormData ? this.stepOneFormData.password : '',
+          [
+            Validators.required,
+            Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
+            Validators.pattern(RegexConstant.MIN_LENGTH_SIX),
+            Validators.pattern(RegexConstant.SPECIAL_CHARACTER),
+            Validators.pattern(RegexConstant.CONTAIN_NUMBER),
+          ]
+        ),
+        confirmPassword: new FormControl(
+          this.stepOneFormData ? this.stepOneFormData.password : '',
+          [Validators.required]
+        ),
+      },
+      {
+        validators: [Validation.match('password', 'confirmPassword')]
+      }
+    );
   }
 
   onSignupStepOneFormSubmit = (signupForm: FormGroup) => {
@@ -111,5 +117,11 @@ export class SignupStepOneComponent
       RegexConstant.SPECIAL_CHARACTER.test(controlValue);
     this.isContainNumber = RegexConstant.CONTAIN_NUMBER.test(controlValue);
     this.isLengthSix = RegexConstant.MIN_LENGTH_SIX.test(controlValue);
+  }
+
+  password(formGroup: FormGroup) {
+    const password = formGroup.get('password');
+    const confirmPassword = formGroup.get('confirmPassword');
+    return password === confirmPassword ? null : { passwordNotMatch: true };
   }
 }
