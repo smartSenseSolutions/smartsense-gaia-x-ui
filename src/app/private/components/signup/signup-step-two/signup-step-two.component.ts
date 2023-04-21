@@ -20,6 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SignStepTwoModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { ValidationConstant } from 'src/app/shared/constants';
+import { alphaNumericValidator } from 'src/app/shared/functions';
 import {
   COUNTRY_SUBDIVISION_CODES,
   REGISTRATION_TYPES,
@@ -91,7 +92,12 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       ),
       subDomainName: new FormControl(
         this.stepTwoFormData ? this.stepTwoFormData.subDomainName : 'Mercedes',
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(12),
+          alphaNumericValidator,
+        ]
       ),
       legalRegistrationType: new FormControl(
         this.stepTwoFormData
@@ -106,8 +112,12 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       legalRegistrationNumber: new FormControl(
         this.stepTwoFormData
           ? this.stepTwoFormData.legalRegistrationNumber
-          : '123456789',
-        [Validators.required]
+          : '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(255),
+        ]
       ),
 
       // addressCountryCode: new FormControl(

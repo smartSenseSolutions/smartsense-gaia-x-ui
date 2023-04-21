@@ -98,11 +98,11 @@
                   {{ validationMsg.LEGAL_REGISTRATION_NUMBER_IS_REQUIRED }}
                 </mat-error>
 
-                <mat-error *ngIf="formControls['subDomainName'].hasError('minlength')">
+                <mat-error *ngIf="formControls['legalRegistrationNumber'].hasError('minlength')">
                   {{ validationMsg.MIN_LENGTH_3 }}
                 </mat-error>
 
-                <mat-error *ngIf="formControls['subDomainName'].hasError('maxlength')">
+                <mat-error *ngIf="formControls['legalRegistrationNumber'].hasError('maxlength')">
                   {{ validationMsg.MAX_LENGTH_255 }}
                 </mat-error>
               </mat-form-field>
