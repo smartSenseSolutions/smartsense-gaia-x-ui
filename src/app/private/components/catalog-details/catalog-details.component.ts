@@ -37,11 +37,9 @@ export class CatalogDetailsComponent {
   }
 
   getServiceOfferingDetail(id: string) {
-    this.serviceOfferingService
-      .getServiceOffersDetail({}, id)
-      .subscribe((data) => {
-        this.service = data.payload;
-      });
+    this.serviceOfferingService.getServiceOffersDetail(id).subscribe((data) => {
+      this.service = data.payload;
+    });
   }
 
   onBack = () => {

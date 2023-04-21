@@ -39,6 +39,15 @@ export class MyServiceOfferingsComponent implements OnInit {
     });
   }
 
+  onViewDetailClick = (service: ServiceOfferResponsePayloadModel) => {
+    this.route.navigate(
+      [
+        `${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}/${RouteConstants.Detail}`,
+      ],
+      { queryParams: { id: service.id } }
+    );
+  };
+
   redirect() {
     this.route.navigateByUrl(
       `${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}/${RouteConstants.AddNewService}`

@@ -8,5 +8,5 @@ export const RouteConstants = {
   BrowseCatalogue: 'browse-catalogue',
   MyServiceOfferings: 'my-service-offerings',
   AddNewService: 'add-service',
-  catalogDetails: 'catalog-details',
+  Detail: 'detail',
 };

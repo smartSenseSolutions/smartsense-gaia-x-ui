@@ -10,7 +10,10 @@ import {
   WalletComponent,
 } from './private/components';
 import { AddNewServiceComponent } from './private/components/add-service/add-new-service/add-new-service.component';
-import { DashboardResolver } from './private/resolver';
+import {
+  DashboardResolver,
+  ServiceOfferingDetailResolver,
+} from './private/resolver';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
@@ -81,18 +84,36 @@ const routes: Routes = [
       },
       {
         path: RouteConstants.BrowseCatalogue,
-        component: BrowseCatalogueComponent,
         data: {
           breadcrumb: 'Browser Catalogue',
         },
+        children: [
+          {
+            path: '',
+            component: BrowseCatalogueComponent,
+          },
+          {
+            path: RouteConstants.Detail,
+            component: CatalogDetailsComponent,
+            data: {
+              breadcrumb: '{{service.label}}',
+            },
+            resolve: {
+              service: ServiceOfferingDetailResolver,
+            },
+          },
+        ],
       },
       {
         path: RouteConstants.MyServiceOfferings,
-        component: MyServiceOfferingsComponent,
         data: {
           breadcrumb: 'My Service Offerings',
         },
         children: [
+          {
+            path: '',
+            component: MyServiceOfferingsComponent,
+          },
           {
             path: RouteConstants.AddNewService,
             component: AddNewServiceComponent,
@@ -100,22 +121,17 @@ const routes: Routes = [
               breadcrumb: 'Add New Service',
             },
           },
-          // {
-          //   path: RouteConstants.catalogDetails,
-          //   component: CatalogDetailsComponent,
-          //   data: {
-          //     breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
-          //   },
-          // },
+          {
+            path: RouteConstants.Detail,
+            component: CatalogDetailsComponent,
+            data: {
+              breadcrumb: '{{service.label}}',
+            },
+            resolve: {
+              service: ServiceOfferingDetailResolver,
+            },
+          },
         ],
-      },
-
-      {
-        path: RouteConstants.catalogDetails,
-        component: CatalogDetailsComponent,
-        data: {
-          breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
-        },
       },
     ],
   },

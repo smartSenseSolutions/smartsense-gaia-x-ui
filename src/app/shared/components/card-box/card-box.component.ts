@@ -21,16 +21,8 @@ export class CardBoxComponent {
 
   image: string = '../../../../assets/images/service-catalog-1.png';
   constructor(private route: Router) {}
-  onViewDetailsClick = (service: ServiceOfferResponsePayloadModel) => {
-    if (this.showCompany) {
-      this.onViewDetailClickEvent.emit(service);
-    } else {
-      this.route.navigate(
-        [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
-        { queryParams: { id: service.id } }
-      );
-    }
-  };
 
-  
+  onViewDetailsClick = (service: ServiceOfferResponsePayloadModel) => {
+    this.onViewDetailClickEvent.emit(service);
+  };
 }
