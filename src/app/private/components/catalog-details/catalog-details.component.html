@@ -6,7 +6,7 @@
       </a>
       <h3>Catalog-details</h3>
     </div>
-    <div *ngIf="service"  class="flex-center-right">
+    <div *ngIf="service" class="flex-center-right">
       <a [href]="service.terms" target="_blank">Terms</a>
       <!-- <a [href]="service.terms" target="_blank">Policy</a> -->
       <a matTooltip="Click to Download full report" class="download-btn">
@@ -18,7 +18,7 @@
     <div>
       <img src="./assets/images/catalogPlaceholder.png" alt="" />
     </div>
-    <div class="width-100">
+    <div class="catalog-details-container__right-content">
       <h5>{{ service.label }}</h5>
       <span class="company-name">{{ service.enterpriseName }}</span>
       <p>
@@ -26,9 +26,10 @@
       </p>
 
       <div class="catalog-details-container__accordian">
-        <mat-accordion [multi]="false">
+        <mat-accordion [multi]="true">
           <mat-expansion-panel
             *ngFor="let item of service.meta | keyvalue"
+            ;
             (opened)="panelOpenState = true"
             (closed)="panelOpenState = false"
           >
