@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -12,8 +12,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { AddServiceModel } from 'src/app/private/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { AddServiceValidationConstant } from 'src/app/shared/constants';
+import {
+  ACCESS_TYPES,
+  REQUEST_TYPES,
+  FORMAT_TYPES,
+} from './add-new-service.constants';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-new-service',
@@ -25,7 +32,7 @@ import { AddServiceValidationConstant } from 'src/app/shared/constants';
     MatSelectModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './add-new-service.component.html',
   styleUrls: ['./add-new-service.component.scss'],
@@ -34,10 +41,17 @@ export class AddNewServiceComponent
   extends FormBaseComponent
   implements OnInit
 {
+  @Input() addServiceFormData: AddServiceModel | undefined;
+  @Output() onAddServiceFormComplete = new EventEmitter<AddServiceModel>();
+
+  readonly ACCESS_TYPES = ACCESS_TYPES;
+  readonly REQUEST_TYPES = REQUEST_TYPES;
+  readonly FORMAT_TYPES = FORMAT_TYPES;
+
   addServiceForm: any;
   validationMsg = new AddServiceValidationConstant();
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private location: Location) {
     super(fb);
   }
 
@@ -47,17 +61,46 @@ export class AddNewServiceComponent
 
   initialization = () => {
     this.addServiceForm = new FormGroup({
-      serviceName: new FormControl('', Validators.required),
-      policies: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      accessType: new FormControl('', Validators.required),
-      requestType: new FormControl('', Validators.required),
-      formatType: new FormControl('', Validators.required),
-      termsAndCondition: new FormControl('', Validators.required),
+      name: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.name : '',
+        Validators.required
+      ),
+      policy: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.policy : '',
+        Validators.required
+      ),
+      description: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.description : '',
+        Validators.required
+      ),
+      accessType: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.accessType : '',
+        Validators.required
+      ),
+      requestType: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.requestType : '',
+        Validators.required
+      ),
+      formatType: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.formatType : '',
+        Validators.required
+      ),
+      terms: new FormControl(
+        this.addServiceFormData ? this.addServiceFormData.terms : '',
+        Validators.required
+      ),
     });
   };
 
-  onAddServiceFormSubmit = (form: FormGroup) => {};
+  onAddServiceFormSubmit = (form: FormGroup) => {
+    if (this.onSubmit(form)) {
+      this.onAddServiceFormComplete.emit(form.getRawValue());
+    }
+  };
+
+  onBackClick = () => {
+    this.location.back();
+  };
 
   get formControls() {
     return this.addServiceForm.controls;
