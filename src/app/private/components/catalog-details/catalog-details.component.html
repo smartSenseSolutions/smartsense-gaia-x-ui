@@ -27,33 +27,18 @@
 
       <div class="catalog-details-container__accordian">
         <mat-accordion [multi]="true">
-          <mat-expansion-panel
-            *ngFor="let item of service.meta | keyvalue"
-            ;
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-          >
-            <mat-expansion-panel-header
-              [collapsedHeight]="'5rem'"
-              [expandedHeight]="'5rem'"
-            >
+          <mat-expansion-panel *ngFor="let item of service.meta | keyvalue;first as isFirst" [expanded]="isFirst" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
               <mat-panel-title>{{ item.key }}</mat-panel-title>
             </mat-expansion-panel-header>
             <div class="expansion-body">
               <div class="row">
-                <div
-                  *ngFor="let childItem of item.value | keyvalue"
-                  class="col-md-4"
-                >
+                <div *ngFor="let childItem of item.value | keyvalue" class="col-md-4">
                   <label>{{ childItem.key }}</label>
-                  <!-- DEVELOPER :: BELOW LINE FOR COMMON DATA -->
-
-                  <!-- <span>{{ childItem.value }}</span> -->
-
-                  <!-- DEVELOPER :: BELOW LINE FOR URL DATA -->
-                  <a matTooltip="{{ childItem.value }}"
-                    ><span>{{ childItem.value }}</span></a
-                  >
+                  <a *ngIf="valueHasHttp(childItem.value); else elseBlock" [href]="childItem.value" target="_blank"
+                    matTooltip="{{ childItem.value }}"><span>{{ childItem.value }}</span></a>
+                  <ng-template #elseBlock><span>{{ childItem.value }}</span></ng-template>
                 </div>
               </div>
             </div>
