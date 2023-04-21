@@ -20,6 +20,21 @@
         font-size: 2.8rem;
         margin-bottom: 4rem;
       }
+      &:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        a {
+          color: $primary-dark;
+          margin-left: 3rem;
+          font-size: 1.6rem;
+          text-decoration: underline;
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
     }
   }
   &__body {
@@ -92,10 +107,19 @@
             }
 
             span {
+              @include elipsis(100%);
               color: $primary-dark;
               display: block;
               font-size: 1.6rem;
               font-weight: 600;
+            }
+
+            a {
+              span {
+                &:hover {
+                  color: $primary-color;
+                }
+              }
             }
           }
         }
