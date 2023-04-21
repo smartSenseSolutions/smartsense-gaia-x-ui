@@ -19,9 +19,9 @@
         <a (click)="onViewDetailsClick(service)">
           <button mat-raised-button>View Details</button>
         </a>
-        <a *ngIf="!showCompany">
+        <a [href]="service.offerLink" target="_blank">
           <button mat-mini-fab>
-            <mat-icon>mode_edit</mat-icon>
+            <mat-icon>insert_link</mat-icon>
           </button>
         </a>
       </div>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {
   Meta,
   ServiceOfferResponsePayloadModel,
@@ -13,7 +14,7 @@ import { DataShareEnum } from '../../constants';
 @Component({
   selector: 'app-share-information-dialog',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, NgxJsonViewerModule],
   templateUrl: './share-information-dialog.component.html',
   styleUrls: ['./share-information-dialog.component.scss'],
 })
@@ -21,6 +22,7 @@ export class ShareInformationDialogComponent implements OnInit {
   meta: Meta;
   readonly DataShareEnum = DataShareEnum;
   activeState: DataShareEnum = DataShareEnum.START;
+  vp: VPResponsePayloadModel;
   constructor(
     public dialogRef: MatDialogRef<ShareInformationDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
@@ -31,7 +33,7 @@ export class ShareInformationDialogComponent implements OnInit {
 
   onCloseDialog(flag: boolean) {
     if (flag) {
-      this.serivce.meta = this.meta
+      this.serivce.meta = this.meta;
       this.dialogRef.close(this.serivce);
     } else {
       this.dialogRef.close(flag);
@@ -58,7 +60,12 @@ export class ShareInformationDialogComponent implements OnInit {
       .getParticipantVP('participant')
       .subscribe((data) => {
         this.activeState = DataShareEnum.VERIFYING;
-        this.getServiceOffersDetailWithOfferId(data.payload, this.serivce.id);
+        this.vp = data.payload;
+        // this.getServiceOffersDetailWithOfferId(data.payload, this.serivce.id);
       });
+  }
+
+  verifyVP() {
+    this.getServiceOffersDetailWithOfferId(this.vp, this.serivce.id);
   }
 }
