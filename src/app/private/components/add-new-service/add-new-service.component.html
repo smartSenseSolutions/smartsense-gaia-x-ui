@@ -1,1 +1,125 @@
-<p>Add new service</p>
+<section class="addService">
+  <div class="addService__header">
+    <button>
+      <mat-icon svgIcon="arrow-left"></mat-icon>
+    </button>
+    <h3>Search</h3>
+  </div>
+  <div class="addService__content">
+    <form [formGroup]="addServiceForm" (ngSubmit)="onAddServiceFormSubmit(addServiceForm)">
+
+      <ul >
+        <li class="addService__content--inputs">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="serviceName">Service Name</label>
+              <input formControlName="serviceName" matInput id="serviceName" placeholder="Select your service name"
+                required>
+              <mat-error *ngIf="isRequiredField(formControls['serviceName'])">
+                {{ validationMsg.SERVICE_NAME_IS_REQUIRED }}</mat-error>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="policies">Add Policy</label>
+              <input formControlName="policies" matInput id="policies" placeholder="Enter policy" required>
+              <mat-error *ngIf="isRequiredField(formControls['policies'])">
+                {{ validationMsg.ADD_POLICY_IS_REQUIRED}}</mat-error>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+
+        </li>
+        <li>
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="description">Description</label>
+              <textarea formControlName="description" matInput id="description"
+                placeholder="Please Enter service description" required></textarea>
+              <mat-error *ngIf="isRequiredField(formControls['description'])">
+                {{ validationMsg.DESCRIPTION_IS_REQUIRED}}</mat-error>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+        </li>
+        <li class="addService__content--inputs">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="accessType">Access Type</label>
+              <mat-select formControlName="accessType" matInput id="accessType" placeholder="Select access type"
+                required>
+                <mat-option>Make it Possible</mat-option>
+              </mat-select>
+              <mat-error *ngIf="isRequiredField(formControls['accessType'])">
+                {{ validationMsg.ACCESS_TYPE_REQUIRED}}</mat-error>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="requestType">Request Type</label>
+              <mat-select formControlName="requestType" matInput id="requestType" placeholder="Select request type"
+                required>
+                <mat-option>Make it Possible</mat-option>
+              </mat-select>
+              <mat-error *ngIf="isRequiredField(formControls['requestType'])">
+                {{ validationMsg.REQUEST_TYPE_REQUIRED}}</mat-error>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+        </li>
+        <li class="addService__content--inputs">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="formatType">Request Type</label>
+              <mat-select formControlName="formatType" matInput id="formatType" placeholder="Select request type"
+                required>
+                <mat-option>Make it Possible</mat-option>
+              </mat-select>
+              <mat-error *ngIf="isRequiredField(formControls['formatType'])">
+                {{ validationMsg.FORMAT_TYPE_REQUIRED}}</mat-error>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="termsAndCondition">Terms and Condition</label>
+              <input formControlName="termsAndCondition" matInput id="termsAndCondition"
+                placeholder="Enter terms and conditions" required>
+              <mat-error *ngIf="isRequiredField(formControls['termsAndCondition'])">
+                {{ validationMsg.TERMS_AND_CONDITION_IS_REQUIRED}}</mat-error>
+                <mat-hint>
+                  Terms and Conditions HASH - auto generated
+                </mat-hint>
+              <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
+                {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
+            </mat-form-field>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="addService__content--buttons">
+        <li> <button type="submit" class="large-btn primary-btn" mat-raised-button>
+            Save & Continue
+            <mat-icon svgIcon="arrow-right"></mat-icon>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="large-btn " mat-raised-button>
+            Cancel
+          </button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</section>

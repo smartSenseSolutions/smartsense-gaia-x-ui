@@ -6,6 +6,14 @@
 }
 
 .userDetails__signup-2 {
+  button[disabled = true] {
+    .mat-icon{
+      svg path {
+        fill: rgba($primary-dark , 0.4);
+      }
+    }
+  }
+
   mat-icon[svgicon='arrow-right'] {
     left: 9rem;
   }

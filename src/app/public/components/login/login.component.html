@@ -28,8 +28,17 @@
                 <input formControlName="email" matInput id="email" placeholder="Enter email" required>
                 <mat-error *ngIf="isRequiredField(formControls['email'])">
                   {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+
                 <mat-error *ngIf="isValidLength(formControls['email'])">
                   {{ validationMsg.INVALID_EMAIL }}</mat-error>
+
+                <mat-error *ngIf="formControls['email'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_3 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['email'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_255 }}
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -43,6 +52,11 @@
                   "Hide" : "Show" }}</button>
                 <mat-error *ngIf="isRequiredField(formControls['password'])">
                   {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+                <mat-error *ngIf="formControls['password'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
+
+                <mat-error *ngIf="formControls['password'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
               </mat-form-field>
             </div>
             <button type="submit" class="large-btn primary-btn" mat-raised-button>

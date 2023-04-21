@@ -45,15 +45,13 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
 
   loginForm = new FormGroup({
     type: new FormControl(),
-    email: new FormControl('', [
-      Validators.required,
-    ]),
+    email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
 
   constructor(
     protected override fb: FormBuilder,
-    private route:ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router,
     private loginService: LoginService,
     private sharedService: SharedService
@@ -62,13 +60,20 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginType = this.route.snapshot.data['loginType']
+    this.loginType = this.route.snapshot.data['loginType'];
     this.loginForm = new FormGroup({
       type: new FormControl(this.loginType),
       email: new FormControl('', [
         Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+        Validators.email,
       ]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(16),
+      ]),
     });
   }
 

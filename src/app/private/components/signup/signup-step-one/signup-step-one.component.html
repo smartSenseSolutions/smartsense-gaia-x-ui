@@ -25,8 +25,17 @@
                 <input formControlName="email" matInput placeholder="Enter email address" required>
                 <mat-error *ngIf="isRequiredField(formControls['email'])">
                   {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+
                 <mat-error *ngIf="isValidLength(formControls['email'])">
                   {{ validationMsg.INVALID_EMAIL }}</mat-error>
+
+                <mat-error *ngIf="formControls['email'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_3 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['email'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_255 }}
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -39,6 +48,13 @@
                   "Hide" : "Show" }}</button>
                 <mat-error *ngIf="isRequiredField(formControls['password'])">
                   {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+
+                <mat-error *ngIf="formControls['password'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
+
+                <mat-error *ngIf="formControls['password'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
+
                 <mat-hint align="start">
                   <ul>
                     <li class="MB-10">
@@ -49,9 +65,9 @@
                         Contain UPPER & Lower-case
                       </div>
                       <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isLengthSix"
-                          [class.verify-pass__satisfied]="isLengthSix"></mat-icon>
-                        At least 6 characters long
+                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isLengthEight"
+                          [class.verify-pass__satisfied]="isLengthEight"></mat-icon>
+                        At least 8 characters long
                       </div>
 
                     </li>
@@ -83,8 +99,14 @@
                   confirmPassStatus ? "Hide" : "Show" }}</button>
                 <mat-error *ngIf="isRequiredField(formControls['confirmPassword'])">
                   {{ validationMsg.CONFIRM_PASSWORD_IS_REQUIRED }}</mat-error>
-                <mat-error *ngIf="formControls['confirmPassword'].hasError('PasswordAreDifferent')">
-                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME  }}</mat-error>
+                <mat-error *ngIf="formControls['confirmPassword'].hasError('matching')">
+                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME }}</mat-error>
+
+                <mat-error *ngIf="formControls['confirmPassword'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
+
+                <mat-error *ngIf="formControls['confirmPassword'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
               </mat-form-field>
             </div>
 
