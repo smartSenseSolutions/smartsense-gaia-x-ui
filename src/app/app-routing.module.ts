@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
+  AddServiceContainerComponent,
   BrowseCatalogueComponent,
   CatalogDetailsComponent,
   DashboardComponent,
@@ -9,7 +10,6 @@ import {
   SmartXComponent,
   WalletComponent,
 } from './private/components';
-import { AddNewServiceComponent } from './private/components/add-service/add-new-service/add-new-service.component';
 import {
   DashboardResolver,
   ServiceOfferingDetailResolver,
@@ -20,7 +20,7 @@ import { RouteType, UserType } from './shared/enums';
 import { AuthGuard } from './shared/guards';
 
 const routes: Routes = [
-  {
+{
     path: RouteConstants.Login,
     component: LoginComponent,
     canActivate: [AuthGuard],
@@ -116,7 +116,7 @@ const routes: Routes = [
           },
           {
             path: RouteConstants.AddNewService,
-            component: AddNewServiceComponent,
+            component: AddServiceContainerComponent,
             data: {
               breadcrumb: 'Add New Service',
             },

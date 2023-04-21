@@ -78,7 +78,7 @@
     @include border-radius(0.8rem);
     height: calc(100vh - 9.7rem);
     overflow-y: auto;
-    border: 0.1rem solid #121e2a26;
+    border: 0.1rem solid $primary-dark;
   }
 }
 

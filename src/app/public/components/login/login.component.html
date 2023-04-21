@@ -52,6 +52,7 @@
                   "Hide" : "Show" }}</button>
                 <mat-error *ngIf="isRequiredField(formControls['password'])">
                   {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
+
                 <mat-error *ngIf="formControls['password'].hasError('minlength')">
                   {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
 

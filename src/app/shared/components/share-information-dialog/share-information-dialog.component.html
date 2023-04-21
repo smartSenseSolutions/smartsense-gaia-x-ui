@@ -1,8 +1,12 @@
 <div class="dialog-container">
   <div class="dialog-container__head">
     <h3 *ngIf="activeState === DataShareEnum.START">Share your information</h3>
-    <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">Verifiable Presentation</h3>
-    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">Verifiable Presentation</h3>
+    <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">
+      Verifiable Presentation
+    </h3>
+    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">
+      Verifiable Presentation
+    </h3>
     <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Verified</h3>
     <a (click)="onCloseDialog(false)" matTooltip="close">
       <mat-icon svgIcon="close"></mat-icon>
@@ -13,8 +17,9 @@
     <div *ngIf="activeState === DataShareEnum.START" class="confirm-info">
       <img src="./assets/images/shareInfo.png" alt="shareInformation" />
       <p>
-        In order to access the service, you need to share the legal participant's credentials issued by Gaia-X<br />
-        If you agree, please confirm & proceed.
+        In order to access the service, you need to share the legal
+        participant's credentials issued by Gaia-X. <br />If you agree, please
+        confirm & proceed.
       </p>
       <button (click)="generateVP()" class="dark-btn">Yes, I Confirm</button>
     </div>
@@ -34,7 +39,9 @@
     <div *ngIf="activeState === DataShareEnum.SUCCESS">
       <img src="./assets/images/quality.png" alt="" />
       <p>Legal participant's credential is verified successfully</p>
-      <button class="dark-btn" (click)="onCloseDialog(true)">View Service</button>
+      <button class="dark-btn" (click)="onCloseDialog(true)">
+        View Service
+      </button>
     </div>
   </div>
 </div>

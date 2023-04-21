@@ -42,10 +42,6 @@ export const API_CONSTANTS = {
       METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises`,
     },
-    CATALOGUE: {
-      METHOD: HttpMethodEnum.GET,
-      URL: `${BASE_URL}/catalogue`,
-    },
     VCS: {
       METHOD: HttpMethodEnum.POST,
       URL: `${BASE_URL}/enterprises/vcs`,
@@ -53,6 +49,14 @@ export const API_CONSTANTS = {
     SERVICE_OFFERS: {
       METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/service-offers`,
+    },
+    CREATE_SERVICE_OFFER: {
+      METHOD: HttpMethodEnum.POST,
+      URL: `${BASE_URL}/enterprises/service-offers`,
+    },
+    CATALOGUE: {
+      METHOD: HttpMethodEnum.GET,
+      URL: `${BASE_URL}/catalogue`,
     },
     SERVICE_OFFERS_DETAIL_WITH_OFFER_ID: {
       METHOD: HttpMethodEnum.POST,

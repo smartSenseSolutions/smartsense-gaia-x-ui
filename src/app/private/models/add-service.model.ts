@@ -1,9 +1,9 @@
 export interface AddServiceModel {
-  serviceName : string ;
-  policies : string;
+  name : string ;
+  policy : string;
   description : string ;
-  acessType : string ;
+  accessType : string ;
   requestType : string ;
   formatType : string ;
-  termsAndCondition : string;
+  terms : string;
 }

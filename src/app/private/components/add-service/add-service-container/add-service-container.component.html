@@ -1,1 +1,5 @@
-<p>add-service-container works!</p>
+<app-add-new-service *ngIf="activeStep == AddServiceStep.ONE" [addServiceFormData]="stepOneData"
+    (onAddServiceFormComplete)="onStepOneComplete($event)"></app-add-new-service>
+<!-- (onStepTwoComplete)="onStepTwoComplete($event)" -->
+<app-add-category *ngIf="activeStep == AddServiceStep.TWO" [addServiceDataFormData]="stepTwoData"
+    (onBackEventClick)="onBackClick()"></app-add-category>
