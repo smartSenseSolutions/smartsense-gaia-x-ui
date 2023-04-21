@@ -18,7 +18,7 @@ export class DashboardResolver implements Resolve<boolean> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     return forkJoin([
-      this.serviceOfferingService.getServiceOffers({}),
+      this.serviceOfferingService.getServiceOffers(),
       this.serviceOfferingService.getEnterpriseDetail(),
     ]).pipe(
       map((response) => {
