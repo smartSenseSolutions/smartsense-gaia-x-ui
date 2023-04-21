@@ -116,3 +116,8 @@
   height: 14px !important;
   width: 14px !important;
 }
+
+
+.mat-error + .mat-error {
+  display: none;
+}
