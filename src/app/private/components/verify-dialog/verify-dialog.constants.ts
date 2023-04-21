@@ -11,6 +11,7 @@ export enum SignupStatus {
   DIDJsonCreationFailed,
   ParticipantJsonCreated,
   ParticipantJsonCreationFailed,
+  CertificateCreationInProgress,
 }
 export const FAILURE_STATUSES = [
   SignupStatus.DomainCreationFailed,

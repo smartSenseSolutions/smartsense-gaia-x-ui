@@ -70,8 +70,8 @@
             <li
               class="animated fast"
               [ngClass]="{
-              inProgress: (currentSignupStatus === SignupStatus.DomainCreated )  || currentSignupStatus === SignupStatus.CertificateCreationFailed,
-              completed : currentSignupStatus === SignupStatus.CertificateCreated || currentSignupStatus > SignupStatus.CertificateCreationFailed,
+              inProgress: (currentSignupStatus === SignupStatus.DomainCreated )  || currentSignupStatus === SignupStatus.CertificateCreationFailed || currentSignupStatus === SignupStatus.CertificateCreationInProgress,
+              completed : currentSignupStatus === SignupStatus.CertificateCreated || (currentSignupStatus > SignupStatus.CertificateCreationFailed && currentSignupStatus !== SignupStatus.CertificateCreationInProgress),
                           }"
             >
               <label>
@@ -91,7 +91,7 @@
               [ngClass]="{
 
               inProgress: (currentSignupStatus === SignupStatus.CertificateCreated )  || currentSignupStatus === SignupStatus.IngressCreationFailed,
-              completed : currentSignupStatus === SignupStatus.IngressCreated || currentSignupStatus > SignupStatus.IngressCreationFailed,
+              completed : currentSignupStatus === SignupStatus.IngressCreated || (currentSignupStatus > SignupStatus.IngressCreationFailed && currentSignupStatus !== SignupStatus.CertificateCreationInProgress),
 
                           }"
             >
@@ -115,7 +115,9 @@
                   currentSignupStatus === SignupStatus.DIDJsonCreationFailed,
                 completed:
                   currentSignupStatus === SignupStatus.DIDJsonCreated ||
-                  currentSignupStatus > SignupStatus.DIDJsonCreationFailed
+                  (currentSignupStatus > SignupStatus.DIDJsonCreationFailed &&
+                    currentSignupStatus !==
+                      SignupStatus.CertificateCreationInProgress)
               }"
             >
               <label>
