@@ -9,7 +9,7 @@ import {
   SmartXComponent,
   WalletComponent,
 } from './private/components';
-import { AddNewServiceComponent } from './private/components/add-new-service/add-new-service.component';
+import { AddNewServiceComponent } from './private/components/add-service/add-new-service/add-new-service.component';
 import { DashboardResolver } from './private/resolver';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';

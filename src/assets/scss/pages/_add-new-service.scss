@@ -1,24 +1,6 @@
 @import "../abstracts/abstracts.scss";
 
 .addService {
-  &__header {
-    button {
-      background: rgba($primary-dark , 0.1);
-      height: 3.4rem;
-      width: 3.4rem;
-      border-radius: 0.6rem;
-      border-width: 0;
-      outline-width: 0;
-
-      .mat-icon {
-        width: 1.5rem;
-        height: 1rem;
-        overflow: visible;
-      }
-    }
-
-  }
-
   &__content {
     &--inputs {
       .mat-mdc-form-field {
@@ -30,6 +12,15 @@
           // @include font(1.3rem, 2.4rem, 500);
           font-size: 1.3rem;
           color: $primary-color !important;
+        }
+      }
+    }
+
+    &--buttons {
+      .mdc-button {
+        &[type=submit] {
+          flex-direction: row-reverse;
+          gap:2rem;
         }
       }
     }

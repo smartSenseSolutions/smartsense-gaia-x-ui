@@ -188,3 +188,20 @@ app-card-box {
 .width-100 {
   width: 100%;
 }
+
+
+.backArrow-btn{
+  background: rgba($primary-dark , 0.1);
+  vertical-align: bottom;
+  height: 3.4rem;
+  width: 3.4rem;
+  border-radius: 0.6rem;
+  border-width: 0;
+  outline-width: 0;
+
+  .mat-icon {
+    width: 1.5rem;
+    height: 1rem;
+    overflow: visible;
+  }
+}

@@ -1,0 +1,15 @@
+@import "../abstracts/abstracts";
+
+.addServiceData {
+  &__header {
+    &--buttons {
+      .mdc-button {
+        &__label {
+          @include font(1.6rem , 2rem, medium);
+          letter-spacing: 0px;
+          color: $white-color;
+        }
+      }
+    }
+  }
+}
