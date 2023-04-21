@@ -3,23 +3,30 @@
     <h3>Dashboard</h3>
   </div>
   <div class="dashboard-container__body">
-    <a class="dashboard-container__card" [href]="dashboard.enterpriseDetail.didJson" target="_blank">
+    <a
+      class="dashboard-container__card"
+      [href]="dashboard.enterpriseDetail.didJson"
+      target="_blank"
+    >
       <div>
-        <h2>{{dashboard.enterpriseDetail.did}}</h2>
+        <h2>{{ dashboard.enterpriseDetail.did }}</h2>
         <p>DID</p>
       </div>
-      <div>
-        <mat-icon>fingerprint</mat-icon>
-      </div>
+
+      <mat-icon>fingerprint</mat-icon>
     </a>
-    <a [routerLink]="['/'+RouteConstants.SmartX+'/'+RouteConstants.MyServiceOfferings]" class="dashboard-container__card">
+    <a
+      [routerLink]="[
+        '/' + RouteConstants.SmartX + '/' + RouteConstants.MyServiceOfferings
+      ]"
+      class="dashboard-container__card"
+    >
       <div>
-        <h2>{{dashboard.serviceOfferCount}}</h2>
+        <h2>{{ dashboard.serviceOfferCount }}</h2>
         <p>My Service Offerings</p>
       </div>
-      <div>
-        <mat-icon>local_offer</mat-icon>
-      </div>
+
+      <mat-icon>local_offer</mat-icon>
     </a>
   </div>
 </div>
