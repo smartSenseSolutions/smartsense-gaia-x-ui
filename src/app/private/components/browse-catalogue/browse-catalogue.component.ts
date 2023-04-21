@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { CardBoxComponent } from '../../../shared/components/card-box/card-box.component';
 import { ServiceOfferResponsePayloadModel } from '../../models';
 import { ServiceOfferingService } from '../../services';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ShareInformationDialogComponent } from 'src/app/shared/components';
 import { RouteConstants } from 'src/app/shared/constants';
@@ -29,6 +29,7 @@ import { RouteConstants } from 'src/app/shared/constants';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    RouterModule,
     MatDialogModule,
   ],
   templateUrl: './browse-catalogue.component.html',
@@ -67,22 +68,20 @@ export class BrowseCatalogueComponent {
 
   onShowFilter = () => {};
 
-  onShareInfo = (data: ServiceOfferResponsePayloadModel) => {
+  onViewDetailClick = (service: ServiceOfferResponsePayloadModel) => {
     const dialogRef = this.dialog.open(ShareInformationDialogComponent, {
       width: '60rem',
-      data,
+      data: service,
     });
     dialogRef.afterClosed().subscribe((success) => {
       if (success) {
-        this.redirectToDetailView(success);
+        this.route.navigate(
+          [
+            `${RouteConstants.SmartX}/${RouteConstants.BrowseCatalogue}/${RouteConstants.Detail}`,
+          ],
+          { state: { service: success } }
+        );
       }
     });
   };
-
-  redirectToDetailView(service: ServiceOfferResponsePayloadModel) {
-    this.route.navigate(
-      [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
-      { state: { service } }
-    );
-  }
 }

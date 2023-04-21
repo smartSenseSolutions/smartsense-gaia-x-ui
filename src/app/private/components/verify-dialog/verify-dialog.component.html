@@ -41,7 +41,8 @@
       <div class="certificate-verify__body--section">
         <div class="certificate-verify__body--section--results fill-section">
           <ul>
-            <li class="animated  fast " [ngClass]="{
+            <li class="animated  fast "
+              [ngClass]="{
               inProgress: currentSignupStatus < SignupStatus.DomainCreated ||currentSignupStatus === SignupStatus.DomainCreationFailed,
               completed : currentSignupStatus === SignupStatus.DomainCreated || currentSignupStatus > SignupStatus.DomainCreationFailed }">
               <label>
@@ -52,8 +53,8 @@
             </li>
 
             <li class="animated  fast" [ngClass]="{
-              inProgress: (currentSignupStatus === SignupStatus.DomainCreated )  || currentSignupStatus === SignupStatus.CertificateCreationFailed,
-              completed : currentSignupStatus === SignupStatus.CertificateCreated || currentSignupStatus > SignupStatus.CertificateCreationFailed,
+              inProgress: (currentSignupStatus === SignupStatus.DomainCreated )  || currentSignupStatus === SignupStatus.CertificateCreationFailed || currentSignupStatus === SignupStatus.CertificateCreationInProgress,
+              completed : currentSignupStatus === SignupStatus.CertificateCreated || (currentSignupStatus > SignupStatus.CertificateCreationFailed && currentSignupStatus !== SignupStatus.CertificateCreationInProgress),
                           }">
               <label>
                 <img class="animated fast " src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
@@ -65,7 +66,7 @@
             <li class="animated  fast" [ngClass]="{
 
               inProgress: (currentSignupStatus === SignupStatus.CertificateCreated )  || currentSignupStatus === SignupStatus.IngressCreationFailed,
-              completed : currentSignupStatus === SignupStatus.IngressCreated || currentSignupStatus > SignupStatus.IngressCreationFailed,
+              completed : currentSignupStatus === SignupStatus.IngressCreated || (currentSignupStatus > SignupStatus.IngressCreationFailed && currentSignupStatus !== SignupStatus.CertificateCreationInProgress),
 
                           }">
               <label>
@@ -78,7 +79,7 @@
             <li class="animated  fast" [ngClass]="{
 
               inProgress: (currentSignupStatus === SignupStatus.IngressCreated )  || currentSignupStatus === SignupStatus.DIDJsonCreationFailed,
-              completed : currentSignupStatus === SignupStatus.DIDJsonCreated || currentSignupStatus > SignupStatus.DIDJsonCreationFailed
+              completed : currentSignupStatus === SignupStatus.DIDJsonCreated || (currentSignupStatus > SignupStatus.DIDJsonCreationFailed && currentSignupStatus !== SignupStatus.CertificateCreationInProgress)
                           }">
               <label>
                 <img class="animated  fast" src="../../../../assets/images/steps_loading.gif" width="19" alt="" />
