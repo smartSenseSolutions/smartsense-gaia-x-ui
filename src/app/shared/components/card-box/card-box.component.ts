@@ -19,7 +19,7 @@ export class CardBoxComponent {
   @Output() onViewDetailClickEvent =
     new EventEmitter<ServiceOfferResponsePayloadModel>();
 
-  image: string = '../../../../assets/images/service-catalog-1.png';
+  image: string = './assets/images/catalogPlaceholder.png';
   constructor(private route: Router) {}
 
   onViewDetailsClick = (service: ServiceOfferResponsePayloadModel) => {
