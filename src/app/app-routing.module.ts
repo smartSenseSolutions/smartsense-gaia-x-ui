@@ -81,18 +81,33 @@ const routes: Routes = [
       },
       {
         path: RouteConstants.BrowseCatalogue,
-        component: BrowseCatalogueComponent,
         data: {
           breadcrumb: 'Browser Catalogue',
         },
+        children: [
+          {
+            path: '',
+            component: BrowseCatalogueComponent,
+          },
+          {
+            path: RouteConstants.Detail,
+            component: CatalogDetailsComponent,
+            data: {
+              breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+            },
+          },
+        ],
       },
       {
         path: RouteConstants.MyServiceOfferings,
-        component: MyServiceOfferingsComponent,
         data: {
           breadcrumb: 'My Service Offerings',
         },
         children: [
+          {
+            path: '',
+            component: MyServiceOfferingsComponent,
+          },
           {
             path: RouteConstants.AddNewService,
             component: AddNewServiceComponent,
@@ -100,22 +115,14 @@ const routes: Routes = [
               breadcrumb: 'Add New Service',
             },
           },
-          // {
-          //   path: RouteConstants.catalogDetails,
-          //   component: CatalogDetailsComponent,
-          //   data: {
-          //     breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
-          //   },
-          // },
+          {
+            path: RouteConstants.Detail,
+            component: CatalogDetailsComponent,
+            data: {
+              breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+            },
+          },
         ],
-      },
-
-      {
-        path: RouteConstants.catalogDetails,
-        component: CatalogDetailsComponent,
-        data: {
-          breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
-        },
       },
     ],
   },

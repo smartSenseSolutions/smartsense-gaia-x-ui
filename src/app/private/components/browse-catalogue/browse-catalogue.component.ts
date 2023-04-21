@@ -67,22 +67,20 @@ export class BrowseCatalogueComponent {
 
   onShowFilter = () => {};
 
-  onShareInfo = (data: ServiceOfferResponsePayloadModel) => {
+  onViewDetailClick = (service: ServiceOfferResponsePayloadModel) => {
     const dialogRef = this.dialog.open(ShareInformationDialogComponent, {
       width: '60rem',
-      data,
+      data: service,
     });
     dialogRef.afterClosed().subscribe((success) => {
       if (success) {
-        this.redirectToDetailView(success);
+        this.route.navigate(
+          [`${RouteConstants.SmartX}/${RouteConstants.BrowseCatalogue}/${RouteConstants.Detail}`],
+          {
+            state: { service },
+          }
+        );
       }
     });
   };
-
-  redirectToDetailView(service: ServiceOfferResponsePayloadModel) {
-    this.route.navigate(
-      [`${RouteConstants.SmartX}/${RouteConstants.catalogDetails}`],
-      { state: { service } }
-    );
-  }
 }
