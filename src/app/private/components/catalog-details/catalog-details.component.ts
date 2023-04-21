@@ -45,4 +45,8 @@ export class CatalogDetailsComponent {
   onBack = () => {
     this.location.back();
   };
+
+  valueHasHttp(value:string){
+    return value.includes('http');
+  }
 }
