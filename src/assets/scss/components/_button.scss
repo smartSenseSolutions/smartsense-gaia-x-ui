@@ -6,3 +6,13 @@
   font-size: 1.4rem;
   border: transparent;
 }
+
+
+.color-btn {
+  @include border-radius(2.5rem);
+  background: $primary-color !important;
+  color: $white-color;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.4rem;
+  border: transparent;
+}
