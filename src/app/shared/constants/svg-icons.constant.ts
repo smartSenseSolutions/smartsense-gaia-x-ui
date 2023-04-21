@@ -28,4 +28,6 @@ export const SvgConstants: string[] = [
   'arrow-left',
   'repairTool',
   'legalPerson',
+  'dashboardService',
+  'service',
 ];

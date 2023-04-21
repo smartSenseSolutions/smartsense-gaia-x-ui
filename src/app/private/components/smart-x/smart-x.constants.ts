@@ -17,7 +17,7 @@ export const MENU_ITEMS = [
     routeLink: `/${RouteConstants.SmartX}/${RouteConstants.BrowseCatalogue}`,
   },
   {
-    iconName: 'service-catalog',
+    iconName: 'service',
     label: 'My Service Offerings',
     routeLink: `/${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}`,
   },
