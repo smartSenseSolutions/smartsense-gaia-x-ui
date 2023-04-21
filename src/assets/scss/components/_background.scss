@@ -1,15 +1,14 @@
 .bg-main {
   height: 100vh;
-  background-color: #1F5BE3;
+  background-color: #1f5be3;
   position: relative;
   padding: 14.3rem 0 0 7rem;
-  color: #FFFFFF;
+  color: #ffffff;
 
   h1 {
     @include font(4.4rem, 5.4rem, bold);
     text-align: left;
     white-space: nowrap;
-    letter-spacing: 0px;
   }
 
   &__logo {

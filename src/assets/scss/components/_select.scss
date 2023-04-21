@@ -7,57 +7,49 @@
 
   .mat-mdc-option {
     @include font(1.5rem, 2.4rem, 500);
-    letter-spacing: 0px;
+
     color: $primary-dark;
   }
 }
 
 mat-select {
-
   .mat-mdc-select-value,
   .mat-option {
     text-align: left;
     font-weight: 500 !important;
     font-size: 1.5rem !important;
-    letter-spacing: 0px;
   }
 
   .mat-mdc-select-value {
-
-
     .mat-mdc-select-placeholder {
-      letter-spacing: 0px;
-      color: rgba($primary-dark , 0.4);
+      color: rgba($primary-dark, 0.4);
     }
   }
 
-
   .mat-mdc-select-arrow-wrapper {
     .mat-mdc-select-arrow {
-      // border-left: 15px solid transparent !important;
+      // border-left: 1.5rem solid transparent !important;
       // border-right: none !important;
-      // border-top: 15px solid transparent !important;
+      // border-top: 1.5rem solid transparent !important;
       // border-image-source: url('../') !important;
       // border-image-repeat: stretch !important;
-      height: 24px;
-      width: 24px;
+      @include square(2.4rem);
 
       svg {
         transform: scale(0);
       }
 
       &::after {
-        line-height: 24px;
+        line-height: 2.4rem;
         content: "";
         display: inline-block;
         box-sizing: border-box;
-        width: 10px;
-        height: 10px;
-        border-bottom: 2px solid;
-        border-right: 2px solid;
+        width: 1rem;
+        height: 1rem;
+        border-bottom: 0.2rem solid;
+        border-right: 0.2rem solid;
         color: black;
         transform: rotate(45deg);
-
       }
     }
   }
