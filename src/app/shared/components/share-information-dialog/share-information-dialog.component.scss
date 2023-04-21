@@ -35,5 +35,10 @@
         margin-bottom: unset;
       }
     }
+
+    ngx-json-viewer {
+      display: flex;
+      padding: 2rem;
+    }
   }
 }

@@ -2,8 +2,8 @@
   @import "../abstracts/abstracts.scss";
 
   .card {
-    background: #F7F7F7;
-    border-radius: 12px;
+    @include border-radius(1.2rem);
+    background: #f7f7f7;
 
     .mat-button {
       display: inline-block;
@@ -21,25 +21,23 @@
 
       h4 {
         @include font(1.8rem, 2.1rem, bold);
-        letter-spacing: 0px;
+
         color: $primary-color;
         margin-bottom: 2rem;
       }
 
       p {
         @include font(1.6rem, 2rem, 600);
-        letter-spacing: 0px;
+
         color: $primary-dark;
         margin-bottom: 1.5rem;
 
         span {
-          @include font(1.6rem , 2rem);
-          letter-spacing: 0px;
+          @include font(1.6rem, 2rem);
+
           color: rgba($primary-dark, 0.8);
         }
       }
-
-
     }
 
     &__btn {
@@ -52,7 +50,7 @@
         &.mdc-button {
           &--raised {
             background: $primary-dark !important;
-            border-radius: 25px;
+            border-radius: 2.5rem;
             color: $white-color;
           }
         }
@@ -61,7 +59,7 @@
           &__label {
             @include font(1.4rem, 1.7rem, 500);
             text-align: left;
-            letter-spacing: 0px;
+
             color: $white-color;
           }
         }
@@ -69,13 +67,11 @@
         &.mdc-fab {
           &--mini {
             box-shadow: none;
-            background-color: rgba(#121E2A, 0.1);
+            background-color: rgba(#121e2a, 0.1);
             color: black;
           }
         }
-
       }
     }
   }
-
 }

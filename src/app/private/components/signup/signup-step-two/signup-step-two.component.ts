@@ -20,7 +20,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SignStepTwoModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { ValidationConstant } from 'src/app/shared/constants';
-import { REGISTRATION_TYPES, COUNTRY_SUBDIVISION_CODES } from './signup-step-two.constants';
+import {
+  COUNTRY_SUBDIVISION_CODES,
+  REGISTRATION_TYPES,
+} from './signup-step-two.constants';
+import { RegexConstant } from 'src/app/shared/constants/regex.constants';
 @Component({
   selector: 'app-signup-step-two',
   standalone: true,
@@ -46,21 +50,30 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   // Constant variables
   readonly validationMsg = new ValidationConstant();
   readonly REGISTRATION_TYPES = REGISTRATION_TYPES;
-  readonly COUNTRY_SUBDIVISION_CODES = COUNTRY_SUBDIVISION_CODES
-
+  readonly COUNTRY_SUBDIVISION_CODES = COUNTRY_SUBDIVISION_CODES;
 
   signupForm = new FormGroup({
     legalName: new FormControl('', [Validators.required]),
     subDomainName: new FormControl('', [Validators.required]),
-    legalRegistrationType: new FormControl(REGISTRATION_TYPES[0].value, [Validators.required]),
-    legalRegistrationNumber: new FormControl('', [Validators.required]),
+    legalRegistrationType: new FormControl(REGISTRATION_TYPES[0].value, [
+      Validators.required,
+    ]),
+    legalRegistrationNumber: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(255),
+    ]),
     // addressCountryCode: new FormControl('', [Validators.required]),
-    addressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [Validators.required]),
+    addressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [
+      Validators.required,
+    ]),
     // streetAddress: new FormControl('', [Validators.required]),
     // postalCode: new FormControl('', [Validators.required]),
     // locality: new FormControl('', [Validators.required]),
     // legalAddressCountryCode: new FormControl('', [Validators.required]),
-    legalAddressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [Validators.required]),
+    legalAddressCode: new FormControl(COUNTRY_SUBDIVISION_CODES[0].value, [
+      Validators.required,
+    ]),
     // legalStreetAddress: new FormControl('', [Validators.required]),
     // legalPostalCode: new FormControl('', [Validators.required]),
     // legalLocality: new FormControl('', [Validators.required]),
@@ -79,17 +92,32 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       ),
       subDomainName: new FormControl(
         this.stepTwoFormData ? this.stepTwoFormData.subDomainName : '',
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(12),
+          Validators.pattern(RegexConstant.ALPHA_NUMERIC),
+        ]
       ),
       legalRegistrationType: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalRegistrationType : REGISTRATION_TYPES[0].value,
-        [Validators.required]
+        this.stepTwoFormData
+          ? this.stepTwoFormData.legalRegistrationType
+          : REGISTRATION_TYPES[0].value,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(255),
+        ]
       ),
       legalRegistrationNumber: new FormControl(
         this.stepTwoFormData
           ? this.stepTwoFormData.legalRegistrationNumber
           : '',
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(255),
+        ]
       ),
 
       // addressCountryCode: new FormControl(
@@ -98,7 +126,9 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       // ),
 
       addressCode: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.addressCode : COUNTRY_SUBDIVISION_CODES[0].value,
+        this.stepTwoFormData
+          ? this.stepTwoFormData.addressCode
+          : COUNTRY_SUBDIVISION_CODES[0].value,
         [Validators.required]
       ),
 
@@ -125,7 +155,9 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       // ),
 
       legalAddressCode: new FormControl(
-        this.stepTwoFormData ? this.stepTwoFormData.legalAddressCode : COUNTRY_SUBDIVISION_CODES[0].value,
+        this.stepTwoFormData
+          ? this.stepTwoFormData.legalAddressCode
+          : COUNTRY_SUBDIVISION_CODES[0].value,
         [Validators.required]
       ),
 
@@ -150,6 +182,8 @@ export class SignupStepTwoComponent extends FormBaseComponent {
       ),
     });
   }
+
+  isSpecialCharacter = () => {};
 
   onSameAddressCheckboxChange = (event: MatCheckboxChange) => {
     // const legalAddressCountryCode =
@@ -231,4 +265,8 @@ export class SignupStepTwoComponent extends FormBaseComponent {
           ?.label
       : '';
   };
+
+  get isFormValid() {
+    return this.signupForm.valid;
+  }
 }

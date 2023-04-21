@@ -15,8 +15,8 @@ import { Router } from '@angular/router';
 import { SignStepOneModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
-import RegexConstant from 'src/app/shared/constants/regex.constants';
-import Validation from 'src/app/shared/functions/common-function';
+import { RegexConstant } from 'src/app/shared/constants/regex.constants';
+import { matchValidator } from 'src/app/shared/functions';
 
 @Component({
   selector: 'app-signup-step-one',
@@ -47,7 +47,7 @@ export class SignupStepOneComponent
 
   //Boolean Vairble for password validation
   isContainUpperCaseLowerCase: boolean = false;
-  isLengthSix: boolean = false;
+  isLengthEight: boolean = false;
   isContainSpecialCharacter: boolean = false;
   isContainNumber: boolean = false;
 
@@ -70,25 +70,35 @@ export class SignupStepOneComponent
       {
         email: new FormControl(
           this.stepOneFormData ? this.stepOneFormData.email : '',
-          [Validators.required]
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(255),
+            Validators.email,
+          ]
         ),
         password: new FormControl(
           this.stepOneFormData ? this.stepOneFormData.password : '',
           [
             Validators.required,
             Validators.pattern(RegexConstant.UPPERCASE_LOWERCASE),
-            Validators.pattern(RegexConstant.MIN_LENGTH_SIX),
             Validators.pattern(RegexConstant.SPECIAL_CHARACTER),
             Validators.pattern(RegexConstant.CONTAIN_NUMBER),
+            Validators.minLength(8),
+            Validators.maxLength(16),
           ]
         ),
         confirmPassword: new FormControl(
           this.stepOneFormData ? this.stepOneFormData.password : '',
-          [Validators.required]
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(16),
+          ]
         ),
       },
       {
-        validators: [Validation.match('password', 'confirmPassword')]
+        validators: [matchValidator('password', 'confirmPassword')],
       }
     );
   }
@@ -116,7 +126,9 @@ export class SignupStepOneComponent
     this.isContainSpecialCharacter =
       RegexConstant.SPECIAL_CHARACTER.test(controlValue);
     this.isContainNumber = RegexConstant.CONTAIN_NUMBER.test(controlValue);
-    this.isLengthSix = RegexConstant.MIN_LENGTH_SIX.test(controlValue);
+    this.isLengthEight = this.formControls['password'].hasError('minlength')
+      ? false
+      : true;
   }
 
   password(formGroup: FormGroup) {

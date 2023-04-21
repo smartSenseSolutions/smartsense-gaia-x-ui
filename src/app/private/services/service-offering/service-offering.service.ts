@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SignupResponseModel } from 'src/app/public/models';
 import { API_CONSTANTS } from 'src/app/shared/constants';
 import { parseAPI } from 'src/app/shared/functions';
 import { ApiManagerService } from 'src/app/shared/services';
@@ -17,6 +18,17 @@ import {
 })
 export class ServiceOfferingService {
   constructor(private apiManager: ApiManagerService) {}
+
+  getEnterpriseDetail = (): Observable<SignupResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupResponseModel>(
+      API_CONSTANTS.ENTERPRISE.DETAIL.METHOD,
+      API_CONSTANTS.ENTERPRISE.DETAIL.URL,
+      {},
+      this.apiManager.authorizationHttpOptions,
+      true,
+      true
+    );
+  };
 
   getServiceOffers = (
     request: ServiceOfferRequest

@@ -1,6 +1,7 @@
 export interface EnterpriseModel {
   id: number;
   email: string;
+  did: string;
   password: string;
   legalName: string;
   subDomainName: string;
