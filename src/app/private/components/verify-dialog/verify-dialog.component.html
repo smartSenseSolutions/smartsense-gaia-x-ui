@@ -15,7 +15,7 @@
     <div class="certificate-verify__body">
       <div class="certificate-verify__body--progress-bar">
         <!-- Certificate processing section -->
-        <div class="animated fadeOut fast delay-11s" *ngIf="isSignupInProgress">
+        <div *ngIf="isSignupInProgress">
           <span>
             <img src="../../../../assets/images/loader-blue.gif" alt="" />
           </span>
@@ -150,6 +150,10 @@
                 <mat-icon svgIcon="done"></mat-icon>
               </label>
               <span>On-boarding you on Gaia-X</span>
+            </li>
+
+            <li class="login-btn" *ngIf="!isSignupInProgress">
+              <button class="color-btn" (click)="onLoginClick()">Login Now</button>
             </li>
           </ul>
         </div>

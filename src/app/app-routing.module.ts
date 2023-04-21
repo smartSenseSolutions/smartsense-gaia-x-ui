@@ -20,7 +20,7 @@ import { RouteType, UserType } from './shared/enums';
 import { AuthGuard } from './shared/guards';
 
 const routes: Routes = [
-  {
+{
     path: RouteConstants.Login,
     component: LoginComponent,
     canActivate: [AuthGuard],

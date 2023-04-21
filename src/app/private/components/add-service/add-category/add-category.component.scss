@@ -15,14 +15,69 @@
 
     &--buttons {
       button {
+        @include border-radius(2.5rem);
         width: 20.7rem;
-        border-radius: 2.5rem;
       }
     }
   }
 
   &__body {
     padding: 6rem 12.9rem 0 4.9rem;
+
+    .addMore {
+      @include font(1.5rem, 1.9rem, 500);
+      text-align: center;
+      color: $primary-color;
+      width: 11rem;
+
+      a {
+        .mat-icon {
+          height: 1.4rem;
+          width: 1.4rem;
+
+        }
+      }
+    }
+
+    &__dynamicFields {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 2rem;
+
+      &--inputs {
+        flex-grow: 1;
+        max-width: 45%;
+      }
+
+      &--buttons {
+        padding: 0.96rem 0 1.04rem;
+
+        .mat-mdc-fab {
+          @include border-radius(100%);
+          background: rgba($primary-dark, 0.2);
+          border: 0.1rem solid $primary-dark !important;
+          box-shadow: none;
+          height: 4.4rem;
+          width: 4.4rem;
+          align-self: center;
+          border: 0 !important;
+
+          .mat-icon {
+            fill: $black-color !important;
+            height: 1.5rem;
+            width: 1.5rem;
+          }
+        }
+      }
+
+
+    }
+
+    &__staticField {
+      margin-bottom: 2.5rem;
+      width: 45% !important;
+    }
 
     &__accordian {
       margin-bottom: 4.7rem;
@@ -38,6 +93,11 @@
           border: 0;
           box-shadow: none;
           margin-bottom: 1.5rem;
+
+          &-header {
+            border-radius: 0;
+            border-bottom: 0.1rem solid rgba($primary-dark, 0.2);
+          }
 
           mat-panel-title {
             color: $primary-dark;
@@ -84,5 +144,86 @@
       }
     }
 
+    &__inputs {
+      @include border-radius(0.8rem);
+      border: 0.1rem solid $primary-dark;
+      padding: 3rem;
+      position: relative;
+
+      ul {
+        li {
+          &:nth-last-of-type(2) {
+            .mat-mdc-form-field {
+              margin-bottom: 2rem;
+            }
+          }
+        }
+      }
+
+      &-button {
+        @include border-radius(0.8rem);
+        background: $primary-dark;
+        padding: 0;
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        width: 2.8rem;
+        height: 2.8rem;
+        min-width: unset;
+
+        .mat-icon {
+          fill: $white-color;
+          height: 1.2rem;
+          width: 1.2rem;
+          margin: auto !important;
+
+        }
+      }
+    }
+
+    &__buttons {
+
+      margin-top: 4rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row;
+      gap: 1.5rem;
+
+      .mdc-button {
+        @include border-radius(0.8rem);
+        // @include font(1.5rem, 1.9rem, 500);
+        font-size: 1.5rem !important;
+        line-height: 1.9rem !important;
+        font-weight: 500 !important;
+        color: $primary-dark;
+        flex-direction: row-reverse;
+        justify-content: center;
+        gap: 1.2rem;
+
+        &[type=submit] {
+          width: 13rem;
+
+          .mat-icon {
+            margin: 0;
+            height: 2rem;
+            width: 2rem;
+
+            svg {
+              height: 1rem;
+              width: 1.5rem;
+            }
+          }
+        }
+
+        &[type=cancel] {
+          @include border-radius(1.2rem);
+          background: #F1F3F4;
+          border: 0.2rem solid #121E2A33;
+          outline: 0;
+          box-shadow: none;
+        }
+      }
+    }
   }
 }

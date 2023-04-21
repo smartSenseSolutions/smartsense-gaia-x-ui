@@ -43,7 +43,7 @@
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label class="required-label" for="Short Name">Short Name</Label>
                 <input formControlName="subDomainName" matInput id="Short Name" type="text"
-                  placeholder="Please enter the company's short name">
+                  placeholder="Enter short name to create domain name">
                 <!-- @To do -->
                 <mat-error *ngIf="formControls['subDomainName'].hasError('minlength')">
                   {{ validationMsg.MIN_LENGTH_3 }}

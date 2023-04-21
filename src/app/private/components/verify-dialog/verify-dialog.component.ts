@@ -6,8 +6,11 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 import { SignupRequestModel, SignupResponseModel } from 'src/app/public/models';
 import { SignUpService } from 'src/app/public/services';
+import { RouteConstants } from 'src/app/shared/constants';
+import { SharedService } from 'src/app/shared/services';
 import { EnterpriseModel } from '../../models/enterprise.model';
 import { FAILURE_STATUSES, SignupStatus } from './verify-dialog.constants';
 
@@ -31,6 +34,8 @@ export class VerifyDialogComponent implements OnInit {
   isSignupInProgress = true;
   constructor(
     private signupService: SignUpService,
+    private route: Router,
+    private sharedService: SharedService,
     public dialogRef: MatDialogRef<VerifyDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     private data: {
@@ -106,4 +111,10 @@ export class VerifyDialogComponent implements OnInit {
   onCloseDialog() {
     this.dialogRef.close();
   }
+
+  onLoginClick = () => {
+    this.onCloseDialog();
+    this.sharedService.clearSession();
+    this.route.navigate([RouteConstants.Login]);
+  };
 }
