@@ -15,14 +15,14 @@
   }
 
   .searchBar {
+    @include border-radius(2.5rem);
     position: absolute;
     left: 50%;
     width: 35rem;
     transform: translateX(-50%);
     padding: 1.2rem 2.5rem;
-    border: 1px solid black;
-    border-radius: 25px;
-    background-color: #EAEDED;
+    border: 0.1rem solid $black-color;
+    background-color: #eaeded;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,9 +38,9 @@
 
     ::placeholder,
     input {
-      @include font(  1.4rem ,1.7rem , 500);
-      letter-spacing: 0px;
-      color: rgba($primary-dark , 0.5);
+      @include font(1.4rem, 1.7rem, 500);
+
+      color: rgba($primary-dark, 0.5);
     }
 
     // .mdc-icon-button{
@@ -60,13 +60,13 @@
     display: inline-block;
     position: relative;
     margin-left: 2rem;
-    top: 2px;
+    top: 0.2rem;
 
     mat-icon {
-        // color: $grey-color-1;
-        width: 2.2rem;
-        position: relative;
-        top: 1px;
+      // color: $grey-color-1;
+      width: 2.2rem;
+      position: relative;
+      top: 0.1rem;
     }
-}
+  }
 }

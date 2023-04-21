@@ -17,9 +17,16 @@
       <button (click)="generateVP()" class="dark-btn">Yes, I Confirm</button>
     </div>
 
-    <div *ngIf="activeState === DataShareEnum.VP_GENERATE || activeState === DataShareEnum.VERIFYING">
+    <div *ngIf="activeState === DataShareEnum.VP_GENERATE">
       <img src="./assets/images/loading.gif" alt="" />
-      <p class="medium-text">Generating & Verifying your VP</p>
+      <p class="medium-text">Generating your VP</p>
+    </div>
+
+    <div *ngIf="activeState === DataShareEnum.VERIFYING">
+      <!-- <img src="./assets/images/loading.gif" alt="" /> -->
+      <p>Verify your VP</p>
+      <ngx-json-viewer [json]="vp" [expanded]="false"></ngx-json-viewer>
+      <button class="dark-btn" (click)="verifyVP()">Verify</button>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.SUCCESS">

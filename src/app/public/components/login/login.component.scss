@@ -11,7 +11,7 @@
 //     text-align: left;
 //     font: normal normal bold 4.4rem/5.4rem $font-family;
 //     white-space: nowrap;
-//     letter-spacing: 0px;
+//
 //   }
 
 //   &__logo {
@@ -66,16 +66,16 @@
       p {
         @include font(1.6rem, 2rem);
         text-align: center;
-        letter-spacing: 0px;
+
         color: $primary-dark;
 
         a {
           @include font(1.6rem, 2rem, 500);
           text-align: center;
           text-decoration: underline;
-          letter-spacing: 0px;
+
           color: $primary-dark;
-          text-underline-offset: 2px;
+          text-underline-offset: 0.2rem;
         }
       }
     }
@@ -101,7 +101,7 @@
         @include font(1.3rem, 1.6rem, 600);
         display: block;
         width: 100%;
-        letter-spacing: 0px;
+
         color: $primary-dark;
         // margin-bottom: 0.5rem;
       }
@@ -109,7 +109,7 @@
       .show-pass {
         @include font(1.5rem, 2.4rem, 500);
         background-color: transparent;
-        letter-spacing: 0px;
+
         color: $primary-dark;
         border: none;
         outline: none;

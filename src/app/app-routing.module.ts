@@ -10,6 +10,7 @@ import {
   WalletComponent,
 } from './private/components';
 import { AddNewServiceComponent } from './private/components/add-new-service/add-new-service.component';
+import { DashboardResolver } from './private/resolver';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
@@ -61,6 +62,9 @@ const routes: Routes = [
       {
         path: RouteConstants.DashBoard,
         component: DashboardComponent,
+        resolve: {
+          dashboard: DashboardResolver,
+        },
         data: {
           breadcrumb: 'Dashboard',
         },
@@ -68,6 +72,9 @@ const routes: Routes = [
       {
         path: RouteConstants.Wallet,
         component: WalletComponent,
+        resolve: {
+          dashboard: DashboardResolver,
+        },
         data: {
           breadcrumb: 'Wallet',
         },

@@ -1,6 +1,17 @@
-@import "./abstracts/abstracts";
-@import "./base/base";
-@import "./layouts/layout";
-@import "./pages/pages";
-@import "./components/components";
-@import "vendors/vendors.scss";
+// Import abstracts Scss
+@import "abstracts/abstracts";
+
+// Import Base Scss
+@import "base/base";
+
+// Import Component Scss files
+@import "components/components";
+
+// Import Layout Scss files
+@import "layout/layout";
+
+// Import Vendor Scss Files
+@import "vendors/vendors";
+
+// Import Pages Scss files
+@import "pages/pages";
