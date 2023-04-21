@@ -1,5 +1,5 @@
 # base image
-FROM node:14.21.2-alpine AS build
+FROM node:16.14.2-alpine AS build
 
 # set working directory
 RUN mkdir -p /usr/src/app/frontend
