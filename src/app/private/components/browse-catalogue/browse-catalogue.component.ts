@@ -75,10 +75,10 @@ export class BrowseCatalogueComponent {
     dialogRef.afterClosed().subscribe((success) => {
       if (success) {
         this.route.navigate(
-          [`${RouteConstants.SmartX}/${RouteConstants.BrowseCatalogue}/${RouteConstants.Detail}`],
-          {
-            state: { service },
-          }
+          [
+            `${RouteConstants.SmartX}/${RouteConstants.BrowseCatalogue}/${RouteConstants.Detail}`,
+          ],
+          { queryParams: { id: service.id } }
         );
       }
     });

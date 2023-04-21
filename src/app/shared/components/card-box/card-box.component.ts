@@ -23,7 +23,6 @@ export class CardBoxComponent {
   constructor(private route: Router) {}
 
   onViewDetailsClick = (service: ServiceOfferResponsePayloadModel) => {
-    debugger
     this.onViewDetailClickEvent.emit(service);
   };
 }

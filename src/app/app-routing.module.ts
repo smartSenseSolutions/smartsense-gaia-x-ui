@@ -10,7 +10,10 @@ import {
   WalletComponent,
 } from './private/components';
 import { AddNewServiceComponent } from './private/components/add-service/add-new-service/add-new-service.component';
-import { DashboardResolver } from './private/resolver';
+import {
+  DashboardResolver,
+  ServiceOfferingDetailResolver,
+} from './private/resolver';
 import { LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
@@ -93,7 +96,10 @@ const routes: Routes = [
             path: RouteConstants.Detail,
             component: CatalogDetailsComponent,
             data: {
-              breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+              breadcrumb: '{{service.label}}',
+            },
+            resolve: {
+              service: ServiceOfferingDetailResolver,
             },
           },
         ],
@@ -119,7 +125,10 @@ const routes: Routes = [
             path: RouteConstants.Detail,
             component: CatalogDetailsComponent,
             data: {
-              breadcrumb: 'Carbon Footprint of Camshift Pulse Generator',
+              breadcrumb: '{{service.label}}',
+            },
+            resolve: {
+              service: ServiceOfferingDetailResolver,
             },
           },
         ],

@@ -44,13 +44,12 @@ export class ServiceOfferingService {
   };
 
   getServiceOffersDetail = (
-    request: ServiceOfferRequest,
     id: string
   ): Observable<ServiceOfferDetailResponse> => {
     return this.apiManager.httpHelperMethod<ServiceOfferDetailResponse>(
       API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS.METHOD,
       `${API_CONSTANTS.ENTERPRISE.SERVICE_OFFERS.URL}/${id}`,
-      request,
+      {},
       this.apiManager.authorizationHttpOptions,
       true,
       true
