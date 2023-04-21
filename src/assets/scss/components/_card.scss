@@ -2,8 +2,8 @@
 
 .card {
   @include border-radius(1.2rem);
-  background: #f7f7f7;
   height: 47.6rem !important;
+  margin-bottom: 3rem;
 
   .mat-button {
     display: inline-block;
@@ -19,6 +19,8 @@
   }
 
   &__data {
+    @include border-radius(0 0 1.2rem 1.2rem);
+    background: #f7f7f7;
     height: 25.4rem;
     padding: 2rem;
     text-align: left;

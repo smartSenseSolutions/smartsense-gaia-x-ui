@@ -1,5 +1,5 @@
-<div class="cardBox">
-  <article class="card" *ngFor="let service of serviceList">
+<div class="cardBox row">
+  <article class="card col-md-4" *ngFor="let service of serviceList">
     <div class="card__image">
       <img src="{{ image }}" alt="" />
     </div>
@@ -10,7 +10,10 @@
       <p class="card__data--disc">
         {{ service.description }}
       </p>
-      <div *ngIf="showCompany" class="card__data--company">
+      <div
+        [ngClass]="{ 'show-company': !showCompany }"
+        class="card__data--company"
+      >
         <span
           >Provider:<b>{{ service.enterpriseName }} </b></span
         >
