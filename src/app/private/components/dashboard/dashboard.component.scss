@@ -1,0 +1,37 @@
+@import "../../../../assets/scss/abstracts/abstracts.scss";
+.dashboard-container {
+  padding: 2rem;
+
+  &__head {
+    h3 {
+      color: $black-color-2;
+      font-size: 2.8rem;
+      margin-bottom: 6rem;
+    }
+  }
+  &__body {
+    margin: 4.8rem;
+  }
+  &__card {
+    @include border-radius(2rem);
+    background-color: $primary-color;
+    color: $white-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+    width: 40rem;
+    h2 {
+      margin-bottom: 2rem;
+      font-size: 4.4rem;
+      line-height: 1.25;
+    }
+    p {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    mat-icon {
+      @include square(8rem);
+    }
+  }
+}

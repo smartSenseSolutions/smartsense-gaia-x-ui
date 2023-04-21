@@ -25,5 +25,6 @@ export const SvgConstants: string[] = [
   'filter',
   'backArrow',
   'download',
-  'arrow-left'
+  'arrow-left',
+  'repairTool',
 ];
