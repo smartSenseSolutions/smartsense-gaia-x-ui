@@ -72,6 +72,9 @@ const routes: Routes = [
       {
         path: RouteConstants.Wallet,
         component: WalletComponent,
+        resolve: {
+          dashboard: DashboardResolver,
+        },
         data: {
           breadcrumb: 'Wallet',
         },
