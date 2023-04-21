@@ -76,11 +76,18 @@ export class VerifyDialogComponent implements OnInit {
                 );
                 break;
             }
-            retryAPI?.subscribe({
-              next: (response) => this.checkStatus(),
-              error: (error) => this.checkStatus(),
-              complete: () => {},
-            });
+            if (
+              this.currentSignupStatus !==
+              SignupStatus.CertificateCreationInProgress
+            ) {
+              retryAPI?.subscribe({
+                next: (response) => this.checkStatus(),
+                error: (error) => this.checkStatus(),
+                complete: () => {},
+              });
+            } else {
+              this.checkStatus();
+            }
           } else if (
             this.currentSignupStatus === SignupStatus.ParticipantJsonCreated
           ) {
