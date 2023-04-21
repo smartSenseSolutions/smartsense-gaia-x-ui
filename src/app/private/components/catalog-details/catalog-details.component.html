@@ -6,9 +6,9 @@
       </a>
       <h3>Catalog-details</h3>
     </div>
-    <div class="flex-center-right">
-      <a href="">Terms</a>
-      <a href="">Policy</a>
+    <div *ngIf="service"  class="flex-center-right">
+      <a [href]="service.terms" target="_blank">Terms</a>
+      <!-- <a [href]="service.terms" target="_blank">Policy</a> -->
       <a matTooltip="Click to Download full report" class="download-btn">
         <mat-icon svgIcon="download"></mat-icon>
       </a>
