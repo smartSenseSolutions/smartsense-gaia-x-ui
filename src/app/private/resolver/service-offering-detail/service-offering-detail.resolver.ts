@@ -13,24 +13,33 @@ import { ServiceOfferResponsePayloadModel } from '../../models';
   providedIn: 'root',
 })
 export class ServiceOfferingDetailResolver {
-  constructor(private serviceOfferingService: ServiceOfferingService) {}
+  constructor(
+    private serviceOfferingService: ServiceOfferingService,
+    private router: Router
+  ) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<ServiceOfferResponsePayloadModel | never> {
-    const id = route.queryParamMap.get('id');
-    if (id) {
-      return this.serviceOfferingService.getServiceOffersDetail(id).pipe(
-        map((response) => {
-          return response.payload;
-        }),
-        catchError((error) => {
-          return EMPTY;
-        })
-      );
+    const internalState = this.router.getCurrentNavigation()?.extras
+      ?.state as any;
+    if (internalState) {
+      return of(internalState.service);
     } else {
-      return EMPTY;
+      const id = route.queryParamMap.get('id');
+      if (id) {
+        return this.serviceOfferingService.getServiceOffersDetail(id).pipe(
+          map((response) => {
+            return response.payload;
+          }),
+          catchError((error) => {
+            return EMPTY;
+          })
+        );
+      } else {
+        return EMPTY;
+      }
     }
   }
 }
