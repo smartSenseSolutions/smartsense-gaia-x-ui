@@ -1,10 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { AddServiceDataModel } from 'src/app/private/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { ValidationConstant } from 'src/app/shared/constants';
@@ -18,6 +24,8 @@ import { ValidationConstant } from 'src/app/shared/constants';
     MatExpansionModule,
     MatIconModule,
     MatButtonModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.scss'],
@@ -40,15 +48,22 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
     this.addServiceDataForm = this.fb.group({
       meta: this.fb.array([]),
     });
+    this.addGroup();
+    // this.addGroupParameter(0);
   };
 
   addGroup = () => {
     const dataGroupForm = this.fb.group({
       name: ['', Validators.required],
-      parameters: this.fb.array([]),
+      parameters: this.fb.array([
+        this.fb.group({
+          name: ['', Validators.required],
+          value: ['', Validators.required],
+        })
+      ]),
     });
     this.metaGroups.push(dataGroupForm);
-    this.addGroupParameter(0);
+
   };
 
   removeGroup = (index: number) => {
@@ -56,8 +71,7 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
   };
 
   addGroupParameter = (index: number) => {
-    const group = this.metaGroups.controls[index] as FormGroup;
-    const parameters = this.metaGroupParameters(group);
+    const parameters = this.metaGroupParameters(index);
 
     const parameterForm = this.fb.group({
       name: ['', Validators.required],
@@ -67,8 +81,8 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
   };
 
   removeGroupParameter = (groupIndex: number, parameterIndex: number) => {
-    const group = this.metaGroups.controls[groupIndex] as FormGroup;
-    const parameters = this.metaGroupParameters(group);
+    // const group = this.metaGroups.controls[groupIndex] as FormGroup;
+    const parameters = this.metaGroupParameters(groupIndex);
     parameters.removeAt(parameterIndex);
   };
 
@@ -88,7 +102,9 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
     return this.addServiceDataForm.controls['meta'] as FormArray;
   }
 
-  metaGroupParameters(group: FormGroup) {
-    return group.controls['parameters'] as FormArray;
+  metaGroupParameters(groupIndex: number) {
+    return (this.metaGroups.controls[groupIndex] as FormGroup).controls[
+      'parameters'
+    ] as FormArray;
   }
 }

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -17,10 +17,9 @@ import { FormBaseComponent } from 'src/app/shared/components';
 import { AddServiceValidationConstant } from 'src/app/shared/constants';
 import {
   ACCESS_TYPES,
-  REQUEST_TYPES,
   FORMAT_TYPES,
+  REQUEST_TYPES,
 } from './add-new-service.constants';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-new-service',
@@ -62,31 +61,31 @@ export class AddNewServiceComponent
   initialization = () => {
     this.addServiceForm = new FormGroup({
       name: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.name : '',
+        this.addServiceFormData ? this.addServiceFormData.name : 's',
         Validators.required
       ),
       policy: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.policy : '',
+        this.addServiceFormData ? this.addServiceFormData.policy : 'as',
         Validators.required
       ),
       description: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.description : '',
+        this.addServiceFormData ? this.addServiceFormData.description : 'as',
         Validators.required
       ),
       accessType: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.accessType : '',
+        this.addServiceFormData ? this.addServiceFormData.accessType : ACCESS_TYPES[0].value,
         Validators.required
       ),
       requestType: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.requestType : '',
+        this.addServiceFormData ? this.addServiceFormData.requestType : REQUEST_TYPES[0].value,
         Validators.required
       ),
       formatType: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.formatType : '',
+        this.addServiceFormData ? this.addServiceFormData.formatType : FORMAT_TYPES[0].value,
         Validators.required
       ),
       terms: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.terms : '',
+        this.addServiceFormData ? this.addServiceFormData.terms : 's',
         Validators.required
       ),
     });
