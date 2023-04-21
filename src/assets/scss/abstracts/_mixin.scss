@@ -157,3 +157,13 @@
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
+
+//
+// Elipsis mixin
+//
+@mixin elipsis($width) {
+  width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

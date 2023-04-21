@@ -6,7 +6,9 @@
       </a>
       <h3>Catalog-details</h3>
     </div>
-    <div>
+    <div class="flex-center-right">
+      <a href="">Terms</a>
+      <a href="">Policy</a>
       <a matTooltip="Click to Download full report" class="download-btn">
         <mat-icon svgIcon="download"></mat-icon>
       </a>
@@ -43,7 +45,14 @@
                   class="col-md-4"
                 >
                   <label>{{ childItem.key }}</label>
-                  <span>{{ childItem.value }}</span>
+                  <!-- DEVELOPER :: BELOW LINE FOR COMMON DATA -->
+
+                  <!-- <span>{{ childItem.value }}</span> -->
+
+                  <!-- DEVELOPER :: BELOW LINE FOR URL DATA -->
+                  <a matTooltip="{{ childItem.value }}"
+                    ><span>{{ childItem.value }}</span></a
+                  >
                 </div>
               </div>
             </div>

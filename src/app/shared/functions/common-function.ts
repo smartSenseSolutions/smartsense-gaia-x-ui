@@ -1,5 +1,5 @@
-import { FormControl } from "@angular/forms";
-import RegexConstant from "../constants/regex.constants";
+import { ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
+import { RegexConstant } from '../constants/regex.constants';
 
 export const truncateFromMiddle = (
   rawString: string,
@@ -63,11 +63,24 @@ export function parseAPI(
   return url;
 }
 
+// Matching Validator function
+export const matchValidator = (
+  controlName: string,
+  checkControlName: string
+): ValidatorFn => {
+  return (controls: AbstractControl) => {
+    const control = controls.get(controlName);
+    const checkControl = controls.get(checkControlName);
 
-// Alpha Numeric Validator function
-export function alphaNumericValidator(control : FormControl) {
-  let controlValue = control.value;
-  controlValue = controlValue.trim();
-  const result = RegexConstant.ALPHA_NUMERIC.test(controlValue);
-  return result ? { 'containSpecialCharacter' : true } : null;
-}
+    if (checkControl?.errors && !checkControl.errors['matching']) {
+      return null;
+    }
+
+    if (control?.value !== checkControl?.value) {
+      controls.get(checkControlName)?.setErrors({ matching: true });
+      return { matching: true };
+    } else {
+      return null;
+    }
+  };
+};

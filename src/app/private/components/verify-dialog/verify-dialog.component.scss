@@ -25,7 +25,7 @@
           color: $black-color;
 
           @include respond("phone") {
-            font-size: 19px;
+            font-size: 1.9rem;
           }
         }
 
@@ -51,7 +51,7 @@
     }
 
     &__ownership {
-      margin: 3rem 28px 0;
+      margin: 3rem 2.8rem 0;
 
       h5 {
         color: $primary-color;
@@ -120,10 +120,10 @@
     }
 
     &__body {
-      padding: 8px 1rem 0 1rem;
+      padding: 0.8rem 1rem 0 1rem;
 
       &--progress-bar {
-        margin: 0 28px;
+        margin: 0 2.8rem;
         border-bottom: 0.1rem solid #ccc;
         padding: 0.5rem 0 1.5rem 1rem;
         text-align: center;
@@ -181,7 +181,7 @@
               text-align: left;
               color: $primary-color;
               display: block;
-              padding-bottom: 7px;
+              padding-bottom: 0.7rem;
               text-transform: capitalize;
             }
 
@@ -243,7 +243,7 @@
 
         &--results {
           ul {
-            padding: 3rem 2rem 0 28px;
+            padding: 3rem 2rem 0 2.8rem;
             position: relative;
 
             @include respond("phone") {
@@ -263,7 +263,7 @@
                 background-color: $black-color-4;
                 display: inline-block;
                 vertical-align: sub;
-                padding: 1rem 1rem 8px 1rem;
+                padding: 1rem 1rem 0.8rem 1rem;
                 margin: 0 1.4rem 3rem 0;
                 border-radius: 10rem;
                 position: relative;
@@ -276,8 +276,8 @@
                 }
 
                 .mat-icon {
-                  width: 18px;
-                  height: 18px;
+                  width: 1.8rem;
+                  height: 1.8rem;
                   color: $white-color;
 
                   &:first-child {
@@ -290,7 +290,7 @@
                 width: 32.5rem;
                 display: inline-block;
                 font-family: $font-family;
-                font-size: 17px;
+                font-size: 1.7rem;
                 font-weight: 600;
                 line-height: 1.27;
                 text-align: left;
@@ -301,7 +301,7 @@
                   width: unset;
                   font-size: 1.5rem;
                   position: relative;
-                  top: 9px;
+                  top: 0.9rem;
                 }
               }
 
@@ -397,7 +397,7 @@
                   top: -1.3rem;
 
                   @include respond("phone") {
-                    top: 7px;
+                    top: 0.7rem;
                   }
                 }
 

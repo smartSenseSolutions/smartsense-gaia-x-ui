@@ -5,3 +5,4 @@ export * from './base.constants';
 export * from './route.constants';
 export * from './validation.constants';
 export * from './api.constants';
+export * from './regex.constants';

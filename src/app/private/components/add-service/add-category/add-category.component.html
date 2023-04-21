@@ -1,0 +1,61 @@
+<section class="addServiceData">
+  <div class="addServiceData__header">
+    <div class="addServiceData__header--content">
+      <button class="backArrow-btn">
+        <mat-icon svgIcon="arrow-left"></mat-icon>
+      </button>
+      <h3>Add Service Data</h3>
+    </div>
+    <div class="addServiceData__header--buttons">
+      <button mat-raised-button class="primary-btn">
+        <mat-icon svgIcon="add"></mat-icon>
+        Add Service Data
+      </button>
+    </div>
+
+  </div>
+  <div class="addServiceData__body">
+    <ul>
+      <li class="addServiceData__body__examples">
+        <p class="addServiceData__body__examples-header">Here's an Example Service Data</p>
+        <div class="addServiceData__body__accordian">
+          <mat-accordion [multi]="false">
+            <mat-expansion-panel expanded="true" hideToggle="true">
+              <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
+                <mat-panel-title>Group Name</mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="expansion-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Parameter 1</label>
+                    <span>Parameter Value</span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Parameter 2</label>
+                    <span>Parameter Value</span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Parameter 3</label>
+                    <span>Parameter Value</span>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </li>
+      <li class="addServiceData__body__inputs">
+
+      </li>
+      <li class="addServiceData__body__buttons">
+        <form>
+          <div>
+            <mat-form-field appearance="outline">
+              <input type="text" >
+            </mat-form-field>
+          </div>
+        </form>
+      </li>
+    </ul>
+  </div>
+</section>

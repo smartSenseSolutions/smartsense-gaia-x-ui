@@ -100,11 +100,9 @@
                 <mat-error *ngIf="isRequiredField(formControls['confirmPassword'])">
                   {{ validationMsg.CONFIRM_PASSWORD_IS_REQUIRED }}</mat-error>
                 <mat-error *ngIf="formControls['confirmPassword'].hasError('matching')">
-                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME }}</mat-error>
-
+                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME  }}</mat-error>
                 <mat-error *ngIf="formControls['confirmPassword'].hasError('minlength')">
                   {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
-
                 <mat-error *ngIf="formControls['confirmPassword'].hasError('maxlength')">
                   {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
               </mat-form-field>

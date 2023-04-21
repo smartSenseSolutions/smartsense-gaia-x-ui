@@ -1,6 +1,6 @@
 <section class="addService">
   <div class="addService__header">
-    <button>
+    <button class="backArrow-btn">
       <mat-icon svgIcon="arrow-left"></mat-icon>
     </button>
     <h3>Search</h3>
@@ -8,7 +8,7 @@
   <div class="addService__content">
     <form [formGroup]="addServiceForm" (ngSubmit)="onAddServiceFormSubmit(addServiceForm)">
 
-      <ul >
+      <ul>
         <li class="addService__content--inputs">
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
@@ -39,7 +39,9 @@
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="description">Description</label>
               <textarea formControlName="description" matInput id="description"
-                placeholder="Please Enter service description" required></textarea>
+                placeholder="Please Enter service description" required rows="4" cols="50" maxlength="5000">
+              </textarea>
+              <span class="descriptionLength">{{ formControls['description'].value?.length }} / 5000</span>
               <mat-error *ngIf="isRequiredField(formControls['description'])">
                 {{ validationMsg.DESCRIPTION_IS_REQUIRED}}</mat-error>
               <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
@@ -79,7 +81,7 @@
         <li class="addService__content--inputs">
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
-              <label class="required-label" for="formatType">Request Type</label>
+              <label class="required-label" for="formatType">Format Type</label>
               <mat-select formControlName="formatType" matInput id="formatType" placeholder="Select request type"
                 required>
                 <mat-option>Make it Possible</mat-option>
@@ -98,9 +100,9 @@
                 placeholder="Enter terms and conditions" required>
               <mat-error *ngIf="isRequiredField(formControls['termsAndCondition'])">
                 {{ validationMsg.TERMS_AND_CONDITION_IS_REQUIRED}}</mat-error>
-                <mat-hint>
-                  Terms and Conditions HASH - auto generated
-                </mat-hint>
+              <mat-hint>
+                Terms and Conditions HASH - auto generated
+              </mat-hint>
               <!-- <mat-error *ngIf="isValidLength(formControls['email'])">
                 {{ validationMsg.INVALID_EMAIL }}</mat-error>-->
             </mat-form-field>
@@ -109,7 +111,7 @@
       </ul>
 
       <ul class="addService__content--buttons">
-        <li> <button type="submit" class="large-btn primary-btn" mat-raised-button>
+        <li><button type="submit" class="large-btn primary-btn" mat-raised-button>
             Save & Continue
             <mat-icon svgIcon="arrow-right"></mat-icon>
           </button>
