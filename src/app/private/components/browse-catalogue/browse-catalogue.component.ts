@@ -15,6 +15,7 @@ import { Router, RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ShareInformationDialogComponent } from 'src/app/shared/components';
 import { RouteConstants } from 'src/app/shared/constants';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-browse-catalogue',
@@ -31,6 +32,7 @@ import { RouteConstants } from 'src/app/shared/constants';
     MatMenuModule,
     RouterModule,
     MatDialogModule,
+    MatTooltipModule,
   ],
   templateUrl: './browse-catalogue.component.html',
   styleUrls: ['./browse-catalogue.component.scss'],

@@ -1,6 +1,6 @@
 <section class="serviceCatalog">
   <div class="serviceCatalog__header">
-    <h3>Service Catalog</h3>
+    <h3>Service Catalogue</h3>
     <a (click)="redirect()">
       <button mat-raised-button class="primary-btn">
         <mat-icon svgIcon="add"></mat-icon>
@@ -8,6 +8,9 @@
       </button>
     </a>
   </div>
-  <app-card-box [showCompany]="false" [serviceList]=serviceList
-    (onViewDetailClickEvent)="onViewDetailClick($event)"></app-card-box>
+  <app-card-box
+    [showCompany]="false"
+    [serviceList]="serviceList"
+    (onViewDetailClickEvent)="onViewDetailClick($event)"
+  ></app-card-box>
 </section>

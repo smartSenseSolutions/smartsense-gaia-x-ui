@@ -57,3 +57,20 @@ mat-accordion {
     font-family: $font-family !important;
   }
 }
+
+.logout-btn {
+  border-radius: 1rem !important;
+  div {
+    padding: 0;
+    border-radius: 1rem;
+    box-shadow: 0px 1px 6px #00000029 !important;
+  }
+  span {
+    color: $primary-dark;
+    font-size: 1.5rem;
+  }
+  .mat-mdc-menu-item {
+    min-height: 3.9rem;
+    width: 11.7rem;
+  }
+}
