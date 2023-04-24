@@ -17,6 +17,7 @@ import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import { RegexConstant } from 'src/app/shared/constants/regex.constants';
 import { matchValidator } from 'src/app/shared/functions';
+import { SharedService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-signup-step-one',
@@ -61,7 +62,11 @@ export class SignupStepOneComponent
     confirmPassword: new FormControl('', [Validators.required]),
   });
 
-  constructor(protected override fb: FormBuilder, private router: Router) {
+  constructor(
+    protected override fb: FormBuilder,
+    private router: Router,
+    private sharedService: SharedService
+  ) {
     super(fb);
   }
 
@@ -135,5 +140,10 @@ export class SignupStepOneComponent
     const password = formGroup.get('password');
     const confirmPassword = formGroup.get('confirmPassword');
     return password === confirmPassword ? null : { passwordNotMatch: true };
+  }
+
+  doLogout() {
+    this.sharedService.clearSession();
+    this.router.navigate([RouteConstants.Login]);
   }
 }

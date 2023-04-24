@@ -79,11 +79,15 @@
         background-color: transparent;
         position: absolute;
         top: 2.8rem;
-        left: 44rem;
+        left: 0;
         white-space: nowrap;
-
         color: $primary-dark;
         opacity: 1;
+      }
+
+      .logout {
+        right: 0;
+        left: auto;
       }
 
       &.bottom-text {
