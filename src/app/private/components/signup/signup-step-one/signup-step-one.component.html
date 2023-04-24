@@ -108,7 +108,7 @@
               </mat-form-field>
             </div>
 
-            <button type="submit" class="large-btn primary-btn" mat-raised-button type="submit">
+            <button type="submit" class="large-btn" [ngClass]="{ 'primary-btn' : signupForm.valid , 'disabled-btn' : !signupForm.valid}" [disabled]="!signupForm.valid" mat-raised-button type="submit">
               Proceed
               <mat-icon matIconPrefix svgIcon="arrow-right"></mat-icon>
             </button>

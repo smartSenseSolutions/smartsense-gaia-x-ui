@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: RouteConstants.SignUp,
     component: SignupContainerComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Private,
       allowedUserTypes: [UserType.Admin],
@@ -50,7 +50,7 @@ const routes: Routes = [
   {
     path: RouteConstants.SmartX,
     component: SmartXComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Private,
       allowedUserTypes: [UserType.Enterprise],

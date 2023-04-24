@@ -1,6 +1,11 @@
 .userDetails__login {
-  mat-icon[svgicon="arrow-right"] {
-    left: 6.7rem;
+  button[type=submit] {
+    flex-direction: row-reverse;
+    gap: 1.2rem;
+
+    .mat-icon {
+      margin: 0;
+    }
   }
 
   &-form {
