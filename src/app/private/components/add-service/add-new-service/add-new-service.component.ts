@@ -61,15 +61,15 @@ export class AddNewServiceComponent
   initialization = () => {
     this.addServiceForm = new FormGroup({
       name: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.name : 'Product Carbon Footprint of Camshift Pulse Generator',
+        this.addServiceFormData ? this.addServiceFormData.name : '',
         Validators.required
       ),
       policy: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.policy : 'https://myhellalights.com/privacy-policy/',
+        this.addServiceFormData ? this.addServiceFormData.policy : '',
         Validators.required
       ),
       description: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.description : 'Get product carbon footprint data, product information, and supporting documents for Camshift Pulse Generator',
+        this.addServiceFormData ? this.addServiceFormData.description : '',
         Validators.required
       ),
       accessType: new FormControl(
@@ -85,7 +85,7 @@ export class AddNewServiceComponent
         Validators.required
       ),
       terms: new FormControl(
-        this.addServiceFormData ? this.addServiceFormData.terms : 'https://myhellalights.com/privacy-policy/',
+        this.addServiceFormData ? this.addServiceFormData.terms : '',
         Validators.required
       ),
     });
