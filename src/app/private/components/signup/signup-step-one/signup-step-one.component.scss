@@ -107,6 +107,20 @@
       display: block;
       width: 100%;
 
+      .back-btn {
+        @include font(1.6rem, 1.9rem, 500);
+        border: none;
+        outline: none;
+        background-color: transparent;
+        position: absolute;
+        top: 2.8rem;
+        left: 44rem;
+        white-space: nowrap;
+
+        color: $primary-dark;
+        opacity: 1;
+      }
+
       &.bottom-text {
         position: relative;
         top: 3rem;

@@ -19,12 +19,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SignStepTwoModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
-import { ValidationConstant } from 'src/app/shared/constants';
+import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 import {
   COUNTRY_SUBDIVISION_CODES,
   REGISTRATION_TYPES,
 } from './signup-step-two.constants';
 import { RegexConstant } from 'src/app/shared/constants/regex.constants';
+import { SharedService } from 'src/app/shared/services';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup-step-two',
   standalone: true,
@@ -80,7 +82,8 @@ export class SignupStepTwoComponent extends FormBaseComponent {
     termsAndConditions: new FormControl(false, [Validators.required]),
   });
 
-  constructor(protected override fb: FormBuilder) {
+  constructor(protected override fb: FormBuilder,private router: Router,
+    private sharedService: SharedService) {
     super(fb);
   }
 
@@ -268,5 +271,10 @@ export class SignupStepTwoComponent extends FormBaseComponent {
 
   get isFormValid() {
     return this.signupForm.valid;
+  }
+
+  doLogout() {
+    this.sharedService.clearSession();
+    this.router.navigate([RouteConstants.Login]);
   }
 }

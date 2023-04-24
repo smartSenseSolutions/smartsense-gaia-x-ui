@@ -4,7 +4,7 @@
       <a (click)="onBack()" matTooltip="Back">
         <mat-icon svgIcon="backArrow"></mat-icon>
       </a>
-      <h3>Catalog-details</h3>
+      <h3>Catalogue Details</h3>
     </div>
     <div *ngIf="service" class="flex-center-right">
       <a [href]="service.terms" target="_blank">Terms</a>
@@ -27,18 +27,35 @@
 
       <div class="catalog-details-container__accordian">
         <mat-accordion [multi]="true">
-          <mat-expansion-panel *ngFor="let item of service.meta | keyvalue;first as isFirst" [expanded]="isFirst" (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-            <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
+          <mat-expansion-panel
+            *ngFor="let item of service.meta | keyvalue; first as isFirst"
+            [expanded]="isFirst"
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header
+              [collapsedHeight]="'5rem'"
+              [expandedHeight]="'5rem'"
+            >
               <mat-panel-title>{{ item.key }}</mat-panel-title>
             </mat-expansion-panel-header>
             <div class="expansion-body">
               <div class="row">
-                <div *ngFor="let childItem of item.value | keyvalue" class="col-md-4">
+                <div
+                  *ngFor="let childItem of item.value | keyvalue"
+                  class="col-md-4"
+                >
                   <label>{{ childItem.key }}</label>
-                  <a *ngIf="valueHasHttp(childItem.value); else elseBlock" [href]="childItem.value" target="_blank"
-                    matTooltip="{{ childItem.value }}"><span>{{ childItem.value }}</span></a>
-                  <ng-template #elseBlock><span>{{ childItem.value }}</span></ng-template>
+                  <a
+                    *ngIf="valueHasHttp(childItem.value); else elseBlock"
+                    [href]="childItem.value"
+                    target="_blank"
+                    matTooltip="{{ childItem.value }}"
+                    ><span>{{ childItem.value }}</span></a
+                  >
+                  <ng-template #elseBlock
+                    ><span>{{ childItem.value }}</span></ng-template
+                  >
                 </div>
               </div>
             </div>
