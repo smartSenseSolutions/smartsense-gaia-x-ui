@@ -16,6 +16,9 @@ export class ValidationConstant {
   public readonly MAX_LENGTH_255 = `Maximum Expected Length of value is 255`;
   public readonly SPECIAL_CHARACTER_NOT_ALLOWED =  `Special Character are not allowed`;
   public readonly EMAIL_IS_NOT_VALID =  `Entred Email is not valid`;
+  public readonly PARAMETER_NAME_REQUIRED = `Parameter Name is required`;
+  public readonly PARAMETER_VALUE_REQUIRED = `Parameter value is required`;
+  public readonly GROUP_NAME_REQUIRED = `Group Name is Required`;
 }
 
 export class AddServiceValidationConstant {

@@ -111,4 +111,8 @@ export class AddServiceDataComponent extends FormBaseComponent implements OnInit
       'parameters'
     ] as FormArray;
   }
+
+  metaGroupLength(index : number) :number {
+    return this.metaGroupParameters(index).length;
+  }
 }

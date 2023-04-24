@@ -1,7 +1,18 @@
+@import '../abstracts/abstracts';
+
 mat-accordion {
+  font-family: $font-family !important;
+
   mat-expansion-panel {
+    font-family: $font-family !important;
+
+    &-header {
+      font-family: $font-family !important;
+    }
+
     &.mat-expanded {
       background-color: unset;
+
       .mat-expansion-panel-header {
         border-radius: 0;
         border-bottom: 0.1rem solid rgba($primary-dark, 0.2);
@@ -16,6 +27,7 @@ mat-accordion {
     }
 
     .mat-expansion-panel-body {
+      font-family: $font-family;
       padding: 0;
     }
   }
@@ -33,6 +45,7 @@ mat-accordion {
   }
 
   &-infix {
+
     label,
     input {
       font-family: $font-family !important;
