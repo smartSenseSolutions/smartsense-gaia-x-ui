@@ -176,6 +176,7 @@ app-card-box {
       }
     }
   }
+
   .mat-icon {
     position: absolute;
     height: 1.6rem !important;
@@ -207,6 +208,7 @@ app-browse-catalogue {
       // margin-right: 4.8rem;
     }
   }
+
   .searchPanel__header {
     margin-right: 10rem;
 
@@ -214,4 +216,17 @@ app-browse-catalogue {
       margin-right: 5rem;
     }
   }
+}
+
+.disabled-btn {
+  background:rgba($primary-dark , 0.2) !important;
+  border-radius: 1.2rem !important;
+  color: $white-color !important;
+
+  .mdc-button{
+    &__label{
+      color: $white-color !important ;
+    }
+  }
+
 }

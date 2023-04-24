@@ -6,16 +6,14 @@
 }
 
 .userDetails__signup-2 {
-  button[disabled = true] {
-    .mat-icon{
-      svg path {
-        fill: rgba($primary-dark , 0.4);
-      }
-    }
-  }
 
-  mat-icon[svgicon='arrow-right'] {
-    left: 9rem;
+  .mdc-button{
+    flex-direction: row-reverse;
+    gap : 1.2rem;
+
+    .mat-icon{
+      margin:0;
+    }
   }
 
   &-form {

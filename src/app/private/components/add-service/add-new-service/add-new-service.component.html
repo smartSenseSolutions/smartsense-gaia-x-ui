@@ -1,6 +1,6 @@
 <section class="addService">
   <div class="addService__header">
-    <button class="backArrow-btn" (click)="onBackClick()" >
+    <button class="backArrow-btn" (click)="onBackClick()">
       <mat-icon svgIcon="arrow-left"></mat-icon>
     </button>
     <h3>Add Service Offering</h3>
@@ -48,7 +48,7 @@
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="accessType">Access Type</label>
-              <mat-select formControlName="accessType" matInput id="accessType" placeholder="Select access type"
+              <mat-select panelClass="customSelect" formControlName="accessType" matInput id="accessType" placeholder="Select access type"
                 required>
                 <mat-option *ngFor="let type of ACCESS_TYPES" [value]="type.value">
                   {{type.label}}
@@ -62,7 +62,7 @@
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="requestType">Request Type</label>
-              <mat-select formControlName="requestType" matInput id="requestType" placeholder="Select request type"
+              <mat-select panelClass="customSelect"  formControlName="requestType" matInput id="requestType" placeholder="Select request type"
                 required>
                 <mat-option *ngFor="let type of REQUEST_TYPES" [value]="type.value">
                   {{type.label}}
@@ -77,7 +77,7 @@
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="formatType">Format Type</label>
-              <mat-select formControlName="formatType" matInput id="formatType" placeholder="Select request type"
+              <mat-select panelClass="customSelect"  formControlName="formatType" matInput id="formatType" placeholder="Select request type"
                 required>
                 <mat-option *ngFor="let type of FORMAT_TYPES" [value]="type.value">
                   {{type.label}}
@@ -103,7 +103,8 @@
       </ul>
 
       <ul class="addService__content--buttons">
-        <li><button type="submit" class="large-btn primary-btn" mat-raised-button>
+        <li><button type="submit" class="large-btn"
+            [ngClass]="{'primary-btn' : addServiceForm.valid,'disabled-btn' : !addServiceForm.valid}" [disabled]="!addServiceForm.valid"  mat-raised-button>
             Save & Continue
             <mat-icon svgIcon="arrow-right"></mat-icon>
           </button>

@@ -56,7 +56,8 @@ export class AddServiceContainerComponent {
       });
   };
 
-  onBackClick = () => {
+  onBackClick = (stepTwoData: AddServiceDataModel) => {
+    this.stepTwoData = stepTwoData;
     this.activeStep = AddServiceStep.ONE;
   };
 }

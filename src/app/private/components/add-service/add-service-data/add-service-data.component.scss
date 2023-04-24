@@ -48,6 +48,7 @@
       &--inputs {
         flex-grow: 1;
         max-width: 45%;
+
       }
 
       &--buttons {
@@ -149,14 +150,13 @@
       border: 0.1rem solid $primary-dark;
       padding: 3rem;
       position: relative;
+      margin-bottom: 4rem;
 
       ul {
         li {
-          &:nth-last-of-type(2) {
             .mat-mdc-form-field {
-              margin-bottom: 2rem;
+              margin-bottom: 3rem;
             }
-          }
         }
       }
 

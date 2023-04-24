@@ -1,120 +1,128 @@
 <section class="addServiceData">
-    <div class="addServiceData__header">
-      <div class="addServiceData__header--content">
-        <button class="backArrow-btn" (click)="onBackClick()">
-          <mat-icon svgIcon="arrow-left"></mat-icon>
-        </button>
-        <h3>Add Service Data</h3>
-      </div>
-      <div class="addServiceData__header--buttons">
-        <button (click)="addGroup()" mat-raised-button class="primary-btn">
-          <mat-icon svgIcon="add"></mat-icon>
-          Add Service Data
-        </button>
-      </div>
-  
+  <div class="addServiceData__header">
+    <div class="addServiceData__header--content">
+      <button class="backArrow-btn" (click)="onBackClick()">
+        <mat-icon svgIcon="arrow-left"></mat-icon>
+      </button>
+      <h3>Add Service Data</h3>
     </div>
-    <div class="addServiceData__body">
-      <ul>
-        <li class="addServiceData__body__examples">
-          <p class="addServiceData__body__examples-header">Here's an example service data</p>
-          <div class="addServiceData__body__accordian">
-            <mat-accordion [multi]="false">
-              <mat-expansion-panel expanded="true" hideToggle="true">
-                <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
-                  <mat-panel-title>Group Name</mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="expansion-body">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <label>Parameter 1</label>
-                      <span>Parameter Value</span>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Parameter 2</label>
-                      <span>Parameter Value</span>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Parameter 3</label>
-                      <span>Parameter Value</span>
-                    </div>
+    <div class="addServiceData__header--buttons">
+      <button (click)="addGroup()" mat-raised-button class="primary-btn">
+        <mat-icon svgIcon="add"></mat-icon>
+        Add Service Data
+      </button>
+    </div>
+
+  </div>
+  <div class="addServiceData__body">
+    <ul>
+      <li class="addServiceData__body__examples">
+        <p class="addServiceData__body__examples-header">Here's an Example Service Data</p>
+        <div class="addServiceData__body__accordian">
+          <mat-accordion [multi]="false">
+            <mat-expansion-panel expanded="true" hideToggle="true">
+              <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
+                <mat-panel-title>Group Name</mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="expansion-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Parameter 1</label>
+                    <span>Parameter Value</span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Parameter 2</label>
+                    <span>Parameter Value</span>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Parameter 3</label>
+                    <span>Parameter Value</span>
                   </div>
                 </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
-        </li>
-        <form [formGroup]="addServiceDataForm" (submit)="onAddServiceFormSubmit(addServiceDataForm)">
-          <div formArrayName="meta">
-            <li *ngFor="let group of metaGroups.controls; let j = index" class="addServiceData__body__inputs">
-  
-              <ul [formGroupName]="j">
-                <li class="addServiceData__body__staticField">
-                  <div>
-                    <mat-form-field class="custom-input" appearance="fill">
-                      <input formControlName="name" type="text" matInput placeholder="Enter group name">
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </li>
+      <form [formGroup]="addServiceDataForm" (submit)="onAddServiceFormSubmit(addServiceDataForm)">
+        <div formArrayName="meta">
+          <li *ngFor="let group of metaGroups.controls; let j = index" class="addServiceData__body__inputs">
+
+            <ul [formGroupName]="j">
+              <li class="addServiceData__body__staticField">
+                <div>
+                  <mat-form-field class="custom-input" appearance="fill">
+                    <input formControlName="name" type="text" matInput placeholder="Enter Group Name">
+                    <mat-error
+                      *ngIf="metaGroups.at(j).get('name')?.hasError('required')">{{validationMsg.GROUP_NAME_REQUIRED}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </li>
+              <li formArrayName="parameters" *ngFor="let parameter of metaGroupParameters(j).controls ; let i = index">
+                <div [formGroupName]="i" class=" addServiceData__body__dynamicFields">
+                  <div class="addServiceData__body__dynamicFields--inputs">
+                    <mat-form-field appearance="fill" floatLabel="always">
+                      <label for="name">Parameter Name</label>
+                      <input formControlName="name" matInput id="name" placeholder="Enter parameter name" required>
+                      <mat-error *ngIf="metaGroupParameters(j).at(i).get('name')?.hasError('required')">{{
+                        validationMsg.PARAMETER_NAME_REQUIRED }}</mat-error>
                     </mat-form-field>
                   </div>
-                </li>
-                <li formArrayName="parameters" *ngFor="let parameter of metaGroupParameters(j).controls ; let i = index">
-                  <div [formGroupName]="i" class=" addServiceData__body__dynamicFields">
-                    <div class="addServiceData__body__dynamicFields--inputs">
-                      <mat-form-field appearance="fill" floatLabel="always">
-                        <label for="name">Parameter Name</label>
-                        <input formControlName="name" matInput id="name" placeholder="Enter parameter name" required>
-                      </mat-form-field>
-                    </div>
-                    <div class="addServiceData__body__dynamicFields--inputs">
-                      <mat-form-field appearance="fill" floatLabel="always">
-                        <label for="value">Parameter Value</label>
-                        <input formControlName="value" matInput id="value" placeholder="Enter parameter value" required>
-                      </mat-form-field>
-                    </div>
-                    <div *ngIf="i>0" class="addServiceData__body__dynamicFields--buttons">
-                      <button (click)="removeGroupParameter(j,i)" mat-fab disableRipple="true">
-                        <mat-icon svgIcon="close">
-                        </mat-icon>
-                      </button>
-                    </div>
+                  <div class="addServiceData__body__dynamicFields--inputs">
+                    <mat-form-field appearance="fill" floatLabel="always">
+                      <label for="value">Parameter Value</label>
+                      <input formControlName="value" matInput id="value" placeholder="Enter parameter value" required>
+                      <mat-error *ngIf="metaGroupParameters(j).at(i).get('value')?.hasError('required')">{{
+                        validationMsg.PARAMETER_VALUE_REQUIRED }}</mat-error>
+
+                    </mat-form-field>
                   </div>
-  
-                </li>
-                <div class="addMore">
-                  <a (click)="addGroupParameter(j)">
-                    <mat-icon svgIcon="add-blue"></mat-icon>
-                    Add More
-                  </a>
+                  <div  class="addServiceData__body__dynamicFields--buttons">
+                    <button *ngIf="j > 0" (click)="removeGroupParameter(j,i)" mat-fab disableRipple="true">
+                      <mat-icon svgIcon="close">
+                      </mat-icon>
+                    </button>
+                  </div>
                 </div>
-              </ul>
-  
-              <button type="button" (click)="removeGroup(j)" disableRipple="true" mat-button class="addServiceData__body__inputs-button">
-                <mat-icon svgIcon="close"></mat-icon>
+
+              </li>
+              <div class="addMore">
+                <a (click)="addGroupParameter(j)">
+                  <mat-icon svgIcon="add-blue"></mat-icon>
+                  Add More
+                </a>
+              </div>
+            </ul>
+
+            <button type="button" (click)="removeGroup(j)" disableRipple="true" mat-button
+              class="addServiceData__body__inputs-button">
+              <mat-icon svgIcon="close"></mat-icon>
+            </button>
+          </li>
+
+
+        </div>
+
+
+        <li>
+          <ul class="addServiceData__body__buttons">
+            <li>
+              <button type="cancel" mat-raised-button>
+                Cancel
               </button>
             </li>
-  
-  
-          </div>
-  
-  
-          <li>
-            <ul class="addServiceData__body__buttons">
-              <li>
-                <button type="cancel" mat-raised-button>
-                  Cancel
-                </button>
-              </li>
-              <li>
-                <button type="submit" class="primary-btn" mat-raised-button>
-                  Submit
-                  <mat-icon svgIcon="arrow-right"></mat-icon>
-                </button>
-              </li>
-            </ul>
-          </li>
-        </form>
-      </ul>
-  
-  
-    </div>
-  </section>
-  
+            <li>
+              <button type="submit" [ngClass]="{'primary-btn': addServiceDataForm.valid , 'disabled-btn' : !addServiceDataForm.valid}" mat-raised-button
+                [disabled]="!addServiceDataForm.valid">
+                Submit
+                <mat-icon svgIcon="arrow-right"></mat-icon>
+              </button>
+            </li>
+          </ul>
+        </li>
+      </form>
+    </ul>
+
+
+  </div>
+</section>

@@ -1,7 +1,12 @@
 .userDetails__signup
  {
-  mat-icon[svgicon='arrow-right'] {
-    left: 9rem;
+  .mdc-button{
+    flex-direction: row-reverse;
+    gap: 1.2rem;
+    .mat-icon{
+      margin: 0;
+
+    }
   }
 
   &-form {
@@ -12,4 +17,9 @@
     }
   }
 
+  mat-hint{
+    div{
+      flex-wrap: nowrap !important;
+    }
+  }
 }

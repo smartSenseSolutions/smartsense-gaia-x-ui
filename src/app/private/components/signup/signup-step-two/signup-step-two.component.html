@@ -71,7 +71,7 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label class="required-label" for="legalRegistrationType">Legal Registration Type</Label>
-                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
+                <mat-select panelClass="customSelect"  formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
                   panelClass="customSelect" #registrationType>
                   <mat-option *ngFor="let type of REGISTRATION_TYPES" [value]="type.value">
                     {{type.label}}
@@ -230,7 +230,7 @@
               <mat-checkbox disableRipple="true" formControlName="termsAndConditions">
                 I agree to Gaia-X <a class="underline">Terms of Service</a> and <a class="underline">Privacy Policy</a>.
               </mat-checkbox>
-              <button class="large-btn " mat-raised-button type="submit" [disabled]="!isFormValid" [ngClass]="{'primary-btn' : isFormValid}">
+              <button class="large-btn" mat-raised-button type="submit" [disabled]="!isFormValid" [ngClass]="{'primary-btn' : isFormValid , 'disabled-btn' :  !isFormValid}">
                 Register
                 <mat-icon svgIcon="arrow-right"></mat-icon>
               </button>
