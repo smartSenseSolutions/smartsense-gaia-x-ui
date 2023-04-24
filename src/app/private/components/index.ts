@@ -8,4 +8,4 @@ export * from './catalog-details/catalog-details.component';
 export * from './my-service-offerings/my-service-offerings.component';
 export * from './add-service/add-service-container/add-service-container.component';
 export * from './add-service/add-new-service/add-new-service.component';
-export * from './add-service/add-category/add-category.component';
+export * from './add-service/add-service-data/add-service-data.component';
