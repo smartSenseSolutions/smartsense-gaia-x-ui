@@ -1,6 +1,6 @@
 <section class="addService">
   <div class="addService__header">
-    <button class="backArrow-btn" (click)="onBackClick()" >
+    <button class="backArrow-btn" (click)="onBackClick()">
       <mat-icon svgIcon="arrow-left"></mat-icon>
     </button>
     <h3>Add Service Offering</h3>
@@ -103,7 +103,8 @@
       </ul>
 
       <ul class="addService__content--buttons">
-        <li><button type="submit" class="large-btn primary-btn" mat-raised-button>
+        <li><button type="submit" class="large-btn"
+            [ngClass]="{'primary-btn' : addServiceForm.valid,'disabled-btn' : !addServiceForm.valid}" [disabled]="!addServiceForm.valid"  mat-raised-button>
             Save & Continue
             <mat-icon svgIcon="arrow-right"></mat-icon>
           </button>
