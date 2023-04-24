@@ -62,25 +62,28 @@ export class AddServiceDataComponent extends FormBaseComponent implements OnInit
       ]),
     });
     this.metaGroups.push(dataGroupForm);
+    this.metaGroups.updateValueAndValidity();
   };
 
   removeGroup = (index: number) => {
     this.metaGroups.removeAt(index);
+    this.metaGroups.updateValueAndValidity();
   };
 
   addGroupParameter = (index: number) => {
     const parameters = this.metaGroupParameters(index);
-
     const parameterForm = this.fb.group({
       name: ['', Validators.required],
       value: ['', Validators.required],
     });
     parameters.push(parameterForm);
+    this.metaGroups.updateValueAndValidity();
   };
 
   removeGroupParameter = (groupIndex: number, parameterIndex: number) => {
     const parameters = this.metaGroupParameters(groupIndex);
     parameters.removeAt(parameterIndex);
+    this.metaGroups.updateValueAndValidity();
   };
 
   onAddServiceFormSubmit = (form: FormGroup) => {
@@ -93,7 +96,8 @@ export class AddServiceDataComponent extends FormBaseComponent implements OnInit
           metaData.meta[group.name][parameter.name] = parameter.value;
         }
       }
-      this.onAddServiceDataComplete.emit(metaData);
+      console.log(metaData)
+      // this.onAddServiceDataComplete.emit(metaData);
     }
   };
 
