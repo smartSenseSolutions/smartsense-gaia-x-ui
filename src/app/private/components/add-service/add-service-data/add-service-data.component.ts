@@ -36,7 +36,7 @@ export class AddServiceDataComponent
 {
   @Input() addServiceDataFormData: AddServiceDataModel | undefined;
   @Output() onAddServiceDataComplete = new EventEmitter<AddServiceDataModel>();
-  @Output() onBackEventClick = new EventEmitter<void>();
+  @Output() onBackEventClick = new EventEmitter<AddServiceDataModel>();
 
   // Constant variables
   readonly validationMsg = new ValidationConstant();
@@ -126,8 +126,7 @@ export class AddServiceDataComponent
 
   onBackClick = () => {
     const metaData = this.getServiceDataFormData();
-    this.onAddServiceDataComplete.emit(metaData);
-    this.onBackEventClick.emit();
+    this.onBackEventClick.emit(metaData);
   };
 
   //Helper methods
@@ -153,7 +152,4 @@ export class AddServiceDataComponent
     return metaData;
   };
 
-  metaGroupLength(index : number) :number {
-    return this.metaGroupParameters(index).length;
-  }
 }

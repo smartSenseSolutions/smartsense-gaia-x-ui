@@ -78,7 +78,7 @@
                     </mat-form-field>
                   </div>
                   <div  class="addServiceData__body__dynamicFields--buttons">
-                    <button *ngIf="metaGroupLength(j) > 1" (click)="removeGroupParameter(j,i)" mat-fab disableRipple="true">
+                    <button *ngIf="j > 0" (click)="removeGroupParameter(j,i)" mat-fab disableRipple="true">
                       <mat-icon svgIcon="close">
                       </mat-icon>
                     </button>
