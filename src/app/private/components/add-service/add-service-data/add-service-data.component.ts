@@ -28,9 +28,12 @@ import { ValidationConstant } from 'src/app/shared/constants';
     MatInputModule,
   ],
   templateUrl: './add-service-data.component.html',
-  styleUrls: ['./add-service-data.component.scss']
+  styleUrls: ['./add-service-data.component.scss'],
 })
-export class AddServiceDataComponent extends FormBaseComponent implements OnInit {
+export class AddServiceDataComponent
+  extends FormBaseComponent
+  implements OnInit
+{
   @Input() addServiceDataFormData: AddServiceDataModel | undefined;
   @Output() onAddServiceDataComplete = new EventEmitter<AddServiceDataModel>();
   @Output() onBackEventClick = new EventEmitter<void>();
@@ -41,25 +44,53 @@ export class AddServiceDataComponent extends FormBaseComponent implements OnInit
   addServiceDataForm: any;
 
   ngOnInit() {
-    this.initialization();
+    if (this.addServiceDataFormData) {
+      // If service data already available then prefill the data
+      const groups = Object.keys(this.addServiceDataFormData.meta);
+      this.initialize();
+      for (let groupName of groups) {
+        // Loop all groups in already available data to prefill the form
+        const groupParameters = this.addServiceDataFormData.meta[groupName];
+        this.addGroup(groupName, groupParameters);
+      }
+    } else {
+      // If no previous data available then create fresh empty form
+      this.initialize();
+      this.addGroup();
+    }
   }
 
-  initialization = () => {
+  initialize = () => {
     this.addServiceDataForm = this.fb.group({
       meta: this.fb.array([]),
     });
-    this.addGroup();
   };
 
-  addGroup = () => {
-    const dataGroupForm = this.fb.group({
-      name: ['', Validators.required],
-      parameters: this.fb.array([
+  addGroup = (groupName?: String, parameters?: { [key: string]: string }) => {
+    let parameterForms: FormGroup[] = [];
+    if (parameters) {
+      // If group and parameters passed to function then create form group for each parameter & populate group with this data.
+      const parameterKeys = Object.keys(parameters);
+      for (const key of parameterKeys) {
+        parameterForms.push(
+          this.fb.group({
+            name: [key, Validators.required],
+            value: [parameters[key], Validators.required],
+          })
+        );
+      }
+    } else { // If not data passed then create an empty parameter form group & populate group with this empty parameter form group.
+      parameterForms.push(
         this.fb.group({
           name: ['', Validators.required],
           value: ['', Validators.required],
-        }),
-      ]),
+        })
+      );
+    }
+
+    const dataGroupForm = this.fb.group({
+      name: [groupName || '', Validators.required],
+      parameters: this.fb.array(parameterForms),
     });
     this.metaGroups.push(dataGroupForm);
     this.metaGroups.updateValueAndValidity();
@@ -88,20 +119,14 @@ export class AddServiceDataComponent extends FormBaseComponent implements OnInit
 
   onAddServiceFormSubmit = (form: FormGroup) => {
     if (this.onSubmit(form)) {
-      const formValue = form.getRawValue();
-      const metaData: AddServiceDataModel = { meta: {} };
-      for (let group of formValue.meta) {
-        metaData.meta[group.name] = {};
-        for (let parameter of group.parameters) {
-          metaData.meta[group.name][parameter.name] = parameter.value;
-        }
-      }
-      console.log(metaData)
-      // this.onAddServiceDataComplete.emit(metaData);
+      const metaData = this.getServiceDataFormData();
+      this.onAddServiceDataComplete.emit(metaData);
     }
   };
 
   onBackClick = () => {
+    const metaData = this.getServiceDataFormData();
+    this.onAddServiceDataComplete.emit(metaData);
     this.onBackEventClick.emit();
   };
 
@@ -115,4 +140,16 @@ export class AddServiceDataComponent extends FormBaseComponent implements OnInit
       'parameters'
     ] as FormArray;
   }
+
+  getServiceDataFormData = () => {
+    const formValue = this.addServiceDataForm.getRawValue();
+    const metaData: AddServiceDataModel = { meta: {} };
+    for (let group of formValue.meta) {
+      metaData.meta[group.name] = {};
+      for (let parameter of group.parameters) {
+        metaData.meta[group.name][parameter.name] = parameter.value;
+      }
+    }
+    return metaData;
+  };
 }
