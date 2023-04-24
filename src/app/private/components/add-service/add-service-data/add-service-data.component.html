@@ -17,7 +17,7 @@
     <div class="addServiceData__body">
       <ul>
         <li class="addServiceData__body__examples">
-          <p class="addServiceData__body__examples-header">Here's an Example Service Data</p>
+          <p class="addServiceData__body__examples-header">Here's an example service data</p>
           <div class="addServiceData__body__accordian">
             <mat-accordion [multi]="false">
               <mat-expansion-panel expanded="true" hideToggle="true">
@@ -52,7 +52,7 @@
                 <li class="addServiceData__body__staticField">
                   <div>
                     <mat-form-field class="custom-input" appearance="fill">
-                      <input formControlName="name" type="text" matInput placeholder="Enter Group Name">
+                      <input formControlName="name" type="text" matInput placeholder="Enter group name">
                     </mat-form-field>
                   </div>
                 </li>
@@ -70,7 +70,7 @@
                         <input formControlName="value" matInput id="value" placeholder="Enter parameter value" required>
                       </mat-form-field>
                     </div>
-                    <div class="addServiceData__body__dynamicFields--buttons">
+                    <div *ngIf="i>0" class="addServiceData__body__dynamicFields--buttons">
                       <button (click)="removeGroupParameter(j,i)" mat-fab disableRipple="true">
                         <mat-icon svgIcon="close">
                         </mat-icon>
