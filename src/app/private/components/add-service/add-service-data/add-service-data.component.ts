@@ -16,7 +16,7 @@ import { FormBaseComponent } from 'src/app/shared/components';
 import { ValidationConstant } from 'src/app/shared/constants';
 
 @Component({
-  selector: 'app-add-category',
+  selector: 'app-add-service-data',
   standalone: true,
   imports: [
     CommonModule,
@@ -27,10 +27,10 @@ import { ValidationConstant } from 'src/app/shared/constants';
     ReactiveFormsModule,
     MatInputModule,
   ],
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.scss'],
+  templateUrl: './add-service-data.component.html',
+  styleUrls: ['./add-service-data.component.scss']
 })
-export class AddCategoryComponent extends FormBaseComponent implements OnInit {
+export class AddServiceDataComponent extends FormBaseComponent implements OnInit {
   @Input() addServiceDataFormData: AddServiceDataModel | undefined;
   @Output() onAddServiceDataComplete = new EventEmitter<AddServiceDataModel>();
   @Output() onBackEventClick = new EventEmitter<void>();
@@ -49,7 +49,6 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
       meta: this.fb.array([]),
     });
     this.addGroup();
-    // this.addGroupParameter(0);
   };
 
   addGroup = () => {
@@ -59,11 +58,10 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
         this.fb.group({
           name: ['', Validators.required],
           value: ['', Validators.required],
-        })
+        }),
       ]),
     });
     this.metaGroups.push(dataGroupForm);
-
   };
 
   removeGroup = (index: number) => {
@@ -81,14 +79,21 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
   };
 
   removeGroupParameter = (groupIndex: number, parameterIndex: number) => {
-    // const group = this.metaGroups.controls[groupIndex] as FormGroup;
     const parameters = this.metaGroupParameters(groupIndex);
     parameters.removeAt(parameterIndex);
   };
 
   onAddServiceFormSubmit = (form: FormGroup) => {
     if (this.onSubmit(form)) {
-      this.onAddServiceDataComplete.emit(form.getRawValue());
+      const formValue = form.getRawValue();
+      const metaData: AddServiceDataModel = { meta: {} };
+      for (let group of formValue.meta) {
+        metaData.meta[group.name] = {};
+        for (let parameter of group.parameters) {
+          metaData.meta[group.name][parameter.name] = parameter.value;
+        }
+      }
+      this.onAddServiceDataComplete.emit(metaData);
     }
   };
 
@@ -97,7 +102,6 @@ export class AddCategoryComponent extends FormBaseComponent implements OnInit {
   };
 
   //Helper methods
-
   get metaGroups() {
     return this.addServiceDataForm.controls['meta'] as FormArray;
   }
