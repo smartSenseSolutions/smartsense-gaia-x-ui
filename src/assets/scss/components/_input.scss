@@ -15,6 +15,7 @@
 
       input {
         background: transparent !important;
+        display: block;
       }
 
       .mat-mdc-form-field-focus-overlay {
@@ -45,7 +46,8 @@
         .mat-mdc-form-field-infix {
           padding: 1.2rem 0 1.3rem !important;
           min-height: auto !important;
-
+          line-height: 1;
+          height: 4.4rem ;
           label {
             @include font(1.3rem, 1.6rem, 600);
             position: absolute !important;
@@ -64,13 +66,11 @@
           }
 
           .mdc-text-field__input {
-            height: 1.9rem;
+            color: rgba($primary-dark, 1);
+            line-height: 1.9rem !important;
             text-align: left;
             font-weight: 500 !important;
             font-size: 1.5rem !important;
-            line-height: 2.4rem !important;
-
-            color: rgba($primary-dark, 1);
 
             .mdc-text-field__input {
               height: 1.9rem;
@@ -225,10 +225,16 @@ mat-error+mat-error {
 }
 
 textarea {
-  position: relative;
-
   &.mat-mdc-input-element {
     height: auto !important;
+    font-family: $font-family !important;
+    position: relative;
+    font-size: 2.2rem !important;
+    line-height: 2.6rem;
+    font-weight: 600 !important;
+    text-align: left !important;
+    letter-spacing: 0px !important;
+    color: rgba($primary-dark , 1) !important;
   }
 }
 

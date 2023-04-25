@@ -16,6 +16,7 @@
     overflow-y: auto;
     padding: 2.5rem 23rem 0 5rem;
     height: 100%;
+
     &--inputs {
       display: flex;
       justify-content: space-between;
@@ -46,5 +47,7 @@
         }
       }
     }
+
+
   }
 }

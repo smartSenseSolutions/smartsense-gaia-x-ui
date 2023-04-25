@@ -20,8 +20,14 @@
       .mdc-button {
         &[type=submit] {
           flex-direction: row-reverse;
-          gap:2rem;
+          gap: 2rem;
         }
+      }
+    }
+
+    .textarea {
+      .mat-mdc-form-field-infix {
+        height: auto !important;
       }
     }
   }

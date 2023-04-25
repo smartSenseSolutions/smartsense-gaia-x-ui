@@ -5,47 +5,65 @@
   box-shadow: 0rem 0.1rem 0.6rem #00000029;
   border-radius: 1.2rem;
 
+  .mat-mdc-form-field-infix{
+    height: 4.4rem;
+  }
   .mat-mdc-option {
     @include font(1.5rem, 2.4rem, 500);
-
+    font-family: $font-family;
     color: $primary-dark;
+    letter-spacing: 0rem !important;
   }
 }
 
 mat-select {
+
+  height: 1.9rem;
   .mat-mdc-select-value,
   .mat-option {
     text-align: left;
     font-weight: 500 !important;
     font-size: 1.5rem !important;
+    display: block;
   }
 
+  // .mat-mdc-select{
+  //   line-height: 1.9rem !important;
+
+  //   &-trigger{
+  //     line-height: 1.9rem;
+  //   }
+  // }
+
   .mat-mdc-select-value {
+    line-height: 1.9rem;
+
     .mat-mdc-select-placeholder {
       color: rgba($primary-dark, 0.4);
     }
   }
 
   .mat-mdc-select-arrow-wrapper {
+    transform: translateY(-0.8rem) !important;
     .mat-mdc-select-arrow {
       // border-left: 1.5rem solid transparent !important;
       // border-right: none !important;
       // border-top: 1.5rem solid transparent !important;
       // border-image-source: url('../') !important;
       // border-image-repeat: stretch !important;
-      @include square(2.4rem);
+      @include square(1.4rem);
 
       svg {
         transform: scale(0);
       }
 
       &::after {
-        line-height: 2.4rem;
+        line-height: 1.4rem;
         content: "";
         display: inline-block;
         box-sizing: border-box;
-        width: 1rem;
-        height: 1rem;
+        width: 0.7rem;
+        height: 0.7rem;
         border-bottom: 0.2rem solid;
         border-right: 0.2rem solid;
         color: black;

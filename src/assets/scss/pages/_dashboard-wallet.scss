@@ -12,7 +12,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin: 4.8rem;
+    margin: 4.8rem 4.8rem 4.8rem 0;
   }
   &__card {
     @include border-radius(2rem);
