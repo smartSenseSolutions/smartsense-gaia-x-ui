@@ -13,6 +13,10 @@
       background: #f1f3f4;
       overflow: visible !important;
 
+      input {
+        background: transparent !important;
+      }
+
       .mat-mdc-form-field-focus-overlay {
         background: transparent;
       }
@@ -155,6 +159,7 @@
           width: 100%;
           justify-content: flex-start;
           gap: 1.5rem;
+          margin-bottom: 0.8rem;
         }
       }
     }
@@ -226,3 +231,9 @@ textarea {
     height: auto !important;
   }
 }
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus {
+//   -webkit-box-shadow: 0 0 0px 1rem #f1f3f4 inset;
+// }

@@ -32,7 +32,7 @@
         </ul>
         <ul>
           <li>
-            <button
+            <button [disableRipple]="true"
               mat-icon-button
               [matMenuTriggerFor]="userMenu"
               aria-label="Example icon-button with a menu"
@@ -47,7 +47,7 @@
             yPosition="above"
             xPosition="before"
           >
-            <button mat-menu-item (click)="onLogoutClick()">
+            <button  mat-menu-item (click)="onLogoutClick()">
               <span>Logout</span>
             </button>
           </mat-menu>

@@ -10,23 +10,14 @@
       <p class="card__data--disc">
         {{ service.description }}
       </p>
-      <div
-        [ngClass]="{ 'show-company': !showCompany }"
-        class="card__data--company"
-      >
-        <span
-          >Provider:<b>{{ service.enterpriseName }} </b></span
-        >
+      <div [ngClass]="{ 'show-company': !showCompany }" class="card__data--company">
+        <span>Provider:<b>{{ service.enterpriseName }} </b></span>
       </div>
       <div class="card__data--btn">
         <a (click)="onViewDetailsClick(service)">
-          <button mat-raised-button>Access Service</button>
+          <button mat-raised-button>{{ showCompany? 'Access Service' : 'View Service' }}</button>
         </a>
-        <a
-          [href]="service.offerLink"
-          target="_blank"
-          matTooltip="View Credentials"
-        >
+        <a [href]="service.offerLink" target="_blank" matTooltip="View Credentials">
           <button mat-mini-fab>
             <mat-icon>insert_link</mat-icon>
           </button>
