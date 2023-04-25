@@ -38,7 +38,7 @@
     }
 
     .mdc-button {
-      @include font(1.4rem, 1.7rem, 500);
+      @include font(1.4rem, 1.4rem, 500);
       margin-bottom: 1rem;
       height: auto !important;
       width: 100%;
@@ -49,6 +49,7 @@
 
       color: #000;
       transition: background, color, background-color 0.4s;
+      letter-spacing: 0.3px;
 
       &__label {
         top: 0.2rem;
@@ -58,6 +59,7 @@
       .mat-icon {
         height: 1.6rem;
         width: 1.6rem;
+        margin-right: 1.5rem;
 
         svg path {
           fill: #000;

@@ -8,10 +8,22 @@
   // grid-auto-rows: 1fr;
   // gap: 5rem;
   // overflow: hidden auto;
-  padding-right: 2rem;
+  padding-right: 5rem;
   // width: 100%;
+
+  @include respond("regular-desktop") {
+    padding-right: 2rem;
+  }
 
   .show-company {
     opacity: 0;
+  }
+
+  .card {
+    padding: 0 5rem 0 0;
+
+    @include respond("regular-desktop") {
+      padding: 0 3rem 0 0;
+    }
   }
 }

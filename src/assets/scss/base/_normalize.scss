@@ -204,14 +204,16 @@ app-card-box {
 
 app-browse-catalogue {
   app-card-box {
-    @include respond("large-desktop") {
-      margin-right: 4.8rem;
+    @include respond("regular-desktop") {
+      // margin-right: 4.8rem;
     }
   }
 
   .searchPanel__header {
-    @include respond("large-desktop") {
-      margin-right: 8rem;
+    margin-right: 10rem;
+
+    @include respond("regular-desktop") {
+      margin-right: 5rem;
     }
   }
 }

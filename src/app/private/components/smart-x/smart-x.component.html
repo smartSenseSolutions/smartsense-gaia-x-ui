@@ -7,7 +7,11 @@
         </div>
       </li>
       <li class="sidebar__navigation">
-        <a *ngFor="let item of MENU_ITEMS;" [routerLink]="[item.routeLink]" [routerLinkActive]="['active']">
+        <a
+          *ngFor="let item of MENU_ITEMS"
+          [routerLink]="[item.routeLink]"
+          [routerLinkActive]="['active']"
+        >
           <button mat-button>
             <mat-icon svgIcon="{{ item.iconName }}"></mat-icon>
             {{ item.label }}
@@ -18,28 +22,36 @@
         <ul>
           <li>
             <div class="sidebar__userProfile__placeholder">
-              <span>{{organizationNameChar}}</span>
+              <span>{{ organizationNameChar }}</span>
             </div>
           </li>
           <li>
-            <h5>{{username}}</h5>
-            <span>{{user?.email}}</span>
+            <h5>{{ username }}</h5>
+            <span>{{ user?.email }}</span>
           </li>
         </ul>
         <ul>
           <li>
-            <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Example icon-button with a menu">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="userMenu"
+              aria-label="Example icon-button with a menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
           </li>
 
-          <mat-menu #userMenu="matMenu">
+          <mat-menu
+            #userMenu="matMenu"
+            class="logout-btn"
+            yPosition="above"
+            xPosition="before"
+          >
             <button mat-menu-item (click)="onLogoutClick()">
               <span>Logout</span>
             </button>
           </mat-menu>
         </ul>
-
       </li>
     </ul>
   </div>

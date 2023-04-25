@@ -71,7 +71,7 @@
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <Label class="required-label" for="legalRegistrationType">Legal Registration Type</Label>
-                <mat-select formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
+                <mat-select panelClass="customSelect"  formControlName="legalRegistrationType" name="food" placeholder="Select registration type"
                   panelClass="customSelect" #registrationType>
                   <mat-option *ngFor="let type of REGISTRATION_TYPES" [value]="type.value">
                     {{type.label}}

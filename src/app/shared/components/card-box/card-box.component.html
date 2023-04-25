@@ -22,7 +22,11 @@
         <a (click)="onViewDetailsClick(service)">
           <button mat-raised-button>Access Service</button>
         </a>
-        <a [href]="service.offerLink" target="_blank">
+        <a
+          [href]="service.offerLink"
+          target="_blank"
+          matTooltip="View Credentials"
+        >
           <button mat-mini-fab>
             <mat-icon>insert_link</mat-icon>
           </button>

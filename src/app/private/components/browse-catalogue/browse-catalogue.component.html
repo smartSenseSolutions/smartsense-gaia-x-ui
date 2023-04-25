@@ -20,7 +20,11 @@
         <mat-icon svgIcon="search-grey"></mat-icon>
       </button>
     </form>
-    <a (mouseover)="onShowFilter()" class="filter-icon">
+    <a
+      matTooltip="Advanced search"
+      (mouseover)="onShowFilter()"
+      class="filter-icon"
+    >
       <mat-icon svgIcon="filter"></mat-icon>
     </a>
   </div>

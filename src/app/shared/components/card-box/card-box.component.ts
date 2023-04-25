@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { ServiceOfferResponsePayloadModel } from '../../../private/models';
 import { RouteConstants } from '../../constants';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-card-box',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
   templateUrl: './card-box.component.html',
   styleUrls: ['./card-box.component.scss'],
 })

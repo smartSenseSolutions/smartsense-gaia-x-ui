@@ -60,7 +60,7 @@
                   {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
               </mat-form-field>
             </div>
-            <button type="submit" class="large-btn" ngClass="{ primary-btn : loginForm.valid , disabled-btn : !loginForm.valid }" [disabled]="!loginForm.valid" mat-raised-button>
+            <button type="submit" class="large-btn" [ngClass]="{ 'primary-btn' : loginForm.valid , 'disabled-btn' : !loginForm.valid }" [disabled]="!loginForm.valid" mat-raised-button>
               Login
               <mat-icon svgIcon="arrow-right"></mat-icon>
             </button>
