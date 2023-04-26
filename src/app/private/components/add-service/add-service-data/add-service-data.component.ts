@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormArray,
+  FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -11,9 +12,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { AddServiceDataModel } from 'src/app/private/models';
 import { FormBaseComponent } from 'src/app/shared/components';
-import { ValidationConstant } from 'src/app/shared/constants';
+import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-add-service-data',
@@ -42,7 +44,9 @@ export class AddServiceDataComponent
   readonly validationMsg = new ValidationConstant();
 
   addServiceDataForm: any;
-
+  constructor(private route : Router , fb : FormBuilder){
+    super(fb);
+  }
   ngOnInit() {
     if (this.addServiceDataFormData) {
       // If service data already available then prefill the data
@@ -152,4 +156,9 @@ export class AddServiceDataComponent
     return metaData;
   };
 
+  onCancel = () => {
+    this.route.navigate([
+      `${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}`,
+    ])
+  }
 }

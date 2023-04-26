@@ -46,25 +46,25 @@
       </li>
       <form [formGroup]="addServiceDataForm" (submit)="onAddServiceFormSubmit(addServiceDataForm)">
         <div formArrayName="meta">
-          <li *ngFor="let group of metaGroups.controls; let j = index" class="addServiceData__body__inputs">
+          <li *ngFor="let group of metaGroups.controls; let i = index" class="addServiceData__body__inputs">
 
-            <ul [formGroupName]="j">
+            <ul [formGroupName]="i">
               <li class="addServiceData__body__staticField">
                 <div>
                   <mat-form-field class="custom-input" appearance="fill">
                     <input formControlName="name" type="text" matInput placeholder="Enter Group Name">
                     <mat-error
-                      *ngIf="metaGroups.at(j).get('name')?.hasError('required')">{{validationMsg.GROUP_NAME_REQUIRED}}</mat-error>
+                      *ngIf="metaGroups.at(i).get('name')?.hasError('required')">{{validationMsg.GROUP_NAME_REQUIRED}}</mat-error>
                   </mat-form-field>
                 </div>
               </li>
-              <li formArrayName="parameters" *ngFor="let parameter of metaGroupParameters(j).controls ; let i = index">
-                <div [formGroupName]="i" class=" addServiceData__body__dynamicFields">
+              <li formArrayName="parameters" *ngFor="let parameter of metaGroupParameters(i).controls ; let j = index">
+                <div [formGroupName]="j" class=" addServiceData__body__dynamicFields">
                   <div class="addServiceData__body__dynamicFields--inputs">
                     <mat-form-field appearance="fill" floatLabel="always">
                       <label for="name">Parameter Name</label>
                       <input formControlName="name" matInput id="name" placeholder="Enter parameter name" required>
-                      <mat-error *ngIf="metaGroupParameters(j).at(i).get('name')?.hasError('required')">{{
+                      <mat-error *ngIf="metaGroupParameters(i).at(j).get('name')?.hasError('required')">{{
                         validationMsg.PARAMETER_NAME_REQUIRED }}</mat-error>
                     </mat-form-field>
                   </div>
@@ -72,13 +72,13 @@
                     <mat-form-field appearance="fill" floatLabel="always">
                       <label for="value">Parameter Value</label>
                       <input formControlName="value" matInput id="value" placeholder="Enter parameter value" required>
-                      <mat-error *ngIf="metaGroupParameters(j).at(i).get('value')?.hasError('required')">{{
+                      <mat-error *ngIf="metaGroupParameters(i).at(j).get('value')?.hasError('required')">{{
                         validationMsg.PARAMETER_VALUE_REQUIRED }}</mat-error>
 
                     </mat-form-field>
                   </div>
                   <div  class="addServiceData__body__dynamicFields--buttons">
-                    <button *ngIf="j > 0" (click)="removeGroupParameter(j,i)" mat-fab disableRipple="true">
+                    <button *ngIf="j > 0" (click)="removeGroupParameter(i,j)" mat-fab disableRipple="true">
                       <mat-icon svgIcon="close">
                       </mat-icon>
                     </button>
@@ -87,14 +87,14 @@
 
               </li>
               <div class="addMore">
-                <a (click)="addGroupParameter(j)">
+                <a (click)="addGroupParameter(i)">
                   <mat-icon svgIcon="add-blue"></mat-icon>
                   Add More
                 </a>
               </div>
             </ul>
 
-            <button type="button" (click)="removeGroup(j)" disableRipple="true" mat-button
+            <button type="button" (click)="removeGroup(i)" disableRipple="true" mat-button
               class="addServiceData__body__inputs-button">
               <mat-icon svgIcon="close"></mat-icon>
             </button>
@@ -107,7 +107,7 @@
         <li>
           <ul class="addServiceData__body__buttons">
             <li>
-              <button type="cancel" mat-raised-button>
+              <button type="cancel" (click)="onCancel()" mat-raised-button>
                 Cancel
               </button>
             </li>

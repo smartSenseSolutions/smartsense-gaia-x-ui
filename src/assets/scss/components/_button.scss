@@ -16,3 +16,29 @@
   font-size: 1.4rem;
   border: transparent;
 }
+
+button[type=submit],
+button[type=cancel] {
+  height: 4.4rem !important;
+}
+
+button[type=cancel] {
+  @include border-radius(1.2rem);
+  background: #F1F3F4;
+  border: 0.2rem solid #121E2A33;
+  outline: 0;
+  box-shadow: none;
+}
+
+
+button {
+  .mdc-button {
+    &__label {
+      top: 1px;
+    }
+  }
+
+  .mat-icon {
+    top: 1px;
+  }
+}

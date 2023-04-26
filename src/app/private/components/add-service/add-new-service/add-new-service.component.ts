@@ -12,9 +12,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { Router } from '@angular/router';
 import { AddServiceModel } from 'src/app/private/models';
 import { FormBaseComponent } from 'src/app/shared/components';
-import { AddServiceValidationConstant } from 'src/app/shared/constants';
+import { AddServiceValidationConstant, RouteConstants } from 'src/app/shared/constants';
 import {
   ACCESS_TYPES,
   FORMAT_TYPES,
@@ -50,7 +51,7 @@ export class AddNewServiceComponent
   addServiceForm: any;
   validationMsg = new AddServiceValidationConstant();
 
-  constructor(fb: FormBuilder, private location: Location) {
+  constructor(fb: FormBuilder, private location: Location , private route : Router) {
     super(fb);
   }
 
@@ -103,5 +104,11 @@ export class AddNewServiceComponent
 
   get formControls() {
     return this.addServiceForm.controls;
+  }
+
+  onCancel = () => {
+    this.route.navigate([
+      `${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}`,
+    ])
   }
 }
