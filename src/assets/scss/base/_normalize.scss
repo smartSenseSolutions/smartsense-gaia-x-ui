@@ -12,24 +12,24 @@ html {
   -webkit-text-size-adjust: 100%;
   font-size: 10px;
 
+  @include respond("small-desktop") {
+    font-size: 9px;
+  }
+
+  @include respond("regular-desktop") {
+    font-size: 9.5px;
+  }
+
+  @include respond("medium-desktop") {
+    font-size: 10px;
+  }
+
   @include respond("big-desktop") {
     font-size: 10px;
   }
 
-  @include respond("regular-desktop") {
-    font-size: 9px;
-  }
-
-  @include respond("small-desktop") {
-    font-size: 10px;
-  }
-
-  @include respond("medium-desktop") {
-    font-size: 8px;
-  }
-
   @include respond("large-desktop") {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -223,13 +223,13 @@ app-browse-catalogue {
 }
 
 .disabled-btn {
-  background:rgba($primary-dark , 0.2) !important;
+  background: rgba($primary-dark , 0.2) !important;
   border-radius: 1.2rem !important;
   color: $white-color !important;
 
-  .mdc-button{
-    &__label{
-      color: $white-color !important ;
+  .mdc-button {
+    &__label {
+      color: $white-color !important;
     }
   }
 

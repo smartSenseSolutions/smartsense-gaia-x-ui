@@ -24,6 +24,9 @@
 
   &__data {
     @include border-radius(0 0 1.2rem 1.2rem);
+    @include respond('small-desktop'){
+      height: auto !important;
+    }
     background: #f7f7f7;
     height: 25.4rem;
     padding: 2rem;
@@ -67,6 +70,10 @@
     }
 
     &--btn {
+      @include respond('small-desktop'){
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+      }
       display: flex;
       justify-content: flex-start;
       gap: 1.2rem;

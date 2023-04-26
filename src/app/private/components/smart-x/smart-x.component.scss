@@ -56,11 +56,24 @@
 
         h5 {
           @include font(1.6rem, 2rem, 500);
-          text-align: left;
           color: $primary-dark;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: left;
+          white-space: nowrap;
+          // max-width: clamp(10rem ,calc(16.2rem - 2.4rem) ,16.2rem);
+          // max-width: 100%;
+          max-width: calc(100% - 0.5rem);
+
 
           &+span {
-            @include text-overflow(16.2rem);
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            // max-width: clamp(10rem ,calc(16.2rem - 2.4rem) ,16.2rem);
+            max-width: calc(100% - 0.5rem);
           }
         }
 
@@ -68,8 +81,15 @@
           @include font(1.2rem, 1.5rem, 500);
           text-align: left;
           color: rgba($primary-dark, 0.6);
+
         }
       }
+    }
+
+    &--details{
+      max-width: calc(100% - 2.4rem);
+      justify-content: flex-start;
+      overflow: hidden;
     }
   }
 }
