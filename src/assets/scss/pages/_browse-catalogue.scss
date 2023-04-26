@@ -4,23 +4,23 @@
   &__header {
     .mat-mdc-icon-button {
       border-radius: 100%;
-      width: 1.6rem !important;
-      height: 1.6rem !important;
-      line-height: 1.6rem !important;
+      width: 1.7rem !important;
+      height: 1.7rem !important;
+      line-height: 1.7rem !important;
       padding: 0 !important;
 
       .mat-icon,
       svg {
+        overflow: visible;
         height: 1.6rem !important;
         width: 1.6rem !important;
-        vertical-align: middle;
       }
+
       .mdc-button {
         height: auto !important;
 
         &__label {
           @include font(1.6rem, 2rem, 500);
-
           color: $white-color;
         }
 
@@ -28,6 +28,11 @@
           width: 1.6rem;
           height: 1.6rem;
         }
+      }
+
+      .mat-mdc-button-touch-target{
+        height: 2rem;
+        width: 2rem;
       }
     }
 

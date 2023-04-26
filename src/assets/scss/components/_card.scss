@@ -24,6 +24,9 @@
 
   &__data {
     @include border-radius(0 0 1.2rem 1.2rem);
+    @include respond('small-desktop'){
+      height: auto !important;
+    }
     background: #f7f7f7;
     height: 25.4rem;
     padding: 2rem;
@@ -34,7 +37,7 @@
       @include font(1.8rem, 2.1rem, bold);
       @include text-overflow(100%, 2);
       min-height: 4.2rem;
-
+      max-height: 4.2rem;
       color: $primary-color;
       margin-bottom: 2rem;
     }
@@ -46,12 +49,14 @@
       color: rgba($primary-dark, 0.8);
       margin-bottom: 1.5rem;
       min-height: 5.7rem;
+      max-height: 5.7rem;
     }
 
     &--company {
       @include font(1.6rem, 2rem);
       min-height: 2rem;
       margin-bottom: 2rem;
+
       span {
         color: rgba($primary-dark, 0.8);
         @include text-overflow(100%, 1);
@@ -65,12 +70,18 @@
     }
 
     &--btn {
+      @include respond('small-desktop'){
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+      }
       display: flex;
       justify-content: flex-start;
       gap: 1.2rem;
       align-items: center;
 
       button {
+        height: 4rem !important;
+
         &.mdc-button {
           &--raised {
             background: $primary-dark !important;

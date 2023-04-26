@@ -13,9 +13,7 @@
         left: 0;
         width: 26rem;
         height: 0.2rem;
-        background: transparent
-          linear-gradient(90deg, #f1f3f4 0%, #1f2b36 8%, #f1f3f4 100%) 0% 0%
-          no-repeat padding-box;
+        background: transparent linear-gradient(90deg, #f1f3f4 0%, #1f2b36 8%, #f1f3f4 100%) 0% 0% no-repeat padding-box;
         opacity: 0.1;
       }
     }
@@ -40,7 +38,7 @@
     .mdc-button {
       @include font(1.4rem, 1.4rem, 500);
       margin-bottom: 1rem;
-      height: auto !important;
+      height: 5rem !important;
       width: 100%;
       border-radius: 2.5rem;
       padding: 1.6rem 2.2rem 1.7rem;
@@ -54,6 +52,8 @@
       &__label {
         top: 0.2rem;
         text-transform: capitalize;
+        text-align: left;
+        white-space: nowrap;
       }
 
       .mat-icon {
@@ -69,6 +69,19 @@
 
       &:hover {
         background-color: rgba($primary-dark, 0.07);
+      }
+    }
+  }
+
+  &__userProfile {
+    button {
+      height: 4.8rem !important;
+      width: 2.4rem !important;
+      padding: 1.2rem 0 1.2rem 0!important;
+
+      .mat-mdc-button-touch-target {
+        height: 2.4rem !important;
+        width: 2.4rem !important;
       }
     }
   }

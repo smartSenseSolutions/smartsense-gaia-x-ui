@@ -1,5 +1,5 @@
 <section class="row PLR-0 smartx-container">
-  <div class="col-md-2 PLR-0">
+  <div class="col-md-2 col-sm-3 PLR-0">
     <ul class="sidebar">
       <li class="sidebar__logo">
         <div>
@@ -19,20 +19,21 @@
         </a>
       </li>
       <li class="sidebar__userProfile">
-        <ul>
+        <ul class="sidebar__userProfile--details">
           <li>
             <div class="sidebar__userProfile__placeholder">
               <span>{{ organizationNameChar }}</span>
             </div>
           </li>
-          <li>
+          <li class="col-md-10 col-sm-9 PLR-0">
             <h5>{{ username }}</h5>
             <span>{{ user?.email }}</span>
           </li>
         </ul>
         <ul>
           <li>
-            <button [disableRipple]="true"
+            <button
+              [disableRipple]="true"
               mat-icon-button
               [matMenuTriggerFor]="userMenu"
               aria-label="Example icon-button with a menu"
@@ -47,7 +48,7 @@
             yPosition="above"
             xPosition="before"
           >
-            <button  mat-menu-item (click)="onLogoutClick()">
+            <button mat-menu-item (click)="onLogoutClick()">
               <span>Logout</span>
             </button>
           </mat-menu>
@@ -55,7 +56,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 col-sm-9">
     <ul class="panel">
       <li>
         <app-breadcrumb />

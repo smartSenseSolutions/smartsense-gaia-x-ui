@@ -111,7 +111,7 @@
   }
 
   @if $breakPoint ==medium-desktop {
-    @media (min-width: 1441px) and (max-width: 1600px) {
+    @media (min-width: 1441px) and (max-width: 1559px) {
       @content;
     }
   }
