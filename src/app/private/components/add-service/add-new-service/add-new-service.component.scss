@@ -35,7 +35,7 @@
     }
 
     &--buttons {
-      width: 34rem;
+      // width: 34rem;
 
       li {
         display: inline-block;
@@ -44,6 +44,10 @@
         button[type="submit"] {
           width: 22rem;
           margin-right: 2rem;
+        }
+
+        button[type=cancel]{
+          padding: 1.3rem 2.5rem 1.2rem;
         }
       }
     }

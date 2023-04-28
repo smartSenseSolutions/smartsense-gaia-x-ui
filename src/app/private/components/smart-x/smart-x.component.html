@@ -18,41 +18,61 @@
           </button>
         </a>
       </li>
-      <li class="sidebar__userProfile">
-        <ul class="sidebar__userProfile--details">
-          <li>
-            <div class="sidebar__userProfile__placeholder">
-              <span>{{ organizationNameChar }}</span>
-            </div>
-          </li>
-          <li class="col-md-10 col-sm-9 PLR-0">
-            <h5>{{ username }}</h5>
-            <span>{{ user?.email }}</span>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <button
-              [disableRipple]="true"
-              mat-icon-button
-              [matMenuTriggerFor]="userMenu"
-              aria-label="Example icon-button with a menu"
-            >
-              <mat-icon>more_vert</mat-icon>
-            </button>
-          </li>
 
-          <mat-menu
-            #userMenu="matMenu"
-            class="logout-btn"
-            yPosition="above"
-            xPosition="before"
-          >
-            <button mat-menu-item (click)="onLogoutClick()">
-              <span>Logout</span>
-            </button>
-          </mat-menu>
-        </ul>
+      <li>
+        <div class="sidebar__companyLogo">
+          <div>
+            <!-- <mat-icon svgIcon="gaia-x-logo"></mat-icon> -->
+            <span>MVP to showcase</span>
+            <span>Gaia-X compliant services</span>
+          </div>
+
+          <div>
+            <mat-icon svgIcon="smartsense-logo"></mat-icon>
+            <span
+              >Powered By<br />
+              <a href="https://smartsensesolutions.com/"
+                >smartSense Consulting Solutions Pvt Ltd</a
+              ></span
+            >
+          </div>
+        </div>
+        <div class="sidebar__userProfile">
+          <ul class="sidebar__userProfile--details">
+            <li>
+              <div class="sidebar__userProfile__placeholder">
+                <span>{{ organizationNameChar }}</span>
+              </div>
+            </li>
+            <li class="col-md-9 col-sm-9 PLR-0">
+              <h5>{{ username }}</h5>
+              <span>{{ user?.email }}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <button
+                [disableRipple]="true"
+                mat-icon-button
+                [matMenuTriggerFor]="userMenu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </li>
+
+            <mat-menu
+              #userMenu="matMenu"
+              class="logout-btn"
+              yPosition="above"
+              xPosition="before"
+            >
+              <button mat-menu-item (click)="onLogoutClick()">
+                <span>Logout</span>
+              </button>
+            </mat-menu>
+          </ul>
+        </div>
       </li>
     </ul>
   </div>

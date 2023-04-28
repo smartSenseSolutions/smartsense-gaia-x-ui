@@ -66,8 +66,7 @@
           // max-width: 100%;
           max-width: calc(100% - 0.5rem);
 
-
-          &+span {
+          & + span {
             display: block;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -81,15 +80,34 @@
           @include font(1.2rem, 1.5rem, 500);
           text-align: left;
           color: rgba($primary-dark, 0.6);
-
         }
       }
     }
 
-    &--details{
+    &--details {
       max-width: calc(100% - 2.4rem);
       justify-content: flex-start;
       overflow: hidden;
+    }
+  }
+
+  &__companyLogo {
+    text-align: center;
+    margin-bottom: 4rem;
+    div {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+      mat-icon {
+        width: 12rem;
+        height: auto;
+        margin-bottom: 0.5rem;
+      }
+      span {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
     }
   }
 }

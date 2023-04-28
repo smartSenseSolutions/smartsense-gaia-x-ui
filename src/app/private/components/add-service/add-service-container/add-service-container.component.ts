@@ -9,8 +9,8 @@ import {
 import { ServiceOfferingService } from 'src/app/private/services';
 import { RouteConstants } from 'src/app/shared/constants';
 import { AddNewServiceComponent } from '../add-new-service/add-new-service.component';
-import { AddServiceStep } from './add-service-container.constants';
 import { AddServiceDataComponent } from '../add-service-data/add-service-data.component';
+import { AddServiceStep } from './add-service-container.constants';
 
 @Component({
   selector: 'app-add-service-container',
@@ -37,7 +37,7 @@ export class AddServiceContainerComponent {
   onStepOneComplete = (stepOneData: AddServiceModel) => {
     this.activeStep = AddServiceStep.TWO;
     this.stepOneData = stepOneData;
-    console.log(this.stepOneData);
+    // console.log(this.stepOneData);
   };
 
   onStepTwoComplete = (stepTwoData: AddServiceDataModel) => {
