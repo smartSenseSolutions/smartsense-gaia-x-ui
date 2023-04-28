@@ -1,10 +1,10 @@
 @import "../../../../assets/scss/abstracts/abstracts.scss";
 
-.certification-verify-dialog-container {
+.verify-dialog-container {
   max-height: calc(100vh - 12rem);
   overflow-y: auto;
 
-  .certificate-verify {
+  .verify-dialog {
     height: 100%;
 
     &__top {
@@ -46,75 +46,6 @@
             width: 2rem;
             color: $black-color;
           }
-        }
-      }
-    }
-
-    &__ownership {
-      margin: 3rem 2.8rem 0;
-
-      h5 {
-        color: $primary-color;
-        font-family: $font-family;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1.2rem;
-        line-height: 1.5rem;
-
-        mat-icon {
-          vertical-align: middle;
-          width: 1.2rem;
-        }
-      }
-
-      .form-control {
-        position: relative;
-
-        &--email {
-          mat-icon {
-            position: absolute;
-            right: 7.5rem;
-            top: -0.5rem;
-          }
-        }
-
-        .mat-form-field {
-          width: 100% !important;
-
-          input {
-            padding-right: 10rem;
-          }
-        }
-
-        button {
-          @include border-radius(0.6rem);
-          position: absolute;
-          top: 0;
-          right: 0;
-        }
-      }
-
-      &--verified,
-      &--not-verified {
-        p {
-          font-family: $font-family;
-          font-style: normal;
-          word-break: break-word;
-          font-weight: 600;
-          font-size: 1.2rem;
-          line-height: 2rem;
-        }
-      }
-
-      &--verified {
-        span {
-          color: $green-color-2;
-        }
-      }
-
-      &--not-verified {
-        span {
-          color: $red-color-2;
         }
       }
     }

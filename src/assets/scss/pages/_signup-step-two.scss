@@ -7,12 +7,12 @@
 
 .userDetails__signup-2 {
 
-  .mdc-button{
+  .mdc-button {
     flex-direction: row-reverse;
-    gap : 1.2rem;
+    gap: 1.2rem;
 
-    .mat-icon{
-      margin:0;
+    .mat-icon {
+      margin: 0;
     }
   }
 
@@ -20,6 +20,16 @@
     div {
       mat-form-field {
         margin-bottom: 4.2rem !important;
+      }
+
+      &:nth-last-of-type(2) {
+        mat-form-field {
+          margin-bottom: 1rem !important;
+        }
+      }
+
+      .mat-mdc-checkbox{
+        margin-bottom: 1rem;
       }
     }
   }
