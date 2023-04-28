@@ -21,13 +21,14 @@
       button {
         @include border-radius(2.5rem);
         width: 20.7rem;
+        height: 4.4rem;
       }
     }
   }
 
   &__body {
     overflow-y: auto;
-    padding: 0 12.9rem 0 4.9rem;
+    padding: 0 12.9rem 2.5rem 4.9rem;
     height: 100%;
 
     .addMore {
