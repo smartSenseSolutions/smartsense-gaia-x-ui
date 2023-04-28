@@ -91,7 +91,7 @@ mat-accordion {
 .logout-btn {
   background-color: $white-color;
   border-radius: 1rem !important;
-  width: 11.7rem;
+  // width: 11.7rem;
   min-width: unset !important;
   max-width: unset !important;
   height: 3.9rem;
@@ -100,6 +100,10 @@ mat-accordion {
     padding: 0;
     border-radius: 1rem;
     box-shadow: 0 0.1rem 0.6rem #00000029 !important;
+
+    button {
+      padding-inline: 2.4rem;
+    }
   }
 
   span {
@@ -111,7 +115,8 @@ mat-accordion {
 
   &.mdc-menu-surface {
     box-shadow: 0 0.1rem 0.6rem #00000029 !important;
-    right: 1.6rem !important;
+    // right: 1.6rem !important;
+    top: 1rem;
   }
 
   .mat-mdc-menu-panel {
@@ -120,7 +125,7 @@ mat-accordion {
 
   .mat-mdc-menu-item {
     min-height: 3.9rem;
-    width: 11.7rem;
+    // width: 11.7rem;
   }
 }
 
@@ -137,4 +142,8 @@ mat-accordion {
 .mat-mdc-icon-button.mat-mdc-button-base {
   --mat-mdc-button-persistent-ripple-color: unset !important;
   --mat-mdc-button-ripple-color: unset !important;
+}
+
+.customMatMenu {
+  width: auto !important;
 }
