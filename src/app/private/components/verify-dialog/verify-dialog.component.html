@@ -31,9 +31,7 @@
             <div class="verify-dialog__body--progress-bar--verified--icon">
               <mat-icon svgIcon="done"></mat-icon>
             </div>
-            <div
-              class="verify-dialog__body--progress-bar--verified--label"
-            >
+            <div class="verify-dialog__body--progress-bar--verified--label">
               <label>Registration Successful!</label>
               <span>You're successfully on-boarded!</span>
             </div>
@@ -83,7 +81,20 @@
                 />
                 <mat-icon svgIcon="done"></mat-icon>
               </label>
-              <span>Creating keys <i>(approx. 3 mins)</i></span>
+              <!-- <span>Creating keys</span> -->
+              <span
+                >Creating certificates
+                <i
+                  *ngIf="
+                    currentSignupStatus === SignupStatus.DomainCreated ||
+                    currentSignupStatus ===
+                      SignupStatus.CertificateCreationFailed ||
+                    currentSignupStatus ===
+                      SignupStatus.CertificateCreationInProgress
+                  "
+                  >({{ processTextToShow }})</i
+                >
+              </span>
             </li>
 
             <li
