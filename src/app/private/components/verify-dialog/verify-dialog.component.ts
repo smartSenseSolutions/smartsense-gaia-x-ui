@@ -27,12 +27,11 @@ export class VerifyDialogComponent implements OnInit {
 
   // Data variables
   enterprise?: EnterpriseModel;
-  interval?: number;
 
   // Status variables
   currentSignupStatus = SignupStatus.Pending;
   isSignupInProgress = true;
-  stepTwoProcessText = [
+  certificatCreationText = [
     "Let's Encrypt Configuration",
     'Creating domain keypair',
     'DNS Authorization',
@@ -40,8 +39,9 @@ export class VerifyDialogComponent implements OnInit {
     'Saving certificates',
   ];
 
-  processTextToShow: string = this.stepTwoProcessText[0];
+  processTextToShow: string = this.certificatCreationText[0];
   processTextIndex = 0;
+  certificateCreationInterval: ReturnType<typeof setInterval>;
 
   constructor(
     private signupService: SignUpService,
@@ -64,8 +64,16 @@ export class VerifyDialogComponent implements OnInit {
       this.signupService.getEnterprise(this.enterprise!.id).subscribe({
         next: (response) => {
           this.currentSignupStatus = response.payload.status;
+          if (this.isCertificateCreationInProgress()) {
+            this.showCertificationCreationMessages();
+          } else if (
+            !this.isCertificateCreationInProgress() &&
+            this.certificateCreationInterval
+          ) {
+            clearInterval(this.certificateCreationInterval);
+          }
+
           if (FAILURE_STATUSES.includes(this.currentSignupStatus)) {
-            clearInterval(this.interval);
             let retryAPI;
             switch (this.currentSignupStatus) {
               case SignupStatus.DomainCreationFailed:
@@ -92,6 +100,7 @@ export class VerifyDialogComponent implements OnInit {
                 );
                 break;
             }
+
             if (
               this.currentSignupStatus !==
               SignupStatus.CertificateCreationInProgress
@@ -107,7 +116,6 @@ export class VerifyDialogComponent implements OnInit {
           } else if (
             this.currentSignupStatus === SignupStatus.ParticipantJsonCreated
           ) {
-            clearInterval(this.interval);
             this.isSignupInProgress = false;
           } else {
             this.checkStatus();
@@ -119,6 +127,25 @@ export class VerifyDialogComponent implements OnInit {
     }, 5000);
   };
 
+  // checkStatus = () => {
+  //   const start = 0;
+  //   const interval = setInterval(() => {
+  //     console.log(this.currentSignupStatus);
+  //     if (this.isCertificateCreationInProgress()) {
+  //       this.showCertificationCreationMessages();
+  //     } else if (
+  //       !this.isCertificateCreationInProgress() &&
+  //       this.certificateCreationInterval
+  //     ) {
+  //       clearInterval(this.certificateCreationInterval);
+  //     }
+  //     this.currentSignupStatus += 2;
+  //     if (this.currentSignupStatus === SignupStatus.ParticipantJsonCreated) {
+  //       clearInterval(interval);
+  //     }
+  //   }, 5000);
+  // };
+
   onCloseDialog() {
     this.dialogRef.close();
   }
@@ -129,12 +156,22 @@ export class VerifyDialogComponent implements OnInit {
     this.route.navigate([RouteConstants.Login]);
   };
 
-  onStepTwoProcessing = () => {
-    let processTextIndex = 0;
-    setInterval(() => {
-      processTextIndex %= 5;
-      this.processTextToShow = this.stepTwoProcessText[processTextIndex];
-      processTextIndex += 1;
-    }, 5000);
+  showCertificationCreationMessages = () => {
+    if (!this.certificateCreationInterval) {
+      this.certificateCreationInterval = setInterval(() => {
+        this.processTextIndex %= 5;
+        this.processTextToShow =
+          this.certificatCreationText[this.processTextIndex];
+        this.processTextIndex += 1;
+      }, 5000);
+    }
+  };
+
+  isCertificateCreationInProgress = () => {
+    return (
+      this.currentSignupStatus === SignupStatus.DomainCreated ||
+      this.currentSignupStatus === SignupStatus.CertificateCreationFailed ||
+      this.currentSignupStatus === SignupStatus.CertificateCreationInProgress
+    );
   };
 }
