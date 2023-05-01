@@ -23,12 +23,12 @@
     a {
       &.active {
         .mdc-button {
-          background-color: blue !important;
-          color: #ffffff;
+          background-color: $primary-color !important;
+          color: $white-color;
 
           .mat-icon {
             svg path {
-              fill: white;
+              fill: $white-color;
             }
           }
         }
@@ -44,8 +44,7 @@
       padding: 1.6rem 2.2rem 1.7rem;
       justify-content: start !important;
       align-items: center;
-
-      color: #000;
+      color: $primary-dark;
       transition: background, color, background-color 0.4s;
       letter-spacing: 0.3px;
 

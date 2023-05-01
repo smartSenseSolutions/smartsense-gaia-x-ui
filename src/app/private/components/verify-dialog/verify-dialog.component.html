@@ -1,19 +1,19 @@
-<div class="certification-verify-dialog-container">
-  <div class="certificate-verify">
-    <div class="certificate-verify__top">
-      <div class="certificate-verify__top--header">
+<div class="verify-dialog-container">
+  <div class="verify-dialog">
+    <div class="verify-dialog__top">
+      <div class="verify-dialog__top--header">
         <h2>Register</h2>
       </div>
 
-      <div class="certificate-verify__top--close-icon">
+      <div class="verify-dialog__top--close-icon">
         <a (click)="onCloseDialog()">
           <mat-icon svgIcon="close"></mat-icon>
         </a>
       </div>
     </div>
 
-    <div class="certificate-verify__body">
-      <div class="certificate-verify__body--progress-bar">
+    <div class="verify-dialog__body">
+      <div class="verify-dialog__body--progress-bar">
         <!-- Certificate processing section -->
         <div *ngIf="isSignupInProgress">
           <span>
@@ -26,13 +26,13 @@
         <div class="animated fadeIn fast" *ngIf="!isSignupInProgress">
           <div
             *ngIf="currentSignupStatus === SignupStatus.ParticipantJsonCreated"
-            class="certificate-verify__body--progress-bar--verified"
+            class="verify-dialog__body--progress-bar--verified"
           >
-            <div class="certificate-verify__body--progress-bar--verified--icon">
+            <div class="verify-dialog__body--progress-bar--verified--icon">
               <mat-icon svgIcon="done"></mat-icon>
             </div>
             <div
-              class="certificate-verify__body--progress-bar--verified--label"
+              class="verify-dialog__body--progress-bar--verified--label"
             >
               <label>Registration Successful!</label>
               <span>You're successfully on-boarded!</span>
@@ -41,8 +41,8 @@
         </div>
       </div>
 
-      <div class="certificate-verify__body--section">
-        <div class="certificate-verify__body--section--results fill-section">
+      <div class="verify-dialog__body--section">
+        <div class="verify-dialog__body--section--results fill-section">
           <ul>
             <li
               class="animated fast"
@@ -160,7 +160,7 @@
           </ul>
         </div>
 
-        <!-- <div class="certificate-verify__body--section--results gray-section">
+        <!-- <div class="verify-dialog__body--section--results gray-section">
           <ul>
             <li class="animated  fast "
               [ngClass]=" {fadeOut : currentSignupStatus > SignupStatus.IngressCreationFailed}">
