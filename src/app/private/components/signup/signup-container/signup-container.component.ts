@@ -61,6 +61,7 @@ export class SignupContainerComponent {
         data: {
           signupResponse: response,
         },
+        disableClose: true,
       });
       dialogRef.afterClosed().subscribe((success) => {
         location.reload();
