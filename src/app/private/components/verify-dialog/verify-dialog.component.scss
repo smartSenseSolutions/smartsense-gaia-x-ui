@@ -218,7 +218,7 @@
               }
 
               span {
-                width: 32.5rem;
+                width: calc(100% - 6.5rem);
                 display: inline-block;
                 font-family: $font-family;
                 font-size: 1.7rem;

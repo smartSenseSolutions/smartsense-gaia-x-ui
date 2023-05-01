@@ -7,7 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { SignupRequestModel, SignupResponseModel } from 'src/app/public/models';
+import { SignupResponseModel } from 'src/app/public/models';
 import { SignUpService } from 'src/app/public/services';
 import { RouteConstants } from 'src/app/shared/constants';
 import { SharedService } from 'src/app/shared/services';
@@ -32,6 +32,17 @@ export class VerifyDialogComponent implements OnInit {
   // Status variables
   currentSignupStatus = SignupStatus.Pending;
   isSignupInProgress = true;
+  stepTwoProcessText = [
+    "Let's Encrypt Configuration",
+    'Creating domain keypair',
+    'DNS Authorization',
+    'Waiting order status',
+    'Saving certificates',
+  ];
+
+  processTextToShow: string = this.stepTwoProcessText[0];
+  processTextIndex = 0;
+
   constructor(
     private signupService: SignUpService,
     private route: Router,
@@ -116,5 +127,14 @@ export class VerifyDialogComponent implements OnInit {
     this.onCloseDialog();
     this.sharedService.clearSession();
     this.route.navigate([RouteConstants.Login]);
+  };
+
+  onStepTwoProcessing = () => {
+    let processTextIndex = 0;
+    setInterval(() => {
+      processTextIndex %= 5;
+      this.processTextToShow = this.stepTwoProcessText[processTextIndex];
+      processTextIndex += 1;
+    }, 5000);
   };
 }
