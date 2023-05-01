@@ -83,7 +83,7 @@
                 />
                 <mat-icon svgIcon="done"></mat-icon>
               </label>
-              <span>Creating keys</span>
+              <span>Creating keys <i>(approx. 3 mins)</i></span>
             </li>
 
             <li
@@ -153,7 +153,9 @@
             </li>
 
             <li class="login-btn" *ngIf="!isSignupInProgress">
-              <button class="color-btn" (click)="onLoginClick()">Login Now</button>
+              <button class="color-btn" (click)="onLoginClick()">
+                Login Now
+              </button>
             </li>
           </ul>
         </div>
