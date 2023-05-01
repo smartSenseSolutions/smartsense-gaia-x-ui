@@ -130,7 +130,7 @@ export class VerifyDialogComponent implements OnInit {
   // checkStatus = () => {
   //   const start = 0;
   //   const interval = setInterval(() => {
-  //     console.log(this.currentSignupStatus);
+  //     this.currentSignupStatus += 2;
   //     if (this.isCertificateCreationInProgress()) {
   //       this.showCertificationCreationMessages();
   //     } else if (
@@ -139,7 +139,6 @@ export class VerifyDialogComponent implements OnInit {
   //     ) {
   //       clearInterval(this.certificateCreationInterval);
   //     }
-  //     this.currentSignupStatus += 2;
   //     if (this.currentSignupStatus === SignupStatus.ParticipantJsonCreated) {
   //       clearInterval(interval);
   //     }
