@@ -32,5 +32,6 @@ export const SvgConstants: string[] = [
   'service',
   'add-blue',
   'smartsense-logo',
-  'gaia-x-logo'
+  'gaia-x-logo',
+  'catalogue-not-found',
 ];

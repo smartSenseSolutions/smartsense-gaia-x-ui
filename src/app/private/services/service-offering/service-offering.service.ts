@@ -68,11 +68,11 @@ export class ServiceOfferingService {
     );
   };
 
-  getCatalogue = (): Observable<ServiceOfferResponse> => {
+  getCatalogue = (query: string = ''): Observable<ServiceOfferResponse> => {
     return this.apiManager.httpHelperMethod<ServiceOfferResponse>(
       API_CONSTANTS.ENTERPRISE.CATALOGUE.METHOD,
       API_CONSTANTS.ENTERPRISE.CATALOGUE.URL,
-      {},
+      { query },
       this.apiManager.authorizationHttpOptions,
       true,
       true
