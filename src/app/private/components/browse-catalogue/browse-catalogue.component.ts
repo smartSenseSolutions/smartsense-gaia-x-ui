@@ -77,7 +77,6 @@ export class BrowseCatalogueComponent {
         })
       )
       .subscribe((searchResult) => {
-        console.log(searchResult.payload);
         this.serviceList = searchResult.payload;
       });
   }
