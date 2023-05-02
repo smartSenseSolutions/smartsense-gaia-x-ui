@@ -72,15 +72,21 @@ export class BrowseCatalogueComponent {
         debounceTime(500),
         distinctUntilChanged(),
         switchMap((searchText) => {
+          this.isLoading = true;
           return searchText
             ? this.serviceOfferingService.getCatalogue(searchText)
             : this.serviceOfferingService.getCatalogue();
         })
       )
-      .subscribe((searchResult) => {
-        this.serviceList = searchResult.payload;
-        this.isLoading = this.serviceList.length == 0;
-      });
+      .subscribe(
+        (searchResult) => {
+          this.serviceList = searchResult.payload;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.isLoading = false;
+        }
+      );
   }
 
   // private _normalizeValue(value: string): string {

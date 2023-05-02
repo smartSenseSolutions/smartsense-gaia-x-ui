@@ -29,7 +29,7 @@
     (onViewDetailClickEvent)="onViewDetailClick($event)"
   ></app-card-box>
 
-  <div class="catalogue-not-found" *ngIf="isLoading">
+  <div class="catalogue-not-found" *ngIf="!isLoading && serviceList.length == 0">
     <mat-icon svgIcon="catalogue-not-found"> </mat-icon>
     <h1>No Catalogues Found!</h1>
   </div>
