@@ -1,12 +1,19 @@
 <section class="searchPanel">
   <div class="searchPanel__header">
     <h3>Search</h3>
-    <form class="searchBar">
+    <div class="searchBar">
       <input type="text" placeholder="Search" [formControl]="productControl" />
-      <button mat-icon-button type="button">
-        <mat-icon svgIcon="search-grey"></mat-icon>
+      <button
+        mat-icon-button
+        type="button"
+        (click)="productControl.value?.length && productControl.setValue('')"
+      >
+        <mat-icon
+          [svgIcon]="!productControl.value?.length ? 'search-grey' : 'close'"
+          [ngClass]="{ 'close-icon': productControl.value?.length }"
+        ></mat-icon>
       </button>
-    </form>
+    </div>
     <a
       matTooltip="Advanced search"
       (mouseover)="onShowFilter()"

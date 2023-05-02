@@ -27,8 +27,29 @@
     }
   }
 
-  .mdc-fab{
+  .mdc-fab {
     height: 4rem;
     width: 4rem;
+  }
+}
+
+.catalogue-not-found {
+  height: 100%;
+  margin-right: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  .mat-icon {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: #D0D2D4;
+    font-weight: 600;
   }
 }

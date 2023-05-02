@@ -10,14 +10,26 @@
       <p class="card__data--disc">
         {{ service.description }}
       </p>
-      <div *ngIf="showCompany" [ngClass]="{ 'show-company': !showCompany }" class="card__data--company">
-        <span>Provider:<b>{{ service.enterpriseName }} </b></span>
+      <div
+        *ngIf="showCompany"
+        [ngClass]="{ 'show-company': !showCompany }"
+        class="card__data--company"
+      >
+        <span
+          >Provider:<b>{{ service.enterpriseName }} </b></span
+        >
       </div>
       <div class="card__data--btn">
         <a (click)="onViewDetailsClick(service)">
-          <button mat-raised-button>{{ showCompany? 'Access Service' : 'View Service' }}</button>
+          <button mat-raised-button>
+            {{ showCompany ? "Access Service" : "View Service" }}
+          </button>
         </a>
-        <a [href]="service.offerLink" target="_blank" matTooltip="View Credentials">
+        <a
+          [href]="service.offerLink"
+          target="_blank"
+          matTooltip="View Credentials"
+        >
           <button mat-mini-fab>
             <mat-icon>insert_link</mat-icon>
           </button>
@@ -25,4 +37,9 @@
       </div>
     </div>
   </article>
+</div>
+
+<div class="catalogue-not-found" *ngIf="serviceList.length === 0">
+  <mat-icon svgIcon="catalogue-not-found"> </mat-icon>
+  <h1>No Catalogues Found!</h1>
 </div>

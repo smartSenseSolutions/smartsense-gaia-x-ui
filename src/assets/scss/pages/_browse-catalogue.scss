@@ -16,6 +16,14 @@
         width: 1.6rem !important;
       }
 
+      .close-icon {
+        svg {
+          path {
+            fill: rgba(#121E2A, 0.5);
+          }
+        }
+      }
+
       .mdc-button {
         height: auto !important;
 
@@ -30,7 +38,7 @@
         }
       }
 
-      .mat-mdc-button-touch-target{
+      .mat-mdc-button-touch-target {
         height: 2rem;
         width: 2rem;
       }
@@ -40,6 +48,7 @@
       width: 2.2rem !important;
       height: 2rem !important;
       background: none !important;
+
       .mat-icon {
         width: 2.2rem !important;
         height: 2rem !important;

@@ -15,6 +15,7 @@ import {
   Subscription,
   debounceTime,
   distinctUntilChanged,
+  startWith,
   switchMap,
 } from 'rxjs';
 import { ShareInformationDialogComponent } from 'src/app/shared/components';
@@ -45,9 +46,7 @@ import { ServiceOfferingService } from '../../services';
 })
 export class BrowseCatalogueComponent {
   serviceList: ServiceOfferResponsePayloadModel[] = [];
-
   productControl = new FormControl('');
-  products: string[] = ['Be Positive', 'Audi', 'ISRO', 'Google'];
   filteredProducts!: Observable<string[]>;
   productControlChangesObservable: Subscription;
 
@@ -59,7 +58,6 @@ export class BrowseCatalogueComponent {
 
   ngOnInit() {
     this.subscribeProductControlChanges();
-    this.productControl.setValue('');
   }
 
   ngOnDestroy() {
@@ -69,6 +67,7 @@ export class BrowseCatalogueComponent {
   subscribeProductControlChanges() {
     this.productControlChangesObservable = this.productControl.valueChanges
       .pipe(
+        startWith(''),
         debounceTime(500),
         distinctUntilChanged(),
         switchMap((searchText) => {
@@ -78,6 +77,7 @@ export class BrowseCatalogueComponent {
         })
       )
       .subscribe((searchResult) => {
+        console.log(searchResult.payload);
         this.serviceList = searchResult.payload;
       });
   }
