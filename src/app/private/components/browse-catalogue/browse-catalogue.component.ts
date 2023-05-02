@@ -45,10 +45,11 @@ import { ServiceOfferingService } from '../../services';
   styleUrls: ['./browse-catalogue.component.scss'],
 })
 export class BrowseCatalogueComponent {
-  serviceList: ServiceOfferResponsePayloadModel[] = [];
+  serviceList: ServiceOfferResponsePayloadModel[];
   productControl = new FormControl('');
   filteredProducts!: Observable<string[]>;
   productControlChangesObservable: Subscription;
+  isLoading: boolean = false;
 
   constructor(
     private route: Router,
@@ -78,6 +79,7 @@ export class BrowseCatalogueComponent {
       )
       .subscribe((searchResult) => {
         this.serviceList = searchResult.payload;
+        this.isLoading = this.serviceList.length == 0;
       });
   }
 

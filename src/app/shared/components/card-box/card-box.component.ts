@@ -14,9 +14,8 @@ import { ServiceOfferResponsePayloadModel } from '../../../private/models';
   styleUrls: ['./card-box.component.scss'],
 })
 export class CardBoxComponent {
-  @Input() serviceList: ServiceOfferResponsePayloadModel[] = [];
+  @Input() serviceList: ServiceOfferResponsePayloadModel[];
   @Input() showCompany: boolean = true;
-  @Input() SearchInvoked: boolean = false;
   @Output() onViewDetailClickEvent =
     new EventEmitter<ServiceOfferResponsePayloadModel>();
 
