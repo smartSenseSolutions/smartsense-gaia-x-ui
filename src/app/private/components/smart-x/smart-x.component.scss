@@ -102,13 +102,15 @@
       mat-icon {
         width: 12rem;
         height: auto;
-        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: -0.5rem;
       }
       span {
         font-size: 1.2rem;
         line-height: 1.5;
-        a{
+        a {
           color: $primary-color;
+          display: block;
         }
       }
     }
