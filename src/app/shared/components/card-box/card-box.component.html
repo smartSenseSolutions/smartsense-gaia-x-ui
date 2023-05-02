@@ -39,7 +39,10 @@
   </article>
 </div>
 
-<div class="catalogue-not-found" *ngIf="serviceList.length === 0">
+<div
+  class="catalogue-not-found"
+  *ngIf="serviceList.length === 0 && SearchInvoked"
+>
   <mat-icon svgIcon="catalogue-not-found"> </mat-icon>
   <h1>No Catalogues Found!</h1>
 </div>

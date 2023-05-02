@@ -2,10 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { ServiceOfferResponsePayloadModel } from '../../../private/models';
-import { RouteConstants } from '../../constants';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-card-box',
@@ -17,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class CardBoxComponent {
   @Input() serviceList: ServiceOfferResponsePayloadModel[] = [];
   @Input() showCompany: boolean = true;
+  @Input() SearchInvoked: boolean = false;
   @Output() onViewDetailClickEvent =
     new EventEmitter<ServiceOfferResponsePayloadModel>();
 
