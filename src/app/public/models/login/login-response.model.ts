@@ -1,4 +1,5 @@
 import { APIResponse } from 'src/app/shared/models';
+import { PollStatus } from '../../components/enterprise-login/enterprise-login.constants';
 
 export interface LoginResponsePayloadModel {
   token: string;
@@ -31,6 +32,9 @@ export interface EnterpriseQRLoginResponse {
 
 export type EnterpriseQRLoginResponseModel = EnterpriseQRLoginResponse;
 
-export interface EnterpriseLoginPollResponse {}
+export interface EnterpriseLoginPollResponse {
+  statusCode: number;
+  status: PollStatus;
+}
 export type EnterpriseLoginPollResponseModel =
   APIResponse<EnterpriseLoginPollResponse>;
