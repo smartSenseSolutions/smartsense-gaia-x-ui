@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { API_CONSTANTS } from 'src/app/shared/constants';
 import { ApiManagerService } from 'src/app/shared/services';
 import { SignupRequestModel } from '../../models/signup/signup-request.model';
-import { SignupResponseModel } from '../../models/signup/signup-response.model';
+import {
+  SignupQRResponseModel,
+  SignupResponseModel,
+} from '../../models/signup/signup-response.model';
 import { parseAPI } from 'src/app/shared/functions';
 
 @Injectable({
@@ -12,6 +15,17 @@ import { parseAPI } from 'src/app/shared/functions';
 })
 export class SignUpService {
   constructor(private apiManager: ApiManagerService) {}
+
+  getSignupQR = (): Observable<SignupQRResponseModel> => {
+    return this.apiManager.httpHelperMethod<SignupQRResponseModel>(
+      API_CONSTANTS.ADMIN.SIGN_UP_QR_CODE.METHOD,
+      API_CONSTANTS.ADMIN.SIGN_UP_QR_CODE.URL,
+      {},
+      this.apiManager.httpOptions,
+      false,
+      false
+    );
+  };
 
   signup = (
     signupRequest: SignupRequestModel
@@ -54,7 +68,9 @@ export class SignUpService {
     );
   };
 
-  resumeCertificate = (enterpriseId: number): Observable<SignupResponseModel> => {
+  resumeCertificate = (
+    enterpriseId: number
+  ): Observable<SignupResponseModel> => {
     const templateParams = {
       enterpriseId,
     };
@@ -96,7 +112,9 @@ export class SignUpService {
     );
   };
 
-  resumeParticipant = (enterpriseId: number): Observable<SignupResponseModel> => {
+  resumeParticipant = (
+    enterpriseId: number
+  ): Observable<SignupResponseModel> => {
     const templateParams = {
       enterpriseId,
     };

@@ -1,4 +1,5 @@
 export interface SignStepTwoModel {
+  email: string;
   legalName: string;
   subDomainName: string;
   legalRegistrationNumber: string;

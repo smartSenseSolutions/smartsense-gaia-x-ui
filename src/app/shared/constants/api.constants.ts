@@ -7,10 +7,18 @@ export const API_CONSTANTS = {
     METHOD: HttpMethodEnum.POST,
     URL: `${BASE_URL}/login`,
   },
+  LOGIN_QR_CODE: {
+    METHOD: HttpMethodEnum.POST,
+    URL: `https://gaiax.vereign.com/ocm/proof/v1/send-out-of-band-presentation-request`,
+  },
   ADMIN: {
     SIGN_UP: {
       METHOD: HttpMethodEnum.POST,
       URL: `${BASE_URL}/register`,
+    },
+    SIGN_UP_QR_CODE:{
+      METHOD: HttpMethodEnum.POST,
+      URL: 'https://gaiax.vereign.com/ocm/connection/v1/invitation-url?alias=trust'
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,

@@ -19,123 +19,40 @@
         </li>
         <li class="userDetails__signup-heading">
           <h2>Let's get started</h2>
-          <span>Start your journey with us.</span>
-          <span>Scan with PCM Application to connect with Smart-X.</span>
+          <span
+            >Scan with PCM Application, <br />
+            accept the invitation and click on proceed.</span
+          >
         </li>
 
         <li class="userDetails__signup-form">
-          <!-- <form [formGroup]="signupForm" (ngSubmit)="onSignupStepOneFormSubmit(signupForm)">
-            <div>
-              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
-                <label class="required-label">Email Address</label>
-                <input formControlName="email" matInput placeholder="Enter email address" required>
-                <mat-error *ngIf="isRequiredField(formControls['email'])">
-                  {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
-
-                <mat-error *ngIf="isValidLength(formControls['email'])">
-                  {{ validationMsg.INVALID_EMAIL }}</mat-error>
-
-                <mat-error *ngIf="formControls['email'].hasError('minlength')">
-                  {{ validationMsg.MIN_LENGTH_3 }}
-                </mat-error>
-
-                <mat-error *ngIf="formControls['email'].hasError('maxlength')">
-                  {{ validationMsg.MAX_LENGTH_255 }}
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
-                <Label class="required-label" for="password">Password</Label>
-                <input formControlName="password" matInput id="password" [type]="passStatus ? 'text' : 'password'"
-                  placeholder="Enter Password" (input)="passwordChange()">
-                <button type="button" matSuffix class="show-pass" (click)="passStatus = !passStatus">{{ passStatus ?
-                  "Hide" : "Show" }}</button>
-                <mat-error *ngIf="isRequiredField(formControls['password'])">
-                  {{ validationMsg.PASSWORD_IS_REQUIRED }}</mat-error>
-
-                <mat-error *ngIf="formControls['password'].hasError('minlength')">
-                  {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
-
-                <mat-error *ngIf="formControls['password'].hasError('maxlength')">
-                  {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
-
-                <mat-hint align="start">
-                  <ul>
-                    <li class="MB-10">
-                      <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass"
-                          [class.verify-pass__not-satisfied]="!isContainUpperCaseLowerCase"
-                          [class.verify-pass__satisfied]="isContainUpperCaseLowerCase"></mat-icon>
-                        Contain UPPER & Lower-case
-                      </div>
-                      <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass" [class.verify-pass__not-satisfied]="!isLengthEight"
-                          [class.verify-pass__satisfied]="isLengthEight"></mat-icon>
-                        At least 8 characters long
-                      </div>
-
-                    </li>
-                    <li>
-                      <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass"
-                          [class.verify-pass__not-satisfied]="!isContainSpecialCharacter"
-                          [class.verify-pass__satisfied]="isContainSpecialCharacter"></mat-icon>
-                        Special Character
-                      </div>
-                      <div class="row  PLR-0">
-                        <mat-icon svgIcon="done" class="verify-pass"
-                          [class.verify-pass__not-satisfied]="!isContainNumber"
-                          [class.verify-pass__satisfied]="isContainNumber"></mat-icon>
-                        Contain a Number
-                      </div>
-                    </li>
-                  </ul>
-                </mat-hint>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
-                <Label class="required-label" for="confirm-password">Confirm Password</Label>
-                <input formControlName="confirmPassword" matInput id="confirm-password"
-                  [type]=" confirmPassStatus ? 'text': 'password'" placeholder="Enter Password">
-                <button type="button" matSuffix class="show-pass" (click)="confirmPassStatus = !confirmPassStatus">{{
-                  confirmPassStatus ? "Hide" : "Show" }}</button>
-                <mat-error *ngIf="isRequiredField(formControls['confirmPassword'])">
-                  {{ validationMsg.CONFIRM_PASSWORD_IS_REQUIRED }}</mat-error>
-                <mat-error *ngIf="formControls['confirmPassword'].hasError('matching')">
-                  {{ validationMsg.CONFIRM_PASSWORD_AND_PASSWORD_ARE_NOT_SAME  }}</mat-error>
-                <mat-error *ngIf="formControls['confirmPassword'].hasError('minlength')">
-                  {{ validationMsg.MIN_LENGTH_8 }}</mat-error>
-                <mat-error *ngIf="formControls['confirmPassword'].hasError('maxlength')">
-                  {{ validationMsg.MAX_LENGTH_16 }}</mat-error>
-              </mat-form-field>
-            </div>
-
-            <button type="submit" class="large-btn" [ngClass]="{ 'primary-btn' : signupForm.valid , 'disabled-btn' : !signupForm.valid}" [disabled]="!signupForm.valid" mat-raised-button type="submit">
-              Proceed
-              <mat-icon matIconPrefix svgIcon="arrow-right"></mat-icon>
-            </button>
-          </form> -->
-
           <div class="text-center">
             <img
+              *ngIf="apiStatus !== APIStatus.Success"
               class="animated fast"
               src="../../../../assets/images/loading.gif"
               width="60"
               alt=""
             />
 
-            <a>
-              <img src="./qrcode.png" alt="" />
+            <a *ngIf="apiStatus === APIStatus.Success">
+              <qrcode
+                [qrdata]="signupQRResponse.data.invitationUrl"
+                [width]="256"
+                [errorCorrectionLevel]="'M'"
+              >
+              </qrcode>
             </a>
           </div>
         </li>
 
-        <li class="MB-20">
-          <button class="large-btn primary-btn" mat-raised-button type="submit">
+        <li *ngIf="apiStatus === APIStatus.Success" class="MB-20">
+          <button
+            class="large-btn primary-btn"
+            mat-raised-button
+            type="submit"
+            (click)="onProceedClick()"
+          >
             Proceed
           </button>
         </li>
