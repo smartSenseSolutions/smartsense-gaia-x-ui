@@ -107,7 +107,7 @@
     }
 
     button {
-      @include square(15rem);
+      @include square(18rem);
       @include border-radius(50%);
       border: 1px solid $primary-dark;
       background-color: rgba($primary-color, 0.4);
@@ -115,7 +115,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 500;
 
       mat-icon {
