@@ -17,16 +17,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
 import { SignStepTwoModel } from 'src/app/public/models';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
+import { RegexConstant } from 'src/app/shared/constants/regex.constants';
+import { SharedService } from 'src/app/shared/services';
 import {
   COUNTRY_SUBDIVISION_CODES,
   REGISTRATION_TYPES,
 } from './signup-step-two.constants';
-import { RegexConstant } from 'src/app/shared/constants/regex.constants';
-import { SharedService } from 'src/app/shared/services';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup-step-two',
   standalone: true,
@@ -47,7 +47,7 @@ import { Router } from '@angular/router';
 export class SignupStepTwoComponent extends FormBaseComponent {
   @Input() stepTwoFormData: SignStepTwoModel | undefined;
   @Output() onStepTwoComplete = new EventEmitter<SignStepTwoModel>();
-  @Output() onBackEventClick = new EventEmitter<void>();
+  @Output() onBackEventClick = new EventEmitter<SignStepTwoModel>();
 
   // Constant variables
   readonly validationMsg = new ValidationConstant();
@@ -82,8 +82,11 @@ export class SignupStepTwoComponent extends FormBaseComponent {
     termsAndConditions: new FormControl(false, [Validators.required]),
   });
 
-  constructor(protected override fb: FormBuilder,private router: Router,
-    private sharedService: SharedService) {
+  constructor(
+    protected override fb: FormBuilder,
+    private router: Router,
+    private sharedService: SharedService
+  ) {
     super(fb);
   }
 
@@ -254,7 +257,9 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   };
 
   onBackClick = () => {
-    this.onBackEventClick.emit();
+    this.onBackEventClick.emit(
+      this.signupForm.getRawValue() as SignStepTwoModel
+    );
   };
 
   // Helper methods

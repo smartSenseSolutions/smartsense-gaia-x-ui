@@ -7,12 +7,11 @@ import {
   SignStepTwoModel,
   SignupRequestModel,
 } from 'src/app/public/models';
-import { RouteConstants } from 'src/app/shared/constants';
+import { SignUpService } from 'src/app/public/services';
 import { VerifyDialogComponent } from '../../verify-dialog/verify-dialog.component';
 import { SignupStepOneComponent } from '../signup-step-one/signup-step-one.component';
 import { SignupStepTwoComponent } from '../signup-step-two/signup-step-two.component';
 import { SignupStep } from './signup-container.constants';
-import { SignUpService } from 'src/app/public/services';
 
 @Component({
   selector: 'app-signup-container',
@@ -69,7 +68,8 @@ export class SignupContainerComponent {
     });
   };
 
-  onBackClick = () => {
+  onBackClick = (stepTwoData: SignStepTwoModel) => {
+    this.stepTwoData = stepTwoData;
     this.activeStep = SignupStep.ONE;
   };
 }

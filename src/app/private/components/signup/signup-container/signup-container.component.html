@@ -1,4 +1,11 @@
-<app-signup-step-one *ngIf="activeStep == SignupStep.ONE"
-    (onStepOneComplete)="onStepOneComplete($event)"></app-signup-step-one>
-<app-signup-step-two *ngIf="activeStep == SignupStep.TWO" (onStepTwoComplete)="onStepTwoComplete($event)"
-    (onBackEventClick)="onBackClick()"></app-signup-step-two>
+<app-signup-step-one
+  *ngIf="activeStep == SignupStep.ONE"
+  (onStepOneComplete)="onStepOneComplete($event)"
+  [stepOneFormData]="stepOneData"
+></app-signup-step-one>
+<app-signup-step-two
+  *ngIf="activeStep == SignupStep.TWO"
+  (onStepTwoComplete)="onStepTwoComplete($event)"
+  [stepTwoFormData]="stepTwoData"
+  (onBackEventClick)="onBackClick($event)"
+></app-signup-step-two>
