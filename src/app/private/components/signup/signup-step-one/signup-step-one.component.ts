@@ -65,7 +65,7 @@ export class SignupStepOneComponent
   }
 
   ngOnInit(): void {
-    this.getLoginQR();
+    this.getSignupQR();
   }
 
   onSignInClick = () => {
@@ -79,7 +79,7 @@ export class SignupStepOneComponent
   };
 
   // Helper methods
-  getLoginQR = () => {
+  getSignupQR = () => {
     this.apiStatus = APIStatus.InProgress;
     this.signupService.getSignupQR().subscribe({
       next: (response) => {
