@@ -7,6 +7,30 @@ export interface VPResponsePayloadModel {
   verifiableCredential: VerifiableCredential[];
 }
 
+export interface VPRequestPayloadModel {
+  presentationId: string;
+}
+
+export interface EnterpriseQRLoginResponse {
+  statusCode: number;
+  message: string;
+  data: {
+    id: string;
+    presentationId: string;
+    connectionId: string;
+    credentialDefId: string;
+    schemaId: string;
+    theirDid: string;
+    status: string;
+    createdDate: string;
+    updatedDate: string;
+    presentationMessage: string;
+    presentationMessageShort: string;
+  };
+}
+
+export type ServiceOfferVPQRResponseModel = EnterpriseQRLoginResponse;
+
 export interface VerifiableCredential {
   issuanceDate: string;
   id: string;

@@ -37,4 +37,5 @@ export const SvgConstants: string[] = [
   'failed',
   'apple-app-store',
   'google-play-icon',
+  'reload',
 ];

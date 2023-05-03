@@ -223,7 +223,7 @@ app-browse-catalogue {
 }
 
 .disabled-btn {
-  background: rgba($primary-dark , 0.2) !important;
+  background: rgba($primary-dark, 0.2) !important;
   border-radius: 1.2rem !important;
   color: $white-color !important;
 
@@ -232,5 +232,11 @@ app-browse-catalogue {
       color: $white-color !important;
     }
   }
+}
 
+// QR code
+.qr-code {
+  img {
+    @include square(25rem);
+  }
 }

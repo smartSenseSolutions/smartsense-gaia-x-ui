@@ -3,3 +3,7 @@ export interface LoginRequestModel {
   email: string;
   password: string;
 }
+
+export interface EnterpriseLoginPollRequestModel {
+  presentationId: string;
+}

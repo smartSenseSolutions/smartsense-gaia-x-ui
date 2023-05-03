@@ -3,6 +3,7 @@ mat-dialog-container {
     border-radius: 1rem !important;
   }
 }
+
 .dialog-container {
   &__head {
     background-color: $grey-color;
@@ -11,10 +12,12 @@ mat-dialog-container {
     justify-content: space-between;
     height: 6rem;
     padding: 2rem;
+
     h3 {
       font-weight: 600;
       font-size: 1.8rem;
     }
+
     mat-icon {
       @include square(1.6rem);
     }
@@ -22,8 +25,5 @@ mat-dialog-container {
 
   &__body {
     text-align: center;
-
-    & > img {
-    }
   }
 }

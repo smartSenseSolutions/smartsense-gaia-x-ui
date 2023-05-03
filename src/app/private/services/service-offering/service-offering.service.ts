@@ -10,8 +10,9 @@ import {
   ServiceOfferDetailMetaResponse,
   ServiceOfferDetailResponse,
   ServiceOfferResponse,
+  ServiceOfferVPQRResponseModel,
+  VPRequestPayloadModel,
   VPResponseModel,
-  VPResponsePayloadModel,
 } from '../../models';
 
 @Injectable({
@@ -94,7 +95,7 @@ export class ServiceOfferingService {
   };
 
   getServiceOffersDetailWithOfferId = (
-    request: VPResponsePayloadModel,
+    request: VPRequestPayloadModel,
     id: number
   ): Observable<ServiceOfferDetailMetaResponse> => {
     return this.apiManager.httpHelperMethod<ServiceOfferDetailMetaResponse>(
@@ -107,6 +108,51 @@ export class ServiceOfferingService {
       this.apiManager.authorizationHttpOptions,
       true,
       true
+    );
+  };
+
+  getServiceOffersVPQR = (): Observable<ServiceOfferVPQRResponseModel> => {
+    return this.apiManager.httpHelperMethod<ServiceOfferVPQRResponseModel>(
+      API_CONSTANTS.LOGIN_QR_CODE.METHOD,
+      API_CONSTANTS.LOGIN_QR_CODE.URL,
+      {
+        attributes: [
+          {
+            credentialDefId:
+              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+            attributeName: 'did',
+            value: '',
+            condition: '',
+          },
+          {
+            credentialDefId:
+              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+            attributeName: 'id',
+            value: '',
+            condition: '',
+          },
+          {
+            credentialDefId:
+              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+            attributeName: 'type',
+            value: '',
+            condition: '',
+          },
+          {
+            credentialDefId:
+              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+            attributeName: 'gx:legalName',
+            value: '',
+            condition: '',
+          },
+        ],
+        options: {
+          type: 'Aries1.0',
+        },
+      },
+      this.apiManager.httpOptions,
+      false,
+      false
     );
   };
 }
