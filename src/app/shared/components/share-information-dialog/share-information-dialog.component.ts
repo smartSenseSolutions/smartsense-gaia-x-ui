@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {
@@ -60,6 +60,7 @@ export class ShareInformationDialogComponent implements OnInit {
       .getParticipantVP('participant')
       .subscribe((data) => {
         this.activeState = DataShareEnum.VERIFYING;
+        this.verifyVP();
         this.vp = data.payload;
         // this.getServiceOffersDetailWithOfferId(data.payload, this.serivce.id);
       });
