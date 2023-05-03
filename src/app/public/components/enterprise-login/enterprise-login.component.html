@@ -38,12 +38,13 @@
 
             <a
               *ngIf="
+                enterpriseQRLoginResponse &&
                 loginQrApiStatus === APIStatus.Success &&
                 pollCount < MAX_POLL_COUNT
               "
             >
               <qrcode
-                [qrdata]="enterpriseQRLoginResponse.data.presentationMessage"
+                [qrdata]="enterpriseQRLoginResponse!.data.presentationMessage"
                 [width]="256"
                 [errorCorrectionLevel]="'M'"
               >
