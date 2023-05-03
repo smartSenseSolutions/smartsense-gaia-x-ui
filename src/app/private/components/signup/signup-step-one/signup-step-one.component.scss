@@ -115,11 +115,6 @@
             @include square(20rem);
           }
         }
-
-        & > img {
-          display: table-cell;
-          vertical-align: middle;
-        }
       }
     }
 

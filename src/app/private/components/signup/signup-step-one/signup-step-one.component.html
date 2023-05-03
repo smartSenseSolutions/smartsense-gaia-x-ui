@@ -36,12 +36,13 @@
             />
 
             <a *ngIf="apiStatus === APIStatus.Success">
-              <qrcode
-                [qrdata]="signupQRResponse.data.invitationUrl"
-                [width]="256"
-                [errorCorrectionLevel]="'M'"
+              <ngx-qrcode
+                [elementType]="NgxQrcodeElementTypes.URL"
+                [value]="signupQRResponse.data.invitationUrl"
+                cssClass="qr-code"
+                [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH"
               >
-              </qrcode>
+              </ngx-qrcode>
             </a>
           </div>
         </li>
