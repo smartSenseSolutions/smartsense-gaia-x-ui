@@ -35,4 +35,6 @@ export const SvgConstants: string[] = [
   'gaia-x-logo',
   'catalogue-not-found',
   'failed',
+  'apple-app-store',
+  'google-play-icon',
 ];
