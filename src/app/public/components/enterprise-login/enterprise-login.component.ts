@@ -87,23 +87,22 @@ export class EnterpriseLoginComponent implements OnInit {
         next: (response) => {
           this.pollStatus = response.payload.status;
           this.pollCount++;
-          if (
-            this.pollCount === MAX_POLL_COUNT ||
-            this.pollStatus === PollStatus.Done
-          ) {
+          if (this.pollStatus === PollStatus.Done) {
             clearTimeout(this.checkStatusTimeOut);
             this.sharedService.setUser(response.payload.session);
             this.sharedService.setToken(response.payload.token);
             this.router.navigate([
               `${RouteConstants.SmartX}/${RouteConstants.DashBoard}`,
             ]);
-          } else {
+          } else if (this.pollCount < MAX_POLL_COUNT) {
             this.pollLoginStatus();
           }
         },
         error: (error) => {
           this.pollCount++;
-          this.pollLoginStatus();
+          if (this.pollCount < MAX_POLL_COUNT) {
+            this.pollLoginStatus();
+          }
         },
         complete: () => {},
       });
@@ -119,12 +118,12 @@ export class EnterpriseLoginComponent implements OnInit {
     this.loginService.getLoginQR().subscribe({
       next: (response) => {
         const request = {
-          url: response.data.presentationMessage
-        }
+          url: response.data.presentationMessage,
+        };
         this.loginService.shortenUrl(request).subscribe({
           next: (tinyUrlResponse) => {
             this.enterpriseQRLoginResponse = response;
-            this.tinyLoginUrl = tinyUrlResponse.payload.url
+            this.tinyLoginUrl = tinyUrlResponse.payload.url;
             this.loginQrApiStatus = APIStatus.Success;
             this.pollLoginStatus();
           },
