@@ -120,30 +120,4 @@
       }
     }
   }
-
-  &__qr-code {
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 25rem;
-    }
-  }
-
-  &__appstore {
-    text-align: center;
-    mat-icon {
-      @include border-radius(0.5rem);
-      border: 1px solid $primary-dark;
-      width: 15rem;
-      height: auto;
-      margin-right: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    p {
-      font-size: 1.4rem !important;
-      margin-bottom: 1rem;
-    }
-  }
 }
