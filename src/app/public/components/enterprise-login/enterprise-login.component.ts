@@ -90,7 +90,7 @@ export class EnterpriseLoginComponent implements OnInit {
         complete: () => {
         },
       });
-    }, 15000);
+    }, POLL_INTERVAL);
   };
 
   // Helper methods
