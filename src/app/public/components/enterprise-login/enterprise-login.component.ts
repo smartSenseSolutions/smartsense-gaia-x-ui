@@ -44,7 +44,7 @@ export class EnterpriseLoginComponent implements OnInit {
   readonly MAX_POLL_COUNT = MAX_POLL_COUNT;
   readonly POLL_INTERVAL = POLL_INTERVAL;
 
-  enterpriseQRLoginResponse: EnterpriseQRLoginResponseModel;
+  enterpriseQRLoginResponse: EnterpriseQRLoginResponseModel |  null;
   enterpriseLoginPollResponse: EnterpriseLoginPollResponseModel;
   loginQrApiStatus: APIStatus = APIStatus.Pending;
 
@@ -73,7 +73,7 @@ export class EnterpriseLoginComponent implements OnInit {
     }
     this.checkStatusTimeOut = setTimeout(() => {
       const request = {
-        presentationId: this.enterpriseQRLoginResponse.data.presentationId,
+        presentationId: this.enterpriseQRLoginResponse!.data.presentationId,
       };
       this.loginService.pollLoginStatus(request).subscribe({
         next: (response) => {
@@ -104,6 +104,7 @@ export class EnterpriseLoginComponent implements OnInit {
   // Helper methods
   getLoginQR = () => {
     this.pollCount = 0;
+    this.enterpriseQRLoginResponse = null;
     this.loginQrApiStatus = APIStatus.InProgress;
     this.loginService.getLoginQR().subscribe({
       next: (response) => {

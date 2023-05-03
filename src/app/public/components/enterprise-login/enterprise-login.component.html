@@ -31,8 +31,8 @@
             <img *ngIf="loginQrApiStatus !== APIStatus.Success" class="animated fast"
               src="../../../../assets/images/loading.gif" width="60" alt="" />
 
-            <a *ngIf="loginQrApiStatus === APIStatus.Success && pollCount < MAX_POLL_COUNT">
-              <qrcode [qrdata]="enterpriseQRLoginResponse.data.presentationMessage" [width]="256"
+            <a *ngIf="enterpriseQRLoginResponse && loginQrApiStatus === APIStatus.Success && pollCount < MAX_POLL_COUNT">
+              <qrcode [qrdata]="enterpriseQRLoginResponse!.data.presentationMessage" [width]="256"
                 [errorCorrectionLevel]="'M'">
               </qrcode>
             </a>
