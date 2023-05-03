@@ -26,6 +26,7 @@ export class VerifyDialogComponent implements OnInit {
   readonly SignupStatus = SignupStatus;
 
   // Data variables
+  signupResponse: SignupResponseModel;
   enterprise?: EnterpriseModel;
 
   // Status variables
@@ -56,6 +57,7 @@ export class VerifyDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.signupResponse = this.data.signupResponse;
     this.enterprise = this.data.signupResponse.payload;
     this.checkStatus();
   }
