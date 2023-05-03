@@ -10,3 +10,5 @@ export interface LoginResponsePayloadModel {
 }
 
 export type LoginResponseModel = APIResponse<LoginResponsePayloadModel>;
+
+export type LoginQRResponseModel = APIResponse<LoginResponsePayloadModel>;

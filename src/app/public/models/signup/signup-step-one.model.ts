@@ -1,4 +1,3 @@
 export interface SignStepOneModel {
-    email: string;
-    password: string;
+    connectionId: string;
 }
