@@ -68,11 +68,13 @@ export class ServiceOfferingService {
     );
   };
 
-  getCatalogue = (query: string = ''): Observable<ServiceOfferResponse> => {
+  getCatalogue = (query: string | null): Observable<ServiceOfferResponse> => {
+    const tempQuery = query?.trim();
+    const queryObject = tempQuery ? { query } : {};
     return this.apiManager.httpHelperMethod<ServiceOfferResponse>(
       API_CONSTANTS.ENTERPRISE.CATALOGUE.METHOD,
       API_CONSTANTS.ENTERPRISE.CATALOGUE.URL,
-      { query },
+      queryObject,
       this.apiManager.authorizationHttpOptions,
       true,
       true
