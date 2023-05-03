@@ -1,22 +1,28 @@
 @import "../../../../assets/scss/abstracts/abstracts.scss";
+
 .dialog-container {
   &__body {
     text-align: center;
 
     div {
       padding: 5rem 0;
-      img {
+
+      img,
+      .mat-icon {
         @include square(4rem);
         margin-bottom: 3rem;
       }
+
       &.confirm-info {
         height: unset;
         padding: 4rem 0 3rem;
+
         img {
           width: 28.3rem;
           height: 21.7rem;
           margin-bottom: 3.6rem;
         }
+
         p {
           margin-bottom: 2.5rem;
           padding: 0 2.5rem;
