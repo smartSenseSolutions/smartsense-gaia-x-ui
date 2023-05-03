@@ -2,24 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONSTANTS } from 'src/app/shared/constants';
 import { ApiManagerService } from 'src/app/shared/services';
-import { LoginRequestModel } from '../../models/login/login-request.model';
 import {
-  LoginQRResponseModel,
+  EnterpriseLoginPollRequestModel,
+  EnterpriseLoginPollResponseModel,
+  EnterpriseQRLoginResponseModel,
+  LoginRequestModel,
   LoginResponseModel,
-} from '../../models/login/login-response.model';
-import { HttpClient } from '@angular/common/http';
+} from '../../models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(
-    private apiManager: ApiManagerService,
-    private httpClient: HttpClient
-  ) {}
+  constructor(private apiManager: ApiManagerService) {}
 
-  getLoginQR = (): Observable<LoginQRResponseModel> => {
-    return this.apiManager.httpHelperMethod<LoginQRResponseModel>(
+  getLoginQR = (): Observable<EnterpriseQRLoginResponseModel> => {
+    return this.apiManager.httpHelperMethod<EnterpriseQRLoginResponseModel>(
       API_CONSTANTS.LOGIN_QR_CODE.METHOD,
       API_CONSTANTS.LOGIN_QR_CODE.URL,
       {
@@ -44,21 +42,21 @@ export class LoginService {
         },
       },
       this.apiManager.httpOptions,
-      true,
-      true
+      false,
+      false
     );
   };
 
   pollLoginStatus = (
-    loginRequest: LoginRequestModel
-  ): Observable<LoginResponseModel> => {
-    return this.apiManager.httpHelperMethod<LoginResponseModel>(
-      API_CONSTANTS.LOGIN.METHOD,
-      API_CONSTANTS.LOGIN.URL,
-      loginRequest,
+    loginPollRequest: EnterpriseLoginPollRequestModel
+  ): Observable<EnterpriseLoginPollResponseModel> => {
+    return this.apiManager.httpHelperMethod<EnterpriseLoginPollResponseModel>(
+      API_CONSTANTS.LOGIN_QR_POLL.METHOD,
+      API_CONSTANTS.LOGIN_QR_POLL.URL,
+      loginPollRequest,
       this.apiManager.httpOptions,
-      true,
-      true
+      false,
+      false
     );
   };
 

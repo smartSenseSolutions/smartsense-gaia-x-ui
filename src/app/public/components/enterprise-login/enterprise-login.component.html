@@ -28,18 +28,16 @@
 
         <li class="userDetails__qr-code">
           <div class="text-center">
-            <img
-              class="animated fast"
-              src="../../../../assets/images/loading.gif"
-              width="60"
-              alt=""
-            />
+            <img *ngIf="loginQrApiStatus !== APIStatus.Success" class="animated fast"
+              src="../../../../assets/images/loading.gif" width="60" alt="" />
 
-            <a>
-              <!-- <qrcode [width]="256"> </qrcode> -->
+            <a *ngIf="loginQrApiStatus === APIStatus.Success && pollCount < MAX_POLL_COUNT">
+              <qrcode [qrdata]="enterpriseQRLoginResponse.data.presentationMessage" [width]="256"
+                [errorCorrectionLevel]="'M'">
+              </qrcode>
             </a>
 
-            <button type="button" class="reload-btn">
+            <button *ngIf="pollCount === MAX_POLL_COUNT" type="button" class="reload-btn">
               <mat-icon svgIcon="reload"></mat-icon>
               <p>Click to reload QR code</p>
             </button>

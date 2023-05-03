@@ -1,18 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  ReactiveFormsModule
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RouteConstants } from 'src/app/shared/constants';
-import { UserType } from 'src/app/shared/enums';
+import { QRCodeModule } from 'angularx-qrcode';
+import { APIStatus, UserType } from 'src/app/shared/enums';
 import { SharedService } from 'src/app/shared/services';
+import {
+  EnterpriseLoginPollResponseModel,
+  EnterpriseQRLoginResponseModel,
+} from '../../models';
 import { LoginService } from '../../services';
+import {
+  MAX_POLL_COUNT,
+  POLL_INTERVAL,
+  PollStatus,
+} from './enterprise-login.constants';
 
 @Component({
   selector: 'app-enterprise-login',
@@ -25,6 +31,7 @@ import { LoginService } from '../../services';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
+    QRCodeModule,
   ],
   templateUrl: './enterprise-login.component.html',
   styleUrls: ['./enterprise-login.component.scss'],
@@ -32,19 +39,75 @@ import { LoginService } from '../../services';
 export class EnterpriseLoginComponent implements OnInit {
   // Constant variables
   readonly UserType = UserType;
+  readonly APIStatus = APIStatus;
+  readonly MAX_POLL_COUNT = MAX_POLL_COUNT;
+  readonly POLL_INTERVAL = POLL_INTERVAL;
+
+  enterpriseQRLoginResponse: EnterpriseQRLoginResponseModel;
+  enterpriseLoginPollResponse: EnterpriseLoginPollResponseModel;
+  loginQrApiStatus: APIStatus = APIStatus.Pending;
+
+  pollCount: number = 0;
+  pollStatus: PollStatus;
+
+  checkStatusTimeOut: ReturnType<typeof setTimeout>;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private loginService: LoginService,
     private sharedService: SharedService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getLoginQR();
+  }
 
-  onLoginFormSubmit = (loginForm: FormGroup) => {};
+  pollLoginStatus = () => {
+    if (this.checkStatusTimeOut) {
+      clearTimeout(this.checkStatusTimeOut);
+    }
+    this.checkStatusTimeOut = setTimeout(() => {
+      const request = {
+        presentationId: this.enterpriseQRLoginResponse.data.presentationId,
+      };
+      this.loginService.pollLoginStatus(request).subscribe({
+        next: (response) => {
+          debugger;
+          // this.pollStatus = response.payload;
+          this.pollCount++;
+          if (
+            this.pollCount === MAX_POLL_COUNT ||
+            this.pollStatus === PollStatus.Done
+          ) {
+            clearTimeout(this.checkStatusTimeOut);
+          } else {
+            this.pollLoginStatus();
+          }
+        },
+        error: (error) => {
+          this.pollCount++;
+          this.pollLoginStatus();
+        },
+        complete: () => {
+        },
+      });
+    }, 15000);
+  };
 
-  onSignUpClick = () => {
-    this.router.navigate([RouteConstants.SignUp]);
+  // Helper methods
+  getLoginQR = () => {
+    this.loginQrApiStatus = APIStatus.InProgress;
+    this.loginService.getLoginQR().subscribe({
+      next: (response) => {
+        this.enterpriseQRLoginResponse = response;
+        this.loginQrApiStatus = APIStatus.Success;
+        this.pollCount = 0;
+        this.pollLoginStatus();
+      },
+      error: (error) => {
+        this.loginQrApiStatus = APIStatus.Failure;
+      },
+      complete: () => {},
+    });
   };
 }
