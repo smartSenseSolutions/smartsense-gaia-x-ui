@@ -4,7 +4,9 @@
     <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">
       Generating QR Code
     </h3>
-    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">Share Legal Participant Credentials</h3>
+    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">
+      Share Legal Participant Credentials
+    </h3>
     <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Received</h3>
     <h3 *ngIf="activeState === DataShareEnum.FAILED">Verification Failed</h3>
     <a (click)="onCloseDialog(false)" matTooltip="close">
@@ -28,41 +30,47 @@
       <p class="medium-text">Generating</p>
     </div>
 
-    <div *ngIf="activeState === DataShareEnum.VERIFYING">
+    <div
+      *ngIf="activeState === DataShareEnum.VERIFYING"
+      class="dialog-container__qrcode"
+    >
       <!-- <img src="./assets/images/loading.gif" alt="" /> -->
       <!-- <p>Verifiable presentation created for legal participant's credentials</p> -->
+
       <ol>
         <li>Open PCM on your phone</li>
         <li>Click on scan menu</li>
         <li>Click on view for new proof request</li>
         <li>Click on share to access service</li>
       </ol>
-
-      <a
-        *ngIf="
-          serviceOfferVPQRResponse &&
-          tinyLoginUrl &&
-          loginQrApiStatus === APIStatus.Success &&
-          pollCount < MAX_POLL_COUNT
-        "
-      >
-        <ngx-qrcode
-          [elementType]="NgxQrcodeElementTypes.URL"
-          [value]="tinyLoginUrl"
-          cssClass="qr-code"
-          [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH"
+      <div>
+        <a
+          *ngIf="
+            serviceOfferVPQRResponse &&
+            tinyLoginUrl &&
+            loginQrApiStatus === APIStatus.Success &&
+            pollCount < MAX_POLL_COUNT
+          "
         >
-        </ngx-qrcode>
-      </a>
-      <button
-        *ngIf="pollCount === MAX_POLL_COUNT"
-        type="button"
-        class="reload-btn"
-        (click)="onReloadQRClick()"
-      >
-        <mat-icon svgIcon="reload"></mat-icon>
-        <p>Click to reload QR code</p>
-      </button>
+          <ngx-qrcode
+            [elementType]="NgxQrcodeElementTypes.URL"
+            [value]="tinyLoginUrl"
+            cssClass="qr-code"
+            [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH"
+          >
+          </ngx-qrcode>
+        </a>
+        <button
+          *ngIf="pollCount === MAX_POLL_COUNT"
+          type="button"
+          class="reload-btn"
+          (click)="onReloadQRClick()"
+        >
+          <mat-icon svgIcon="reload"></mat-icon>
+          <p>Click to reload QR code</p>
+        </button>
+      </div>
+      <p>Credential must be Gaia-X compliant</p>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.SUCCESS">
