@@ -72,8 +72,7 @@ export class EnterpriseLoginComponent implements OnInit {
       };
       this.loginService.pollLoginStatus(request).subscribe({
         next: (response) => {
-          debugger;
-          // this.pollStatus = response.payload;
+          this.pollStatus = response.payload.status;
           this.pollCount++;
           if (
             this.pollCount === MAX_POLL_COUNT ||
