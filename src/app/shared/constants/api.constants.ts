@@ -71,7 +71,7 @@ export const API_CONSTANTS = {
       URL: `${BASE_URL}/catalogue`,
     },
     SERVICE_OFFERS_DETAIL_WITH_OFFER_ID: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/service-offers/{offer_id}/details`,
     },
     CREATE_VP: {

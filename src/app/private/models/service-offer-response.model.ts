@@ -1,3 +1,4 @@
+import { PollStatus } from 'src/app/shared/constants';
 import { APIResponse } from 'src/app/shared/models';
 
 export interface ServiceOfferResponsePayloadModel {
@@ -26,6 +27,7 @@ export interface Meta {
   };
 }
 
+
 export type ServiceOfferResponse = APIResponse<
   ServiceOfferResponsePayloadModel[]
 >;
@@ -33,4 +35,10 @@ export type ServiceOfferResponse = APIResponse<
 export type ServiceOfferDetailResponse =
   APIResponse<ServiceOfferResponsePayloadModel>;
 
-export type ServiceOfferDetailMetaResponse = APIResponse<Meta>;
+  export interface ServiceOfferQRResponse {
+    statusCode: number;
+    status: PollStatus;
+    meta: Meta;
+  }
+
+export type ServiceOfferDetailMetaResponse = APIResponse<ServiceOfferQRResponse>;
