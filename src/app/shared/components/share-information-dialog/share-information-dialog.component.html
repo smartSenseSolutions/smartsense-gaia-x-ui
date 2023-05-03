@@ -8,6 +8,7 @@
       Verifiable Presentation
     </h3>
     <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Verified</h3>
+    <h3 *ngIf="activeState === DataShareEnum.FAILED">Verification Failed</h3>
     <a (click)="onCloseDialog(false)" matTooltip="close">
       <mat-icon svgIcon="close"></mat-icon>
     </a>
@@ -42,6 +43,12 @@
       <button class="dark-btn" (click)="onCloseDialog(true)">
         View Service
       </button>
+    </div>
+
+    <div *ngIf="activeState === DataShareEnum.FAILED">
+      <mat-icon svgIcon="failed"></mat-icon>
+      <p>The legal participant's credentials could not be verified</p>
+      <button class="dark-btn" (click)="onCloseDialog(false)">Close</button>
     </div>
   </div>
 </div>

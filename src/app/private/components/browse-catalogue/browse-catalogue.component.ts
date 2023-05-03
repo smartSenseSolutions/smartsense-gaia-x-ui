@@ -73,9 +73,7 @@ export class BrowseCatalogueComponent {
         distinctUntilChanged(),
         switchMap((searchText) => {
           this.isLoading = true;
-          return searchText
-            ? this.serviceOfferingService.getCatalogue(searchText)
-            : this.serviceOfferingService.getCatalogue();
+          return this.serviceOfferingService.getCatalogue(searchText);
         })
       )
       .subscribe(
