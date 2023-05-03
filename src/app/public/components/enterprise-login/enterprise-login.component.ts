@@ -19,6 +19,7 @@ import {
   POLL_INTERVAL,
   PollStatus,
 } from './enterprise-login.constants';
+import { RouteConstants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-enterprise-login',
@@ -83,6 +84,9 @@ export class EnterpriseLoginComponent implements OnInit {
             this.pollStatus === PollStatus.Done
           ) {
             clearTimeout(this.checkStatusTimeOut);
+            this.router.navigate([
+              `${RouteConstants.SmartX}/${RouteConstants.DashBoard}`,
+            ]);
           } else {
             this.pollLoginStatus();
           }

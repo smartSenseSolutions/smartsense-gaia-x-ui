@@ -84,13 +84,7 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
         this.sharedService.setUser(response.payload.session);
         this.sharedService.setToken(response.payload.token);
         const user = this.sharedService.getUser();
-        if (user.role == UserType.Admin) {
-          this.router.navigate([RouteConstants.SignUp]);
-        } else {
-          this.router.navigate([
-            `${RouteConstants.SmartX}/${RouteConstants.DashBoard}`,
-          ]);
-        }
+        this.router.navigate([RouteConstants.SignUp]);
       });
     }
   };
