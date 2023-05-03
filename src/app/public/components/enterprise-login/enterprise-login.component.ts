@@ -62,6 +62,10 @@ export class EnterpriseLoginComponent implements OnInit {
     this.getLoginQR();
   }
 
+  onReloadQRClick = () => {
+    this.getLoginQR();
+  }
+
   pollLoginStatus = () => {
     if (this.checkStatusTimeOut) {
       clearTimeout(this.checkStatusTimeOut);
@@ -95,12 +99,12 @@ export class EnterpriseLoginComponent implements OnInit {
 
   // Helper methods
   getLoginQR = () => {
+    this.pollCount = 0;
     this.loginQrApiStatus = APIStatus.InProgress;
     this.loginService.getLoginQR().subscribe({
       next: (response) => {
         this.enterpriseQRLoginResponse = response;
         this.loginQrApiStatus = APIStatus.Success;
-        this.pollCount = 0;
         this.pollLoginStatus();
       },
       error: (error) => {
