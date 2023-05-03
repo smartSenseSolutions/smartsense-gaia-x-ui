@@ -1,6 +1,6 @@
 import { HttpMethodEnum } from '../enums';
 
-export const BASE_URL = 'https://gaiaxapi.proofsense.in';
+export const BASE_URL = 'https://proofxapi.learningsense.io';
 
 export const API_CONSTANTS = {
   LOGIN: {
