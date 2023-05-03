@@ -1,30 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import {
-  SignStepOneModel,
-  SignupQRResponse,
-  SignupResponseModel,
-} from 'src/app/public/models';
+  NgxQRCodeModule,
+  NgxQrcodeElementTypes,
+  NgxQrcodeErrorCorrectionLevels,
+} from '@techiediaries/ngx-qrcode';
+import { SignStepOneModel, SignupQRResponse } from 'src/app/public/models';
+import { SignUpService } from 'src/app/public/services';
 import { FormBaseComponent } from 'src/app/shared/components';
 import { RouteConstants, ValidationConstant } from 'src/app/shared/constants';
-import { RegexConstant } from 'src/app/shared/constants/regex.constants';
-import { matchValidator } from 'src/app/shared/functions';
-import { SharedService } from 'src/app/shared/services';
-import { QRCodeModule } from 'angularx-qrcode';
 import { APIStatus } from 'src/app/shared/enums';
-import { SignUpService } from 'src/app/public/services';
+import { SharedService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-signup-step-one',
@@ -36,7 +28,7 @@ import { SignUpService } from 'src/app/public/services';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    QRCodeModule,
+    NgxQRCodeModule,
   ],
   templateUrl: './signup-step-one.component.html',
   styleUrls: ['./signup-step-one.component.scss'],
@@ -51,6 +43,8 @@ export class SignupStepOneComponent
   // Constant variables
   readonly validationMsg = new ValidationConstant();
   readonly APIStatus = APIStatus;
+  readonly NgxQrcodeElementTypes = NgxQrcodeElementTypes;
+  readonly NgxQrcodeErrorCorrectionLevels = NgxQrcodeErrorCorrectionLevels;
 
   signupQRResponse: SignupQRResponse;
   apiStatus: APIStatus = APIStatus.Pending;

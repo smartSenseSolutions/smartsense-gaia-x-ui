@@ -5,10 +5,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ActivatedRoute, Router } from '@angular/router';
-import { QRCodeModule } from 'angularx-qrcode';
+import { Router } from '@angular/router';
+import {
+  NgxQRCodeModule,
+  NgxQrcodeElementTypes,
+  NgxQrcodeErrorCorrectionLevels,
+} from '@techiediaries/ngx-qrcode';
 import { APIStatus, UserType } from 'src/app/shared/enums';
 import { SharedService } from 'src/app/shared/services';
+
+import { RouteConstants } from 'src/app/shared/constants';
 import {
   EnterpriseLoginPollResponseModel,
   EnterpriseQRLoginResponseModel,
@@ -19,7 +25,6 @@ import {
   POLL_INTERVAL,
   PollStatus,
 } from './enterprise-login.constants';
-import { RouteConstants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-enterprise-login',
@@ -32,7 +37,7 @@ import { RouteConstants } from 'src/app/shared/constants';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    QRCodeModule,
+    NgxQRCodeModule,
   ],
   templateUrl: './enterprise-login.component.html',
   styleUrls: ['./enterprise-login.component.scss'],
@@ -43,8 +48,10 @@ export class EnterpriseLoginComponent implements OnInit {
   readonly APIStatus = APIStatus;
   readonly MAX_POLL_COUNT = MAX_POLL_COUNT;
   readonly POLL_INTERVAL = POLL_INTERVAL;
+  readonly NgxQrcodeElementTypes = NgxQrcodeElementTypes;
+  readonly NgxQrcodeErrorCorrectionLevels = NgxQrcodeErrorCorrectionLevels;
 
-  enterpriseQRLoginResponse: EnterpriseQRLoginResponseModel |  null;
+  enterpriseQRLoginResponse: EnterpriseQRLoginResponseModel | null;
   enterpriseLoginPollResponse: EnterpriseLoginPollResponseModel;
   loginQrApiStatus: APIStatus = APIStatus.Pending;
 
@@ -65,7 +72,7 @@ export class EnterpriseLoginComponent implements OnInit {
 
   onReloadQRClick = () => {
     this.getLoginQR();
-  }
+  };
 
   pollLoginStatus = () => {
     if (this.checkStatusTimeOut) {
@@ -97,8 +104,7 @@ export class EnterpriseLoginComponent implements OnInit {
           this.pollCount++;
           this.pollLoginStatus();
         },
-        complete: () => {
-        },
+        complete: () => {},
       });
     }, POLL_INTERVAL);
   };
