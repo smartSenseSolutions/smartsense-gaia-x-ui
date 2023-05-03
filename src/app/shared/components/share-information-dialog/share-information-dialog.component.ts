@@ -149,10 +149,11 @@ export class ShareInformationDialogComponent implements OnInit {
             }
           },
           error: (error) => {
-            this.pollCount++;
-            if (this.pollCount < MAX_POLL_COUNT) {
-              this.getPollStatus();
-            }
+            this.activeState = DataShareEnum.FAILED;
+            // this.pollCount++;
+            // if (this.pollCount < MAX_POLL_COUNT) {
+            //   this.getPollStatus();
+            // }
           },
           complete: () => {},
         });
