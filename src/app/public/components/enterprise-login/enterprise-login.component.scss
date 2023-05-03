@@ -44,44 +44,7 @@
     }
 
     &-heading {
-      margin-bottom: 6.7rem !important;
-    }
-
-    li {
-      display: block;
-      width: 100%;
-      margin-bottom: 4.2rem;
-
-      &.bottom-text {
-        position: relative;
-        top: 2rem;
-        width: 42rem;
-        margin-bottom: 0 !important;
-
-        p {
-          text-align: center;
-
-          a {
-            cursor: pointer;
-          }
-        }
-      }
-
-      p {
-        @include font(1.6rem, 2rem);
-        text-align: center;
-
-        color: $primary-dark;
-
-        a {
-          @include font(1.6rem, 2rem, 500);
-          text-align: center;
-          text-decoration: underline;
-
-          color: $primary-dark;
-          text-underline-offset: 0.2rem;
-        }
-      }
+      margin-bottom: 4.7rem !important;
     }
 
     &-heading {
@@ -97,6 +60,20 @@
       }
     }
 
+    li {
+      text-align: center;
+      ol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        li {
+          color: $primary-dark;
+          list-style: unset;
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
     &-form {
       margin-top: 4rem;
 
@@ -127,6 +104,23 @@
       align-items: center;
       justify-content: center;
       height: 25rem;
+    }
+
+    button {
+      @include square(15rem);
+      @include border-radius(50%);
+      border: 1px solid $primary-dark;
+      background-color: rgba($primary-color, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 1.2rem;
+      font-weight: 500;
+
+      mat-icon {
+        margin-bottom: 1rem;
+      }
     }
   }
 

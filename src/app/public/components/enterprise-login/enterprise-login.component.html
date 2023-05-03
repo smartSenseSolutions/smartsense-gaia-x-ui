@@ -31,14 +31,14 @@
             <img *ngIf="loginQrApiStatus !== APIStatus.Success" class="animated fast"
               src="../../../../assets/images/loading.gif" width="60" alt="" />
 
-            <a *ngIf="loginQrApiStatus === APIStatus.Success">
+            <a *ngIf="loginQrApiStatus === APIStatus.Success && pollCount < MAX_POLL_COUNT">
               <qrcode [qrdata]="enterpriseQRLoginResponse.data.presentationMessage" [width]="256"
                 [errorCorrectionLevel]="'M'">
               </qrcode>
             </a>
 
             <button *ngIf="pollCount === MAX_POLL_COUNT" type="button" class="reload-btn">
-              <mat-icon svgIcon=""></mat-icon>
+              <mat-icon svgIcon="reload"></mat-icon>
               <p>Click to reload QR code</p>
             </button>
           </div>
@@ -47,10 +47,16 @@
         <li class="userDetails__appstore">
           <p>Download PCM Application from store</p>
 
-          <a href="https://apps.apple.com/in/app/gxfs-pcm/id1662845551" target="_blank"><mat-icon
-              svgIcon="apple-app-store"></mat-icon></a>
-          <a href="https://play.google.com/store/apps/details?id=eu.gaiax.difs.pcm" target="_blank"><mat-icon
-              svgIcon="google-play-icon"></mat-icon></a>
+          <a
+            href="https://apps.apple.com/in/app/gxfs-pcm/id1662845551"
+            target="_blank"
+            ><mat-icon svgIcon="apple-app-store"></mat-icon
+          ></a>
+          <a
+            href="https://play.google.com/store/apps/details?id=eu.gaiax.difs.pcm"
+            target="_blank"
+            ><mat-icon svgIcon="google-play-icon"></mat-icon
+          ></a>
         </li>
 
         <li></li>

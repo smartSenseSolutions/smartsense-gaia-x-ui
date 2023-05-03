@@ -72,8 +72,9 @@ export class EnterpriseLoginComponent implements OnInit {
       };
       this.loginService.pollLoginStatus(request).subscribe({
         next: (response) => {
-          debugger
+          debugger;
           // this.pollStatus = response.payload;
+          this.pollCount++;
           if (
             this.pollCount === MAX_POLL_COUNT ||
             this.pollStatus === PollStatus.Done
@@ -83,8 +84,12 @@ export class EnterpriseLoginComponent implements OnInit {
             this.pollLoginStatus();
           }
         },
-        error: (error) => this.pollLoginStatus(),
-        complete: () => {},
+        error: (error) => {
+          this.pollCount++;
+          this.pollLoginStatus();
+        },
+        complete: () => {
+        },
       });
     }, 15000);
   };
@@ -96,6 +101,7 @@ export class EnterpriseLoginComponent implements OnInit {
       next: (response) => {
         this.enterpriseQRLoginResponse = response;
         this.loginQrApiStatus = APIStatus.Success;
+        this.pollCount = 0;
         this.pollLoginStatus();
       },
       error: (error) => {
