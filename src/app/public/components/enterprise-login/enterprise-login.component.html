@@ -32,12 +32,12 @@
               src="../../../../assets/images/loading.gif" width="60" alt="" />
 
             <a *ngIf="
-                enterpriseQRLoginResponse &&
+                enterpriseQRLoginResponse && 
+                tinyLoginUrl && 
                 loginQrApiStatus === APIStatus.Success &&
                 pollCount < MAX_POLL_COUNT
               ">
-              <ngx-qrcode [elementType]="NgxQrcodeElementTypes.URL"
-                [value]="enterpriseQRLoginResponse!.data.presentationMessage" cssClass="aclass"
+              <ngx-qrcode [elementType]="NgxQrcodeElementTypes.URL" [value]="tinyLoginUrl" cssClass="aclass"
                 [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH">
               </ngx-qrcode>
             </a>

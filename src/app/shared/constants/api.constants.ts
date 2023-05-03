@@ -15,6 +15,10 @@ export const API_CONSTANTS = {
     METHOD: HttpMethodEnum.GET,
     URL: `${BASE_URL}/verify/presentation`,
   },
+  TINY_URL:{
+    METHOD: HttpMethodEnum.POST,
+    URL: `${BASE_URL}/tinyurl`,
+  },
   ADMIN: {
     SIGN_UP: {
       METHOD: HttpMethodEnum.POST,

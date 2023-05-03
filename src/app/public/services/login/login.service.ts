@@ -9,6 +9,8 @@ import {
   LoginRequestModel,
   LoginResponseModel,
 } from '../../models';
+import { TinyUrlResponseModel } from '../../models/login/tiny-url-response.model';
+import { TinyUrlRequestModel } from '../../models/login/tiny-url-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +43,19 @@ export class LoginService {
           type: 'Aries1.0',
         },
       },
+      this.apiManager.httpOptions,
+      false,
+      false
+    );
+  };
+
+  shortenUrl = (
+    tinyUrlRequest: TinyUrlRequestModel
+  ): Observable<TinyUrlResponseModel> => {
+    return this.apiManager.httpHelperMethod<TinyUrlResponseModel>(
+      API_CONSTANTS.TINY_URL.METHOD,
+      API_CONSTANTS.TINY_URL.URL,
+      tinyUrlRequest,
       this.apiManager.httpOptions,
       false,
       false

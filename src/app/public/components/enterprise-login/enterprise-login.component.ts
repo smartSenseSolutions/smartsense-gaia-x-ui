@@ -52,6 +52,7 @@ export class EnterpriseLoginComponent implements OnInit {
   readonly NgxQrcodeErrorCorrectionLevels = NgxQrcodeErrorCorrectionLevels;
 
   enterpriseQRLoginResponse: EnterpriseQRLoginResponseModel | null;
+  tinyLoginUrl: string;
   enterpriseLoginPollResponse: EnterpriseLoginPollResponseModel;
   loginQrApiStatus: APIStatus = APIStatus.Pending;
 
@@ -113,12 +114,25 @@ export class EnterpriseLoginComponent implements OnInit {
   getLoginQR = () => {
     this.pollCount = 0;
     this.enterpriseQRLoginResponse = null;
+    this.tinyLoginUrl = '';
     this.loginQrApiStatus = APIStatus.InProgress;
     this.loginService.getLoginQR().subscribe({
       next: (response) => {
-        this.enterpriseQRLoginResponse = response;
-        this.loginQrApiStatus = APIStatus.Success;
-        this.pollLoginStatus();
+        const request = {
+          url: response.data.presentationMessage
+        }
+        this.loginService.shortenUrl(request).subscribe({
+          next: (tinyUrlResponse) => {
+            this.enterpriseQRLoginResponse = response;
+            this.tinyLoginUrl = tinyUrlResponse.payload.url
+            this.loginQrApiStatus = APIStatus.Success;
+            this.pollLoginStatus();
+          },
+          error: (error) => {
+            this.loginQrApiStatus = APIStatus.Failure;
+          },
+          complete: () => {},
+        });
       },
       error: (error) => {
         this.loginQrApiStatus = APIStatus.Failure;
