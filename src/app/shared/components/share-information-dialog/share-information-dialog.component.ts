@@ -2,42 +2,57 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels, NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import {
+  NgxQrcodeElementTypes,
+  NgxQrcodeErrorCorrectionLevels,
+  NgxQRCodeModule,
+} from '@techiediaries/ngx-qrcode';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {
   Meta,
   ServiceOfferResponsePayloadModel,
   ServiceOfferVPQRResponseModel,
-  VPRequestPayloadModel,
   VPResponsePayloadModel,
 } from 'src/app/private/models';
 import { ServiceOfferingService } from 'src/app/private/services';
-import { DataShareEnum, MAX_POLL_COUNT, PollStatus, POLL_INTERVAL } from '../../constants';
+import { LoginService } from 'src/app/public/services';
+import {
+  DataShareEnum,
+  MAX_POLL_COUNT,
+  PollStatus,
+  POLL_INTERVAL,
+} from '../../constants';
+import { APIStatus } from '../../enums/base.enum';
 
 @Component({
   selector: 'app-share-information-dialog',
   standalone: true,
-  imports: [CommonModule, MatIconModule, NgxJsonViewerModule,NgxQRCodeModule],
+  imports: [CommonModule, MatIconModule, NgxJsonViewerModule, NgxQRCodeModule],
   templateUrl: './share-information-dialog.component.html',
   styleUrls: ['./share-information-dialog.component.scss'],
 })
 export class ShareInformationDialogComponent implements OnInit {
   meta: Meta;
   readonly DataShareEnum = DataShareEnum;
+  readonly APIStatus = APIStatus;
+  readonly MAX_POLL_COUNT = MAX_POLL_COUNT;
+  readonly NgxQrcodeElementTypes = NgxQrcodeElementTypes;
+  readonly NgxQrcodeErrorCorrectionLevels = NgxQrcodeErrorCorrectionLevels;
   activeState: DataShareEnum = DataShareEnum.START;
   vp: VPResponsePayloadModel;
   pollCount: number = 0;
+  tinyLoginUrl: string;
   pollStatus: PollStatus;
   serviceOfferVPQRResponse: ServiceOfferVPQRResponseModel | null;
   checkStatusTimeOut: ReturnType<typeof setTimeout>;
-  readonly NgxQrcodeElementTypes = NgxQrcodeElementTypes;
-  readonly NgxQrcodeErrorCorrectionLevels = NgxQrcodeErrorCorrectionLevels;
-  
+  loginQrApiStatus: APIStatus = APIStatus.Pending;
+
   constructor(
     public dialogRef: MatDialogRef<ShareInformationDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     private serivce: ServiceOfferResponsePayloadModel,
-    private serviceOfferingService: ServiceOfferingService
+    private serviceOfferingService: ServiceOfferingService,
+    private loginService: LoginService
   ) {}
   ngOnInit() {}
 
@@ -69,11 +84,26 @@ export class ShareInformationDialogComponent implements OnInit {
 
   generateQR() {
     this.pollCount = 0;
+    this.tinyLoginUrl = '';
+    this.loginQrApiStatus = APIStatus.InProgress;
     this.activeState = DataShareEnum.VP_GENERATE;
-    this.serviceOfferingService.getServiceOffersVPQR().subscribe((data) => {
-      this.serviceOfferVPQRResponse = data;
-      this.activeState = DataShareEnum.VERIFYING;
-      this.getPollStatus();
+    this.serviceOfferingService.getServiceOffersVPQR().subscribe((response) => {
+      const request = {
+        url: response.data.presentationMessage,
+      };
+      this.loginService.shortenUrl(request).subscribe({
+        next: (tinyUrlResponse) => {
+          this.tinyLoginUrl = tinyUrlResponse.payload.url;
+          this.serviceOfferVPQRResponse = response;
+          this.activeState = DataShareEnum.VERIFYING;
+          this.loginQrApiStatus = APIStatus.Success;
+          this.getPollStatus();
+        },
+        error: (error) => {
+          this.loginQrApiStatus = APIStatus.Failure;
+        },
+        complete: () => {},
+      });
     });
     // this.serviceOfferingService
     //   .getParticipantVP('participant')
@@ -104,32 +134,29 @@ export class ShareInformationDialogComponent implements OnInit {
       const request = {
         presentationId: this.serviceOfferVPQRResponse!.data.presentationId,
       };
-      this.serviceOfferingService.getServiceOffersDetailWithOfferId(request,this.serivce.id).subscribe({
-        next: (response) => {
-          this.pollStatus = response.payload.status;
-          this.pollCount++;
-          if (
-            this.pollCount === MAX_POLL_COUNT ||
-            this.pollStatus === PollStatus.Done
-          ) {
-            clearTimeout(this.checkStatusTimeOut);
-            this.activeState = DataShareEnum.SUCCESS;
-            this.meta = response.payload.meta;
-            // this.sharedService.setUser(response.payload.session);
-            // this.sharedService.setToken(response.payload.token);
-            // this.router.navigate([
-            //   `${RouteConstants.SmartX}/${RouteConstants.DashBoard}`,
-            // ]);
-          } else {
+      this.serviceOfferingService
+        .getServiceOffersDetailWithOfferId(request, this.serivce.id)
+        .subscribe({
+          next: (response) => {
+            this.pollStatus = response.payload.status;
+            this.pollCount++;
+            if (
+              this.pollCount === MAX_POLL_COUNT ||
+              this.pollStatus === PollStatus.Done
+            ) {
+              clearTimeout(this.checkStatusTimeOut);
+              this.activeState = DataShareEnum.SUCCESS;
+              this.meta = response.payload.meta;
+            } else {
+              this.getPollStatus();
+            }
+          },
+          error: (error) => {
+            this.pollCount++;
             this.getPollStatus();
-          }
-        },
-        error: (error) => {
-          this.pollCount++;
-          this.getPollStatus();
-        },
-        complete: () => {},
-      });
+          },
+          complete: () => {},
+        });
     }, POLL_INTERVAL);
   };
 }
