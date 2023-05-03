@@ -54,6 +54,7 @@
               *ngIf="pollCount === MAX_POLL_COUNT"
               type="button"
               class="reload-btn"
+              (click)="onReloadQRClick()"
             >
               <mat-icon svgIcon="reload"></mat-icon>
               <p>Click to reload QR code</p>
