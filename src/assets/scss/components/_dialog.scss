@@ -6,28 +6,24 @@ mat-dialog-container {
 
 .dialog-container {
   &__head {
-    &--container {
-      background-color: $grey-color;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 6rem;
-      padding: 2rem;
+    background-color: $grey-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+    padding: 2rem;
 
-      h3 {
-        font-weight: 600;
-        font-size: 1.8rem;
-      }
+    h3 {
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
 
-      mat-icon {
-        @include square(1.6rem);
-      }
+    mat-icon {
+      @include square(1.6rem);
     }
   }
 
   &__body {
     text-align: center;
-
-    &>img {}
   }
 }

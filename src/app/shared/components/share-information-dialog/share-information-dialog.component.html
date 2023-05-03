@@ -2,12 +2,10 @@
   <div class="dialog-container__head">
     <h3 *ngIf="activeState === DataShareEnum.START">Share your information</h3>
     <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">
-      Verifiable Presentation
+      Generating QR Code
     </h3>
-    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">
-      Verifiable Presentation
-    </h3>
-    <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Verified</h3>
+    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">Scan QR code</h3>
+    <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Received</h3>
     <h3 *ngIf="activeState === DataShareEnum.FAILED">Verification Failed</h3>
     <a (click)="onCloseDialog(false)" matTooltip="close">
       <mat-icon svgIcon="close"></mat-icon>
@@ -32,15 +30,44 @@
 
     <div *ngIf="activeState === DataShareEnum.VERIFYING">
       <!-- <img src="./assets/images/loading.gif" alt="" /> -->
-      <p>Verifiable presentation created for legal participant's credentials</p>
-      <ngx-qrcode [elementType]="NgxQrcodeElementTypes.URL" [value]="serviceOfferVPQRResponse!.data.presentationMessage"
-        cssClass="aclass" [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH">
-      </ngx-qrcode>
+      <!-- <p>Verifiable presentation created for legal participant's credentials</p> -->
+      <ol>
+        <li>Open PCM on your phone</li>
+        <li>Click on scan menu</li>
+        <li>Click on view for new proof request</li>
+        <li>Click on share to access service</li>
+      </ol>
+
+      <a
+        *ngIf="
+          serviceOfferVPQRResponse &&
+          tinyLoginUrl &&
+          loginQrApiStatus === APIStatus.Success &&
+          pollCount < MAX_POLL_COUNT
+        "
+      >
+        <ngx-qrcode
+          [elementType]="NgxQrcodeElementTypes.URL"
+          [value]="tinyLoginUrl"
+          cssClass="qr-code"
+          [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH"
+        >
+        </ngx-qrcode>
+      </a>
+      <button
+        *ngIf="pollCount === MAX_POLL_COUNT"
+        type="button"
+        class="reload-btn"
+        (click)="onReloadQRClick()"
+      >
+        <mat-icon svgIcon="reload"></mat-icon>
+        <p>Click to reload QR code</p>
+      </button>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.SUCCESS">
       <img src="./assets/images/quality.png" alt="" />
-      <p>Legal participant's credential is verified successfully</p>
+      <p>Legal participant's credential is received successfully</p>
       <button class="dark-btn" (click)="onCloseDialog(true)">
         View Service
       </button>
