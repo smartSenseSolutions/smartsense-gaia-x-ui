@@ -84,6 +84,8 @@ export class EnterpriseLoginComponent implements OnInit {
             this.pollStatus === PollStatus.Done
           ) {
             clearTimeout(this.checkStatusTimeOut);
+            this.sharedService.setUser(response.payload.session);
+            this.sharedService.setToken(response.payload.token);
             this.router.navigate([
               `${RouteConstants.SmartX}/${RouteConstants.DashBoard}`,
             ]);

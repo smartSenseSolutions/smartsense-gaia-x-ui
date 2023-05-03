@@ -35,6 +35,12 @@ export type EnterpriseQRLoginResponseModel = EnterpriseQRLoginResponse;
 export interface EnterpriseLoginPollResponse {
   statusCode: number;
   status: PollStatus;
+  token: string;
+  session: {
+    enterpriseId: number;
+    email: string;
+    role: number;
+  };
 }
 export type EnterpriseLoginPollResponseModel =
   APIResponse<EnterpriseLoginPollResponse>;

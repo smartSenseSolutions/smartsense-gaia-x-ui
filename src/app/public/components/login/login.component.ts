@@ -83,7 +83,6 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
       this.loginService.login(loginRequest).subscribe((response) => {
         this.sharedService.setUser(response.payload.session);
         this.sharedService.setToken(response.payload.token);
-        const user = this.sharedService.getUser();
         this.router.navigate([RouteConstants.SignUp]);
       });
     }
