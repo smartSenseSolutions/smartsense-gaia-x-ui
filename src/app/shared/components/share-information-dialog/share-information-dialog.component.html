@@ -4,7 +4,7 @@
     <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">
       Generating QR Code
     </h3>
-    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">Scan QR code</h3>
+    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">Share Legal Participant Credentials</h3>
     <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Received</h3>
     <h3 *ngIf="activeState === DataShareEnum.FAILED">Verification Failed</h3>
     <a (click)="onCloseDialog(false)" matTooltip="close">
