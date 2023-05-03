@@ -28,21 +28,36 @@
 
         <li class="userDetails__qr-code">
           <div class="text-center">
-            <img *ngIf="loginQrApiStatus !== APIStatus.Success" class="animated fast"
-              src="../../../../assets/images/loading.gif" width="60" alt="" />
+            <img
+              *ngIf="loginQrApiStatus !== APIStatus.Success"
+              class="animated fast"
+              src="../../../../assets/images/loading.gif"
+              width="60"
+              alt=""
+            />
 
-            <a *ngIf="
+            <a
+              *ngIf="
                 enterpriseQRLoginResponse &&
                 loginQrApiStatus === APIStatus.Success &&
                 pollCount < MAX_POLL_COUNT
-              ">
-              <ngx-qrcode [elementType]="NgxQrcodeElementTypes.URL"
-                [value]="enterpriseQRLoginResponse!.data.presentationMessage" cssClass="aclass"
-                [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH">
+              "
+            >
+              <ngx-qrcode
+                [elementType]="NgxQrcodeElementTypes.URL"
+                [value]="enterpriseQRLoginResponse!.data.presentationMessage"
+                cssClass="qr-code"
+                [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH"
+              >
               </ngx-qrcode>
             </a>
 
-            <button *ngIf="pollCount === MAX_POLL_COUNT" type="button" class="reload-btn" (click)="onReloadQRClick()">
+            <button
+              *ngIf="pollCount === MAX_POLL_COUNT"
+              type="button"
+              class="reload-btn"
+              (click)="onReloadQRClick()"
+            >
               <mat-icon svgIcon="reload"></mat-icon>
               <p>Click to reload QR code</p>
             </button>
@@ -52,10 +67,16 @@
         <li class="userDetails__appstore">
           <p>Download PCM Application from store</p>
 
-          <a href="https://apps.apple.com/in/app/gxfs-pcm/id1662845551" target="_blank"><mat-icon
-              svgIcon="apple-app-store"></mat-icon></a>
-          <a href="https://play.google.com/store/apps/details?id=eu.gaiax.difs.pcm" target="_blank"><mat-icon
-              svgIcon="google-play-icon"></mat-icon></a>
+          <a
+            href="https://apps.apple.com/in/app/gxfs-pcm/id1662845551"
+            target="_blank"
+            ><mat-icon svgIcon="apple-app-store"></mat-icon
+          ></a>
+          <a
+            href="https://play.google.com/store/apps/details?id=eu.gaiax.difs.pcm"
+            target="_blank"
+            ><mat-icon svgIcon="google-play-icon"></mat-icon
+          ></a>
         </li>
 
         <li></li>
