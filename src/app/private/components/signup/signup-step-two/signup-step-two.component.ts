@@ -55,6 +55,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
   readonly COUNTRY_SUBDIVISION_CODES = COUNTRY_SUBDIVISION_CODES;
 
   signupForm = new FormGroup({
+    email: new FormControl('', [Validators.required]),
     legalName: new FormControl('', [Validators.required]),
     subDomainName: new FormControl('', [Validators.required]),
     legalRegistrationType: new FormControl(REGISTRATION_TYPES[0].value, [
@@ -92,6 +93,15 @@ export class SignupStepTwoComponent extends FormBaseComponent {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
+      email: new FormControl(
+        this.stepTwoFormData ? this.stepTwoFormData.email : '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(255),
+          Validators.email,
+        ]
+      ),
       legalName: new FormControl(
         this.stepTwoFormData ? this.stepTwoFormData.legalName : '',
         [Validators.required]

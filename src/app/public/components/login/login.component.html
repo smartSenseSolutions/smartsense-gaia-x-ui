@@ -20,7 +20,7 @@
         </li>
 
 
-        <li class="userDetails__login-form">
+        <li *ngIf="loginType === UserType.Admin" class="userDetails__login-form">
           <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm)">
             <div>
               <mat-form-field appearance="fill" floatLabel="always">
