@@ -1,34 +1,17 @@
 <div class="dialog-container">
   <div class="dialog-container__head">
-    <div
-      class="dialog-container__head--container"
-      *ngIf="activeState === DataShareEnum.START"
-    >
-      <h3>Share your information</h3>
-      <a (click)="onCloseDialog(false)" matTooltip="close">
-        <mat-icon svgIcon="close"></mat-icon>
-      </a>
-    </div>
-
-    <div
-      class="dialog-container__head--container"
-      *ngIf="activeState === DataShareEnum.SUCCESS"
-    >
-      <h3>Credentials Verified</h3>
-      <a (click)="onCloseDialog(false)" matTooltip="close">
-        <mat-icon svgIcon="close"></mat-icon>
-      </a>
-    </div>
-
-    <div
-      class="dialog-container__head--container"
-      *ngIf="activeState === DataShareEnum.FAILED"
-    >
-      <h3>Verification Failed</h3>
-      <a (click)="onCloseDialog(false)" matTooltip="close">
-        <mat-icon svgIcon="close"></mat-icon>
-      </a>
-    </div>
+    <h3 *ngIf="activeState === DataShareEnum.START">Share your information</h3>
+    <h3 *ngIf="activeState === DataShareEnum.VP_GENERATE">
+      Verifiable Presentation
+    </h3>
+    <h3 *ngIf="activeState === DataShareEnum.VERIFYING">
+      Verifiable Presentation
+    </h3>
+    <h3 *ngIf="activeState === DataShareEnum.SUCCESS">Credentials Verified</h3>
+    <h3 *ngIf="activeState === DataShareEnum.FAILED">Verification Failed</h3>
+    <a (click)="onCloseDialog(false)" matTooltip="close">
+      <mat-icon svgIcon="close"></mat-icon>
+    </a>
   </div>
 
   <div class="dialog-container__body">
@@ -39,24 +22,28 @@
         participant's credentials issued by Gaia-X. <br />If you agree, please
         confirm & proceed.
       </p>
-      <button (click)="generateVP()" class="dark-btn">Yes, I Confirm</button>
+      <button (click)="generateQR()" class="dark-btn">Yes, I Confirm</button>
+    </div>
+
+    <div *ngIf="activeState === DataShareEnum.VP_GENERATE">
+      <img src="./assets/images/loading.gif" alt="" />
+      <p class="medium-text">Generating</p>
+    </div>
+
+    <div *ngIf="activeState === DataShareEnum.VERIFYING">
+      <!-- <img src="./assets/images/loading.gif" alt="" /> -->
+      <p>Verifiable presentation created for legal participant's credentials</p>
+      <ngx-qrcode [elementType]="NgxQrcodeElementTypes.URL" [value]="serviceOfferVPQRResponse!.data.presentationMessage"
+        cssClass="aclass" [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH">
+      </ngx-qrcode>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.SUCCESS">
-      <!-- <img src="./assets/images/quality.png" alt="" /> -->
-
-      <!-- <qrcode
-        [qrdata]="enterpriseQRLoginResponse.data.presentationMessage"
-        [width]="40"
-        [errorCorrectionLevel]="'M'"
-      >
-      </qrcode> -->
-
+      <img src="./assets/images/quality.png" alt="" />
       <p>Legal participant's credential is verified successfully</p>
-
-      <!-- <button class="dark-btn" (click)="onCloseDialog(true)">
+      <button class="dark-btn" (click)="onCloseDialog(true)">
         View Service
-      </button> -->
+      </button>
     </div>
 
     <div *ngIf="activeState === DataShareEnum.FAILED">

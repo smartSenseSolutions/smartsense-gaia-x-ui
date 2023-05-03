@@ -19,25 +19,41 @@
         </li>
         <li class="userDetails__signup-heading">
           <h2>Let's get started</h2>
-          <span>Scan with PCM Application, <br />
-            accept the invitation and click on proceed.</span>
+          <span
+            >Scan with PCM Application, <br />
+            accept the invitation and click on proceed.</span
+          >
         </li>
 
         <li class="userDetails__signup-form">
           <div class="text-center">
-            <img *ngIf="apiStatus !== APIStatus.Success" class="animated fast"
-              src="../../../../assets/images/loading.gif" width="60" alt="" />
+            <img
+              *ngIf="apiStatus !== APIStatus.Success"
+              class="animated fast"
+              src="../../../../assets/images/loading.gif"
+              width="60"
+              alt=""
+            />
 
             <a *ngIf="apiStatus === APIStatus.Success">
-              <ngx-qrcode [elementType]="NgxQrcodeElementTypes.URL" [value]="signupQRResponse.data.invitationUrl"
-                cssClass="aclass" [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH">
+              <ngx-qrcode
+                [elementType]="NgxQrcodeElementTypes.URL"
+                [value]="signupQRResponse.data.invitationUrl"
+                cssClass="qr-code"
+                [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.HIGH"
+              >
               </ngx-qrcode>
             </a>
           </div>
         </li>
 
         <li *ngIf="apiStatus === APIStatus.Success" class="MB-20">
-          <button class="large-btn primary-btn" mat-raised-button type="submit" (click)="onProceedClick()">
+          <button
+            class="large-btn primary-btn"
+            mat-raised-button
+            type="submit"
+            (click)="onProceedClick()"
+          >
             Proceed
           </button>
         </li>
@@ -45,10 +61,16 @@
         <li class="userDetails__appstore">
           <p>Download PCM Application from store</p>
 
-          <a href="https://apps.apple.com/in/app/gxfs-pcm/id1662845551" target="_blank"><mat-icon
-              svgIcon="apple-app-store"></mat-icon></a>
-          <a href="https://play.google.com/store/apps/details?id=eu.gaiax.difs.pcm" target="_blank"><mat-icon
-              svgIcon="google-play-icon"></mat-icon></a>
+          <a
+            href="https://apps.apple.com/in/app/gxfs-pcm/id1662845551"
+            target="_blank"
+            ><mat-icon svgIcon="apple-app-store"></mat-icon
+          ></a>
+          <a
+            href="https://play.google.com/store/apps/details?id=eu.gaiax.difs.pcm"
+            target="_blank"
+            ><mat-icon svgIcon="google-play-icon"></mat-icon
+          ></a>
         </li>
 
         <li>
