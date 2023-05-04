@@ -14,15 +14,15 @@ import {
   DashboardResolver,
   ServiceOfferingDetailResolver,
 } from './private/resolver';
-import { LoginComponent } from './public/components';
+import { EnterpriseLoginComponent, LoginComponent } from './public/components';
 import { RouteConstants } from './shared/constants';
 import { RouteType, UserType } from './shared/enums';
 import { AuthGuard } from './shared/guards';
 
 const routes: Routes = [
-{
+  {
     path: RouteConstants.Login,
-    component: LoginComponent,
+    component: EnterpriseLoginComponent,
     canActivate: [AuthGuard],
     data: {
       routeType: RouteType.Public,

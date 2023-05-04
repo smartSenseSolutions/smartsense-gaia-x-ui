@@ -7,10 +7,26 @@ export const API_CONSTANTS = {
     METHOD: HttpMethodEnum.POST,
     URL: `${BASE_URL}/login`,
   },
+  LOGIN_QR_CODE: {
+    METHOD: HttpMethodEnum.POST,
+    URL: `https://gaiax.vereign.com/ocm/proof/v1/send-out-of-band-presentation-request`,
+  },
+  LOGIN_QR_POLL: {
+    METHOD: HttpMethodEnum.GET,
+    URL: `${BASE_URL}/verify/presentation`,
+  },
+  TINY_URL:{
+    METHOD: HttpMethodEnum.POST,
+    URL: `${BASE_URL}/tinyurl`,
+  },
   ADMIN: {
     SIGN_UP: {
       METHOD: HttpMethodEnum.POST,
       URL: `${BASE_URL}/register`,
+    },
+    SIGN_UP_QR_CODE: {
+      METHOD: HttpMethodEnum.POST,
+      URL: 'https://gaiax.vereign.com/ocm/connection/v1/invitation-url?alias=trust',
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
@@ -59,7 +75,7 @@ export const API_CONSTANTS = {
       URL: `${BASE_URL}/catalogue`,
     },
     SERVICE_OFFERS_DETAIL_WITH_OFFER_ID: {
-      METHOD: HttpMethodEnum.POST,
+      METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/service-offers/{offer_id}/details`,
     },
     CREATE_VP: {

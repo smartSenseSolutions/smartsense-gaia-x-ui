@@ -26,6 +26,7 @@ export class VerifyDialogComponent implements OnInit {
   readonly SignupStatus = SignupStatus;
 
   // Data variables
+  signupResponse: SignupResponseModel;
   enterprise?: EnterpriseModel;
 
   // Status variables
@@ -42,6 +43,7 @@ export class VerifyDialogComponent implements OnInit {
   processTextToShow: string = this.certificatCreationText[0];
   processTextIndex = 0;
   certificateCreationInterval: ReturnType<typeof setInterval>;
+  checkStatusTimeOut: ReturnType<typeof setTimeout>;
 
   constructor(
     private signupService: SignUpService,
@@ -55,12 +57,16 @@ export class VerifyDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.signupResponse = this.data.signupResponse;
     this.enterprise = this.data.signupResponse.payload;
     this.checkStatus();
   }
 
   checkStatus = () => {
-    setTimeout(() => {
+    if (this.checkStatusTimeOut) {
+      clearTimeout(this.checkStatusTimeOut);
+    }
+    this.checkStatusTimeOut = setTimeout(() => {
       this.signupService.getEnterprise(this.enterprise!.id).subscribe({
         next: (response) => {
           this.currentSignupStatus = response.payload.status;

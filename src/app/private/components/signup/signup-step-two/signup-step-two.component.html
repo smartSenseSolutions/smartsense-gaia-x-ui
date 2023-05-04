@@ -31,6 +31,26 @@
         <li class="userDetails__signup-2-form">
           <form [formGroup]="signupForm" (ngSubmit)="onSignupStepTwoFormSubmit(signupForm)">
             <div>
+              <mat-form-field appearance="fill" floatLabel="always" subscriptSizing="dynamic">
+                <label class="required-label">Email Address</label>
+                <input formControlName="email" matInput placeholder="Enter email address" required>
+                <mat-error *ngIf="isRequiredField(formControls['email'])">
+                  {{ validationMsg.EMAIL_IS_REQUIRED }}</mat-error>
+
+                <mat-error *ngIf="isValidLength(formControls['email'])">
+                  {{ validationMsg.INVALID_EMAIL }}</mat-error>
+
+                <mat-error *ngIf="formControls['email'].hasError('minlength')">
+                  {{ validationMsg.MIN_LENGTH_3 }}
+                </mat-error>
+
+                <mat-error *ngIf="formControls['email'].hasError('maxlength')">
+                  {{ validationMsg.MAX_LENGTH_255 }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
               <mat-form-field appearance="fill" floatLabel="always">
                 <label class="required-label" for="legalName">Legal Name</label>
                 <input formControlName="legalName" matInput id="legalName"
@@ -230,7 +250,8 @@
               <mat-checkbox disableRipple="true" formControlName="termsAndConditions">
                 I agree to Gaia-X <a class="underline">Terms of Service</a> and <a class="underline">Privacy Policy</a>.
               </mat-checkbox>
-              <button class="large-btn" mat-raised-button type="submit" [disabled]="!isFormValid" [ngClass]="{'primary-btn' : isFormValid , 'disabled-btn' :  !isFormValid}">
+              <button class="large-btn" mat-raised-button type="submit" [disabled]="!isFormValid"
+                [ngClass]="{'primary-btn' : isFormValid , 'disabled-btn' :  !isFormValid}">
                 Register
                 <mat-icon svgIcon="arrow-right"></mat-icon>
               </button>

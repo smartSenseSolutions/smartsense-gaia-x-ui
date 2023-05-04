@@ -62,3 +62,10 @@ export enum UserType {
   Admin = 1,
   Enterprise = 2,
 }
+
+export enum APIStatus {
+  Pending = 1,
+  InProgress,
+  Success,
+  Failure
+}

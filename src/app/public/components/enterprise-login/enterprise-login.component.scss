@@ -2,7 +2,7 @@
 
 // .bg-main {
 //   height: 100vh;
-//   background-color: #0c7399;
+//   background-color: #1F5BE3;
 //   position: relative;
 //   padding: 14.3rem 0 0 7rem;
 //   color: #FFFFFF;
@@ -44,44 +44,7 @@
     }
 
     &-heading {
-      margin-bottom: 6.7rem !important;
-    }
-
-    li {
-      display: block;
-      width: 100%;
-      margin-bottom: 4.2rem;
-
-      &.bottom-text {
-        position: relative;
-        top: 2rem;
-        width: 42rem;
-        margin-bottom: 0 !important;
-
-        p {
-          text-align: center;
-
-          a {
-            cursor: pointer;
-          }
-        }
-      }
-
-      p {
-        @include font(1.6rem, 2rem);
-        text-align: center;
-
-        color: $primary-dark;
-
-        a {
-          @include font(1.6rem, 2rem, 500);
-          text-align: center;
-          text-decoration: underline;
-
-          color: $primary-dark;
-          text-underline-offset: 0.2rem;
-        }
-      }
+      margin-bottom: 4.7rem !important;
     }
 
     &-heading {
@@ -97,6 +60,23 @@
       }
     }
 
+    li {
+      text-align: center;
+      ol {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 78%;
+        margin: 0 auto;
+        padding-left: 5rem;
+        li {
+          color: $primary-dark;
+          list-style: unset;
+          font-size: 1.6rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
     &-form {
       margin-top: 4rem;
 
@@ -118,6 +98,49 @@
         border: none;
         outline: none;
       }
+    }
+  }
+
+  &__qr-code {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30rem;
+    }
+
+    button {
+      @include square(18rem);
+      @include border-radius(50%);
+      border: 1px solid $primary-dark;
+      background-color: rgba($primary-color, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 1.4rem;
+      font-weight: 500;
+
+      mat-icon {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__appstore {
+    text-align: center;
+    mat-icon {
+      @include border-radius(0.5rem);
+      border: 1px solid $primary-dark;
+      width: 15rem;
+      height: auto;
+      margin-right: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.4rem !important;
+      margin-bottom: 1rem;
     }
   }
 }

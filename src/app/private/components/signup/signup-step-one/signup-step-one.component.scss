@@ -33,9 +33,9 @@
 
 .userDetails {
   &__signup {
+    text-align: center;
     position: relative;
     padding: 11rem 0 0;
-    text-align: left;
     width: 42rem;
     margin: auto;
 
@@ -46,7 +46,7 @@
     }
 
     &-heading {
-      margin-bottom: 6.5rem;
+      // margin-bottom: 6.5rem;
 
       h2 {
         @include font(3.4rem, 4.1rem, bold);
@@ -57,12 +57,14 @@
       span {
         @include font(1.5rem, 1.9rem, 500);
         opacity: 0.6;
+        display: block;
+        margin-bottom: 1rem;
       }
     }
 
     &-form {
-      margin-top: 4rem;
-      margin-bottom: 4.2rem;
+      margin-top: 2.5rem;
+      margin-bottom: 3rem;
 
       label,
       input {
@@ -99,6 +101,19 @@
         &__not-satisfied {
           background-color: $primary-dark;
           opacity: 0.2;
+        }
+      }
+
+      & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25rem;
+
+        a {
+          img {
+            @include square(20rem);
+          }
         }
       }
     }
@@ -147,6 +162,23 @@
           text-underline-offset: 0.2rem;
         }
       }
+    }
+  }
+
+  &__appstore {
+    text-align: center;
+    mat-icon {
+      @include border-radius(0.5rem);
+      border: 1px solid $primary-dark;
+      width: 15rem;
+      height: auto;
+      margin-right: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.4rem !important;
+      margin-bottom: 1rem;
     }
   }
 }
