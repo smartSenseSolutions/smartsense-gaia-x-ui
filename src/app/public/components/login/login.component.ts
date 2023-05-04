@@ -88,10 +88,6 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
     }
   };
 
-  onSignUpClick = () => {
-    this.router.navigate([RouteConstants.SignUp]);
-  };
-
   // Helper methods
   get formControls() {
     return this.loginForm.controls;
