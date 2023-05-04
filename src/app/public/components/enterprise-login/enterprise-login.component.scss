@@ -65,12 +65,15 @@
       ol {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        width: 78%;
+        margin: 0 auto;
+        padding-left: 5rem;
         li {
           color: $primary-dark;
           list-style: unset;
-          font-size: 1.4rem;
-          margin-bottom: 0.5rem;
+          font-size: 1.6rem;
+          margin-bottom: 1rem;
         }
       }
     }
