@@ -10,7 +10,7 @@
       img,
       .mat-icon {
         @include square(4rem);
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
       }
 
       &.confirm-info {
@@ -82,9 +82,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 78%;
+    width: 59%;
     margin: 0 auto;
-    padding-left: 5rem;
+    padding-left: 6rem;
 
     li {
       color: $primary-dark;
