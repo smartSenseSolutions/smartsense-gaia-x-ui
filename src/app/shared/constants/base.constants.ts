@@ -20,5 +20,5 @@ export enum PollStatus {
   Done = 'done',
 }
 
-export const POLL_INTERVAL = 10000;
-export const MAX_POLL_COUNT = 10;
+export const POLL_INTERVAL = 5000;
+export const MAX_POLL_COUNT = 12;
