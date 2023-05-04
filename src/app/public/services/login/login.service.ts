@@ -26,14 +26,14 @@ export class LoginService {
         attributes: [
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47599:smart-x-member-def',
+              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47601:proof-x-member-def',
             attributeName: 'name',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47599:smart-x-member-def',
+              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47601:proof-x-member-def',
             attributeName: 'email',
             value: '',
             condition: '',
