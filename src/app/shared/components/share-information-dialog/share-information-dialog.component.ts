@@ -132,7 +132,7 @@ export class ShareInformationDialogComponent implements OnInit {
     }
     this.checkStatusTimeOut = setTimeout(() => {
       const request = {
-        presentationId: this.serviceOfferVPQRResponse!.data.presentationId,
+        presentationId: this.serviceOfferVPQRResponse!.data.proofRecordId,
       };
       this.serviceOfferingService
         .getServiceOffersDetailWithOfferId(request, this.serivce.id)
