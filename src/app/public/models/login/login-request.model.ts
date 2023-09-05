@@ -5,5 +5,5 @@ export interface LoginRequestModel {
 }
 
 export interface EnterpriseLoginPollRequestModel {
-  proofRecordId: string;
+  presentationId: string;
 }

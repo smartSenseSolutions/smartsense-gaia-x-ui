@@ -6,14 +6,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels, NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
-import { RouteConstants } from 'src/app/shared/constants';
+import {
+  NgxQRCodeModule,
+  NgxQrcodeElementTypes,
+  NgxQrcodeErrorCorrectionLevels,
+} from '@techiediaries/ngx-qrcode';
 import { APIStatus, UserType } from 'src/app/shared/enums';
 import { SharedService } from 'src/app/shared/services';
 
-import { EnterpriseLoginPollResponseModel, EnterpriseQRLoginResponseModel } from '../../models';
+import { RouteConstants } from 'src/app/shared/constants';
+import {
+  EnterpriseLoginPollResponseModel,
+  EnterpriseQRLoginResponseModel,
+} from '../../models';
 import { LoginService } from '../../services';
-import { MAX_POLL_COUNT, POLL_INTERVAL, PollStatus } from './enterprise-login.constants';
+import {
+  MAX_POLL_COUNT,
+  POLL_INTERVAL,
+  PollStatus,
+} from './enterprise-login.constants';
 
 @Component({
   selector: 'app-enterprise-login',
@@ -70,7 +81,7 @@ export class EnterpriseLoginComponent implements OnInit {
     }
     this.checkStatusTimeOut = setTimeout(() => {
       const request = {
-        proofRecordId: this.enterpriseQRLoginResponse!.data.proofRecordId,
+        presentationId: this.enterpriseQRLoginResponse!.data.proofRecordId,
       };
       this.loginService.pollLoginStatus(request).subscribe({
         next: (response) => {
