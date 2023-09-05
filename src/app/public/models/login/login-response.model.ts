@@ -17,7 +17,7 @@ export interface EnterpriseQRLoginResponse {
   message: string;
   data: {
     id: string;
-    presentationId: string;
+    proofRecordId: string;
     connectionId: string;
     credentialDefId: string;
     schemaId: string;
