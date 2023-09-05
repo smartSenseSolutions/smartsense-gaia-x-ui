@@ -4,16 +4,8 @@ import { SignupResponseModel } from 'src/app/public/models';
 import { API_CONSTANTS } from 'src/app/shared/constants';
 import { parseAPI } from 'src/app/shared/functions';
 import { ApiManagerService } from 'src/app/shared/services';
-import {
-  AddServiceOfferRequest,
-  AddServiceOfferResponse,
-  ServiceOfferDetailMetaResponse,
-  ServiceOfferDetailResponse,
-  ServiceOfferResponse,
-  ServiceOfferVPQRResponseModel,
-  VPRequestPayloadModel,
-  VPResponseModel,
-} from '../../models';
+
+import { AddServiceOfferRequest, AddServiceOfferResponse, ServiceOfferDetailMetaResponse, ServiceOfferDetailResponse, ServiceOfferResponse, ServiceOfferVPQRResponseModel, VPRequestPayloadModel, VPResponseModel } from '../../models';
 
 @Injectable({
   providedIn: 'root',
@@ -119,28 +111,28 @@ export class ServiceOfferingService {
         attributes: [
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:70279:smart-x-gx-legal-participant-def',
             attributeName: 'did',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:70279:smart-x-gx-legal-participant-def',
             attributeName: 'id',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:70279:smart-x-gx-legal-participant-def',
             attributeName: 'type',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:70279:smart-x-gx-legal-participant-def',
             attributeName: 'gx:legalName',
             value: '',
             condition: '',
