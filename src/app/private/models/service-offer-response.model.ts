@@ -19,6 +19,7 @@ export interface ServiceOfferResponsePayloadModel {
   terms: string;
   termsHash: string;
   offerLink: string;
+  labelLevelUrl: string;
   meta: Meta;
 }
 export interface Meta {

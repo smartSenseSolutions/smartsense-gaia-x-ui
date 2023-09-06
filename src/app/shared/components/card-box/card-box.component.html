@@ -34,6 +34,15 @@
             <mat-icon>insert_link</mat-icon>
           </button>
         </a>
+        <a *ngIf="service?.labelLevelUrl"
+          [href]="service.labelLevelUrl"
+          target="_blank"
+          matTooltip="View Label Level VC"
+        >
+          <button mat-mini-fab>
+            <mat-icon>insert_link</mat-icon>
+          </button>
+        </a>
       </div>
     </div>
   </article>
