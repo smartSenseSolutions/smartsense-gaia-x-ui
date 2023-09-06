@@ -7,3 +7,4 @@ export * from './vp-response.model';
 export * from './dashboard.model';
 export * from './add-service.model';
 export * from './add-service-data.model';
+export * from './label-level.model';
