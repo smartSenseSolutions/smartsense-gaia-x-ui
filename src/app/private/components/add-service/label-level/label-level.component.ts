@@ -74,7 +74,7 @@ export class LabelLevelComponent extends FormBaseComponent implements OnInit {
               break;
 
             case 'advanceInput':
-              labelLevel['evidence']['website'] = value;
+              evidence['website'] = value;
               break;
 
             case 'advanceUpload':
