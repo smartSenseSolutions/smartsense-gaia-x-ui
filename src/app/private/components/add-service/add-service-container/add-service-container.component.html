@@ -1,4 +1,17 @@
-<app-add-new-service *ngIf="activeStep == AddServiceStep.ONE" [addServiceFormData]="stepOneData"
-    (onAddServiceFormComplete)="onStepOneComplete($event)"></app-add-new-service>
-<app-add-service-data *ngIf="activeStep == AddServiceStep.TWO" [addServiceDataFormData]="stepTwoData"
-    (onAddServiceDataComplete)="onStepTwoComplete($event)" (onBackEventClick)=" onBackClick($event)"></app-add-service-data>
+<app-add-new-service
+  *ngIf="activeStep == AddServiceStep.ONE"
+  [addServiceFormData]="stepOneData"
+  (onAddServiceFormComplete)="onStepOneComplete($event)"
+></app-add-new-service>
+
+<app-add-service-data
+  *ngIf="activeStep == AddServiceStep.TWO"
+  [addServiceDataFormData]="stepTwoData"
+  (onAddServiceDataComplete)="onStepTwoComplete($event)"
+  (onBackEventClick)="onBackClick($event)"
+></app-add-service-data>
+
+<app-label-level
+  *ngIf="activeStep == AddServiceStep.THREE"
+  (onLabelLevelComplete)="onStepThreeComplete($event)"
+></app-label-level>

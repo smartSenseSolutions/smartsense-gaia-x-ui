@@ -1,0 +1,11 @@
+.LLContainer {
+    display: flex;
+    align-items: center;
+    gap: 20%;
+    justify-content: center;
+
+    iframe {
+        height: calc(100vh - 100px);
+        width: 100%;
+    }
+}
