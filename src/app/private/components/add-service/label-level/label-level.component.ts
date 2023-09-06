@@ -1,20 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { FormBaseComponent } from 'src/app/shared/components';
+import { RouteConstants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-label-level',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './label-level.component.html',
   styleUrls: ['./label-level.component.scss'],
 })
 export class LabelLevelComponent extends FormBaseComponent implements OnInit {
   @Output() onLabelLevelComplete = new EventEmitter<any>();
 
-  constructor(private route: Router, fb: FormBuilder) {
+  constructor(private router: Router, fb: FormBuilder) {
     super(fb);
   }
   ngOnInit() {
@@ -38,6 +40,12 @@ export class LabelLevelComponent extends FormBaseComponent implements OnInit {
 
     const labelLevelCS = this.extractLabelLevelData(datagroup_s);
     this.onLabelLevelComplete.emit(labelLevelCS);
+  };
+
+  onBackClick = () => {
+    this.router.navigate([
+      `${RouteConstants.SmartX}/${RouteConstants.MyServiceOfferings}`,
+    ]);
   };
 
   extractLabelLevelData = (data: any) => {
