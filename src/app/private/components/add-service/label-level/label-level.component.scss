@@ -1,0 +1,32 @@
+@import "../../../../../assets/scss/abstracts/abstracts";
+
+.LLContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 4rem;
+  padding: 2rem 2rem 0 2rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--content {
+      display: flex;
+      gap: 1.5rem;
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 20%;
+    justify-content: center;
+
+    iframe {
+      height: calc(100vh - 20rem);
+      width: 100%;
+    }
+  }
+}

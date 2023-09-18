@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 100%;
   gap: 4rem;
-  padding: 2rem 0 0 2rem;
+  padding: 2rem 2rem 0 2rem;
 
   &__header {
     display: flex;
@@ -41,7 +41,6 @@
         .mat-icon {
           height: 1.4rem;
           width: 1.4rem;
-
         }
       }
     }
@@ -55,7 +54,6 @@
       &--inputs {
         flex-grow: 1;
         max-width: 45%;
-
       }
 
       &--buttons {
@@ -78,8 +76,6 @@
           }
         }
       }
-
-
     }
 
     &__staticField {
@@ -104,7 +100,7 @@
 
           &-header {
             border-radius: 0;
-            border-bottom: 0.1rem solid rgba(#121E2A, 0.2);
+            border-bottom: 0.1rem solid rgba(#121e2a, 0.2);
           }
 
           mat-panel-title {
@@ -147,14 +143,14 @@
     &__examples {
       &-header {
         @include font(1.8rem, 2.1rem);
-        color: #7E8081;
+        color: #7e8081;
         margin-bottom: 1.3rem;
       }
     }
 
     &__inputs {
       @include border-radius(0.8rem);
-      border: 0.1rem solid #121E2A26;
+      border: 0.1rem solid #121e2a26;
       padding: 3rem;
       position: relative;
       margin-bottom: 4rem;
@@ -183,16 +179,14 @@
           height: 1.2rem;
           width: 1.2rem;
           margin: auto !important;
-
         }
       }
     }
 
     &__buttons {
-
       margin-top: 4rem;
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
       align-items: center;
       flex-direction: row;
       gap: 1.5rem;
@@ -208,8 +202,8 @@
         justify-content: center;
         gap: 1.2rem;
 
-        &[type=submit] {
-          width: 13rem;
+        &[type="submit"] {
+          width: 22rem;
 
           .mat-icon {
             margin: 0;
@@ -223,10 +217,10 @@
           }
         }
 
-        &[type=cancel] {
+        &[type="cancel"] {
           @include border-radius(1.2rem);
-          background: #F1F3F4;
-          border: 0.2rem solid #121E2A33;
+          background: #f1f3f4;
+          border: 0.2rem solid #121e2a33;
           outline: 0;
           box-shadow: none;
         }

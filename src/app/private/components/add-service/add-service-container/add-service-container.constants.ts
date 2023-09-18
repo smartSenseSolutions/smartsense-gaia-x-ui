@@ -1,4 +1,5 @@
 export enum AddServiceStep {
-    ONE,
-    TWO
+  ONE,
+  TWO,
+  THREE,
 }
