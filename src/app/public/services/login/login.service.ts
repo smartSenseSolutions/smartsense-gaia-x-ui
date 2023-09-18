@@ -2,15 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONSTANTS } from 'src/app/shared/constants';
 import { ApiManagerService } from 'src/app/shared/services';
-import {
-  EnterpriseLoginPollRequestModel,
-  EnterpriseLoginPollResponseModel,
-  EnterpriseQRLoginResponseModel,
-  LoginRequestModel,
-  LoginResponseModel,
-} from '../../models';
-import { TinyUrlResponseModel } from '../../models/login/tiny-url-response.model';
+
+import { EnterpriseLoginPollRequestModel, EnterpriseLoginPollResponseModel, EnterpriseQRLoginResponseModel, LoginRequestModel, LoginResponseModel } from '../../models';
 import { TinyUrlRequestModel } from '../../models/login/tiny-url-request.model';
+import { TinyUrlResponseModel } from '../../models/login/tiny-url-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,14 +21,14 @@ export class LoginService {
         attributes: [
           {
             credentialDefId:
-              'BsfUfTECZPVRnoCgHUfB3p:3:CL:70286:smart-x-member-def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:72211:Smart-X-Member-Cred-Def',
             attributeName: 'name',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              'BsfUfTECZPVRnoCgHUfB3p:3:CL:70286:smart-x-member-def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:72211:Smart-X-Member-Cred-Def',
             attributeName: 'email',
             value: '',
             condition: '',
