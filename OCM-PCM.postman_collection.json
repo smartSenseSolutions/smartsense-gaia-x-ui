@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "83589038-d8d5-4f55-a6f0-5a9c275e38e6",
+		"name": "OCM-PCM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5715636"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "1. generate an out of band presentation request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"attributes\": [\n        {\n            \"credentialDefId\": \"7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def\",\n            \"attributeName\": \"did\",\n            \"value\": \"\",\n            \"condition\": \"\"\n        },\n        {\n            \"credentialDefId\": \"7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def\",\n            \"attributeName\": \"id\",\n            \"value\": \"\",\n            \"condition\": \"\"\n        },\n        {\n            \"credentialDefId\": \"7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def\",\n            \"attributeName\": \"type\",\n            \"value\": \"\",\n            \"condition\": \"\"\n        },\n        {\n            \"credentialDefId\": \"7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def\",\n            \"attributeName\": \"gx:legalName\",\n            \"value\": \"\",\n            \"condition\": \"\"\n        }\n    ],\n    \"options\": {\n        \"type\": \"Aries1.0\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://ssi-dev.vereign.com/ocm-ui/proof/v1/send-out-of-band-presentation-request",
+							"protocol": "https",
+							"host": [
+								"ssi-dev",
+								"vereign",
+								"com"
+							],
+							"path": [
+								"ocm-ui",
+								"proof",
+								"v1",
+								"send-out-of-band-presentation-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. start polling the find presentation by id endpoint until the record with this presentationId reaches state done",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://ssi-dev.vereign.com/ocm-ui/proof/v1/find-by-presentation-id?presentationId=e619c76a-3daa-420f-9174-a8883fe27811",
+							"protocol": "https",
+							"host": [
+								"ssi-dev",
+								"vereign",
+								"com"
+							],
+							"path": [
+								"ocm-ui",
+								"proof",
+								"v1",
+								"find-by-presentation-id"
+							],
+							"query": [
+								{
+									"key": "presentationId",
+									"value": "e619c76a-3daa-420f-9174-a8883fe27811"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1. create a schema with the credential claims",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"attributes\": [\n    \"did\",\n    \"id\",\n    \"type\",\n    \"gx:legalName\"\n  ],\n  \"createdBy\": \"smart-x\",\n  \"version\": \"1.0\",\n  \"name\": \"smart-X-GX-Legal-Participant\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ssi-dev.vereign.com/ocm-ui/attestation/v1/schemas",
+					"protocol": "https",
+					"host": [
+						"ssi-dev",
+						"vereign",
+						"com"
+					],
+					"path": [
+						"ocm-ui",
+						"attestation",
+						"v1",
+						"schemas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. create a credential definition",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"schemaID\": \"BsfUfTECZPVRnoCgHUfB3p:2:smart-X-GX-Legal-Participant:1.0\",\n  \"name\": \"smart-X-GX-Legal-Participant-Cred-Def\",\n  \"isRevokable\": false,\n  \"isAutoIssue\": true,\n  \"expiryHours\": \"12000\",\n  \"createdBy\": \"smart-x\"\n}"
+				},
+				"url": {
+					"raw": "https://ssi-dev.vereign.com/ocm-ui/attestation/v1/credentialDef",
+					"protocol": "https",
+					"host": [
+						"ssi-dev",
+						"vereign",
+						"com"
+					],
+					"path": [
+						"ocm-ui",
+						"attestation",
+						"v1",
+						"credentialDef"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. create a connection invitation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ssi-dev.vereign.com/ocm-ui/connection/v1/invitation-url?alias=trust",
+					"protocol": "https",
+					"host": [
+						"ssi-dev",
+						"vereign",
+						"com"
+					],
+					"path": [
+						"ocm-ui",
+						"connection",
+						"v1",
+						"invitation-url"
+					],
+					"query": [
+						{
+							"key": "alias",
+							"value": "trust"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. issue a credential to the newly established connection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"connectionId\": \"de4b3901-85a9-4995-becb-504d99278248\",\n    \"credentialDefinitionId\": \"7KuDTpQh3GJ7Gp6kErpWvM:3:CL:47603:smart-x-gx-legal-participant-def\",\n    \"comment\": \"gx:LegalParticipant\",\n    \"attributes\": [\n        {\n            \"name\": \"did\",\n            \"value\": \"bb\"\n        },\n        {\n            \"name\": \"id\",\n            \"value\": \"aa\"\n        },\n        {\n            \"name\": \"type\",\n            \"value\": \"gxLegalParticipant\"\n        },\n        {\n            \"name\": \"gx:legalName\",\n            \"value\": \"smartproof\"\n        }\n    ],\n    \"autoAcceptCredential\": \"never\"\n}"
+				},
+				"url": {
+					"raw": "https://ssi-dev.vereign.com/ocm-ui/attestation/v1/create-offer-credential",
+					"protocol": "https",
+					"host": [
+						"ssi-dev",
+						"vereign",
+						"com"
+					],
+					"path": [
+						"ocm-ui",
+						"attestation",
+						"v1",
+						"create-offer-credential"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
