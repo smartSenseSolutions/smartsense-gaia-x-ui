@@ -111,28 +111,28 @@ export class ServiceOfferingService {
         attributes: [
           {
             credentialDefId:
-              'BsfUfTECZPVRnoCgHUfB3p:3:CL:72514:smart-X-GX-Legal-Participant-Cred-Def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:80599:smart-X-Gx-Legal-Participant-Cred-Def',
             attributeName: 'did',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              'BsfUfTECZPVRnoCgHUfB3p:3:CL:72514:smart-X-GX-Legal-Participant-Cred-Def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:80599:smart-X-Gx-Legal-Participant-Cred-Def',
             attributeName: 'id',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              'BsfUfTECZPVRnoCgHUfB3p:3:CL:72514:smart-X-GX-Legal-Participant-Cred-Def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:80599:smart-X-Gx-Legal-Participant-Cred-Def',
             attributeName: 'type',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              'BsfUfTECZPVRnoCgHUfB3p:3:CL:72514:smart-X-GX-Legal-Participant-Cred-Def',
+              'BsfUfTECZPVRnoCgHUfB3p:3:CL:80599:smart-X-Gx-Legal-Participant-Cred-Def',
             attributeName: 'gx:legalName',
             value: '',
             condition: '',
