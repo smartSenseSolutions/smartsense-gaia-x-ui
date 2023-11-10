@@ -21,14 +21,14 @@ export class LoginService {
         attributes: [
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:134291:smart-X-Login',
+              'GEQmh5nhnJMHpgznYddbbi:3:CL:135161:smart-X-login-cred-def',
             attributeName: 'name',
             value: '',
             condition: '',
           },
           {
             credentialDefId:
-              '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:134291:smart-X-Login',
+              'GEQmh5nhnJMHpgznYddbbi:3:CL:135161:smart-X-login-cred-def',
             attributeName: 'email',
             value: '',
             condition: '',
