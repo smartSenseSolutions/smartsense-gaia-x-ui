@@ -9,7 +9,7 @@ export const API_CONSTANTS = {
   },
   LOGIN_QR_CODE: {
     METHOD: HttpMethodEnum.POST,
-    URL: `https://ssi-dev.vereign.com/ocm-ui/proof/v1/send-out-of-band-presentation-request`,
+    URL: `https://gaiax-ocm-engine.proofsense.in/proof/v1/send-out-of-band-presentation-request`,
   },
   LOGIN_QR_POLL: {
     METHOD: HttpMethodEnum.GET,
@@ -26,7 +26,7 @@ export const API_CONSTANTS = {
     },
     SIGN_UP_QR_CODE: {
       METHOD: HttpMethodEnum.POST,
-      URL: 'https://ssi-dev.vereign.com/ocm-ui/connection/v1/invitation-url?alias=trust',
+      URL: 'https://gaiax-ocm-engine.proofsense.in/connection/v1/invitation-url?alias=trust',
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
