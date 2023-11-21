@@ -26,7 +26,7 @@ export const API_CONSTANTS = {
     },
     SIGN_UP_QR_CODE: {
       METHOD: HttpMethodEnum.POST,
-      URL: 'https://gaiax-ocm-engine.proofsense.in/connection/v1/invitation-url?alias=trust',
+      URL: 'https://ssi-dev.vereign.com/ocm-ui/connection/v1/invitation-url?alias=trust',
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
