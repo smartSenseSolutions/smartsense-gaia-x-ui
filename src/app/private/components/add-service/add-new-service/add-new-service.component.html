@@ -7,40 +7,67 @@
   </div>
 
   <div class="addService__content">
-    <form [formGroup]="addServiceForm" (ngSubmit)="onAddServiceFormSubmit(addServiceForm)">
+    <form
+      [formGroup]="addServiceForm"
+      (ngSubmit)="onAddServiceFormSubmit(addServiceForm)"
+    >
       <ul>
         <li class="addService__content--inputs">
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="name">Service Name</label>
-              <input formControlName="name" matInput id="name" placeholder="Enter service name" required>
+              <input
+                formControlName="name"
+                matInput
+                id="name"
+                placeholder="Enter service name"
+                required
+              />
               <mat-error *ngIf="isRequiredField(formControls['name'])">
-                {{ validationMsg.SERVICE_NAME_IS_REQUIRED }}</mat-error>
+                {{ validationMsg.SERVICE_NAME_IS_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="policy">Add Policy</label>
-              <input formControlName="policy" matInput id="policies" placeholder="Enter policy" required>
+              <input
+                formControlName="policy"
+                matInput
+                id="policies"
+                placeholder="Enter policy"
+                required
+              />
               <mat-error *ngIf="isRequiredField(formControls['policy'])">
-                {{ validationMsg.ADD_POLICY_IS_REQUIRED}}</mat-error>
-
+                {{ validationMsg.ADD_POLICY_IS_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
-
         </li>
         <li>
           <div class="textarea">
             <mat-form-field appearance="fill" floatLabel="always">
-              <label class="required-label" for="description">Description</label>
-              <textarea formControlName="description" matInput id="description"
-                placeholder="Please Enter service description" required rows="4" cols="50" maxlength="5000">
+              <label class="required-label" for="description"
+                >Description</label
+              >
+              <textarea
+                formControlName="description"
+                matInput
+                id="description"
+                placeholder="Please Enter service description"
+                required
+                rows="4"
+                cols="50"
+                maxlength="5000"
+              >
               </textarea>
-              <span class="descriptionLength">{{ formControls['description'].value?.length }} / 5000</span>
+              <span class="descriptionLength"
+                >{{ formControls["description"].value?.length }} / 5000</span
+              >
               <mat-error *ngIf="isRequiredField(formControls['description'])">
-                {{ validationMsg.DESCRIPTION_IS_REQUIRED}}</mat-error>
-
+                {{ validationMsg.DESCRIPTION_IS_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
         </li>
@@ -48,28 +75,50 @@
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="accessType">Access Type</label>
-              <mat-select panelClass="customSelect" formControlName="accessType" matInput id="accessType" placeholder="Select access type"
-                required>
-                <mat-option *ngFor="let type of ACCESS_TYPES" [value]="type.value">
-                  {{type.label}}
+              <mat-select
+                panelClass="customSelect"
+                formControlName="accessType"
+                matInput
+                id="accessType"
+                placeholder="Select access type"
+                required
+              >
+                <mat-option
+                  *ngFor="let type of ACCESS_TYPES"
+                  [value]="type.value"
+                >
+                  {{ type.label }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="isRequiredField(formControls['accessType'])">
-                {{ validationMsg.ACCESS_TYPE_REQUIRED}}</mat-error>
+                {{ validationMsg.ACCESS_TYPE_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
-              <label class="required-label" for="requestType">Request Type</label>
-              <mat-select panelClass="customSelect"  formControlName="requestType" matInput id="requestType" placeholder="Select request type"
-                required>
-                <mat-option *ngFor="let type of REQUEST_TYPES" [value]="type.value">
-                  {{type.label}}
+              <label class="required-label" for="requestType"
+                >Request Type</label
+              >
+              <mat-select
+                panelClass="customSelect"
+                formControlName="requestType"
+                matInput
+                id="requestType"
+                placeholder="Select request type"
+                required
+              >
+                <mat-option
+                  *ngFor="let type of REQUEST_TYPES"
+                  [value]="type.value"
+                >
+                  {{ type.label }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="isRequiredField(formControls['requestType'])">
-                {{ validationMsg.REQUEST_TYPE_REQUIRED}}</mat-error>
+                {{ validationMsg.REQUEST_TYPE_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
         </li>
@@ -77,40 +126,230 @@
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
               <label class="required-label" for="formatType">Format Type</label>
-              <mat-select panelClass="customSelect"  formControlName="formatType" matInput id="formatType" placeholder="Select request type"
-                required>
-                <mat-option *ngFor="let type of FORMAT_TYPES" [value]="type.value">
-                  {{type.label}}
+              <mat-select
+                panelClass="customSelect"
+                formControlName="formatType"
+                matInput
+                id="formatType"
+                placeholder="Select request type"
+                required
+              >
+                <mat-option
+                  *ngFor="let type of FORMAT_TYPES"
+                  [value]="type.value"
+                >
+                  {{ type.label }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="isRequiredField(formControls['formatType'])">
-                {{ validationMsg.FORMAT_TYPE_REQUIRED}}</mat-error>
+                {{ validationMsg.FORMAT_TYPE_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field appearance="fill" floatLabel="always">
-              <label class="required-label" for="terms">Terms and Condition</label>
-              <input formControlName="terms" matInput id="terms" placeholder="Enter terms and conditions" required>
+              <label class="required-label" for="terms"
+                >Terms and Condition</label
+              >
+              <input
+                formControlName="terms"
+                matInput
+                id="terms"
+                placeholder="Enter terms and conditions"
+                required
+              />
               <mat-error *ngIf="isRequiredField(formControls['terms'])">
-                {{ validationMsg.TERMS_AND_CONDITION_IS_REQUIRED}}</mat-error>
-              <mat-hint>
-                Terms and Conditions HASH - auto generated
-              </mat-hint>
+                {{ validationMsg.TERMS_AND_CONDITION_IS_REQUIRED }}</mat-error
+              >
+              <mat-hint> Terms and Conditions HASH - auto generated </mat-hint>
+            </mat-form-field>
+          </div>
+        </li>
+
+        <li class="addService__content--inputs MB-1">
+          <mat-checkbox
+            [disableRipple]="true"
+            formControlName="addResource"
+            (change)="onChangeAddResource()"
+          >
+            <span class="weight500">Add Data Resource</span>
+          </mat-checkbox>
+        </li>
+      </ul>
+
+      <ul *ngIf="formControls['addResource'].value" class="add-resource">
+        <li class="addService__content--inputs">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="resourceName"
+                >Resource Name</label
+              >
+              <input
+                formControlName="resourceName"
+                matInput
+                id="resourceName"
+                placeholder="Enter resource name"
+                required
+              />
+              <mat-error *ngIf="isRequiredField(formControls['resourceName'])">
+                {{ validationMsg.RESOURCE_NAME_IS_REQUIRED }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="resourcePolicy"
+                >Add Resource Policy</label
+              >
+              <input
+                formControlName="resourcePolicy"
+                matInput
+                id="resourcePolicies"
+                placeholder="Enter resource policy"
+                required
+              />
+              <mat-error
+                *ngIf="isRequiredField(formControls['resourcePolicy'])"
+              >
+                {{ validationMsg.ADD_POLICY_IS_REQUIRED }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </li>
+
+        <li>
+          <div class="textarea">
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="resourceDescription"
+                >Resource Description</label
+              >
+              <textarea
+                formControlName="resourceDescription"
+                matInput
+                id="resourceDescription"
+                placeholder="Please Enter resource description"
+                required
+                rows="4"
+                cols="50"
+                maxlength="5000"
+              >
+              </textarea>
+              <span class="descriptionLength"
+                >{{ formControls["description"].value?.length }} / 5000</span
+              >
+              <mat-error
+                *ngIf="isRequiredField(formControls['resourceDescription'])"
+              >
+                {{ validationMsg.DESCRIPTION_IS_REQUIRED }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </li>
+
+        <li class="addService__content--inputs">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="resourceContainsPII"
+                >Resource Contain PII</label
+              >
+              <mat-select
+                panelClass="customSelect"
+                formControlName="resourceContainsPII"
+                matInput
+                id="resourceContainsPII"
+                required
+              >
+                <mat-option
+                  *ngFor="let option of RESOURCE_CONTAIN_PII"
+                  [value]="option.value"
+                >
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="isRequiredField(formControls['resourceContainsPII'])"
+              >
+                {{ validationMsg.CONTAIN_PII_REQUIRED }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="resourceLicence"
+                >Licence</label
+              >
+              <mat-select
+                panelClass="customSelect"
+                formControlName="resourceLicence"
+                matInput
+                id="resourceLicence"
+                placeholder="Select licence"
+                required
+              >
+                <mat-option
+                  *ngFor="let option of RESOURCE_LICENCE"
+                  [value]="option.value"
+                >
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="isRequiredField(formControls['resourceLicence'])"
+              >
+                {{ validationMsg.LICENCE_IS_REQUIRED }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </li>
+
+        <li class="addService__content--inputs">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <label class="required-label" for="copyright"
+                >Copyright Owned By</label
+              >
+              <input
+                formControlName="copyrightOwner"
+                matInput
+                id="copyright"
+                placeholder="Enter copyright owner"
+              />
+              <mat-error
+                *ngIf="isRequiredField(formControls['copyrightOwner'])"
+              >
+                {{ validationMsg.COPYRIGHT_OWNER_IS_REQUIRED }}</mat-error
+              >
             </mat-form-field>
           </div>
         </li>
       </ul>
 
       <ul class="addService__content--buttons">
-        <li><button type="submit" class="large-btn"
-            [ngClass]="{'primary-btn' : addServiceForm.valid,'disabled-btn' : !addServiceForm.valid}" [disabled]="!addServiceForm.valid"  mat-raised-button>
+        <li>
+          <button
+            type="submit"
+            class="large-btn"
+            [ngClass]="{
+              'primary-btn': addServiceForm.valid,
+              'disabled-btn': !addServiceForm.valid
+            }"
+            [disabled]="!addServiceForm.valid"
+            mat-raised-button
+          >
             Save & Continue
             <mat-icon svgIcon="arrow-right"></mat-icon>
           </button>
         </li>
         <li>
-          <button type="cancel" (click)="onCancel()" class="large-btn " mat-raised-button>
+          <button
+            type="cancel"
+            (click)="onCancel()"
+            class="large-btn"
+            mat-raised-button
+          >
             Cancel
           </button>
         </li>

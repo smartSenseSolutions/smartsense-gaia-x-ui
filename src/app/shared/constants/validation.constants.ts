@@ -14,8 +14,8 @@ export class ValidationConstant {
   public readonly MAX_LENGTH_12 = `Maximum Expected Length of value is 12`;
   public readonly MAX_LENGTH_16 = `Maximum Expected Length of value is 16`;
   public readonly MAX_LENGTH_255 = `Maximum Expected Length of value is 255`;
-  public readonly SPECIAL_CHARACTER_NOT_ALLOWED =  `Special Character are not allowed`;
-  public readonly EMAIL_IS_NOT_VALID =  `Entred Email is not valid`;
+  public readonly SPECIAL_CHARACTER_NOT_ALLOWED = `Special Character are not allowed`;
+  public readonly EMAIL_IS_NOT_VALID = `Entred Email is not valid`;
   public readonly PARAMETER_NAME_REQUIRED = `Parameter Name is required`;
   public readonly PARAMETER_VALUE_REQUIRED = `Parameter value is required`;
   public readonly GROUP_NAME_REQUIRED = `Group Name is Required`;
@@ -29,4 +29,9 @@ export class AddServiceValidationConstant {
   public readonly REQUEST_TYPE_REQUIRED = `Request Type is required`;
   public readonly FORMAT_TYPE_REQUIRED = `Format Type is required`;
   public readonly TERMS_AND_CONDITION_IS_REQUIRED = `Terms and Condition is required`;
+
+  public readonly RESOURCE_NAME_IS_REQUIRED = `Resource Name is required`;
+  public readonly LICENCE_IS_REQUIRED = `Licence is required`;
+  public readonly CONTAIN_PII_REQUIRED = `Contain PII is required`;
+  public readonly COPYRIGHT_OWNER_IS_REQUIRED = `Copyright Owner is required`;
 }
