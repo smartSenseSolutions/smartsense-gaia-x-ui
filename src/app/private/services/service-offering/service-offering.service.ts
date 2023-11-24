@@ -4,8 +4,18 @@ import { SignupResponseModel } from 'src/app/public/models';
 import { API_CONSTANTS } from 'src/app/shared/constants';
 import { parseAPI } from 'src/app/shared/functions';
 import { ApiManagerService } from 'src/app/shared/services';
+import { environment } from 'src/environments/environment';
 
-import { AddServiceOfferRequest, AddServiceOfferResponse, ServiceOfferDetailMetaResponse, ServiceOfferDetailResponse, ServiceOfferResponse, ServiceOfferVPQRResponseModel, VPRequestPayloadModel, VPResponseModel } from '../../models';
+import {
+  AddServiceOfferRequest,
+  AddServiceOfferResponse,
+  ServiceOfferDetailMetaResponse,
+  ServiceOfferDetailResponse,
+  ServiceOfferResponse,
+  ServiceOfferVPQRResponseModel,
+  VPRequestPayloadModel,
+  VPResponseModel,
+} from '../../models';
 
 @Injectable({
   providedIn: 'root',
@@ -110,29 +120,25 @@ export class ServiceOfferingService {
       {
         attributes: [
           {
-            credentialDefId:
-              'GEQmh5nhnJMHpgznYddbbi:3:CL:179056:smart-xx-GX-Legal-Participant-Cred-Def',
+            credentialDefId: `${environment.CRED_DEF_ID_PARTICIPANT}`,
             attributeName: 'did',
             value: '',
             condition: '',
           },
           {
-            credentialDefId:
-              'GEQmh5nhnJMHpgznYddbbi:3:CL:179056:smart-xx-GX-Legal-Participant-Cred-Def',
+            credentialDefId: `${environment.CRED_DEF_ID_PARTICIPANT}`,
             attributeName: 'id',
             value: '',
             condition: '',
           },
           {
-            credentialDefId:
-              'GEQmh5nhnJMHpgznYddbbi:3:CL:179056:smart-xx-GX-Legal-Participant-Cred-Def',
+            credentialDefId: `${environment.CRED_DEF_ID_PARTICIPANT}`,
             attributeName: 'type',
             value: '',
             condition: '',
           },
           {
-            credentialDefId:
-              'GEQmh5nhnJMHpgznYddbbi:3:CL:179056:smart-xx-GX-Legal-Participant-Cred-Def',
+            credentialDefId: `${environment.CRED_DEF_ID_PARTICIPANT}`,
             attributeName: 'gx:legalName',
             value: '',
             condition: '',
