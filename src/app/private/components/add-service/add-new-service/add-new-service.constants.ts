@@ -15,3 +15,10 @@ export const REQUEST_TYPES = [
 export const FORMAT_TYPES = [
   { label: 'Application/JSON', value: 'application/json' },
 ];
+
+export const RESOURCE_CONTAIN_PII = [
+  { label: 'True', value: true },
+  { label: 'False', value: false },
+];
+
+export const RESOURCE_LICENCE = [{ label: 'EPL-2.0', value: 'EPL-2.0' }];
