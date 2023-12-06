@@ -1,9 +1,9 @@
 import { HttpMethodEnum } from '../enums';
 import { environment } from 'src/environments/environment';
 
-const BASE_URL = `https://gaiaxapi.${
-  window.location.host.split('gaiaxui.')[1]
-}`;
+const HOST = window.location.host;
+const DOMAIN = HOST.substring(HOST.indexOf('.') + 1);
+const BASE_URL = `https://gaiaxapi.${DOMAIN}`;
 
 export const API_CONSTANTS = {
   LOGIN: {
