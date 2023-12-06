@@ -1,4 +1,4 @@
-import { Component, Host } from '@angular/core';
+import { Component } from '@angular/core';
 import { SharedService, SvgService } from './shared/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DEFAULT_SNACK_BAR_CONFIG } from './shared/constants/base.constants';
