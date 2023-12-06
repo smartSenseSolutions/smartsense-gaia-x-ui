@@ -23,6 +23,11 @@ export class AppComponent {
 
   //  Life cycle methods
   ngOnInit() {
+    console.log('Host: ', window.location.host);
+    const domain = window.location.host.split('gaiaxui.')[1];
+    console.log('Domain: ', domain);
+    console.log('URL => ', `https://gaiaxapi.${domain}`);
+
     this.initialize();
   }
 
