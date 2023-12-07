@@ -9,6 +9,7 @@ import {
   SignupResponseModel,
 } from '../../models/signup/signup-response.model';
 import { parseAPI } from 'src/app/shared/functions';
+import { ConnectionResponse } from '../../models/signup/connection.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,17 @@ export class SignUpService {
     return this.apiManager.httpHelperMethod<SignupQRResponseModel>(
       API_CONSTANTS.ADMIN.SIGN_UP_QR_CODE.METHOD,
       API_CONSTANTS.ADMIN.SIGN_UP_QR_CODE.URL,
+      {},
+      this.apiManager.httpOptions,
+      false,
+      false
+    );
+  };
+
+  verifyConnection = (connectionId: string): Observable<ConnectionResponse> => {
+    return this.apiManager.httpHelperMethod<ConnectionResponse>(
+      API_CONSTANTS.ADMIN.VERIFY_CONNECTION.METHOD,
+      API_CONSTANTS.ADMIN.VERIFY_CONNECTION.URL + `/${connectionId}`,
       {},
       this.apiManager.httpOptions,
       false,

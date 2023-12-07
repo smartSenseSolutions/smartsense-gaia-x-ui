@@ -67,9 +67,17 @@ export class SignupStepOneComponent
   };
 
   onProceedClick = () => {
-    this.onStepOneComplete.emit({
-      connectionId: this.signupQRResponse.data.connection.id,
-    });
+    this.signupService
+      .verifyConnection(this.signupQRResponse.data.connection.id)
+      .subscribe((response) => {
+        if (response && response.data.records.status === 'trusted') {
+          this.onStepOneComplete.emit({
+            connectionId: this.signupQRResponse.data.connection.id,
+          });
+        } else {
+          this.sharedService.setSnackBar('Connection not trusted');
+        }
+      });
   };
 
   // Helper methods
