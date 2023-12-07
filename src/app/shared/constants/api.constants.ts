@@ -17,7 +17,7 @@ export const API_CONSTANTS = {
   },
   LOGIN_QR_CODE: {
     METHOD: HttpMethodEnum.POST,
-    URL: `${environment.PROOFSENSE_URL}/proof/v1/send-out-of-band-presentation-request`,
+    URL: `${environment.OCM_URL}/proof/v1/send-out-of-band-presentation-request`,
   },
   LOGIN_QR_POLL: {
     METHOD: HttpMethodEnum.GET,
@@ -34,7 +34,7 @@ export const API_CONSTANTS = {
     },
     SIGN_UP_QR_CODE: {
       METHOD: HttpMethodEnum.POST,
-      URL: `${environment.PROOFSENSE_URL}/connection/v1/invitation-url?alias=trust`,
+      URL: `${environment.OCM_URL}/connection/v1/invitation-url?alias=trust`,
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
