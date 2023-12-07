@@ -91,19 +91,19 @@ export class ShareInformationDialogComponent implements OnInit {
       const request = {
         url: response.data.presentationMessage,
       };
-      this.loginService.shortenUrl(request).subscribe({
-        next: (tinyUrlResponse) => {
-          this.tinyLoginUrl = tinyUrlResponse.payload.url;
-          this.serviceOfferVPQRResponse = response;
-          this.activeState = DataShareEnum.VERIFYING;
-          this.loginQrApiStatus = APIStatus.Success;
-          this.getPollStatus();
-        },
-        error: (error) => {
-          this.loginQrApiStatus = APIStatus.Failure;
-        },
-        complete: () => {},
-      });
+      // this.loginService.shortenUrl(request).subscribe({
+      //   next: (tinyUrlResponse) => {
+      this.tinyLoginUrl = response.data.presentationMessageShort;
+      this.serviceOfferVPQRResponse = response;
+      this.activeState = DataShareEnum.VERIFYING;
+      this.loginQrApiStatus = APIStatus.Success;
+      this.getPollStatus();
+      //   },
+      //   error: (error) => {
+      //     this.loginQrApiStatus = APIStatus.Failure;
+      //   },
+      //   complete: () => {},
+      // });
     });
     // this.serviceOfferingService
     //   .getParticipantVP('participant')

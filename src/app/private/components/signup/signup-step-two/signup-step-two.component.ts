@@ -279,8 +279,7 @@ export class SignupStepTwoComponent extends FormBaseComponent {
 
   getRegistrationNumberLabel = (registrationType: string) => {
     return registrationType
-      ? REGISTRATION_TYPES.find((type) => (type.value = registrationType))
-          ?.label
+      ? REGISTRATION_TYPES.find((type) => type.value == registrationType)?.label
       : '';
   };
 
