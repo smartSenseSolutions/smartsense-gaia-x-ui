@@ -193,9 +193,13 @@ export class AddNewServiceComponent
       addServiceFormGroup.addControl(
         resourceControlsName[3],
         new FormControl(
-          this.addServiceFormData && this.addServiceFormData.resource
-            ? this.addServiceFormData.resource.containsPII
-            : RESOURCE_CONTAIN_PII[1].value,
+          {
+            value:
+              this.addServiceFormData && this.addServiceFormData.resource
+                ? this.addServiceFormData.resource.containsPII
+                : RESOURCE_CONTAIN_PII[1].value,
+            disabled: true,
+          },
           Validators.required
         )
       );

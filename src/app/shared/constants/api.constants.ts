@@ -36,6 +36,10 @@ export const API_CONSTANTS = {
       METHOD: HttpMethodEnum.POST,
       URL: `${environment.OCM_URL}/connection/v1/invitation-url?alias=trust`,
     },
+    VERIFY_CONNECTION: {
+      METHOD: HttpMethodEnum.GET,
+      URL: `${environment.PROOFSENSE_URL}/connection/v1/connections`,
+    },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
       URL: `${BASE_URL}/enterprises/{id}`,

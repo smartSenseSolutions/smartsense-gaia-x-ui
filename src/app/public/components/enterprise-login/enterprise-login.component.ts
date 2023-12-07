@@ -120,18 +120,18 @@ export class EnterpriseLoginComponent implements OnInit {
         const request = {
           url: response.data.presentationMessage,
         };
-        this.loginService.shortenUrl(request).subscribe({
-          next: (tinyUrlResponse) => {
-            this.enterpriseQRLoginResponse = response;
-            this.tinyLoginUrl = tinyUrlResponse.payload.url;
-            this.loginQrApiStatus = APIStatus.Success;
-            this.pollLoginStatus();
-          },
-          error: (error) => {
-            this.loginQrApiStatus = APIStatus.Failure;
-          },
-          complete: () => {},
-        });
+        // this.loginService.shortenUrl(request).subscribe({
+        //   next: (tinyUrlResponse) => {
+        this.enterpriseQRLoginResponse = response;
+        this.tinyLoginUrl = response.data.presentationMessageShort;
+        this.loginQrApiStatus = APIStatus.Success;
+        this.pollLoginStatus();
+        //   },
+        //   error: (error) => {
+        //     this.loginQrApiStatus = APIStatus.Failure;
+        //   },
+        //   complete: () => {},
+        // });
       },
       error: (error) => {
         this.loginQrApiStatus = APIStatus.Failure;
