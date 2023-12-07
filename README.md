@@ -1,27 +1,45 @@
-# App
+## Getting Started
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+To run the **Smart-X UI** application, follow these steps:
 
-## Development server
+- Make sure you have Node.js version **16.14.2** installed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Clone the Repository:
 
-## Code scaffolding
+```bash
+git clone https://github.com/smartSenseSolutions/smartsense-gaia-x-ui.git
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Navigate to the project's working directory:
 
-## Build
+```bash
+cd smartsense-gaia-x-ui/
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Install the required dependencies:
 
-## Running unit tests
+```bash
+npm ci
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Start the development server:
 
-## Running end-to-end tests
+```bash
+npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Open your web browser and go to:
 
-## Further help
+```bash
+http://localhost:4200
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### To Update Base URL in Environment File, follow these steps:
+
+- Go to environment file at:
+
+```bash
+src/environments/environment.ts
+```
+
+- locate the **BASE_URL** variable and update its value with your specific base URL.

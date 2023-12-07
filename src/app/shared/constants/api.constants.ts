@@ -1,9 +1,14 @@
 import { HttpMethodEnum } from '../enums';
 import { environment } from 'src/environments/environment';
 
-const HOST = window.location.host;
-const DOMAIN = HOST.substring(HOST.indexOf('.') + 1);
-const BASE_URL = `https://gaiaxapi.${DOMAIN}`;
+const HOST = window.location.hostname;
+let BASE_URL = '';
+if (HOST === 'localhost' || HOST === '127.0.0.1') {
+  BASE_URL = environment.BASE_URL;
+} else {
+  const DOMAIN = HOST.substring(HOST.indexOf('.') + 1);
+  BASE_URL = `https://gaiaxapi.${DOMAIN}`;
+}
 
 export const API_CONSTANTS = {
   LOGIN: {
@@ -12,7 +17,7 @@ export const API_CONSTANTS = {
   },
   LOGIN_QR_CODE: {
     METHOD: HttpMethodEnum.POST,
-    URL: `${environment.PROOFSENSE_URL}/proof/v1/send-out-of-band-presentation-request`,
+    URL: `${environment.OCM_URL}/proof/v1/send-out-of-band-presentation-request`,
   },
   LOGIN_QR_POLL: {
     METHOD: HttpMethodEnum.GET,
@@ -29,7 +34,7 @@ export const API_CONSTANTS = {
     },
     SIGN_UP_QR_CODE: {
       METHOD: HttpMethodEnum.POST,
-      URL: `${environment.PROOFSENSE_URL}/connection/v1/invitation-url?alias=trust`,
+      URL: `${environment.OCM_URL}/connection/v1/invitation-url?alias=trust`,
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
