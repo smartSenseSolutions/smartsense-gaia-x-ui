@@ -29,7 +29,7 @@ export const API_CONSTANTS = {
     },
     VERIFY_CONNECTION: {
       METHOD: HttpMethodEnum.GET,
-      URL: `${environment.PROOFSENSE_URL}/connection/v1/connections`,
+      URL: `${environment.OCM_URL}/connection/v1/connections`,
     },
     GET_ENTERPRISE: {
       METHOD: HttpMethodEnum.GET,
