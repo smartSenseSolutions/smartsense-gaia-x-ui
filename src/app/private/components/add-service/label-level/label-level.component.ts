@@ -25,7 +25,7 @@ export class LabelLevelComponent extends FormBaseComponent implements OnInit {
       ({ data, origin }: { data: string; origin: string }) => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 
-        if (data && origin === 'https://label.gxfs.dev') {
+        if (data && origin === 'https://hackathon2.leanea.com') {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           this.generateLabelLevelVC(JSON.parse(data));
         }
